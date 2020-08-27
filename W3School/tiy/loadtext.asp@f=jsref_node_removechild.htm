@@ -1,0 +1,27 @@
+<!DOCTYPE html><!-- saved from url=(0068)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_node_removechild --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<ul id="myList"><li>Coffee</li><li>Tea</li><li>Milk</li></ul>
+
+<p id="demo">点击按钮来删除列表中的首个项目。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var list=document.getElementById("myList");
+list.removeChild(list.childNodes[0]);
+}
+</script>
+
+</body>
+</html>

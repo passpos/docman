@@ -1,0 +1,31 @@
+<!DOCTYPE html><!-- saved from url=(0063)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_details_get --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<h3>演示如何访问 DETAILS 元素</h3>
+
+<details id="myDetails">
+Some additional details...
+</details>
+
+<p>点击按钮来显示额外的细节。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x = document.getElementById("myDetails");
+x.open=true;
+}
+</script>
+
+</body>
+</html>

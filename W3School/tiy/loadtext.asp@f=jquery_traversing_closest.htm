@@ -1,0 +1,28 @@
+<!DOCTYPE html><!-- saved from url=(0071)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_traversing_closest --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<style>
+  li { margin: 3px; padding: 3px; background: #EEEEEE; }
+  li.hilight { background: yellow; }
+</style>
+</head>
+<body>
+  <ul>
+    <li><b>Click me!</b></li>
+    <li>You can also <b>Click me!</b></li>
+  </ul>
+<script>
+  $( document ).bind("click", function( e ) {
+    $( e.target ).closest("li").toggleClass("hilight");
+  });
+</script>
+</body>
+</html>

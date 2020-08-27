@@ -1,0 +1,33 @@
+<html><!-- saved from url=(0089)http://www.w3school.com.cn/tiy/loadtext.asp?f=jseg_pro_object_defining_prototype_paradigm --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<script type="text/javascript">
+
+function Car() {
+}
+
+Car.prototype.color = "blue";
+Car.prototype.doors = 4;
+Car.prototype.mpg = 25;
+Car.prototype.showColor = function() {
+  document.write(this.color);
+};
+
+var oCar1 = new Car();
+var oCar2 = new Car();
+
+oCar1.showColor();
+document.write("<br />")
+oCar2.showColor();
+
+</script>
+
+</body>
+</html>

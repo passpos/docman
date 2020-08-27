@@ -1,0 +1,26 @@
+<!DOCTYPE html><!-- saved from url=(0073)http://www.w3school.com.cn/tiy/loadtext.asp?f=js_dom_getelementsbytagname --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<p>Hello World!</p>
+
+<div id="main">
+<p>The DOM is very useful.</p>
+<p>本例演示 <b>getElementsByTagName</b> 方法。</p>
+</div>
+
+<script>
+var x=document.getElementById("main");
+var y=x.getElementsByTagName("p");
+document.write('id 为 "main" 的 div 中的第一段文本是：' + y[0].innerHTML);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html><!-- saved from url=(0072)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_traversing_siblings --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+  <script type="text/javascript" src="../jquery/jquery.js"></script>
+</head>
+
+<body>
+  <div><span>Hello</span></div>
+  <p class="selected">Hello Again</p>
+  <p>And Again</p>
+
+<script>
+$("p").siblings(".selected").css("background", "yellow");
+</script>
+
+</body>
+</html>

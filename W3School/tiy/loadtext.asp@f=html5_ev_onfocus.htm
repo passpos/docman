@@ -1,0 +1,26 @@
+<!DOCTYPE html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=html5_ev_onfocus --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script>
+function setStyle(x)
+{
+document.getElementById(x).style.background="yellow";
+}
+</script>
+</head>
+<body>
+
+<p>当输入字段获得焦点时触发函数。此函数改变输入字段的背景色。</p>
+
+First name: <input type="text" id="fname" onfocus="setStyle(this.id)"><br>
+Last name: <input type="text" id="lname" onfocus="setStyle(this.id)">
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html><!-- saved from url=(0072)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_element_getattribute --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+请阅读 <a href="../jsref/dom_obj_attributes.asp.htm" darget="_blank">Attr 对象</a>，
+
+<p id="demo">请点击按钮来显示上面这个链接的 target 属性值。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var a=document.getElementsByTagName("a")[0];
+document.getElementById("demo").innerHTML=a.getAttribute("target");
+}
+</script>
+
+</body>
+</html>

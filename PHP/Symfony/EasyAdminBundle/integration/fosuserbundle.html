@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Integrating FOSUserBundle to Manage Users &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Integrating FOSCKEditorBundle to Create a WYSIWYG Editor" href="ivoryckeditorbundle.html" />
+    <link rel="prev" title="Integrating VichUploaderBundle to Upload Files and Images" href="vichuploaderbundle.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../book/installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Integrating FOSUserBundle to Manage Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-new-users">Creating New Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editing-user-information">Editing User Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-different-validation-when-creating-or-editing-the-user">Using Different Validation when Creating or Editing the User</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Integrating FOSUserBundle to Manage Users</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/integration/fosuserbundle.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="integrating-fosuserbundle-to-manage-users">
+<h1>Integrating FOSUserBundle to Manage Users<a class="headerlink" href="#integrating-fosuserbundle-to-manage-users" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/FriendsOfSymfony/FOSUserBundle">FOSUserBundle</a> is a popular Symfony bundle which simplifies the management
+of users in Symfony applications. This article explains how to better integrate
+it with EasyAdmin to manage users’ information. The article assumes that you
+have installed FOSUserBundle and have created a user entity as explained in
+<a class="reference external" href="https://symfony.com/doc/current/bundles/FOSUserBundle/index.html">its documentation</a>.</p>
+<div class="section" id="creating-new-users">
+<h2>Creating New Users<a class="headerlink" href="#creating-new-users" title="Permalink to this headline">¶</a></h2>
+<p>FOSUserBundle defines a <a class="reference external" href="https://symfony.com/doc/current/bundles/FOSUserBundle/user_manager.html">user manager</a> to handle all operations on user
+instances, such as creating and editing users. This manager, which is accessed
+through the <code class="docutils literal notranslate"><span class="pre">fos_user.user_manager</span></code> service, makes the bundle “agnostic” to
+where the users are stored and it’s a good practice to use it.</p>
+<p>Before using this manager, read <a class="reference internal" href="../tutorials/custom-actions.html"><span class="doc">How to Define Custom Actions</span></a> if you
+haven’t done it already so you can modify the behavior of the new action. Then,
+override the <code class="docutils literal notranslate"><span class="pre">createNewUserEntity()</span></code> and <code class="docutils literal notranslate"><span class="pre">persistUserEntity()</span></code> methods to
+override the way users are created and persisted:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController</span> <span class="k">as</span> <span class="nx">BaseAdminController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">BaseAdminController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createNewUserEntity</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;fos_user.user_manager&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">createUser</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">persistUserEntity</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;fos_user.user_manager&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">updateUser</span><span class="p">(</span><span class="nv">$user</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">persistEntity</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">false</span></code> value of the second argument of <code class="docutils literal notranslate"><span class="pre">updateUser()</span></code> tells
+FOSUserBundle to not save the changes (to not flush the UnitOfWork) at that
+moment and to let Doctrine take care of saving those changes when needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your user entity is not called <code class="docutils literal notranslate"><span class="pre">User</span></code>, you need to change the above
+method names. For example, if the entity is called <code class="docutils literal notranslate"><span class="pre">Customers</span></code>, the
+methods to define are <code class="docutils literal notranslate"><span class="pre">createNewCustomersEntity()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">persistCustomersEntity()</span></code>.</p>
+</div>
+</div>
+<div class="section" id="editing-user-information">
+<h2>Editing User Information<a class="headerlink" href="#editing-user-information" title="Permalink to this headline">¶</a></h2>
+<p>FOSUserBundle provides a custom <code class="docutils literal notranslate"><span class="pre">User</span></code> entity with some predefined properties,
+such as <code class="docutils literal notranslate"><span class="pre">email</span></code>, <code class="docutils literal notranslate"><span class="pre">enabled</span></code> and <code class="docutils literal notranslate"><span class="pre">lastLogin</span></code>. You can manage these
+properties in the same way you manage any property of any other entity:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">email</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enabled</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lastLogin</span>
+                    <span class="c1"># if administrators are allowed to edit users&#39; passwords and roles, add this:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;plainPassword&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;text&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> required</span><span class="p">:</span> <span class="nv">false</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;roles&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;choice&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> multiple</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> choices</span><span class="p">:</span> <span class="p p-Indicator">{</span> <span class="s">&#39;ROLE_USER&#39;</span><span class="p p-Indicator">:</span> <span class="s">&#39;ROLE_USER&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;ROLE_ADMIN&#39;</span><span class="p p-Indicator">:</span> <span class="s">&#39;ROLE_ADMIN&#39;</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>However, it’s recommended to save changes using FOSUserBundle’s user manager.
+Therefore, open your AdminController and add the following method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">BaseAdminController</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateUserEntity</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;fos_user.user_manager&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">updateUser</span><span class="p">(</span><span class="nv">$user</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">updateEntity</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your user entity is not called <code class="docutils literal notranslate"><span class="pre">User</span></code>, you need to change the above
+method name. For example, if the entity is called <code class="docutils literal notranslate"><span class="pre">Customers</span></code>, the method
+to define is <code class="docutils literal notranslate"><span class="pre">updateCustomersEntity()</span></code>.</p>
+</div>
+<div class="section" id="using-different-validation-when-creating-or-editing-the-user">
+<h3>Using Different Validation when Creating or Editing the User<a class="headerlink" href="#using-different-validation-when-creating-or-editing-the-user" title="Permalink to this headline">¶</a></h3>
+<p>A common need when managing users is to apply different validation rules when
+creating or editing them. In the following example, the form applies different
+validation groups for each action and the password is mandatory only when the
+user is created:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">edit</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;plainPassword&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> required</span><span class="p">:</span> <span class="nv">false</span><span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+                <span class="nt">form_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> validation_groups</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Profile&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+            <span class="nt">new</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;plainPassword&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> required</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+                <span class="nt">form_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> validation_groups</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Registration&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ivoryckeditorbundle.html" class="btn btn-neutral float-right" title="Integrating FOSCKEditorBundle to Create a WYSIWYG Editor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vichuploaderbundle.html" class="btn btn-neutral float-left" title="Integrating VichUploaderBundle to Upload Files and Images" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

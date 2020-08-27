@@ -1,0 +1,36 @@
+<html><!-- saved from url=(0066)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_select_disabled --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function disable()
+  {
+  document.getElementById("mySelect").disabled=true
+  }
+function enable()
+  {
+  document.getElementById("mySelect").disabled=false
+  }
+</script>
+</head>
+<body>
+
+<form>
+<select id="mySelect">
+  <option>苹果</option>
+  <option>桃子</option>
+  <option>香蕉</option>
+  <option>桔子</option>
+</select>
+<br /><br />
+<input type="button" onclick="disable()" value="禁用列表">
+<input type="button" onclick="enable()" value="启用列表">
+</form>
+
+</body>
+</html>

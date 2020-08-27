@@ -1,0 +1,29 @@
+<html><!-- saved from url=(0061)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_cursortext --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function cursor(event)
+{
+document.getElementById('trail').style.visibility="visible"
+document.getElementById('trail').style.position="absolute"
+document.getElementById('trail').style.left=event.clientX+10
+document.getElementById('trail').style.top=event.clientY
+}
+</script>
+</head>
+
+<body onmousemove="cursor(event)">
+
+<h1>请在页面上移动指针</h1>
+
+<span id="trail" style="visibility:hidden">指针文本</span>
+
+</body>
+
+</html>

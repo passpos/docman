@@ -1,0 +1,24 @@
+<html><!-- saved from url=(0058)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_form_id --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<form id="myForm">
+Text: <input type="text" size="20" value="Hello World" />
+</form>
+
+<script type="text/javascript">
+x=document.getElementsByTagName('form')[0];
+document.write("Form id: " + x.id);
+document.write("<br />");
+document.write("An alternate way: ");
+document.write(document.getElementById('myForm').id);
+</script>
+
+</body>
+</html>

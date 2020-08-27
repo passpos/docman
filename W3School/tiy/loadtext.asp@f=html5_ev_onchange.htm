@@ -1,0 +1,25 @@
+<!DOCTYPE html><!-- saved from url=(0063)http://www.w3school.com.cn/tiy/loadtext.asp?f=html5_ev_onchange --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script>
+function checkField(val)
+{
+alert("输入值已更改。新值是：" + val);
+}
+</script>
+</head>
+<body>
+
+<p>请修改输入字段中的文本，然后在字段外点击以触发 onchange。</p>
+
+请输入文本：<input type="text" name="txt" value="Hello" onchange="checkField(this.value)">
+
+</body>
+</html>

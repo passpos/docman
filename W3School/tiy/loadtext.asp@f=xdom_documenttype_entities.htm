@@ -1,0 +1,28 @@
+<html><!-- saved from url=(0072)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_documenttype_entities --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/note_internal_dtd.xml");
+
+var x=xmlDoc.doctype.entities;
+for (i=0;i<x.length;i++)
+{
+document.write("Nodename: " + x.item(i).nodeName);
+document.write("<br />");
+document.write("Nodetype: " + x.item(i).nodeType);
+document.write("<br />");
+}
+</script>
+</body>
+</html>

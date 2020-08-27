@@ -1,0 +1,34 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>08-linkCheck.md</title>
+    <style type="text/css">
+            
+/* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+td, h1, h2, h3, h4, h5, p, ul, ol, li {
+    page-break-inside: avoid; 
+}
+
+        </style>
+  </head>
+  <body><div class="passage">
+    <h1 id="section">插入链接的校验</h1>
+    <p>插入链接时，可通过如下配置对文字和链接进行校验。<code>v3.0.10</code>开始支持。</p>
+    <pre>
+      <code class="language-js">var E = window.wangEditor
+var editor = new E('#div1')
+editor.customConfig.linkCheck = function (text, link) {
+    console.log(text) // 插入的文字
+    console.log(link) // 插入的链接
+
+    return true // 返回 true 表示校验成功
+    // return '验证失败' // 返回字符串，即校验失败的提示信息
+}
+editor.create()
+</code>
+    </pre>
+  </div>
+</body>
+</html>

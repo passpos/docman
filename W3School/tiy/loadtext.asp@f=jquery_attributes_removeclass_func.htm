@@ -1,0 +1,42 @@
+<html><!-- saved from url=(0080)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_attributes_removeclass_func --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("button").click(function(){
+      $('ul li').removeClass(function() {
+      return 'listitem_' + $(this).index();
+    });
+  });
+});
+</script>
+<style type="text/css">
+.listitem_1, .listitem_3
+{
+color:red;
+}
+.listitem_0, .listitem_2
+{
+color:blue;
+}
+</style>
+</head>
+
+<body>
+<h1 id="h1">This is a heading</h1>
+<ul>
+<li class="listitem_0">Apple</li>
+<li class="listitem_1">IBM</li>
+<li class="listitem_2">Microsoft</li>
+<li class="listitem_3">Google</li>
+</ul>
+<button>删除列表项中的类</button>
+</body>
+</html>

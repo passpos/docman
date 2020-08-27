@@ -1,0 +1,29 @@
+<html><!-- saved from url=(0067)http://www.w3school.com.cn/tiy/loadtext.asp?f=dtde_note_error_three --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+<h3>
+This demonstrates a parser error:
+</h3>
+
+<script type="text/javascript">
+var xmlDoc = new ActiveXObject("Microsoft.XMLDOM")
+xmlDoc.async="false"
+xmlDoc.validateOnParse="true"
+xmlDoc.load("../example/dtde/note_dtd_error.xml")
+
+document.write("<br />Error Code: ")
+document.write(xmlDoc.parseError.errorCode)
+document.write("<br />Error Reason: ")
+document.write(xmlDoc.parseError.reason)
+document.write("<br />Error Line: ")
+document.write(xmlDoc.parseError.line)
+</script>
+
+</body>
+</html>

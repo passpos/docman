@@ -1,0 +1,52 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>01-demo.md</title>
+    <style type="text/css">
+
+      /* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+      td, h1, h2, h3, h4, h5, p, ul, ol, li {
+          page-break-inside: avoid; 
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="passage">
+      <h1 id="demo">简单的 demo</h1>
+
+      <h2 id="demo-1">制作 demo</h2>
+      <p>编辑器效果如下。</p>
+      <div>
+        <img style="width: 950px" src="https://camo.githubusercontent.com/f3d072718d8fcbbacf8cc80465a34cceffcf5b4a/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3133383031322f3230313730352f3133383031322d32303137303533303230323930353633332d313834303135383938312e706e67" alt="图片" />
+      </div>
+      <p>代码示例如下。<strong>注意，以下代码中无需引用任何 CSS 文件！！！</strong></p>
+      <pre>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;wangEditor demo&lt;/title&gt;
+      &lt;/head&gt;
+      
+      &lt;body&gt;
+        &lt;div <code>id="editor"</code>&gt;
+        &lt;p&gt;欢迎使用 &lt;b&gt;wangEditor&lt;/b&gt; 富文本编辑器&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！--&gt;
+        &lt;script type="text/javascript" src="/wangEditor.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+          var E = window.wangEditor;
+          var editor = new E(<code>'#editor'</code>);
+             // 或者 var editor = new E( <code>document.getElementById('#editor')</code> )
+          editor.create();
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+      </pre>
+    </div>
+  </body>
+</html>

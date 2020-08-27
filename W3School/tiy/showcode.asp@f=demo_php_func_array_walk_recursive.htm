@@ -1,0 +1,39 @@
+<HTML>
+<!-- saved from url=(0080)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_func_array_walk_recursive --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+function myfunction($value,$key)
+{
+echo &quot;¼ü $key µÄÖµÊÇ $value ¡£&lt;br&gt;&quot;;
+}
+$a1=array(&quot;a&quot;=&gt;&quot;red&quot;,&quot;b&quot;=&gt;&quot;green&quot;);
+$a2=array($a1,&quot;1&quot;=&gt;&quot;blue&quot;,&quot;2&quot;=&gt;&quot;yellow&quot;);
+array_walk_recursive($a2,&quot;myfunction&quot;);
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

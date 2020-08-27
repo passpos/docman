@@ -1,0 +1,47 @@
+<html><!-- saved from url=(0060)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_alphalink --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<style>
+img
+{
+filter:alpha(opacity=10)
+}
+</style>
+<script type="text/javascript">
+function clean()
+{
+interval=setInterval("makeclean(myImage)",10)
+}
+function foggy()
+{
+clearInterval(interval)
+document.getElementById('myImage').filters.alpha.opacity=10
+}
+function makeclean()
+{
+if (document.getElementById('myImage').filters.alpha.opacity<100)
+	{
+	document.getElementById('myImage').filters.alpha.opacity+=5
+	}
+else if (window.interval)
+	{
+	clearInterval(interval)
+	}
+}
+</script>
+</head>
+
+<body>
+<b>请把鼠标移动到图像链接上：</b><br />
+<a href="../index.html">
+<img border="0" id="myImage" src="../i/eg_smile.gif" onmouseover="clean()" onmouseout="foggy()" />
+</a>
+</body>
+
+</html>

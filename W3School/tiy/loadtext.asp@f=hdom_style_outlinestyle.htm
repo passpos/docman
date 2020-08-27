@@ -1,0 +1,31 @@
+<html><!-- saved from url=(0069)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_style_outlinestyle --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<style type="text/css">
+p
+{
+border: thin solid #00FF00;
+outline: thick solid #FF0000;
+}
+</style>
+<script type="text/javascript">
+function changeOutline()
+{
+document.getElementById("p1").style.outlineStyle="dotted";
+}
+</script>
+</head>
+<body>
+
+<input type="button" onclick="changeOutline()" value="Change outline style" />
+
+<p id="p1">This is a paragraph</p>
+
+</body>
+</html>

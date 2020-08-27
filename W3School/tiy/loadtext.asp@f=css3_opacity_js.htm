@@ -1,0 +1,36 @@
+<!DOCTYPE html><!-- saved from url=(0061)http://www.w3school.com.cn/tiy/loadtext.asp?f=css3_opacity_js --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script>
+function ChangeOpacity(x)
+{
+// 返回被选选项的文本
+var opacity=x.options[x.selectedIndex].text;
+var el=document.getElementById("p1");
+if (el.style.opacity!==undefined)
+  {el.style.opacity=opacity;}
+else
+  {alert("Your browser doesn't support this example!");}
+}
+</script>
+</head>
+<body>
+
+<p id="p1">请从下面的例子中选择一个值，以改变此元素的不透明度。</p>
+<select onchange="ChangeOpacity(this);" size="5">
+  <option />0
+  <option />0.2.htm
+  <option />0.5.htm
+  <option />0.8.htm
+  <option selected="selected" />1
+</select>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<HTML>
+<!-- saved from url=(0072)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_func_array_filter --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+function test_odd($var)
+{
+return($var & 1);
+}
+
+$a1=array(&quot;a&quot;,&quot;b&quot;,2,3,4);
+print_r(array_filter($a1,&quot;test_odd&quot;));
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

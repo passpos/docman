@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>资源库 | Composer 中文文档 | Composer 中文网</title>
+        <meta name="description" content="Composer 是 PHP 中用来管理依赖（dependency）关系的工具">
+        <meta name="keywords" content="PHP, Composer, Packagist, 依赖管理, npm, Symfony, Laravel">
+
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/libs/prism.css">
+
+        <script src="https://cdn.bootcss.com/modernizr/2.8.2/modernizr.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                    <a href="docs_phpcomposer_default.html">首页</a>
+                    <a href="00-intro.html">入门</a>
+                    <a href="https://getcomposer.org/download/" target="_blank">下载</a>
+                    <a href="https://packagist.org/" target="_blank">安装包列表</a>
+                    <a class="last" href="https://pkg.phpcomposer.com/" target="_blank">中国镜像</a>
+            </header>
+            <div id="main" role="main">
+    
+    <p><a name="Repositories"></a></p>
+<h1>资源库</h1>
+<p>本章将解释包和库的概念，什么样的存储库是可用的，以及它们如何工作。</p>
+<hr>
+<ul>
+<li><a href="05-repositories.html#Repositories">资源库</a>
+<ul>
+<li><a href="05-repositories.html#Concepts">概述</a>
+<ul>
+<li><a href="05-repositories.html#Package">包</a></li>
+<li><a href="05-repositories.html#Repository">资源库</a></li>
+</ul>
+</li>
+<li><a href="05-repositories.html#Types">Types</a>
+<ul>
+<li><a href="05-repositories.html#Composer">Composer</a>
+<ul>
+<li><a href="05-repositories.html#packages">packages</a></li>
+<li><a href="05-repositories.html#notify-batch">notify-batch</a></li>
+<li><a href="05-repositories.html#includes">includes</a></li>
+<li><a href="05-repositories.html#provider-includes">provider-includes and providers-url</a></li>
+<li><a href="05-repositories.html#stream-options">stream options</a></li>
+</ul>
+</li>
+<li><a href="05-repositories.html#VCS">VCS</a>
+<ul>
+<li><a href="05-repositories.html#from-a-VCS">从 VCS 资源库加载一个包</a></li>
+<li><a href="05-repositories.html#Using-private">使用私有资源库</a></li>
+<li><a href="05-repositories.html#Git-alternatives">Git 的备选方案</a></li>
+<li><a href="05-repositories.html#Subversion-Options">Subversion 选项</a></li>
+</ul>
+</li>
+<li><a href="05-repositories.html#PEAR">PEAR</a>
+<ul>
+<li><a href="05-repositories.html#Custom-vendor-alias">自定义供应商别名</a></li>
+</ul>
+</li>
+<li><a href="05-repositories.html#Package">Package</a></li>
+</ul>
+</li>
+<li><a href="05-repositories.html#Hosting-your-own">Hosting your own</a>
+<ul>
+<li><a href="05-repositories.html#Packagist">Packagist</a></li>
+<li><a href="05-repositories.html#Satis">Satis</a></li>
+<li><a href="05-repositories.html#Artifact">Artifact</a></li>
+</ul>
+</li>
+<li><a href="05-repositories.html#Disabling-Packagist">禁用 Packagist</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><a name="Concepts"></a></p>
+<h2>概述</h2>
+<p>在此之前，我们看到存在不同类型的资源库，我们需要了解一些基本概念，以理解 Composer 是如何构建于其上的。</p>
+<p><a name="Package"></a></p>
+<h3>包</h3>
+<p>Composer 是一个依赖管理工具。它在本地安装一些资源包。一个包本质上就是一个包含东西的目录。通常情况下它存储 PHP 代码，但在理论上它可以是任何东西。并且它包含一个描述，其中有一个名称和一个版本号，这个名称和版本号用于识别该包。</p>
+<p>事实上，在 composer 内部将每一个版本都视为一个单独的包。尽管在你使用 composer 时这种区别无关紧要，但当你想改变它时，这就显得至关重要。</p>
+<p>除了名称和版本号，还存放了有用的元数据。与安装关系最密切的是 source 信息，它申明了在哪里可以获得资源包的内容。包数据指向包内容，并有两种指向方式：dist 和 source。</p>
+<p><strong>Dist:</strong> dist 指向一个存档，该存档是对一个资源包的某个版本的数据进行的打包。通常是已经发行的稳定版本。</p>
+<p><strong>Source:</strong> source 指向一个开发中的源。这通常是一个源代码仓库，例如 git。当你想要对下载下来的资源包进行修改时，可以这样获取。</p>
+<p>你可以使用其中任意一个，或者同时使用。这取决于其它的一些因素，比如“user-supplied 选项”和“包的稳定性”，前者将会被优先考虑。</p>
+<p><a name="Repository"></a></p>
+<h3>资源库</h3>
+<p>一个资源库是一个包的来源。它是一个 packages/versions 的列表。Composer 将查看所有你定义的 repositories 以找到你项目需要的资源包。</p>
+<p>默认情况下已经将 Packagist.org 注册到 Composer。你可以在 <code>composer.json</code> 中申明更多的资源库，把它们加入你的项目中。</p>
+<p>资源库的定义仅可用于“root 包”，而在你依赖的包中定义的资源库将不会被加载。如果你想了解其中的原因，请阅读 <a href="faqs/why-can/why-can't-composer-load-repositories-recursively.html">FAQ entry</a>。</p>
+<p><a name="Types"></a></p>
+<h2>Types</h2>
+<p><a name="Composer"></a></p>
+<h3>Composer</h3>
+<p>主资源库的类型为 <code>composer</code>。它使用一个单一的 <code>packages.json</code> 文件，包含了所有的资源包元数据。</p>
+<p>这也是 packagist.org 所使用的资源类型。要引用一个 <code>composer</code> 资源库，只需要提供一个存放 <code>packages.json</code> 文件的 <strong>目录路径</strong>。比如要引用 <code>packagist.org</code> 下的 <code>/packages.json</code>，它的 URL 就应该是 <code>packagist.org</code>。而 <code>example.org/packages.json</code> 的 URL 应该是 <code>example.org</code>。</p>
+<p><a name="packages"></a></p>
+<h4>packages</h4>
+<p>唯一必须的字段是 <code>packages</code>。它的 JSON 结构如下：</p>
+<pre><code class="language-json">{
+    &quot;packages&quot;: {
+        &quot;vendor/package-name&quot;: {
+            &quot;dev-master&quot;: { @composer.json },
+            &quot;1.0.x-dev&quot;: { @composer.json },
+            &quot;0.0.1&quot;: { @composer.json },
+            &quot;1.0.0&quot;: { @composer.json }
+        }
+    }
+}
+</code></pre>
+<p><code>@composer.json</code> 标记将会从此包的指定版本中读取 <code>composer.json</code> 的内容，其内至少应包含以下信息：</p>
+<ul>
+<li>name</li>
+<li>version</li>
+<li>dist or source</li>
+</ul>
+<p>这是一个最简单的包定义：</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;smarty/smarty&quot;,
+    &quot;version&quot;: &quot;3.1.7&quot;,
+    &quot;dist&quot;: {
+        &quot;url&quot;: &quot;http://www.smarty.net/files/Smarty-3.1.7.zip&quot;,
+        &quot;type&quot;: &quot;zip&quot;
+    }
+}
+</code></pre>
+<p>它还可以包含任何在 <a href="04-schema.html">composer.json 架构</a> 中介绍的字段。</p>
+<p><a name="notify-batch"></a></p>
+<h4>notify-batch</h4>
+<p><code>notify-batch</code> 字段允许你指定一个 URL，它将会在用户安装每一个包时被调用。该 URL 可以是（与其资源库相同域名的）绝对路径或者一个完整的 URL 地址。</p>
+<p>例如使用下面的值：</p>
+<pre><code class="language-json">{
+    &quot;notify-batch&quot;: &quot;/downloads/&quot;
+}
+</code></pre>
+<p>对于 <code>example.org/packages.json</code> 包含的 <code>monolog/monolog</code> 包，它将会发送一个 <code>POST</code> 请求到 <code>example.org/downloads/</code>，使用下面的 JSON request body：</p>
+<pre><code class="language-json">{
+    &quot;downloads&quot;: [
+        {&quot;name&quot;: &quot;monolog/monolog&quot;, &quot;version&quot;: &quot;1.2.1.0&quot;},
+    ]
+}
+</code></pre>
+<p><code>version</code> 字段将包含标准化的版本号。</p>
+<p><code>notify-batch</code> 字段是可选的。</p>
+<p><a name="includes"></a></p>
+<h4>includes</h4>
+<p>对于较大的资源库，可以拆分 <code>packages.json</code> 为多个文件。<code>includes</code> 字段允许你引用这些额外的文件。</p>
+<p>实例：</p>
+<pre><code class="language-json">{
+    &quot;includes&quot;: {
+        &quot;packages-2011.json&quot;: {
+            &quot;sha1&quot;: &quot;525a85fb37edd1ad71040d429928c2c0edec9d17&quot;
+        },
+        &quot;packages-2012-01.json&quot;: {
+            &quot;sha1&quot;: &quot;897cde726f8a3918faf27c803b336da223d400dd&quot;
+        },
+        &quot;packages-2012-02.json&quot;: {
+            &quot;sha1&quot;: &quot;26f911ad717da26bbcac3f8f435280d13917efa5&quot;
+        }
+    }
+}
+</code></pre>
+<p>文件的 SHA-1 码允许它被缓存，仅在 hash 值改变时重新请求。</p>
+<p>此字段是可选的。你也许并不需要它来自定义存储库。</p>
+<p><a name="provider-includes"></a></p>
+<h4>provider-includes and providers-url</h4>
+<p>的对于非常大的资源库，像 packagist.org 使用 so-called provider 文件是首选方法。<code>provider-includes</code> 字段允许你设置一个列表，来申明这个资源库提供的包名称。在这种情况下文件的哈希算法必须使用 sha256。</p>
+<p><code>providers-url</code> 描述了如何在服务器上找到这些 provider 文件。它是以资源库的根目录为起点的绝对路径。</p>
+<p>实例：</p>
+<pre><code class="language-json">{
+    &quot;provider-includes&quot;: {
+        &quot;providers-a.json&quot;: {
+            &quot;sha256&quot;: &quot;f5b4bc0b354108ef08614e569c1ed01a2782e67641744864a74e788982886f4c&quot;
+        },
+        &quot;providers-b.json&quot;: {
+            &quot;sha256&quot;: &quot;b38372163fac0573053536f5b8ef11b86f804ea8b016d239e706191203f6efac&quot;
+        }
+    },
+    &quot;providers-url&quot;: &quot;/p/%package%$%hash%.json&quot;
+}
+</code></pre>
+<p>这些文件包含资源包的名称以及哈希值，以验证文件的完整性，例如：</p>
+<pre><code class="language-json">{
+    &quot;providers&quot;: {
+        &quot;acme/foo&quot;: {
+            &quot;sha256&quot;: &quot;38968de1305c2e17f4de33aea164515bc787c42c7e2d6e25948539a14268bb82&quot;
+        },
+        &quot;acme/bar&quot;: {
+            &quot;sha256&quot;: &quot;4dd24c930bd6e1103251306d6336ac813b563a220d9ca14f4743c032fb047233&quot;
+        }
+    }
+}
+</code></pre>
+<p>上述文件申明了 <code>acme/foo</code> 和 <code>acme/bar</code> 可以在这个资源库找到，通过加载由 <code>providers-url</code> 引用的文件，替换 <code>%package%</code> 为包名并且替换 <code>%hash%</code> 为 sha256 的值。这些文件本身只包含上文提到的 <a href="05-repositories.html#packages">packages</a> 的定义。</p>
+<p>这些字段是可选的。你也许并不需要它们来自定义存储库。</p>
+<p><a name="stream-options"></a></p>
+<h4>stream options</h4>
+<p><code>packages.json</code> 文件是用一个 PHP 流加载的。你可以使用 <code>options</code> 参数来设定额外的流信息。你可以设置任何有效的PHP 流上下文选项。更多相关信息请查看 <a href="http://php.net/manual/en/context.php" target="_blank">Context options and parameters</a>。</p>
+<p><a name="VCS"></a></p>
+<h3>VCS</h3>
+<p>VCS 表示版本控制系统。这包括像 git、svn 或 hg 这样的版本管理系统。Composer 有一个资源类型可以从这些系统安装软件包。</p>
+<p><a name="from-a-VCS"></a></p>
+<h4>从 VCS 资源库加载一个包</h4>
+<p>这里有几个用例。最常见的是维护自己 fork 的第三方库。如果你在项目中使用某些库，并且你决定改变这些库内的某些东西，你会希望你项目中使用的是你自己的修正版本。如果这个库是在 GitHub 上（这种情况经常出现），你可以简单的 fork 它并 push 你的变更到这个 fork 里。在这之后你更新项目的 <code>composer.json</code> 文件，添加你的 fork 作为一个资源库，变更版本约束来指向你的自定义分支。关于版本约束的命名约定请查看 <a href="02-libraries.html">库（资源包）</a>。</p>
+<p>例如，假设你 fork 了 monolog，在 <code>bugfix</code> 分支修复了一个 bug：</p>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+        {
+            &quot;type&quot;: &quot;vcs&quot;,
+            &quot;url&quot;: &quot;https://github.com/igorw/monolog&quot;
+        }
+    ],
+    &quot;require&quot;: {
+        &quot;monolog/monolog&quot;: &quot;dev-bugfix&quot;
+    }
+}
+</code></pre>
+<p>当你运行 <code>php composer.phar update</code> 时，你应该得到你修改的版本，而不是 packagist.org 上的 <code>monolog/monolog</code>。</p>
+<p>注意，你不应该对包进行重命名，除非你真的打算摆脱原来的包，并长期的使用你自己的 fork。这样 Composer 就会正确获取你的包了。如果你确定要重命名这个包，你应该在默认分支（通常是 master 分支）上操作，而不是特性分支，因为包的名字取自默认分支。</p>
+<p>如果其它包依赖你 fork 的这个分支，可能要对它做版本号的行内别名设置，才能够准确的识别版本约束。更多相关信息请查看 <a href="articles/aliases.html">别名</a>。</p>
+<p><a name="Using-private"></a></p>
+<h4>使用私有资源库</h4>
+<p>完全相同的解决方案，也可以让你使用你 GitHub 和 BitBucket 上的私人代码库进行工作：</p>
+<pre><code class="language-json">{
+    &quot;require&quot;: {
+        &quot;vendor/my-private-repo&quot;: &quot;dev-master&quot;
+    },
+    &quot;repositories&quot;: [
+        {
+            &quot;type&quot;: &quot;vcs&quot;,
+            &quot;url&quot;:  &quot;git@bitbucket.org:vendor/my-private-repo.git&quot;
+        }
+    ]
+}
+</code></pre>
+<p>唯一的要求是为一个 git 客户端安装 SSH 秘钥。</p>
+<p><a name="Git-alternatives"></a></p>
+<h4>Git 的备选方案</h4>
+<p>Git 并不是 VCS 资源库唯一支持的版本管理系统。</p>
+<p>以下几种都是被支持的：</p>
+<ul>
+<li><strong>Git:</strong> <a href="http://git-scm.com" target="_blank">git-scm.com</a></li>
+<li><strong>Subversion:</strong> <a href="http://subversion.apache.org" target="_blank">subversion.apache.org</a></li>
+<li><strong>Mercurial:</strong> <a href="http://mercurial.selenic.com" target="_blank">mercurial.selenic.com</a></li>
+</ul>
+<p>为了从这些系统获取资源包，你必须安装对应的客户端，这可能是不方便的。基于这个原因，这里提供了 GitHub 和 BitBucket 的 API 的特殊支持，以便在无需安装版本控制系统的情况下获取资源包。在 VCS 资源库提供的 <code>dist</code> 中获取 zip 存档。</p>
+<ul>
+<li><strong>GitHub:</strong> <a href="https://github.com" target="_blank">github.com</a> (Git)</li>
+<li><strong>BitBucket:</strong> <a href="https://bitbucket.org" target="_blank">bitbucket.org</a> (Git and Mercurial)</li>
+</ul>
+<p>VCS 驱动将基于 URL 自动检测版本库类型。但如果可能，你需要明确的指定一个 <code>git</code>、<code>svn</code> 或 <code>hg</code> 作为资源库类型，而不是 <code>vcs</code>。</p>
+<p>If you set the <code>no-api</code> key to <code>true</code> on a github repository it will clone the
+repository as it would with any other git repository instead of using the
+GitHub API. But unlike using the <code>git</code> driver directly, composer will still
+attempt to use github's zip files.</p>
+<p><a name="Subversion-Options"></a></p>
+<h4>Subversion 选项</h4>
+<p>由于 Subversion 没有原生的分支和标签的概念，Composer 假设在默认情况下该代码位于 <code>$url/trunk</code>、<code>$url/branches</code> 和 <code>$url/tags</code> 内。如果你的存储库使用了不同的布局，你可以更改这些值。例如，如果你使用大写的名称，你可以像这样配置资源库：</p>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+        {
+            &quot;type&quot;: &quot;vcs&quot;,
+            &quot;url&quot;: &quot;http://svn.example.org/projectA/&quot;,
+            &quot;trunk-path&quot;: &quot;Trunk&quot;,
+            &quot;branches-path&quot;: &quot;Branches&quot;,
+            &quot;tags-path&quot;: &quot;Tags&quot;
+        }
+    ]
+}
+</code></pre>
+<p>如果你的存储库目录中没有任何分支或标签文件夹，你可以将 <code>branches-path</code> 或 <code>tags-path</code> 设置为 <code>false</code>。</p>
+<p>如果是一个位于子目录的包，例如， <code>/trunk/foo/bar/composer.json</code> 和 <code>/tags/1.0/foo/bar/composer.json</code>，那么你可以让 composer 通过 <code>&quot;package-path&quot;</code> 选项设置的子目录进行访问，在这个例子中可以将其设置为 <code>&quot;package-path&quot;: &quot;foo/bar/&quot;</code>。</p>
+<p><a name="PEAR"></a></p>
+<h3>PEAR</h3>
+<p><code>pear</code> 类型资源库，使得从任何 PEAR 渠道安装资源包成为可能。Composer 将为所有此类型的包增加前缀（类似于 <code>pear-{渠道名称}/</code>）以避免冲突。而在之后使用别名时也增加前缀（如 <code>pear-{渠道别名}/</code>）。</p>
+<p>例如使用 <code>pear2.php.net</code>：</p>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+        {
+            &quot;type&quot;: &quot;pear&quot;,
+            &quot;url&quot;: &quot;http://pear2.php.net&quot;
+        }
+    ],
+    &quot;require&quot;: {
+        &quot;pear-pear2.php.net/PEAR2_Text_Markdown&quot;: &quot;*&quot;,
+        &quot;pear-pear2/PEAR2_HTTP_Request&quot;: &quot;*&quot;
+    }
+}
+</code></pre>
+<p>在这种情况下渠道的简称（别名）是 <code>pear2</code>，因此 <code>PEAR2_HTTP_Request</code> 包的名称应该写作 <code>pear-pear2/PEAR2_HTTP_Request</code>。</p>
+<blockquote>
+<p><strong>注意：</strong> <code>pear</code> 类型的资源库对每个 requires 都要做完整的请求，因此可能大大降低安装速度。</p>
+</blockquote>
+<p><a name="Custom-vendor-alias"></a></p>
+<h4>自定义供应商别名</h4>
+<p>通过自定义供应商名称，对 PEAR 渠道包进行别名是允许的。</p>
+<p>例：</p>
+<p>假设你有一个私人 PEAR 库，并希望使用 Composer 从 VCS 集成依赖。你的 PEAR 库包含以下资源包：</p>
+<ul>
+<li><code>BasePackage</code>。</li>
+<li><code>IntermediatePackage</code> 依赖于 <code>BasePackage</code>。</li>
+<li><code>TopLevelPackage1</code> 和 <code>TopLevelPackage2</code> 都依赖于 <code>IntermediatePackage</code>。</li>
+</ul>
+<p>如果没有一个供应商别名，Composer 将使用 PEAR 渠道名称作为包名的一部分：</p>
+<ul>
+<li><code>pear-pear.foobar.repo/BasePackage</code></li>
+<li><code>pear-pear.foobar.repo/IntermediatePackage</code></li>
+<li><code>pear-pear.foobar.repo/TopLevelPackage1</code></li>
+<li><code>pear-pear.foobar.repo/TopLevelPackage2</code></li>
+</ul>
+<p>假设之后的某个时间，你希望将你的 PEAR 包迁移，使用 Composer 资源库和命名方案，并且采用 <code>foobar</code> 作为供应商名称。这样之前使用 PEAR 包的项目将不会看到更新的资源包，因为它们有不同的供应商名称（<code>foobar/IntermediatePackage</code> 与 <code>pear-pear.foobar.repo/IntermediatePackage</code>）。</p>
+<p>你可以通过从一开始就为 PEAR 资源库指定 <code>vendor-alias</code> 来避免这种情况的发生，以得到一个不会过时的包名。</p>
+<p>为了说明这一点，下面的例子会从你的 PEAR 资源库中得到 <code>BasePackage</code>、<code>TopLevelPackage1</code> 和 <code>TopLevelPackage2</code> 资源包，并从 Github 资源库中获取 <code>IntermediatePackage</code> 资源包：</p>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+        {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;https://github.com/foobar/intermediate.git&quot;
+        },
+        {
+            &quot;type&quot;: &quot;pear&quot;,
+            &quot;url&quot;: &quot;http://pear.foobar.repo&quot;,
+            &quot;vendor-alias&quot;: &quot;foobar&quot;
+        }
+    ],
+    &quot;require&quot;: {
+        &quot;foobar/TopLevelPackage1&quot;: &quot;*&quot;,
+        &quot;foobar/TopLevelPackage2&quot;: &quot;*&quot;
+    }
+}
+</code></pre>
+<p><a name="Package"></a></p>
+<h3>Package</h3>
+<p>如果你想使用一个项目，它无法通过上述任何一种方式支持 composer，你仍然可以使用 <code>package</code> 类型定义资源库。</p>
+<p>基本上，你可以定义与 <code>packages.json</code> 中 <code>composer</code> 类型资源库相同的信息，但需要为每个这样的资源包分别定义。同样，至少应该包含以下信息：<code>name</code>、<code>version</code>、（<code>dist</code> 或 <code>source</code>）。</p>
+<p>这是一个 smarty 模板引擎的例子：</p>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+        {
+            &quot;type&quot;: &quot;package&quot;,
+            &quot;package&quot;: {
+                &quot;name&quot;: &quot;smarty/smarty&quot;,
+                &quot;version&quot;: &quot;3.1.7&quot;,
+                &quot;dist&quot;: {
+                    &quot;url&quot;: &quot;http://www.smarty.net/files/Smarty-3.1.7.zip&quot;,
+                    &quot;type&quot;: &quot;zip&quot;
+                },
+                &quot;source&quot;: {
+                    &quot;url&quot;: &quot;http://smarty-php.googlecode.com/svn/&quot;,
+                    &quot;type&quot;: &quot;svn&quot;,
+                    &quot;reference&quot;: &quot;tags/Smarty_3_1_7/distribution/&quot;
+                },
+                &quot;autoload&quot;: {
+                    &quot;classmap&quot;: [&quot;libs/&quot;]
+                }
+            }
+        }
+    ],
+    &quot;require&quot;: {
+        &quot;smarty/smarty&quot;: &quot;3.1.*&quot;
+    }
+}
+</code></pre>
+<p>通常你不需要去定义 <code>source</code>，因为你并不是真的需要它。</p>
+<blockquote>
+<p><strong>注意：</strong> 该资源库类型存在以下限制，因此应尽可能避免使用：</p>
+<ul>
+<li>Composer 将不会更新资源包，除非你修改了 <code>version</code> 字段。</li>
+<li>Composer 将不会更新 commit references，因此如果你使用 <code>master</code> reference，将不得不删除该程序包以强制更新，并且将不得不面对一个不稳定的 lock 文件。</li>
+</ul>
+</blockquote>
+<p><a name="Hosting-your-own"></a></p>
+<h2>Hosting your own</h2>
+<p>尽管大部分的时间，你大概都会把资源包放在 packagist.org 上，但这里还将告诉你一些用例，以便你可以自行托管资源库。</p>
+<ul>
+<li>
+<p><strong>Private company packages:</strong> 如果你是一个公司的职员，对公司内部的资源包使用 composer，你可能会想让这些包保持私有的状态。</p>
+</li>
+<li>
+<p><strong>Separate ecosystem:</strong> 如果你的项目有自己的生态系统，并且自己的资源包不需要被其它项目所复用，你可能会想将它们从 packagist.org 上分离出来。其中一个例子就是 wordpress 的插件。</p>
+</li>
+</ul>
+<p>对于自行托管的软件包，建议使用 <code>composer</code> 类型资源库设置，它将提供最佳的性能。</p>
+<p>这里有一些工具，可以帮助你创建 <code>composer</code> 类型的资源库。</p>
+<p><a name="Packagist"></a></p>
+<h3>Packagist</h3>
+<p>packagist 的底层是开源的。这意味着你可以只安装你自己拷贝的 packagist，改造并使用它。这真的是很直接简单的事情。然而，由于其规模和复杂性，对于大多数中小型企业还是建议使用 Satis。</p>
+<p>Packagist 是一个 Symfony2 应用程序，并且托管在 GitHub 上 <a href="https://github.com/composer/packagist" target="_blank">github.com/composer/packagist</a>。它内部使用了 composer 并作为 VCS 资源库与 composer 用户之间的代理。它拥有所有 VCS 资源包的列表，定期重新抓取它们，并将其作为一个 composer 资源库。</p>
+<p>要设置你的副本，只需要按照 <a href="https://github.com/composer/packagist" target="_blank">github.com/composer/packagist</a> 的说明进行操作。</p>
+<p><a name="Satis"></a></p>
+<h3>Satis</h3>
+<p>Satis 是一个静态的 <code>composer</code> 资源库生成器。它像是一个超轻量级的、基于静态文件的 packagist 版本。</p>
+<p>你给它一个包含 <code>composer.json</code> 的存储库，定义好 VCS 和 资源库。它会获取所有你列出的包，并打印 <code>packages.json</code> 文件，作为 <code>composer</code> 类型的资源库。</p>
+<p>更多详细信息请查看 <a href="https://github.com/composer/satis" target="_blank">github.com/composer/satis</a> 和 <a href="articles/handling-private-packages-with-satis.html">Satis article</a>。</p>
+<p><a name="Artifact"></a></p>
+<h3>Artifact</h3>
+<p>在某些情况下，或许没有能力拥有之前提到的任何一种线上资源库。Typical example could be cross-organisation library exchange through built artifacts。当然大部分的时间他们都是私有的。为了简化维护，可以简单的使用 <code>artifact</code> 资源库类型，来引用一个包含那些私有包的 ZIP 存档的文件夹：</p>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+        {
+            &quot;type&quot;: &quot;artifact&quot;,
+            &quot;url&quot;: &quot;path/to/directory/with/zips/&quot;
+        }
+    ],
+    &quot;require&quot;: {
+        &quot;private-vendor-one/core&quot;: &quot;15.6.2&quot;,
+        &quot;private-vendor-two/connectivity&quot;: &quot;*&quot;,
+        &quot;acme-corp/parser&quot;: &quot;10.3.5&quot;
+    }
+}
+</code></pre>
+<p>每个 zip artifact 都只是一个 ZIP 存档，放置在 <code>composer.json</code> 所在的根目录：</p>
+<pre><code class="language-sh">unzip -l acme-corp-parser-10.3.5.zip
+
+composer.json
+...
+</code></pre>
+<p>如果有两个不同版本的资源包，它们都会被导入。当有一个新版本的存档被添加到 artifact 文件夹，并且你运行了 <code>update</code> 命令，该版本就会被导入，并且 Composer 将更新到最新版本。</p>
+<p><a name="Disabling-Packagist"></a></p>
+<h2>禁用 Packagist</h2>
+<p>你可以在 <code>composer.json</code> 中禁用默认的 Packagist 资源库。</p>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+        {
+            &quot;packagist&quot;: false
+        }
+    ]
+}
+</code></pre>
+<p>← <a href="04-schema.html">架构</a>  |  <a href="06-community.html">社区</a> →</p>
+
+
+    <p class="fork-and-edit">
+        如果您发现文档中有错误，或者能够帮我们完善文档，请提交到我们的 <a href="https://github.com/5-say/composer-doc-cn" target="_blank">Github 仓库吧</a>！
+    </p>
+            </div>
+            <footer>
+
+                <p class="license">Composer 以及本网站上的所有内容全部遵循 <a href="https://github.com/composer/composer/blob/master/LICENSE" target="_blank">MIT 开源协议</a>。</p>
+            </footer>
+        </div>
+
+        <script src="http://docs.phpcomposer.com/assets/js/libs/prism.js"></script>
+        <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F16e97907ef84179ff8cd833509017a96' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </body>
+</html>

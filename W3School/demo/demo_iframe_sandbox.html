@@ -1,0 +1,26 @@
+<!doctype html><!-- saved from url=(0056)http://www.w3school.com.cn/demo/demo_iframe_sandbox.html --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<meta charset="gb2312">
+<title>无标题文档</title>
+</head>
+
+<body>
+<button onclick="getDateTime()">获得日期和时间</button>
+<div id="dt"></div>
+<script>
+function getDateTime()
+{
+var d=new Date();
+document.getElementById("dt").innerHTML=d;
+}
+</script>
+</body>
+</html>

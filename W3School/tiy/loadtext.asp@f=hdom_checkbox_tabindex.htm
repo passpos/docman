@@ -1,0 +1,32 @@
+<html><!-- saved from url=(0068)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_checkbox_tabindex --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function changeTabIndex()
+{
+document.getElementById('check3').tabIndex="1"
+document.getElementById('check1').tabIndex="3"
+}
+</script>
+</head>
+
+<body>
+<p>Try navigating the links on this page by
+using your "tab" button on you keyboard</p>
+
+<form><input type="checkbox" id="check1" tabIndex="1" /><br />
+<input type="checkbox" id="check2" tabIndex="2" /><br />
+<input type="checkbox" id="check3" tabIndex="3" /><br />
+
+<input type="button" onclick="changeTabIndex()"
+value="Change tabIndex" />
+</form>
+
+</body>
+</html>

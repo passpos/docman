@@ -1,0 +1,27 @@
+<!DOCTYPE html><!-- saved from url=(0081)http://www.w3school.com.cn/tiy/loadtext.asp?f=js_dom_event_onmouseover_onmouseout --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color:green;width:120px;height:20px;padding:40px;color:#ffffff;">把鼠标移到上面</div>
+
+<script>
+function mOver(obj)
+{
+obj.innerHTML="谢谢"
+}
+
+function mOut(obj)
+{
+obj.innerHTML="把鼠标移到上面"
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html><!-- saved from url=(0063)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_submitbutton --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function alertId()
+  {
+  var txt="Id: " + document.getElementById("submit1").id
+  txt=txt + ", type: " + document.getElementById("submit1").type
+  txt=txt + ", value: " + document.getElementById("submit1").value
+  alert(txt)
+  document.getElementById("submit1").disabled=true
+  }
+</script>
+</head>
+<body>
+
+<form>
+<input type="submit" id="submit1" value="Submit values" onclick="alertId()" />
+</form>
+
+</body>
+</html>

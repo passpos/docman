@@ -1,0 +1,37 @@
+<!DOCTYPE html><!-- saved from url=(0072)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_manipulation_unwrap --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script src="../jquery/jquery.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").unwrap();
+  });
+});
+</script>
+<style type="text/css">
+div{background-color:yellow;}
+article{background-color:pink;}
+</style>
+</head>
+<body>
+
+<div>
+<p>这是 div 元素中的段落。</p>
+</div>
+
+<article>
+<p>这是 article 元素中的段落。</p>
+</article>
+
+<button>删除每个 p 元素的父元素</button>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html><!-- saved from url=(0064)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_event_clientx --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function show_coords(event)
+{
+x=event.clientX
+y=event.clientY
+alert("X 坐标: " + x + ", Y 坐标: " + y)
+}
+</script>
+</head>
+
+<body onmousedown="show_coords(event)">
+
+<p>请在文档中点击。一个消息框会提示出鼠标指针的 x 和 y 坐标。</p>
+
+</body>
+</html>

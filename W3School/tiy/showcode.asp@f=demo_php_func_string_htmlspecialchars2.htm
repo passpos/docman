@@ -1,0 +1,38 @@
+<HTML>
+<!-- saved from url=(0084)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_func_string_htmlspecialchars2 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+ &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+$str = &quot;Bill & 'Steve'&quot;;
+echo htmlspecialchars($str, ENT_COMPAT); // 只转换双引号
+echo &quot;&lt;br&gt;&quot;;
+echo htmlspecialchars($str, ENT_QUOTES); // 转换双引号和单引号
+echo &quot;&lt;br&gt;&quot;;
+echo htmlspecialchars($str, ENT_NOQUOTES); // 不转换任何引号
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

@@ -1,0 +1,38 @@
+<html><!-- saved from url=(0067)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_menu_cursorimage --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function cursor(image)
+{
+trail.innerHTML="<img src='" + image + "' />"
+trail.style.visibility="visible"
+trail.style.position="absolute"
+trail.style.left=event.clientX+10
+trail.style.top=event.clientY
+}
+
+function hidecursor()
+{
+trail.style.visibility="hidden"
+}
+</script>
+
+</head>
+<body>
+
+<h1>请把鼠标移动到链接上：</h1>
+
+<a href="../index.html" onmousemove="cursor('/i/w3school_logo_white.gif')" onmouseout="hidecursor()">W3School.com.cn</a><br />
+<a href="../../www.altavista.com/default.htm" onmousemove="cursor('/i/eg_altavistalink.gif')" onmouseout="hidecursor()">AltaVista</a><br />
+<a href="../../www.yahoo.com/default.htm" onmousemove="cursor('/i/eg_yahoo.gif')" onmouseout="hidecursor()">Yahoo!</a><br />
+
+<span id="trail" style="visibility:hidden">Hello</span>
+
+</body>
+</html>

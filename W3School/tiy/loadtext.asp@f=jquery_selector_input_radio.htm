@@ -1,0 +1,32 @@
+<html><!-- saved from url=(0073)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_selector_input_radio --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".btn1").click(function(){
+    $(":checkbox").hide();
+  });
+});
+</script>
+</head>
+<body>
+<form action="">
+I have a bike:
+<input type="checkbox" name="vehicle" value="Bike" />
+<br />
+I have a car:
+<input type="checkbox" name="vehicle" value="Car" />
+<br />
+I have an airplane:
+<input type="checkbox" name="vehicle" value="Airplane" />
+</form>
+<button class="btn1">Hide Checkboxes</button>
+</body>
+</html>

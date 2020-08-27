@@ -1,0 +1,96 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>04-get-json.md</title>
+    <style type="text/css">
+            
+/* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+td, h1, h2, h3, h4, h5, p, ul, ol, li {
+    page-break-inside: avoid; 
+}
+
+        </style>
+  </head>
+  <body><div class="passage">
+    <h1 id="json">获取 JSON 格式的内容</h1>
+    <p>可以通过<code>editor.txt.getJSON</code>获取 JSON 格式的编辑器的内容，<code>v3.0.14</code>开始支持，示例如下</p>
+    <pre>
+      &lt;div id="div1"&gt;
+    &lt;p&gt;欢迎使用 &lt;b&gt;wangEditor&lt;/b&gt; 富文本编辑器&lt;/p&gt;
+    &lt;img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png" style="max-width:100%;"/&gt;
+&lt;/div&gt;
+&lt;button id="btn1"&gt;getJSON&lt;/button&gt;
+
+&lt;script type="text/javascript" src="/wangEditor.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    var E = window.wangEditor
+    var editor = new E('#div1')
+    editor.create()
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        var json = editor.txt.getJSON()  // 获取 JSON 格式的内容
+        var jsonStr = JSON.stringify(json)
+        console.log(json)
+        console.log(jsonStr)
+    })
+&lt;/script&gt;
+</code>
+    </pre>
+    <hr />
+    <p>如果编辑器区域的 html 内容是如下：</p>
+    <pre>
+      &lt;p&gt;欢迎使用 &lt;b&gt;wangEditor&lt;/b&gt; 富文本编辑器&lt;/p&gt;
+&lt;img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png" style="max-width:100%;"/&gt;
+</code>
+    </pre>
+    <p>那么获取的 JSON 格式就如下：</p>
+    <pre>
+      <code class="language-json">[
+    {
+        "tag": "p",
+        "attrs": [],
+        "children": [
+            "欢迎使用 ",
+            {
+                "tag": "b",
+                "attrs": [],
+                "children": [
+                    "wangEditor"
+                ]
+            },
+            " 富文本编辑器"
+        ]
+    },
+    {
+        "tag": "img",
+        "attrs": [
+            {
+                "name": "src",
+                "value": "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png"
+            },
+            {
+                "name": "style",
+                "value": "max-width:100%;"
+            }
+        ],
+        "children": []
+    },
+    {
+        "tag": "p",
+        "attrs": [],
+        "children": [
+            {
+                "tag": "br",
+                "attrs": [],
+                "children": []
+            }
+        ]
+    }
+]
+</code>
+    </pre>
+  </div>
+</body>
+</html>

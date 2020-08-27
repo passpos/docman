@@ -1,0 +1,29 @@
+<html><!-- saved from url=(0069)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_iframe_frameborder --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function removeBorder()
+  {
+  document.getElementById("frame1").frameBorder="0";
+  }
+function restoreBorder()
+  {
+  document.getElementById("frame1").frameBorder="1";
+  }
+</script>
+</head>
+<body>
+
+<iframe src="../example/hdom/frame_a.html" id="frame1"></iframe>
+<br /><br />
+<input type="button" onclick="removeBorder()" value="Remove border" />
+<input type="button" onclick="restoreBorder()" value="Restore border" />
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html><!-- saved from url=(0056)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_blink --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function blinklink()
+{
+if (!document.getElementById('blink').style.color)
+	{
+	document.getElementById('blink').style.color="red"
+	}
+if (document.getElementById('blink').style.color=="red")
+	{
+	document.getElementById('blink').style.color="black"
+	}
+else
+	{
+	document.getElementById('blink').style.color="red"
+	}
+timer=setTimeout("blinklink()",100)
+}
+
+function stoptimer()
+{
+clearTimeout(timer)
+}
+</script>
+</head>
+
+<body onload="blinklink()" onunload="stoptimer()">
+<a id="blink" href="../index.html">иак╦╣да╢╫с</a> 
+</body>
+
+</html>

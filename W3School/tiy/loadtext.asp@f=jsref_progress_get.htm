@@ -1,0 +1,33 @@
+<!DOCTYPE html><!-- saved from url=(0064)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_progress_get --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<h3>演示如何访问 PROGRESS 元素</h3>
+
+下载进度：
+<progress id="myProgress" value="75" max="100">
+</progress>
+
+<p>点击按钮来获得下载进度条的当前进度值。</p>
+
+<p id="demo"></p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x = document.getElementById("myProgress").value;
+document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+</body>
+</html>

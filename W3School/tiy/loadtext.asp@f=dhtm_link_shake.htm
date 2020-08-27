@@ -1,0 +1,34 @@
+<html><!-- saved from url=(0061)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_link_shake --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function shakeleft()
+{
+document.getElementById('myLink').style.position="relative"
+document.getElementById('myLink').style.left="3"
+timer=setTimeout("shakeright()",10)
+}
+function shakeright()
+{
+document.getElementById('myLink').style.left="0"
+timer=setTimeout("shakeleft()",10)
+}
+function stoptimer()
+{
+clearTimeout(timer)
+}
+</script>
+</head>
+
+<body>
+<a id="myLink" href="../default.htm"
+onmouseover="shakeleft()" onmouseout="stoptimer()">请把鼠标移动到链接上</a>
+</body>
+
+</html>

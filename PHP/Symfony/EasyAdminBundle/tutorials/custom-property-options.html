@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to Define Custom Options for Entity Properties &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to Manage Configuration for Complex Backends" href="complex-backend-config.html" />
+    <link rel="prev" title="How to Define Custom Actions" href="custom-actions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../book/installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Define Custom Options for Entity Properties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#default-property-options">Default Property Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-property-options">Custom Property Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-custom-property-options-in-templates">Using Custom Property Options in Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-entity-options">Custom Entity Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>How to Define Custom Options for Entity Properties</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/custom-property-options.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-define-custom-options-for-entity-properties">
+<h1>How to Define Custom Options for Entity Properties<a class="headerlink" href="#how-to-define-custom-options-for-entity-properties" title="Permalink to this headline">¶</a></h1>
+<p>This article explains how to define custom options for any entity property and
+how to use those options in the <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code> or <code class="docutils literal notranslate"><span class="pre">show</span></code> views. This
+technique is useful for complex or highly customized backends, but it should be
+used sparingly because it could require you some maintenance work when new
+versions of this bundle are released.</p>
+<div class="section" id="default-property-options">
+<h2>Default Property Options<a class="headerlink" href="#default-property-options" title="Permalink to this headline">¶</a></h2>
+<p>Properties included in the <code class="docutils literal notranslate"><span class="pre">fields</span></code> option of any entity can define several
+options (<code class="docutils literal notranslate"><span class="pre">property</span></code>, <code class="docutils literal notranslate"><span class="pre">label</span></code>, <code class="docutils literal notranslate"><span class="pre">template</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">help</span></code> and
+<code class="docutils literal notranslate"><span class="pre">css_class</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;biography&#39;</span><span class="p p-Indicator">,</span><span class="nt"> help</span><span class="p">:</span> <span class="s">&#39;Markdown</span><span class="nv"> </span><span class="s">allowed&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-property-options">
+<h2>Custom Property Options<a class="headerlink" href="#custom-property-options" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After the publication of this article, EasyAdmin added a new configuration
+option called <code class="docutils literal notranslate"><span class="pre">translation_domain</span></code> which defines the domain used when
+translating contents (default value = <code class="docutils literal notranslate"><span class="pre">messages</span></code>).</p>
+</div>
+<p>Adding custom options is as simple as defining their names and values in each
+property configuration. Imagine that you want to translate the contents of a
+property called <code class="docutils literal notranslate"><span class="pre">name</span></code> in the <code class="docutils literal notranslate"><span class="pre">list</span></code> view. To do so, define a custom option
+called <code class="docutils literal notranslate"><span class="pre">trans</span></code> which indicates if the property should be translated and another
+option called <code class="docutils literal notranslate"><span class="pre">domain</span></code> which defines the name of the translation domain to use:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">Product</span><span class="p">:</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+    <span class="nt">label</span><span class="p">:</span> <span class="s">&#39;Products&#39;</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">fields</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span><span class="nt"> trans</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> domain</span><span class="p">:</span> <span class="s">&#39;messages&#39;</span> <span class="p p-Indicator">}</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="section" id="using-custom-property-options-in-templates">
+<h3>Using Custom Property Options in Templates<a class="headerlink" href="#using-custom-property-options-in-templates" title="Permalink to this headline">¶</a></h3>
+<p>Property templates receive a parameter called <code class="docutils literal notranslate"><span class="pre">field_options</span></code> which is an array
+that contains all the options defined in the configuration file for that
+property. If you add custom options, they will also be available in that
+<code class="docutils literal notranslate"><span class="pre">field_options</span></code> parameter. This allows you to add custom logic to templates very
+easily.</p>
+<p>Considering that the <code class="docutils literal notranslate"><span class="pre">name</span></code> property is of type <code class="docutils literal notranslate"><span class="pre">string</span></code>, override the
+built-in <code class="docutils literal notranslate"><span class="pre">field_string.html.twig</span></code> template to add support for the <code class="docutils literal notranslate"><span class="pre">trans</span></code>
+and <code class="docutils literal notranslate"><span class="pre">domain</span></code> options:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/bundles/EasyAdminBundle/default/field_string.html.twig #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;@!EasyAdminBundle/default/field_string.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">field_options.trans</span><span class="o">|</span><span class="nf">default</span><span class="o">(</span><span class="kp">false</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# translate fields defined as &quot;translatable&quot; #}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">value</span><span class="o">|</span><span class="nf">trans</span><span class="o">({},</span> <span class="nv">field_options.domain</span><span class="o">|</span><span class="nf">default</span><span class="o">(</span><span class="s1">&#39;messages&#39;</span><span class="o">))</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# if not translatable, simply include the default template #}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nb">parent</span><span class="o">()</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>If the custom logic is too complex, it may be better to render the property with
+its own custom template to not mess the default templates too much. In the
+following example, the backend wants to display a collection of tags with the
+colors configured for the property.</p>
+<p>Since this business logic is too specific, it’s better to not reuse the
+corresponding default template. The solution is to define a custom template just
+for this property and make use of the <code class="docutils literal notranslate"><span class="pre">label_colors</span></code> custom option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;tags&#39;</span><span class="p p-Indicator">,</span><span class="nt"> template</span><span class="p">:</span> <span class="s">&#39;admin/tag_collection.html.twig&#39;</span><span class="p p-Indicator">,</span>
+<span class="nt">                        label_colors</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;primary&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;success&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;info&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>The custom <code class="docutils literal notranslate"><span class="pre">tag_collection.html.twig</span></code> template would look as follows:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/admin/tag_collection.html.twig #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">colors</span> <span class="o">=</span> <span class="nv">field_options.label_colors</span><span class="o">|</span><span class="nf">default</span><span class="o">([</span><span class="s1">&#39;primary&#39;</span><span class="o">])</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">tag</span> <span class="k">in</span> <span class="nv">value</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;span class=&quot;label label-</span><span class="cp">{{</span> <span class="nv">cycle</span><span class="o">(</span><span class="nv">colors</span><span class="o">,</span> <span class="nb">loop</span><span class="nv">.index</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x">&lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="custom-entity-options">
+<h2>Custom Entity Options<a class="headerlink" href="#custom-entity-options" title="Permalink to this headline">¶</a></h2>
+<p>This very same technique can be applied to entities too. Since the configuration
+options are not constrained, you can add as many custom entity properties as
+needed. Just define their name and value to use them everywhere on the backend:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">export_path</span><span class="p">:</span> <span class="s">&#39;%kernel.project_dir/var/export/user&#39;</span>
+            <span class="nt">password_encoding</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> algorithm</span><span class="p">:</span> <span class="s">&#39;bcrypt&#39;</span><span class="p p-Indicator">,</span><span class="nt"> cost</span><span class="p">:</span> <span class="nv">12</span> <span class="p p-Indicator">}</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In the above example, the backend defines the <code class="docutils literal notranslate"><span class="pre">export_path</span></code> and
+<code class="docutils literal notranslate"><span class="pre">password_encoding</span></code> custom options, which will be included by EasyAdmin in the
+processed <code class="docutils literal notranslate"><span class="pre">User</span></code> configuration.</p>
+<p>Instead of defining the custom options at the same level of the built-in
+options, it’s better to define them under a custom parent option. This eases the
+maintenance of your custom options and reduces the risk of option name
+collisions. You can even use the name of your project as the name of the parent
+option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">acme_project</span><span class="p">:</span>
+                <span class="nt">export_path</span><span class="p">:</span> <span class="s">&#39;%kernel.project_dir/var/export/user&#39;</span>
+                <span class="nt">password_encoding</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> algorithm</span><span class="p">:</span> <span class="s">&#39;bcrypt&#39;</span><span class="p p-Indicator">,</span><span class="nt"> cost</span><span class="p">:</span> <span class="nv">12</span> <span class="p p-Indicator">}</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="complex-backend-config.html" class="btn btn-neutral float-right" title="How to Manage Configuration for Complex Backends" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="custom-actions.html" class="btn btn-neutral float-left" title="How to Define Custom Actions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

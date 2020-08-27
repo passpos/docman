@@ -1,0 +1,41 @@
+<HTML>
+<!-- saved from url=(0066)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_var_global2 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+$x=5;
+$y=10;
+
+function myTest() {
+   $GLOBALS['y']=$GLOBALS['x']+$GLOBALS['y'];
+} 
+
+myTest();
+echo $y;
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

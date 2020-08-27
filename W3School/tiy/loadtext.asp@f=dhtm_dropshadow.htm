@@ -1,0 +1,52 @@
+<html><!-- saved from url=(0061)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_dropshadow --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<style>
+h1
+{
+color:black;
+height:50;
+font:bold;
+}
+</style>
+<script type="text/javascript">
+var i
+function dropshadow()
+{
+i=0
+interval=setInterval("makedropshadow()",10)
+}
+
+function back()
+{
+clearInterval(interval)
+document.getElementById('myHeader').style.filter=false
+}
+
+function makedropshadow()
+{
+i++
+if (i<15)
+	{
+	document.getElementById('myHeader').style.filter="dropshadow(offx=" + i + ")"
+	document.getElementById('myHeader').style.filter="dropshadow(offy=" + i + ")"
+	}
+else if (window.interval)
+	{
+	clearInterval(interval)
+	}
+}
+</script>
+</head>
+
+<body>
+<h1 id="myHeader" onmouseover="dropshadow()" onmouseout="back()">请把鼠标移动到这个标题上</h1>
+</body>
+
+</html>

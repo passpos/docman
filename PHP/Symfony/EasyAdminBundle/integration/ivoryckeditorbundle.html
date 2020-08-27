@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Integrating FOSCKEditorBundle to Create a WYSIWYG Editor &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Integrating FOSRestBundle to Create APIs" href="fosrestbundle.html" />
+    <link rel="prev" title="Integrating FOSUserBundle to Manage Users" href="fosuserbundle.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../book/installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-the-rich-text-editor">Installing the Rich Text Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-rich-text-editor">Using the Rich Text Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-rich-text-editor">Customizing the Rich Text Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integrating-ckfinder">Integrating CKFinder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/integration/ivoryckeditorbundle.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="integrating-fosckeditorbundle-to-create-a-wysiwyg-editor">
+<h1>Integrating FOSCKEditorBundle to Create a WYSIWYG Editor<a class="headerlink" href="#integrating-fosckeditorbundle-to-create-a-wysiwyg-editor" title="Permalink to this headline">¶</a></h1>
+<p>EasyAdmin uses a <code class="docutils literal notranslate"><span class="pre">&lt;textarea&gt;</span></code> form field to render long text properties:</p>
+<img alt="Default textarea for text elements" src="../_images/default-textarea.png" />
+<p>However, sometimes you need to provide to your users a rich editor, commonly
+named <em>WYSIWYG editor</em>. Although EasyAdmin doesn’t provide any built-in rich text
+editor, you can integrate one very easily.</p>
+<div class="section" id="installing-the-rich-text-editor">
+<h2>Installing the Rich Text Editor<a class="headerlink" href="#installing-the-rich-text-editor" title="Permalink to this headline">¶</a></h2>
+<p>The recommended WYSIWYG editor is called <a class="reference external" href="http://ckeditor.com/">CKEditor</a> and you can integrate it
+thanks to the <a class="reference external" href="https://github.com/FriendsOfSymfony/FOSCKEditorBundle">FOSCKEditorBundle</a>:</p>
+<ol class="arabic simple">
+<li><p>Install the bundle:</p></li>
+</ol>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>$ composer require friendsofsymfony/ckeditor-bundle
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Install CKEditor:</p></li>
+</ol>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>$ php bin/console ckeditor:install
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Install the JavaScript/CSS files used by the bundle:</p></li>
+</ol>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>$ php bin/console assets:install --symlink
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-rich-text-editor">
+<h2>Using the Rich Text Editor<a class="headerlink" href="#using-the-rich-text-editor" title="Permalink to this headline">¶</a></h2>
+<p>FOSCKEditorBundle provides a new form type called <code class="docutils literal notranslate"><span class="pre">fos_ckeditor</span></code>. Set the
+<code class="docutils literal notranslate"><span class="pre">type</span></code> option of any property to this value to display its contents using a
+rich text editor:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;description&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;fos_ckeditor&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Even if your application uses Symfony 3 there is no need to use the FQCN of
+the <code class="docutils literal notranslate"><span class="pre">CKEditorType</span></code> (<code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">'FOS\CKEditorBundle\Form\Type\CKEditorType'</span></code>)
+because EasyAdmin supports the short types for some popular third-party bundles.</p>
+</div>
+<p>Now, the <code class="docutils literal notranslate"><span class="pre">description</span></code> property will be rendered as a rich text editor and not as
+a simple <code class="docutils literal notranslate"><span class="pre">&lt;textarea&gt;</span></code>:</p>
+<img alt="Default WYSIWYG editor" src="../_images/default-wysiwyg.png" />
+</div>
+<div class="section" id="customizing-the-rich-text-editor">
+<h2>Customizing the Rich Text Editor<a class="headerlink" href="#customizing-the-rich-text-editor" title="Permalink to this headline">¶</a></h2>
+<p>EasyAdmin tweaks some CKEditor settings to improve the user experience. In case
+you need further customization, configure the editor globally in your Symfony
+application under the <code class="docutils literal notranslate"><span class="pre">fos_ck_editor</span></code> option. For example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/fos_ck_editor.yaml</span>
+<span class="nt">fos_ck_editor</span><span class="p">:</span>
+    <span class="nt">input_sync</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">default_config</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_config</span>
+    <span class="nt">configs</span><span class="p">:</span>
+        <span class="nt">base_config</span><span class="p">:</span>
+            <span class="nt">toolbar</span><span class="p">:</span>
+                <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&quot;styles&quot;</span><span class="p p-Indicator">,</span><span class="nt"> items</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Bold&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;Italic&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;BulletedList&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;Link&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+
+<span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;description&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;fos_ckeditor&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>In this example, the toolbar is simplified to display just a few common options:</p>
+<img alt="Simple WYSIWYG editor" src="../_images/simple-wysiwyg.png" />
+<p>Alternatively, you can also define the editor options in the <code class="docutils literal notranslate"><span class="pre">type_options</span></code>
+setting of the property:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;description&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;fos_ckeditor&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span> <span class="s">&#39;config&#39;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="s">&#39;toolbar&#39;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&#39;styles&#39;</span><span class="p p-Indicator">,</span><span class="nt"> items</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Bold&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;Italic&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;BulletedList&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;Link&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>This inline configuration is very hard to maintain, so it’s recommended to use
+the global configuration instead. You can even combine both to define the toolbars
+globally and then select the toolbar to use in each property:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/fos_ck_editor.yaml</span>
+<span class="nt">fos_ck_editor</span><span class="p">:</span>
+    <span class="nt">input_sync</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">default_config</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">simple_config</span>
+    <span class="nt">configs</span><span class="p">:</span>
+        <span class="nt">simple_config</span><span class="p">:</span>
+            <span class="nt">toolbar</span><span class="p">:</span>
+                <span class="c1"># ...</span>
+        <span class="nt">advanced_config</span><span class="p">:</span>
+            <span class="nt">toolbar</span><span class="p">:</span>
+                <span class="c1"># ...</span>
+
+<span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;excerpt&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;fos_ckeditor&#39;</span><span class="p p-Indicator">,</span>
+<span class="nt">                        type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> config_name</span><span class="p">:</span> <span class="s">&#39;simple_config&#39;</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;description&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;fos_ckeditor&#39;</span><span class="p p-Indicator">,</span>
+<span class="nt">                        type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> config_name</span><span class="p">:</span> <span class="s">&#39;advanced_config&#39;</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Check out the original CKEditor documentation to get
+<a class="reference external" href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html">its full list of configuration options</a>.</p>
+</div>
+<div class="section" id="integrating-ckfinder">
+<h2>Integrating CKFinder<a class="headerlink" href="#integrating-ckfinder" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://cksource.com/ckfinder">CKFinder</a> is a file manager plugin developed for CKEditor. First, follow its
+documentation to download and install the “CKFinder PHP Connector” somewhere in
+your Symfony application. Then, read the <a class="reference external" href="https://docs.ckeditor.com/ckeditor4/docs/#!/guide/dev_ckfinder_integration">CKEditor integration docs</a> and create
+a JavaScript file to store the needed code (e.g. <code class="docutils literal notranslate"><span class="pre">web/js/setup-ckfinder.js</span></code>).</p>
+<p>Finally, use the <code class="docutils literal notranslate"><span class="pre">design.assets.js</span></code> config option to include that file in every
+page loaded by EasyAdmin:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/ivory_ck_editor.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">assets</span><span class="p">:</span>
+            <span class="nt">js</span><span class="p">:</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;/bundles/cksourceckfinder/ckfinder/ckfinder.js&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;/js/setup-ckfinder.js&#39;</span>
+                <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fosrestbundle.html" class="btn btn-neutral float-right" title="Integrating FOSRestBundle to Create APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fosuserbundle.html" class="btn btn-neutral float-left" title="Integrating FOSUserBundle to Manage Users" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 3. Basic Configuration &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 4. Design Configuration" href="design-configuration.html" />
+    <link rel="prev" title="Chapter 2. Your First Backend" href="your-first-backend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 3. Basic Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-url-used-to-access-the-backend">Changing the URL Used to Access the Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-name-of-the-backend">Changing the Name of the Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-homepage-of-the-backend">Changing the Homepage of the Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restricting-the-access-to-the-backend">Restricting the Access to the Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-logged-in-user-information">Configuring the Logged In User Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Chapter 3. Basic Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/book/basic-configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-3-basic-configuration">
+<h1>Chapter 3. Basic Configuration<a class="headerlink" href="#chapter-3-basic-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This chapter explains all the basic and general configuration options available
+for your backends. It’s common to change some of these options as soon as the
+backend is created.</p>
+<div class="section" id="changing-the-url-used-to-access-the-backend">
+<h2>Changing the URL Used to Access the Backend<a class="headerlink" href="#changing-the-url-used-to-access-the-backend" title="Permalink to this headline">¶</a></h2>
+<p>By default, the backend is accessible at the <code class="docutils literal notranslate"><span class="pre">/admin</span></code> URL of your Symfony
+application. This value is defined in the <code class="docutils literal notranslate"><span class="pre">prefix</span></code> option when loading the
+routes of the bundle. Change its value to meet your own requirements:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/routes/easy_admin.yaml</span>
+<span class="nt">easy_admin_bundle</span><span class="p">:</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="s">&#39;@EasyAdminBundle/Controller/EasyAdminController.php&#39;</span>
+    <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/_secret_backend</span>  <span class="c1"># &lt;-- change this value</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">annotation</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on your existing routing configuration, Symfony may ignore this
+configuration. Run the <code class="docutils literal notranslate"><span class="pre">debug:router</span></code> command to troubleshoot any problem
+with the application routes.</p>
+</div>
+</div>
+<div class="section" id="changing-the-name-of-the-backend">
+<h2>Changing the Name of the Backend<a class="headerlink" href="#changing-the-name-of-the-backend" title="Permalink to this headline">¶</a></h2>
+<p>By default, the backend displays <code class="docutils literal notranslate"><span class="pre">Easy</span> <span class="pre">Admin</span></code> as its name. Use the
+<code class="docutils literal notranslate"><span class="pre">site_name</span></code> option to change this value:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">site_name</span><span class="p">:</span> <span class="s">&#39;ACME</span><span class="nv"> </span><span class="s">Megacorp.&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The contents of this option are not escaped in the template, so you can use
+HTML tags if needed:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">site_name</span><span class="p">:</span> <span class="s">&#39;ACME</span><span class="nv"> </span><span class="s">&lt;em</span><span class="nv"> </span><span class="s">style=&quot;font-size:</span><span class="nv"> </span><span class="s">80%;&quot;&gt;Megacorp.&lt;/em&gt;&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This flexibility allows to use an <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> HTML tag to display an image-based
+logo instead of a text-based logo:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">site_name</span><span class="p">:</span> <span class="s">&#39;&lt;img</span><span class="nv"> </span><span class="s">src=&quot;https://symfony.com/logos/symfony_white_01.png&quot;</span><span class="nv"> </span><span class="s">/&gt;&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-the-homepage-of-the-backend">
+<h2>Changing the Homepage of the Backend<a class="headerlink" href="#changing-the-homepage-of-the-backend" title="Permalink to this headline">¶</a></h2>
+<p>By default, the homepage of the backend shows the items of the first configured
+entity. Read the <a class="reference internal" href="menu-configuration.html"><span class="doc">Chapter 8. Menu Configuration</span></a> to learn how to change this homepage.</p>
+</div>
+<div class="section" id="restricting-the-access-to-the-backend">
+<h2>Restricting the Access to the Backend<a class="headerlink" href="#restricting-the-access-to-the-backend" title="Permalink to this headline">¶</a></h2>
+<p>EasyAdmin relies on the underlying Symfony security mechanism to restrict the
+access to your backend. Read the <a class="reference external" href="https://symfony.com/doc/current/book/security.html">Symfony Security documentation</a> to learn
+how to protect the backend URLs.</p>
+<p>When accessing a protected backend, EasyAdmin displays the name of user who is
+logged in the application. Otherwise it displays <em>“Anonymous User”</em>. In
+addition, if you enable the <a class="reference external" href="https://symfony.com/doc/current/security.html#logging-out">logout feature</a> in your firewall, EasyAdmin
+displays a link to logout from the backend.</p>
+</div>
+<div class="section" id="configuring-the-logged-in-user-information">
+<h2>Configuring the Logged In User Information<a class="headerlink" href="#configuring-the-logged-in-user-information" title="Permalink to this headline">¶</a></h2>
+<p>The information of the logged in user is displayed by default in all pages. The
+user name is the string conversion of the <code class="docutils literal notranslate"><span class="pre">app.user</span></code> object of the Twig
+template and the avatar is a generic user icon. If you want to hide any of this
+information, use these config options:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">user</span><span class="p">:</span>
+        <span class="nt">display_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">display_avatar</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>You can also change how the user name and avatar are obtained with these other
+options. Their values are any valid <a class="reference external" href="https://symfony.com/components/PropertyAccess">PropertyAccess component</a> expression,
+which is applied to the <code class="docutils literal notranslate"><span class="pre">app.user</span></code> object of the Twig template:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">user</span><span class="p">:</span>
+        <span class="c1"># this will look for getFullName(), isFullName(), ..., and &#39;fullName&#39; property</span>
+        <span class="nt">name_property_path</span><span class="p">:</span> <span class="s">&#39;fullName&#39;</span>
+        <span class="nt">avatar_property_path</span><span class="p">:</span> <span class="s">&#39;gravatar&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Next chapter: <a class="reference internal" href="design-configuration.html"><span class="doc">Chapter 4. Design Configuration</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="design-configuration.html" class="btn btn-neutral float-right" title="Chapter 4. Design Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="your-first-backend.html" class="btn btn-neutral float-left" title="Chapter 2. Your First Backend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

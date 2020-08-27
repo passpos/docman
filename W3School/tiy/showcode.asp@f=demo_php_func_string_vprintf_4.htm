@@ -1,0 +1,41 @@
+<HTML>
+<!-- saved from url=(0076)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_func_string_vprintf_4 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+$str1 = &quot;Hello&quot;;
+$str2 = &quot;Hello world!&quot;;
+
+vprintf(&quot;[%s]&lt;br&gt;&quot;,array($str1));
+vprintf(&quot;[%8s]&lt;br&gt;&quot;,array($str1));
+vprintf(&quot;[%-8s]&lt;br&gt;&quot;,array($str1));
+vprintf(&quot;[%08s]&lt;br&gt;&quot;,array($str1));
+vprintf(&quot;[%'*8s]&lt;br&gt;&quot;,array($str1));
+vprintf(&quot;[%8.8s]&lt;br&gt;&quot;,array($str2));
+?&gt;</code>
+  
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

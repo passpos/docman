@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Advanced Configuration &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Two-step Validation (with Google Authenticator)" href="two_step_validation.html" />
+    <link rel="prev" title="2. Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Reference Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Advanced Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="two_step_validation.html">4. Two-step Validation (with Google Authenticator)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">5. API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_impersonation.html">6. User Impersonation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roles_matrix.html">7. Roles Matrix</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Advanced Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/advanced_configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-configuration">
+<span id="index-0"></span><h1>3. Advanced Configuration<a class="headerlink" href="#advanced-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Full configuration options:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">fos_user</span><span class="p">:</span>
+    <span class="nt">db_driver</span><span class="p">:</span>        <span class="l l-Scalar l-Scalar-Plain">orm</span> <span class="c1"># can be orm or mongodb (support is also available within FOSUser for couchdb, propel but none is given for SonataUserBundle)</span>
+    <span class="nt">firewall_name</span><span class="p">:</span>    <span class="l l-Scalar l-Scalar-Plain">main</span>
+    <span class="nt">user_class</span><span class="p">:</span>       <span class="l l-Scalar l-Scalar-Plain">Application\Sonata\UserBundle\Entity\User</span>
+
+    <span class="nt">group</span><span class="p">:</span>
+        <span class="nt">group_class</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">Application\Sonata\UserBundle\Entity\Group</span>
+
+    <span class="nt">profile</span><span class="p">:</span>
+        <span class="c1"># Authentication Form</span>
+        <span class="nt">form</span><span class="p">:</span>
+            <span class="nt">type</span><span class="p">:</span>               <span class="l l-Scalar l-Scalar-Plain">fos_user_profile</span>
+            <span class="nt">name</span><span class="p">:</span>               <span class="l l-Scalar l-Scalar-Plain">fos_user_profile_form</span>
+            <span class="nt">validation_groups</span><span class="p">:</span>  <span class="p p-Indicator">[</span><span class="nv">Authentication</span><span class="p p-Indicator">]</span> <span class="c1"># Please note : this is not the default value</span>
+
+<span class="nt">sonata_user</span><span class="p">:</span>
+    <span class="nt">security_acl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">manager_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">orm</span>      <span class="c1"># can be orm or mongodb</span>
+
+    <span class="nt">table</span><span class="p">:</span>
+        <span class="nt">user_group</span><span class="p">:</span> <span class="s">&quot;my_custom_user_group_association_table_name&quot;</span>
+
+    <span class="nt">impersonating</span><span class="p">:</span>
+        <span class="nt">route</span><span class="p">:</span>                <span class="l l-Scalar l-Scalar-Plain">page_slug</span>
+        <span class="nt">parameters</span><span class="p">:</span>           <span class="p p-Indicator">{</span><span class="nt"> path</span><span class="p">:</span> <span class="nv">/</span> <span class="p p-Indicator">}</span>
+
+    <span class="nt">class</span><span class="p">:</span>                  <span class="c1"># Entity Classes</span>
+        <span class="nt">user</span><span class="p">:</span>               <span class="l l-Scalar l-Scalar-Plain">Application\Sonata\UserBundle\Entity\User</span>
+        <span class="nt">group</span><span class="p">:</span>              <span class="l l-Scalar l-Scalar-Plain">Application\Sonata\UserBundle\Entity\Group</span>
+
+    <span class="nt">admin</span><span class="p">:</span>                  <span class="c1"># Admin Classes</span>
+        <span class="nt">user</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span>          <span class="l l-Scalar l-Scalar-Plain">Sonata\UserBundle\Admin\Entity\UserAdmin</span>
+            <span class="nt">controller</span><span class="p">:</span>     <span class="l l-Scalar l-Scalar-Plain">SonataAdminBundle:CRUD</span>
+            <span class="nt">translation</span><span class="p">:</span>    <span class="l l-Scalar l-Scalar-Plain">SonataUserBundle</span>
+
+        <span class="nt">group</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span>          <span class="l l-Scalar l-Scalar-Plain">Sonata\UserBundle\Admin\Entity\GroupAdmin</span>
+            <span class="nt">controller</span><span class="p">:</span>     <span class="l l-Scalar l-Scalar-Plain">SonataAdminBundle:CRUD</span>
+            <span class="nt">translation</span><span class="p">:</span>    <span class="l l-Scalar l-Scalar-Plain">SonataUserBundle</span>
+
+    <span class="nt">profile</span><span class="p">:</span>
+        <span class="nt">default_avatar</span><span class="p">:</span> <span class="s">&#39;bundles/sonatauser/default_avatar.png&#39;</span> <span class="c1"># Default avatar displayed if the user doesn&#39;t have one</span>
+
+    <span class="nt">mailer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sonata.user.mailer.default</span> <span class="c1"># Service used to send emails</span>
+
+<span class="c1"># override FOSUser default serialization</span>
+<span class="nt">jms_serializer</span><span class="p">:</span>
+    <span class="nt">metadata</span><span class="p">:</span>
+        <span class="nt">directories</span><span class="p">:</span>
+            <span class="nt">App</span><span class="p">:</span>
+                <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;%kernel.root_dir%/../vendor/sonata-project/user-bundle/Sonata/UserBundle/Resources/config/serializer/FOSUserBundle&quot;</span>
+                <span class="nt">namespace_prefix</span><span class="p">:</span> <span class="s">&#39;FOS\UserBundle&#39;</span>
+
+<span class="c1"># Enable Doctrine to map the provided entities</span>
+<span class="nt">doctrine</span><span class="p">:</span>
+    <span class="nt">orm</span><span class="p">:</span>
+        <span class="nt">entity_managers</span><span class="p">:</span>
+            <span class="nt">default</span><span class="p">:</span>
+                <span class="nt">mappings</span><span class="p">:</span>
+                    <span class="nt">FOSUserBundle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~</span>
+                    <span class="nt">ApplicationSonataUserBundle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~</span>
+                    <span class="nt">SonataUserBundle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="two_step_validation.html" class="btn btn-neutral float-right" title="4. Two-step Validation (with Google Authenticator)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="2. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

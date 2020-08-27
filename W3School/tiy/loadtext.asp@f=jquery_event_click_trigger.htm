@@ -1,0 +1,26 @@
+<html><!-- saved from url=(0072)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_event_click_trigger --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").slideToggle();
+  });
+  $("p").dblclick(function(){
+    $("button").click();
+  });
+});
+</script>
+</head>
+<body>
+<button>点击这里进行切换</button>
+<p>双击本段落会触发上面这个按钮的 click 事件。</p>
+</body>
+</html>

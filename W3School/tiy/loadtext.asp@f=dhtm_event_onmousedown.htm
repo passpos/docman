@@ -1,0 +1,29 @@
+<html><!-- saved from url=(0068)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_event_onmousedown --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function lighton()
+{
+document.getElementById('myimage').src="../i/eg_bulbon.gif"
+}
+function lightoff()
+{
+document.getElementById('myimage').src="../i/eg_bulboff.gif"
+}
+</script>
+</head>
+
+<body>
+<img id="myimage" onmousedown="lighton()" 
+onmouseup="lightoff()" 
+src="../i/eg_bulboff.gif" width="100" 
+height="180">
+<p>请点击灯泡，把它点亮！</p>
+</body>
+</html>

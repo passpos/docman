@@ -1,0 +1,27 @@
+<!DOCTYPE html><!-- saved from url=(0061)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_attr_isid --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<p id="demo">请点击按钮来查明 P 元素中的首个属性是 ID 属性。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x=document.getElementById("demo");
+x.innerHTML=x.attributes[0].isId;
+}
+</script>
+
+<p><b>注释：</b>Internet Explorer 或 Opera 不支持 isId 属性。</p>
+
+</body>
+</html>

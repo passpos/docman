@@ -1,0 +1,42 @@
+<!DOCTYPE html><!-- saved from url=(0070)http://www.w3school.com.cn/tiy/loadtext.asp?f=css3_font-face_rule_bold --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<style> 
+@font-face
+{
+font-family: myFirstFont;
+src: url('../example/css3/sansation_light.ttf')
+    ,url('../example/css3/sansation_light.eot'); /* IE9+ */
+}
+
+@font-face
+{
+font-family: myFirstFont;
+src: url('../example/css3/sansation_bold.ttf')
+    ,url('../example/css3/sansation_bold.eot'); /* IE9+ */
+font-weight:bold;
+}
+
+div
+{
+font-family:myFirstFont;
+}
+</style>
+</head>
+<body>
+
+<div>
+With CSS3, websites can <b>finally</b> use fonts other than the pre-selected "web-safe" fonts.
+</div>
+
+<p><b>注释：</b>Internet Explorer 9+ 支持新的 @font-face 规则。Internet Explorer 8 以及更早的版本不支持新的 @font-face 规则。</p>
+
+</body>
+</html>

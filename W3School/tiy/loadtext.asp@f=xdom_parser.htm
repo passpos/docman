@@ -1,0 +1,32 @@
+<html><!-- saved from url=(0057)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_parser --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+<script type="text/javascript">
+try //Internet Explorer
+  {
+  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+  }
+catch(e)
+  {
+  try //Firefox, Mozilla, Opera, etc.
+    {
+    xmlDoc=document.implementation.createDocument("","",null);
+    }
+  catch(e) {alert(e.message)}
+  }
+try 
+  {
+  xmlDoc.async=false;
+  xmlDoc.load("../example/xdom/books.xml");
+  document.write("xmlDoc is loaded, ready for use");
+  }
+catch(e) {alert(e.message)}
+</script>
+</body>
+</html>

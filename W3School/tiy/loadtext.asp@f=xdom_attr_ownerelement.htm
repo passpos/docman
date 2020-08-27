@@ -1,0 +1,27 @@
+<html><!-- saved from url=(0068)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_attr_ownerelement --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books.xml");
+
+x=xmlDoc.getElementsByTagName('book');
+
+document.write(x.item(0).attributes[0].ownerElement);
+document.write("<br />");
+document.write(x.item(0).attributes[0].ownerElement.nodeName);
+document.write("<br />");
+document.write(x.item(0).attributes[0].ownerElement.nodeType);
+</script>
+</body>
+</html>

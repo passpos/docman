@@ -1,0 +1,35 @@
+<html><!-- saved from url=(0054)http://www.w3school.com.cn/tiy/loadtext.asp?f=vbst_day --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<p>VBScripts <b>WeekdayName</b> 函数用于获得 weekday：</p>
+<script type="text/vbscript">
+document.write("<p>")
+document.write(WeekDayName(1))
+document.write("<br />")
+document.write(WeekDayName(2))
+document.write("</p><p>")
+
+document.write("Get the abbreviated name of a weekday:")
+document.write("<br />")
+document.write(WeekDayName(1,true))
+document.write("<br />")
+document.write(WeekDayName(2,true))
+document.write("</p><p>")
+
+document.write("Get the current weekday:")
+document.write("<br />")
+document.write(WeekdayName(weekday(date)))
+document.write("<br />")
+document.write(WeekdayName(weekday(date), true))
+document.write("</p>")
+</script>
+
+</body>
+</html>

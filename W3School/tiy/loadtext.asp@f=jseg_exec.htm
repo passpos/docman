@@ -1,0 +1,26 @@
+<html><!-- saved from url=(0055)http://www.w3school.com.cn/tiy/loadtext.asp?f=jseg_exec --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<script type="text/javascript">
+
+var str = "Visit W3School, W3School is a place to study web technology."; 
+var patt = new RegExp("W3School","g");
+var result;
+
+while ((result = patt.exec(str)) != null)  {
+  document.write(result);
+  document.write("<br />");
+  document.write(patt.lastIndex);
+  document.write("<br />");
+ }
+</script>
+
+</body>
+</html>

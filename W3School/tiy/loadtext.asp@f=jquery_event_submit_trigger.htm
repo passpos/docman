@@ -1,0 +1,33 @@
+<html><!-- saved from url=(0073)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_event_submit_trigger --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("form").submit(function(e){
+    alert("Submitted");
+  });
+  $("button").click(function(){
+    $("form").submit();
+  });  
+});
+</script>
+</head>
+<body>
+<form name="input" action="" method="get">
+First name: 
+<input type="text" name="FirstName" value="Mickey" size="20">
+<br />Last name: 
+<input type="text" name="LastName" value="Mouse" size="20">
+<br />
+<input type="submit" value="Submit">
+</form> 
+<button>触发表单域的 submit 事件</button>
+</body>
+</html>

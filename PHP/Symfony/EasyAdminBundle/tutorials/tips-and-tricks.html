@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tips and Tricks &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Integrating VichUploaderBundle to Upload Files and Images" href="../integration/vichuploaderbundle.html" />
+    <link rel="prev" title="How to Manage Configuration for Complex Backends" href="complex-backend-config.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../book/installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tips and Tricks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#improving-backend-performance">Improving Backend Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-read-only-backend">Create a Read-Only Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unloading-the-default-javascript-and-stylesheets">Unloading the Default JavaScript and Stylesheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-the-backend-use-a-different-language-than-the-public-website">Making the Backend Use a Different Language Than the Public Website</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#don-t-apply-global-doctrine-filters-in-the-backend">Don’t Apply Global Doctrine Filters in the Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-dynamic-actions-per-item">Defining Dynamic Actions per Item</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Tips and Tricks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/tips-and-tricks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tips-and-tricks">
+<h1>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="improving-backend-performance">
+<h2>Improving Backend Performance<a class="headerlink" href="#improving-backend-performance" title="Permalink to this headline">¶</a></h2>
+<p>EasyAdmin does an intense use of Doctrine metadata introspection to generate
+the backend on the fly without generating any file or resource. For complex
+backends, this process can add a noticeable performance overhead.</p>
+<p>Fortunately, Doctrine provides a simple caching mechanism for entity metadata.
+If your server has APC installed, enable this cache just by adding the
+following configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/prod/doctrine.yaml</span>
+<span class="nt">doctrine</span><span class="p">:</span>
+    <span class="nt">orm</span><span class="p">:</span>
+        <span class="nt">metadata_cache_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apc</span>
+</pre></div>
+</div>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">apc</span></code>, Doctrine metadata cache supports <code class="docutils literal notranslate"><span class="pre">memcache</span></code>,
+<code class="docutils literal notranslate"><span class="pre">memcached</span></code>, <code class="docutils literal notranslate"><span class="pre">xcache</span></code> and <code class="docutils literal notranslate"><span class="pre">service</span></code> (for using a custom cache service).
+Read the documentation about <a class="reference external" href="https://symfony.com/doc/current/reference/configuration/doctrine.html#caching-drivers">Doctrine caching drivers</a>.</p>
+<p>Note that the previous example configures metadata caching in <code class="docutils literal notranslate"><span class="pre">config_prod.yml</span></code>
+file, which is the configuration used for the production environment. It’s not
+recommended to enable this cache in the development environment to avoid having
+to clear APC cache or restart the web server whenever you make any change to
+your Doctrine entities.</p>
+<p>This simple metadata cache configuration can improve your backend performance
+between 20% and 30% depending on the complexity and number of your entities.</p>
+</div>
+<div class="section" id="create-a-read-only-backend">
+<h2>Create a Read-Only Backend<a class="headerlink" href="#create-a-read-only-backend" title="Permalink to this headline">¶</a></h2>
+<p>Disable the <code class="docutils literal notranslate"><span class="pre">delete</span></code>, <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> actions for all views and the users
+won’t be able to add, modify or remove any information:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">disabled_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;delete&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;edit&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;new&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="unloading-the-default-javascript-and-stylesheets">
+<h2>Unloading the Default JavaScript and Stylesheets<a class="headerlink" href="#unloading-the-default-javascript-and-stylesheets" title="Permalink to this headline">¶</a></h2>
+<p>EasyAdmin uses Bootstrap CSS and jQuery frameworks to build the interface.
+In case you want to unload these files in addition to loading your own assets,
+override the default <code class="docutils literal notranslate"><span class="pre">layout.html.twig</span></code> template and empty the
+<code class="docutils literal notranslate"><span class="pre">head_stylesheets</span></code> and <code class="docutils literal notranslate"><span class="pre">head_javascript</span></code> Twig blocks.</p>
+<p>Read the <a class="reference internal" href="../book/list-search-show-configuration.html#list-search-show-advanced-design-configuration"><span class="std std-ref">Advanced Design Customization</span></a>
+section to learn how to override default templates.</p>
+</div>
+<div class="section" id="making-the-backend-use-a-different-language-than-the-public-website">
+<h2>Making the Backend Use a Different Language Than the Public Website<a class="headerlink" href="#making-the-backend-use-a-different-language-than-the-public-website" title="Permalink to this headline">¶</a></h2>
+<p>Imagine that the public part of your website uses French as its default locale.
+EasyAdmin uses the same locale as the underlying Symfony application, so the
+backend would be displayed in French too. How could you define a different
+language for the backend?</p>
+<p>You must create an event listener or subscriber that sets the request locale
+before the translation service retrieves it, as explained in the following
+Smyfony Docs article: <a class="reference external" href="https://symfony.com/doc/current/translation/locale.html">How to Work with the User’s Locale</a>.</p>
+</div>
+<div class="section" id="don-t-apply-global-doctrine-filters-in-the-backend">
+<h2>Don’t Apply Global Doctrine Filters in the Backend<a class="headerlink" href="#don-t-apply-global-doctrine-filters-in-the-backend" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.doctrine-project.org/projects/doctrine-orm/en/current/reference/filters.html">Doctrine filters</a> add conditions to your queries automatically. They are
+useful to solve cases like <em>“never display products which haven’t been published”</em>
+or <em>“don’t display comments marked as deleted”</em>.</p>
+<p>These filters can be enabled for each query, but they are usually enabled
+globally for the entire application thanks to a request listener:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">Symfony\Component\HttpKernel\Event\GetResponseEvent</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DoctrineFilterListener</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">onKernelRequest</span><span class="p">(</span><span class="nx">GetResponseEvent</span> <span class="nv">$event</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="o">-&gt;</span><span class="na">getFilters</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">enable</span><span class="p">(</span><span class="s1">&#39;is_published&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When using global Doctrine filters, you probably don’t want to apply them in the
+backend. Otherwise you won’t see unpublished items or deleted comments in the
+listings. Given that all EasyAdmin URLs are generated with a single route called
+<code class="docutils literal notranslate"><span class="pre">easyadmin</span></code>, you can add the following to disable the Doctrine filters in the
+backend:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">onKernelRequest</span><span class="p">(</span><span class="nx">GetResponseEvent</span> <span class="nv">$event</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;easyadmin&#39;</span> <span class="o">===</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_route&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-dynamic-actions-per-item">
+<h2>Defining Dynamic Actions per Item<a class="headerlink" href="#defining-dynamic-actions-per-item" title="Permalink to this headline">¶</a></h2>
+<p>By default, in the <code class="docutils literal notranslate"><span class="pre">list</span></code> view all items display the same actions. If you need
+to show/hide actions dynamically per item, you can do that in a custom template.
+Consider a backend that displays the <code class="docutils literal notranslate"><span class="pre">Delete</span></code> action only for items that haven’t
+been published yet (their <code class="docutils literal notranslate"><span class="pre">status</span></code> property is <code class="docutils literal notranslate"><span class="pre">PUBLISHED</span></code>):</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/bundles/EasyAdminBundle/default/list.html.twig #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;@!EasyAdmin/default/list.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">item_actions</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">filtered_actions</span> <span class="o">=</span> <span class="o">{}</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">action_name</span><span class="o">,</span> <span class="nv">action_config</span> <span class="k">in</span> <span class="nv">_list_item_actions</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">action_name</span> <span class="o">==</span> <span class="s1">&#39;delete&#39;</span> <span class="k">and</span> <span class="nv">item.status</span><span class="o">|</span><span class="nf">default</span><span class="o">(</span><span class="kp">false</span><span class="o">)</span> <span class="o">==</span> <span class="s1">&#39;PUBLISHED&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="c">{# remove the &#39;delete&#39; action from published items #}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">filtered_actions</span> <span class="o">=</span> <span class="nv">filtered_actions</span><span class="o">|</span><span class="nf">merge</span><span class="o">([</span><span class="nv">action_config</span><span class="o">])</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">_list_item_actions</span> <span class="o">=</span> <span class="nv">filtered_actions</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">    </span><span class="cp">{{</span> <span class="nb">parent</span><span class="o">()</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">item_actions</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>The solution work as follows:</p>
+<ol class="arabic simple">
+<li><p>The backend defines a new <code class="docutils literal notranslate"><span class="pre">list.html.twig</span></code> template to override the
+<code class="docutils literal notranslate"><span class="pre">item_actions</span></code> block, which is the one that displays the actions for each item.</p></li>
+<li><p>The default template defines the <code class="docutils literal notranslate"><span class="pre">_list_item_actions</span></code> variable to store the
+actions to display for any given item. The custom template just needs to filter
+these actions according to some rules.</p></li>
+<li><p>Finally, override the original <code class="docutils literal notranslate"><span class="pre">_list_item_actions</span></code> variable with the filtered
+list of actions and execute the original code for this Twig block in the
+parent template (<code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">parent()</span> <span class="pre">}}</span></code>).</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../integration/vichuploaderbundle.html" class="btn btn-neutral float-right" title="Integrating VichUploaderBundle to Upload Files and Images" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="complex-backend-config.html" class="btn btn-neutral float-left" title="How to Manage Configuration for Complex Backends" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

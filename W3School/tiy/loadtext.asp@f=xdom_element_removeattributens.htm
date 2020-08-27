@@ -1,0 +1,31 @@
+<html><!-- saved from url=(0076)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_element_removeattributens --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books_ns.xml");
+
+x=xmlDoc.getElementsByTagName("title")[0];
+ns="../children/default.htm";
+
+document.write("Attribute Found: ");
+document.write(x.hasAttributeNS(ns,"lang"));
+
+x.removeAttributeNS(ns,"lang");
+
+document.write("<br />Attribute Found: ");
+document.write(x.hasAttributeNS(ns,"lang"));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html><!-- saved from url=(0080)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_namednodemap_removenameditem --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<input type="button" value="OK">
+
+<p id="demo">点击按钮来删除 input 元素的 type 属性。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var btn=document.getElementsByTagName("INPUT")[0];
+btn.attributes.removeNamedItem("type");
+}
+</script>
+
+<p><b>注释：</b>当删除 input 元素的 type 属性后，此元素的类型将是 <em>text</em>，即默认值。</p>
+
+<p><b>注释：</b>在 Internet Explorer 8 以及更早的版本中，removedNamedItem 不会返回属性。</p>
+
+</body>
+</html>

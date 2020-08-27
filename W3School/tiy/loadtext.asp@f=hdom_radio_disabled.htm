@@ -1,0 +1,30 @@
+<html><!-- saved from url=(0065)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_radio_disabled --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function disable()
+  {
+  document.getElementById("gnome").disabled=true
+  }
+</script>
+</head>
+<body>
+
+<form>
+Human: <input id="human" type="radio" name="creature" value="Human" />
+<br />
+Animal: <input id="animal" type="radio" name="creature" value="Animal" />
+<br />
+Gnome: <input id="gnome" type="radio" name="creature" value="Gnome" />
+<br /><br />
+<input type="button" onclick="disable()" value="Disable choice" />
+</form>
+
+</body>
+</html>

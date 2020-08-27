@@ -1,0 +1,34 @@
+<html><!-- saved from url=(0065)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_nav_firstchild --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js">
+</script>
+<script type="text/javascript">
+//check if the first node is an element node
+function get_firstChild(n)
+{
+y=n.firstChild;
+while (y.nodeType!=1)
+  {
+  y=y.nextSibling;
+  }
+return y;
+}
+</script>
+</head>
+
+<body>
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books.xml");
+
+x=get_firstChild(xmlDoc.getElementsByTagName("book")[0]);
+document.write(x.nodeName);
+</script>
+</body>
+</html>

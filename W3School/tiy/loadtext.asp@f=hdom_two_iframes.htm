@@ -1,0 +1,26 @@
+<html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_two_iframes --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function changeSource()
+{
+document.getElementById("frame1").src="../example/hdom/frame_c.html"
+document.getElementById("frame2").src="../example/hdom/frame_d.html"
+}
+</script>
+</head>
+
+<body>
+<iframe src="../example/hdom/frame_a.html" id="frame1"></iframe>
+<iframe src="../example/hdom/frame_b.html" id="frame2"></iframe>
+<br /><br />
+<input type="button" onclick="changeSource()" value="改变两个框架的 source">
+
+</body>
+</html>

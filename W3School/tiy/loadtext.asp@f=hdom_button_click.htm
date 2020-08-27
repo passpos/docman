@@ -1,0 +1,28 @@
+<html><!-- saved from url=(0063)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_button_click --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function clickButton()
+  {
+  document.getElementById('button1').click()
+  }
+function alertMsg()
+  {
+  alert("Button 1 was clicked!")
+  }
+</script>
+</head>
+<body onload="clickButton()">
+
+<form>
+<input type="button" id="button1" onclick="alertMsg()" value="Button 1" />
+</form>
+
+</body>
+</html>

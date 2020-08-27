@@ -1,0 +1,36 @@
+<html><!-- saved from url=(0060)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_onkeydown --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+<script type="text/javascript">
+function noNumbers(e)
+{
+var keynum
+var keychar
+var numcheck
+
+if(window.event) // IE
+	{
+	keynum = e.keyCode
+	}
+else if(e.which) // Netscape/Firefox/Opera
+	{
+	keynum = e.which
+	}
+keychar = String.fromCharCode(keynum)
+numcheck = /\d/
+return !numcheck.test(keychar)
+}
+</script>
+
+<form>
+Type some text (numbers not allowed):
+<input type="text" onkeydown="return noNumbers(event)" />
+</form>
+
+</html>

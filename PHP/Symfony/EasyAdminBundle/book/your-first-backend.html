@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 2. Your First Backend &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 3. Basic Configuration" href="basic-configuration.html" />
+    <link rel="prev" title="Chapter 1. Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 2. Your First Backend</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#expanded-configuration-format">Expanded Configuration Format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Chapter 2. Your First Backend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/book/your-first-backend.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-2-your-first-backend">
+<h1>Chapter 2. Your First Backend<a class="headerlink" href="#chapter-2-your-first-backend" title="Permalink to this headline">¶</a></h1>
+<p>Creating your first backend will take you less than 30 seconds if your Symfony
+application already defines some Doctrine ORM entities. Otherwise, create some
+entities before continuing (you can use the <code class="docutils literal notranslate"><span class="pre">make:entity</span></code> command from the
+<a class="reference external" href="https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html">Symfony MakerBundle</a> to generate them quickly).</p>
+<p>Let’s consider that the app defines three entities called <code class="docutils literal notranslate"><span class="pre">Product</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Category</span></code> and <code class="docutils literal notranslate"><span class="pre">User</span></code>. Open the <code class="docutils literal notranslate"><span class="pre">config/packages/easy_admin.yaml</span></code> file and
+add the following configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="c1"># change the following to the namespaces of your own entities</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Category</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+</pre></div>
+</div>
+<p><strong>Congratulations! You’ve just created your first fully-featured backend!</strong>
+Browse the <code class="docutils literal notranslate"><span class="pre">/admin</span></code> URL in your Symfony application and you’ll get access to
+the admin backend:</p>
+<img alt="Default EasyAdmin Backend interface" src="../_images/easyadmin-default-backend.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the interface of your backend displays translation keys instead of the
+actual contents, make sure that the <code class="docutils literal notranslate"><span class="pre">translator</span></code> service is enabled:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/translation.yaml</span>
+<span class="nt">framework</span><span class="p">:</span>
+    <span class="nt">translator</span><span class="p">:</span>
+        <span class="nt">fallbacks</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="s">&quot;en&quot;</span> <span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="expanded-configuration-format">
+<h2>Expanded Configuration Format<a class="headerlink" href="#expanded-configuration-format" title="Permalink to this headline">¶</a></h2>
+<p>This simple backend uses the shortcut configuration format, but for real
+backends, you must use the extended configuration syntax instead, which allows
+to configure lots of options for each entity:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+        <span class="nt">Order</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Order</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+</pre></div>
+</div>
+<p>Entities are configured as elements under the <code class="docutils literal notranslate"><span class="pre">entities</span></code> key. The name of the
+entities are used as the YAML keys. These names must be unique in the backend
+and it’s recommended to use the CamelCase syntax (e.g. <code class="docutils literal notranslate"><span class="pre">BlogPost</span></code> and not
+<code class="docutils literal notranslate"><span class="pre">blog_post</span></code> or <code class="docutils literal notranslate"><span class="pre">blogPost</span></code>).</p>
+<p>The only required option in this configuration format is called <code class="docutils literal notranslate"><span class="pre">class</span></code> and
+defines the fully qualified class name of the Doctrine entity managed by the
+backend.</p>
+<hr class="docutils" />
+<p>Next chapter: <a class="reference internal" href="basic-configuration.html"><span class="doc">Chapter 3. Basic Configuration</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="basic-configuration.html" class="btn btn-neutral float-right" title="Chapter 3. Basic Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="Chapter 1. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

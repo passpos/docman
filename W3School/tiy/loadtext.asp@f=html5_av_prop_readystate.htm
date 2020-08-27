@@ -1,0 +1,30 @@
+<!DOCTYPE html><!-- saved from url=(0070)http://www.w3school.com.cn/tiy/loadtext.asp?f=html5_av_prop_readystate --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+ 
+<html> 
+<body> 
+
+<button onclick="getReadyState()" type="button">»ñµÃ¾ÍÐ÷×´Ì¬</button>
+<br />
+<br />
+<video id="video1" controls="controls">
+  <source src="../example/html5/mov_bbb.mp4" type="video/mp4">
+  <source src="../example/html5/mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+
+<script>
+myVid=document.getElementById("video1");
+function getReadyState()
+  { 
+  alert(myVid.readyState);
+  } 
+</script> 
+
+</body>
+</html>

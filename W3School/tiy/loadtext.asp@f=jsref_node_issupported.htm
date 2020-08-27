@@ -1,0 +1,28 @@
+<!DOCTYPE html><!-- saved from url=(0068)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_node_issupported --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<button onclick="myFunction()">试一下</button>
+
+<p id="demo">点击按钮来检查 button 元素是否支持特性 Core XML DOM Level 2。</p>
+
+<script>
+function myFunction()
+{
+var item=document.getElementsByTagName("BUTTON")[0];
+var x=document.getElementById("demo");
+x.innerHTML=item.isSupported("Core","2.0");
+}
+</script>
+
+<p><b>注释：</b>Internet Explorer 8 以及更早的版本不支持该方法。</p>
+
+</body>
+</html>

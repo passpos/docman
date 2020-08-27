@@ -1,0 +1,40 @@
+<html><!-- saved from url=(0068)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_style_captionside --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<style type="text/css">
+caption
+{
+caption-side:bottom; 
+}
+</style>
+<script type="text/javascript">
+function moveCaption()
+{
+document.getElementById('myTable').style.captionSide="right";
+}
+</script>
+</head>
+<body>
+
+<table border="1" id="myTable">
+  <caption>This is a caption</caption>
+  <tr>
+    <td>100</td>
+    <td>200</td>
+  </tr>
+  <tr>
+    <td>300</td>
+    <td>400</td>
+  </tr>
+</table>
+<br />
+<input type="button" onclick="moveCaption()" value="Move table caption">
+
+</body>
+</html>

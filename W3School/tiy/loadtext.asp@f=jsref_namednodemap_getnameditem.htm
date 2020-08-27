@@ -1,0 +1,28 @@
+<!DOCTYPE html><!-- saved from url=(0077)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_namednodemap_getnameditem --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<p id="demo">点击按钮来获得 button 元素的 onclick 属性值。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var a=document.getElementsByTagName("BUTTON")[0];
+var x=document.getElementById("demo");  
+x.innerHTML=a.attributes.getNamedItem("onclick").textContent;
+}
+</script>
+
+<p><b>注释：</b>Internet Explorer 8 以及更早的版本不支持 getNamedItem 方法。</p>
+
+</body>
+</html>

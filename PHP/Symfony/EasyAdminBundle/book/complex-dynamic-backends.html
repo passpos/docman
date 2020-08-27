@@ -1,0 +1,812 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 9. Creating Complex and Dynamic Backends &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuration Reference" href="configuration-reference.html" />
+    <link rel="prev" title="Chapter 8. Menu Configuration" href="menu-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 9. Creating Complex and Dynamic Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#customization-based-on-overriding-the-default-admincontroller">Customization Based on Overriding the Default AdminController</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#admincontroller-properties-and-methods">AdminController Properties and Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overriding-the-default-admincontroller-in-practice">Overriding the Default AdminController in Practice</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update-some-properties-for-all-entities">Update Some Properties for All Entities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#override-the-admincontroller-methods-per-entity">Override the AdminController Methods per Entity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customization-based-on-entity-controllers">Customization Based on Entity Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customization-based-on-symfony-events">Customization Based on Symfony Events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-event-object">The Event Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-subscriber-example">Event Subscriber Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#page-templates-for-custom-backends">Page Templates for Custom Backends</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#login-form-template">Login Form Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#content-page-template">Content Page Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blank-page-template">Blank Page Template</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Chapter 9. Creating Complex and Dynamic Backends</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/book/complex-dynamic-backends.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-9-creating-complex-and-dynamic-backends">
+<h1>Chapter 9. Creating Complex and Dynamic Backends<a class="headerlink" href="#chapter-9-creating-complex-and-dynamic-backends" title="Permalink to this headline">¶</a></h1>
+<p>In the previous chapters you’ve learned how to configure your backend using YAML
+configuration options and overriding Twig templates. This mechanism is enough
+for simple and medium-sized backends.</p>
+<p>However, for more complex and dynamic backends you need to use the PHP-based
+customization mechanism provided by EasyAdmin. Depending on your needs you can
+choose any of these three customization options (or combine them, if your
+backend is very complex):</p>
+<ol class="arabic simple">
+<li><p><strong>Override the default AdminController</strong>, which is easy to set up and best
+suited for simple backends.</p></li>
+<li><p><strong>Define a different controller for some or all entities</strong>, which is also
+easy to set up and scales well for medium-sized backends.</p></li>
+<li><p><strong>Define event listeners or subscribers</strong> that listen to the events
+triggered by EasyAdmin. This is harder to set up but allows you to define
+the customization code anywhere in your application.</p></li>
+</ol>
+<div class="section" id="customization-based-on-overriding-the-default-admincontroller">
+<span id="overriding-the-default-controller"></span><h2>Customization Based on Overriding the Default AdminController<a class="headerlink" href="#customization-based-on-overriding-the-default-admincontroller" title="Permalink to this headline">¶</a></h2>
+<p>This technique requires you to create a new controller in your Symfony
+application and make it extend from the default <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> provided by
+EasyAdmin. Then you just add some methods in your controller to override the
+default ones.</p>
+<p><strong>Step 1.</strong> Create a new controller class anywhere in your Symfony application
+and make it extend from the default <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">EasyAdminController</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Step 2.</strong> Open the EasyAdmin routing config file and change the <code class="docutils literal notranslate"><span class="pre">resource</span></code>
+option to point to your new controller:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/routes/easy_admin.yaml</span>
+<span class="nt">easy_admin_bundle</span><span class="p">:</span>
+    <span class="c1"># this is just an example; update the value of &#39;resource&#39; accordingly</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="s">&#39;App\Controller\AdminController&#39;</span>
+    <span class="nt">type</span><span class="p">:</span>     <span class="l l-Scalar l-Scalar-Plain">annotation</span>
+    <span class="nt">prefix</span><span class="p">:</span>   <span class="l l-Scalar l-Scalar-Plain">/admin</span>
+</pre></div>
+</div>
+<p>Save the changes and the backend will start using your own controller.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default Symfony routing config loads first the annotations of controllers
+defined in <code class="docutils literal notranslate"><span class="pre">src/Controller/</span></code>. If you override the <code class="docutils literal notranslate"><span class="pre">AdminController</span></code>
+in that directory, the routing config defined in <code class="docutils literal notranslate"><span class="pre">config/routes/easy_admin.yaml</span></code>
+will be ignored. You can comment the contents of that file and use instead
+the <code class="docutils literal notranslate"><span class="pre">&#64;Route</span></code> annotation of <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> to configure that route.</p>
+</div>
+<p><strong>Step 3.</strong> You can now override in your own controller any of the methods
+executed in the default <code class="docutils literal notranslate"><span class="pre">AdminController</span></code>. The next sections explain all the
+available methods and show some practical examples.</p>
+<div class="section" id="admincontroller-properties-and-methods">
+<h3>AdminController Properties and Methods<a class="headerlink" href="#admincontroller-properties-and-methods" title="Permalink to this headline">¶</a></h3>
+<p>First, the default <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> extends from <a class="reference external" href="https://symfony.com/doc/current/book/controller.html#the-base-controller-class">the base Symfony controller</a>,
+so you have access to all its shortcuts and utility methods:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
+<span class="c1">// ...</span>
+
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In addition, the default <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> defines some <strong>properties</strong> which
+are commonly used in the rest of the methods:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/** @var array The full configuration of the entire backend */</span>
+    <span class="k">protected</span> <span class="nv">$config</span><span class="p">;</span>
+    <span class="sd">/** @var array The full configuration of the current entity */</span>
+    <span class="k">protected</span> <span class="nv">$entity</span><span class="p">;</span>
+    <span class="sd">/** @var Request The instance of the current Symfony request */</span>
+    <span class="k">protected</span> <span class="nv">$request</span><span class="p">;</span>
+    <span class="sd">/** @var EntityManager The Doctrine entity manager for the current entity */</span>
+    <span class="k">protected</span> <span class="nv">$em</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally, the default <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> defines lots of <strong>methods</strong> which you
+can override in your own backends.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">indexAction()</span></code> method is the only “real controller” because it’s the only
+method associated with a route (all the pages created with EasyAdmin use a
+single route called <code class="docutils literal notranslate"><span class="pre">easyadmin</span></code>). It makes some checks and then it redirects to
+the actual executed method, such as <code class="docutils literal notranslate"><span class="pre">listAction()</span></code>, <code class="docutils literal notranslate"><span class="pre">showAction()</span></code>, etc.:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/** @Route(&quot;/&quot;, name=&quot;easyadmin&quot;) */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// you can override this method to perform additional checks and to</span>
+        <span class="c1">// perform more complex logic before redirecting to the other methods</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> method is called by <code class="docutils literal notranslate"><span class="pre">indexAction()</span></code> and it initializes
+the values of the <code class="docutils literal notranslate"><span class="pre">$config</span></code>, <code class="docutils literal notranslate"><span class="pre">$entity</span></code>, <code class="docutils literal notranslate"><span class="pre">$request</span></code> and <code class="docutils literal notranslate"><span class="pre">$em</span></code> properties
+shown above:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// override this method to initialize your custom properties</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then, the <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> defines a method to handle each view. These
+methods are complex because they need to perform lots of checks:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">listAction</span><span class="p">();</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">();</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">editAction</span><span class="p">();</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">newAction</span><span class="p">();</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">searchAction</span><span class="p">();</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">deleteAction</span><span class="p">();</span>
+    <span class="c1">// special Ajax-based action used to get the results for the autocomplete form field</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">autocompleteAction</span><span class="p">();</span>
+    <span class="c1">// useful to add/modify/remove the parameters passed to the Twig template</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">renderTemplate</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The rest of the available methods are specific for each action:</p>
+<p><strong>List</strong> action:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Creates the Doctrine query builder used to get all the items. Override it</span>
+    <span class="c1">// to filter the elements displayed in the listing</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">createListQueryBuilder</span><span class="p">(</span><span class="nv">$entityClass</span><span class="p">,</span> <span class="nv">$sortDirection</span><span class="p">,</span> <span class="nv">$sortField</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$dqlFilter</span> <span class="o">=</span> <span class="k">null</span><span class="p">);</span>
+
+    <span class="c1">// Performs the actual database query to get all the items (using the query</span>
+    <span class="c1">// builder created with the previous method). You can override this method</span>
+    <span class="c1">// to filter the results before sending them to the template</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">(</span><span class="nv">$entityClass</span><span class="p">,</span> <span class="nv">$page</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">$maxPerPage</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">$sortField</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$sortDirection</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$dqlFilter</span> <span class="o">=</span> <span class="k">null</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Search</strong> action:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Creates the Doctrine query builder used to look for items according to the</span>
+    <span class="c1">// user&#39;s query. Override it to filter the elements displayed in the search listing</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">createSearchQueryBuilder</span><span class="p">(</span><span class="nv">$entityClass</span><span class="p">,</span> <span class="nv">$searchQuery</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$searchableFields</span><span class="p">,</span> <span class="nv">$sortField</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$sortDirection</span> <span class="o">=</span> <span class="k">null</span><span class="p">);</span>
+
+    <span class="c1">// Performs the actual database query to look for the items according to the</span>
+    <span class="c1">// user&#39;s query (using the query builder created with the previous method).</span>
+    <span class="c1">// You can override this method to filter the results before sending them to</span>
+    <span class="c1">// the template</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">findBy</span><span class="p">(</span><span class="nv">$entityClass</span><span class="p">,</span> <span class="nv">$searchQuery</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$searchableFields</span><span class="p">,</span> <span class="nv">$page</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">$maxPerPage</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">$sortField</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$sortDirection</span> <span class="o">=</span> <span class="k">null</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Delete</strong> action:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Creates the form used to delete an entity item (a form is required because</span>
+    <span class="c1">// items are deleted using the &#39;DELETE&#39; HTTP method)</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">createDeleteForm</span><span class="p">(</span><span class="nv">$entityName</span><span class="p">,</span> <span class="nv">$entityId</span><span class="p">);</span>
+
+    <span class="c1">// It deletes the given Doctrine entity. You can override this method to prevent</span>
+    <span class="c1">// entity removal when certain conditions met (e.g. don&#39;t delete user if username == &#39;admin&#39;).</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">removeEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Edit</strong> action:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Creates the form used to edit an entity item</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">createEditForm</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$entityProperties</span><span class="p">);</span>
+
+    <span class="c1">// It flushes the given Doctrine entity to save its changes. It allows to modify</span>
+    <span class="c1">// the entity before it&#39;s saved in the database.</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">updateEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>New</strong> action:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Creates a new instance of the entity being created. This instance is passed</span>
+    <span class="c1">// to the form created with the &#39;createNewForm()&#39; method. Override this method</span>
+    <span class="c1">// if your entity has a constructor that expects some arguments to be passed</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">createNewEntity</span><span class="p">()</span>
+
+    <span class="c1">// Creates the form used to create a new entity item</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">createNewForm</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$entityProperties</span><span class="p">)</span>
+
+    <span class="c1">// It persists and flushes the given Doctrine entity. It allows to modify the entity</span>
+    <span class="c1">// before/after being saved in the database (e.g. to transform a DTO into a Doctrine entity)</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">persistEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Edit</strong> and <strong>New</strong> actions:</p>
+<p>These methods are useful to make the same customizations for the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and
+<code class="docutils literal notranslate"><span class="pre">new</span></code> actions at the same time:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Creates the form builder used to create the form rendered in the</span>
+    <span class="c1">// create and edit actions</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">createEntityFormBuilder</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="nv">$view</span><span class="p">);</span>
+
+    <span class="c1">// Returns the list of form options used by &#39;createEntityFormBuilder()&#39;</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">getEntityFormOptions</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="nv">$view</span><span class="p">);</span>
+
+    <span class="c1">// Creates the form object passed to the &#39;edit&#39; and &#39;new&#39; templates (using the</span>
+    <span class="c1">// form builder created by &#39;createEntityFormBuilder()&#39;)</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">createEntityForm</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$entityProperties</span><span class="p">,</span> <span class="nv">$view</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="overriding-the-default-admincontroller-in-practice">
+<h3>Overriding the Default AdminController in Practice<a class="headerlink" href="#overriding-the-default-admincontroller-in-practice" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="update-some-properties-for-all-entities">
+<h4>Update Some Properties for All Entities<a class="headerlink" href="#update-some-properties-for-all-entities" title="Permalink to this headline">¶</a></h4>
+<p>Imagine that some or all of your entities define a property called <code class="docutils literal notranslate"><span class="pre">updatedAt</span></code>.
+Instead of editing this value using the backend interface or relying on Doctrine
+extensions, you can make use of the <code class="docutils literal notranslate"><span class="pre">updateEntity()</span></code> method, which is called
+to save the changes made on an existing entity:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">EasyAdminController</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">method_exists</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="s1">&#39;setUpdatedAt&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">setUpdatedAt</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="k">parent</span><span class="o">::</span><span class="na">updateEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This other example shows how to automatically set the slug of the entities when
+creating (<code class="docutils literal notranslate"><span class="pre">persistEntity()</span></code>) or editing (<code class="docutils literal notranslate"><span class="pre">updateEntity()</span></code>) them:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">EasyAdminController</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">persistEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">updateSlug</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">persistEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">updateSlug</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">updateEntity</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">updateSlug</span><span class="p">(</span><span class="nv">$entity</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">method_exists</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="s1">&#39;setSlug&#39;</span><span class="p">)</span> <span class="k">and</span> <span class="nb">method_exists</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="s1">&#39;getTitle&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">setSlug</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">slugger</span><span class="o">-&gt;</span><span class="na">slugify</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getTitle</span><span class="p">()));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="override-the-admincontroller-methods-per-entity">
+<h3>Override the AdminController Methods per Entity<a class="headerlink" href="#override-the-admincontroller-methods-per-entity" title="Permalink to this headline">¶</a></h3>
+<p>Before executing the methods showed above (<code class="docutils literal notranslate"><span class="pre">listAction()</span></code>, <code class="docutils literal notranslate"><span class="pre">showAction()</span></code>,
+etc.), the controller looks for the existence of methods created specifically
+for the current entity. These specific methods are called like the regular
+methods, but they include the entity name as part of their names:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">list</span><span class="o">&lt;</span><span class="nx">EntityName</span><span class="o">&gt;</span><span class="nx">Action</span><span class="p">();</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">search</span><span class="o">&lt;</span><span class="nx">EntityName</span><span class="o">&gt;</span><span class="nx">Action</span><span class="p">();</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">show</span><span class="o">&lt;</span><span class="nx">EntityName</span><span class="o">&gt;</span><span class="nx">Action</span><span class="p">();</span>
+<span class="c1">// ...</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">render</span><span class="o">&lt;</span><span class="nx">EntityName</span><span class="o">&gt;</span><span class="nx">Template</span><span class="p">();</span>
+<span class="c1">// ...</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">createNew</span><span class="o">&lt;</span><span class="nx">EntityName</span><span class="o">&gt;</span><span class="nx">Entity</span><span class="p">();</span>
+<span class="c1">// ...</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">persist</span><span class="o">&lt;</span><span class="nx">EntityName</span><span class="o">&gt;</span><span class="nx">Entity</span><span class="p">();</span>
+<span class="k">protected</span> <span class="k">function</span> <span class="nf">update</span><span class="o">&lt;</span><span class="nx">EntityName</span><span class="o">&gt;</span><span class="nx">Entity</span><span class="p">();</span>
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Given the syntax of method names, it’s recommended to use CamelCase notation
+to set the entity names.</p>
+</div>
+<p>Suppose that you have a <code class="docutils literal notranslate"><span class="pre">User</span></code> entity which requires to pass the roles of the
+new user to its constructor. If you try to create new users with EasyAdmin,
+you’ll see an error because the entity constructor is missing a required
+argument.</p>
+<p>Instead of overriding the <code class="docutils literal notranslate"><span class="pre">createNewEntity()</span></code> method and check for the
+<code class="docutils literal notranslate"><span class="pre">User</span></code> entity, you can just define the following method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">EasyAdminController</span>
+<span class="p">{</span>
+    <span class="c1">// Customizes the instantiation of entities only for the &#39;User&#39; entity</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createNewUserEntity</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;ROLE_USER&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="customization-based-on-entity-controllers">
+<h2>Customization Based on Entity Controllers<a class="headerlink" href="#customization-based-on-entity-controllers" title="Permalink to this headline">¶</a></h2>
+<p>If your backend is medium-sized, the previous overriding mechanism doesn’t scale
+well because it requires you to put all the custom code in the same AdminController.
+In those cases, you can make each entity to use a different controller.</p>
+<p><strong>Step 1.</strong> Create a new controller class (for example <code class="docutils literal notranslate"><span class="pre">ProductController</span></code>)
+anywhere in your Symfony application and make it extend from the default
+<code class="docutils literal notranslate"><span class="pre">AdminController</span></code> class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/ProductController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ProductController</span> <span class="k">extends</span> <span class="nx">EasyAdminController</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Step 2.</strong> Define the <code class="docutils literal notranslate"><span class="pre">controller</span></code> configuration option for the entity that
+will use that controller and set the fully qualified class name as its value:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">controller</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Controller\ProductController</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p><strong>Step 3.</strong> You can now override any of the default <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> methods
+and they will be executed only for the <code class="docutils literal notranslate"><span class="pre">Product</span></code> entity. Repeat these steps for
+the other backend entities that you want to customize.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s not mandatory that your custom controllers extend from the default
+<code class="docutils literal notranslate"><span class="pre">AdminController</span></code> class, but doing that will simplify the code of your
+controllers.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In addition to the custom controller fully qualified class name, the
+<code class="docutils literal notranslate"><span class="pre">controller</span></code> option also works for controllers defined as services. Just
+set the name of the service as the value of the <code class="docutils literal notranslate"><span class="pre">controller</span></code> option.</p>
+</div>
+</div>
+<div class="section" id="customization-based-on-symfony-events">
+<h2>Customization Based on Symfony Events<a class="headerlink" href="#customization-based-on-symfony-events" title="Permalink to this headline">¶</a></h2>
+<p>During the execution of the backend actions, lots of events are triggered. Using
+Symfony’s event listeners or event subscribers you can hook to these events and
+modify the behavior of your backend.</p>
+<p>EasyAdmin events are defined in the <code class="docutils literal notranslate"><span class="pre">EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents</span></code> class.
+They are triggered before and after important operations and their names follow
+the <code class="docutils literal notranslate"><span class="pre">PRE_*</span></code> and <code class="docutils literal notranslate"><span class="pre">POST_*</span></code> pattern:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">final</span> <span class="k">class</span> <span class="nc">EasyAdminEvents</span>
+<span class="p">{</span>
+    <span class="c1">// Events related to initialize()</span>
+    <span class="k">const</span> <span class="no">PRE_INITIALIZE</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_INITIALIZE</span><span class="p">;</span>
+
+    <span class="c1">// Events related to the main actions</span>
+    <span class="k">const</span> <span class="no">PRE_DELETE</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_DELETE</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">PRE_EDIT</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_EDIT</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">PRE_LIST</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_LIST</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">PRE_NEW</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_NEW</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">PRE_SEARCH</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_SEARCH</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">PRE_SHOW</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_SHOW</span><span class="p">;</span>
+
+    <span class="c1">// Events related to Doctrine entities</span>
+    <span class="k">const</span> <span class="no">PRE_PERSIST</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_PERSIST</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">PRE_UPDATE</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_UPDATE</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">PRE_REMOVE</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_REMOVE</span><span class="p">;</span>
+
+    <span class="c1">// Events related to the Doctrine Query builders</span>
+    <span class="k">const</span> <span class="no">POST_LIST_QUERY_BUILDER</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">POST_SEARCH_QUERY_BUILDER</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="the-event-object">
+<h3>The Event Object<a class="headerlink" href="#the-event-object" title="Permalink to this headline">¶</a></h3>
+<p>Event listeners and subscribers receive an event object based on the
+<a class="reference external" href="https://symfony.com/doc/current/components/event_dispatcher/generic_event.html">GenericEvent class</a> defined by Symfony. The subject of the event depends
+on the current action:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code>, <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> actions receive the current <code class="docutils literal notranslate"><span class="pre">$entity</span></code> object
+(this object is also available in the event arguments as <code class="docutils literal notranslate"><span class="pre">$event['entity']</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> actions receive the <code class="docutils literal notranslate"><span class="pre">$paginator</span></code> object which contains
+the collection of entities that meet the criteria of the current listing
+(this object is also available in the event arguments as
+<code class="docutils literal notranslate"><span class="pre">$event['paginator']</span></code>).</p></li>
+</ul>
+<p>In addition, the event arguments contain all the AdminController properties
+(<code class="docutils literal notranslate"><span class="pre">$config</span></code>, <code class="docutils literal notranslate"><span class="pre">$entity</span></code>, <code class="docutils literal notranslate"><span class="pre">$request</span></code> and <code class="docutils literal notranslate"><span class="pre">$em</span></code>). You can access to them
+through the <code class="docutils literal notranslate"><span class="pre">getArgument()</span></code> method or via the array access provided by the
+<code class="docutils literal notranslate"><span class="pre">GenericEvent</span></code> class.</p>
+</div>
+<div class="section" id="event-subscriber-example">
+<h3>Event Subscriber Example<a class="headerlink" href="#event-subscriber-example" title="Permalink to this headline">¶</a></h3>
+<p>The following example shows how to use an event subscriber to set the <code class="docutils literal notranslate"><span class="pre">slug</span></code>
+property of the <code class="docutils literal notranslate"><span class="pre">BlogPost</span></code> entity before persisting it:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1"># src/EventSubscriber/EasyAdminSubscriber.php</span>
+<span class="k">namespace</span> <span class="nx">App\EventSubscriber</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Component\EventDispatcher\EventSubscriberInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\EventDispatcher\GenericEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Entity\BlogPost</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">EasyAdminSubscriber</span> <span class="k">implements</span> <span class="nx">EventSubscriberInterface</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$slugger</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$slugger</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">slugger</span> <span class="o">=</span> <span class="nv">$slugger</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getSubscribedEvents</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;easy_admin.pre_persist&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;setBlogPostSlug&#39;</span><span class="p">),</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setBlogPostSlug</span><span class="p">(</span><span class="nx">GenericEvent</span> <span class="nv">$event</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getSubject</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nv">$entity</span> <span class="nx">instanceof</span> <span class="nx">BlogPost</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$slug</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">slugger</span><span class="o">-&gt;</span><span class="na">slugify</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getTitle</span><span class="p">());</span>
+        <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">setSlug</span><span class="p">(</span><span class="nv">$slug</span><span class="p">);</span>
+
+        <span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$entity</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="page-templates-for-custom-backends">
+<h2>Page Templates for Custom Backends<a class="headerlink" href="#page-templates-for-custom-backends" title="Permalink to this headline">¶</a></h2>
+<p>EasyAdmin provides several page templates which are useful when you are
+customizing your backends.</p>
+<div class="section" id="login-form-template">
+<h3>Login Form Template<a class="headerlink" href="#login-form-template" title="Permalink to this headline">¶</a></h3>
+<p>Twig Template Path: <code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/page/login.html.twig</span></code></p>
+<p>It displays a simple username + password login form that matches the style of
+the rest of the backend. The template defines lots of config options, but most
+apps can rely on its default values:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\AbstractController</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Routing\Annotation\Route</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Security\Http\Authentication\AuthenticationUtils</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SecurityController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @Route(&quot;/login&quot;, name=&quot;login&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">login</span><span class="p">(</span><span class="nx">AuthenticationUtils</span> <span class="nv">$authenticationUtils</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
+    <span class="p">{</span>
+        <span class="nv">$error</span> <span class="o">=</span> <span class="nv">$authenticationUtils</span><span class="o">-&gt;</span><span class="na">getLastAuthenticationError</span><span class="p">();</span>
+        <span class="nv">$lastUsername</span> <span class="o">=</span> <span class="nv">$authenticationUtils</span><span class="o">-&gt;</span><span class="na">getLastUsername</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;@EasyAdmin/page/login.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="c1">// parameters usually defined in Symfony login forms</span>
+            <span class="s1">&#39;error&#39;</span> <span class="o">=&gt;</span> <span class="nv">$error</span><span class="p">,</span>
+            <span class="s1">&#39;last_username&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lastUsername</span><span class="p">,</span>
+
+            <span class="c1">// OPTIONAL parameters to customize the login form:</span>
+
+            <span class="c1">// the string used to generate the CSRF token. If you don&#39;t define</span>
+            <span class="c1">// this parameter, the login form won&#39;t include a CSRF token</span>
+            <span class="s1">&#39;csrf_token_intention&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;authenticate&#39;</span><span class="p">,</span>
+            <span class="c1">// the URL users are redirected to after the login (default: path(&#39;easyadmin&#39;))</span>
+            <span class="s1">&#39;target_path&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;admin_dashboard&#39;</span><span class="p">),</span>
+            <span class="c1">// the label displayed for the username form field (the |trans filter is applied to it)</span>
+            <span class="s1">&#39;username_label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Your username&#39;</span><span class="p">,</span>
+            <span class="c1">// the label displayed for the password form field (the |trans filter is applied to it)</span>
+            <span class="s1">&#39;password_label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Your password&#39;</span><span class="p">,</span>
+            <span class="c1">// the label displayed for the Sign In form button (the |trans filter is applied to it)</span>
+            <span class="s1">&#39;sign_in_label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Log in&#39;</span><span class="p">,</span>
+            <span class="c1">// the &#39;name&#39; HTML attribute of the &lt;input&gt; used for the username field (default: &#39;_username&#39;)</span>
+            <span class="s1">&#39;username_parameter&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_custom_username_field&#39;</span><span class="p">,</span>
+            <span class="c1">// the &#39;name&#39; HTML attribute of the &lt;input&gt; used for the password field (default: &#39;_password&#39;)</span>
+            <span class="s1">&#39;password_parameter&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_custom_password_field&#39;</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="content-page-template">
+<h3>Content Page Template<a class="headerlink" href="#content-page-template" title="Permalink to this headline">¶</a></h3>
+<p>Twig Template Path: <code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/page/content.html.twig</span></code></p>
+<p>It displays a simple page similar to the list/show/edit/new pages, with the
+main header, the sidebar menu and the central content section. The only
+difference is that the content section is completely empty, so it’s useful to
+display your own text contents, custom forms, etc.</p>
+</div>
+<div class="section" id="blank-page-template">
+<h3>Blank Page Template<a class="headerlink" href="#blank-page-template" title="Permalink to this headline">¶</a></h3>
+<p>Twig Template Path: <code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/page/blank.html.twig</span></code></p>
+<p>It displays a page with the same header and sidebar menu as the
+list/show/edit/new pages, but without the central content section. It’s useful
+to define completely custom page, such as a complex dashboard.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configuration-reference.html" class="btn btn-neutral float-right" title="Configuration Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="menu-configuration.html" class="btn btn-neutral float-left" title="Chapter 8. Menu Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

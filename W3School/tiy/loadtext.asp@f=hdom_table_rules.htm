@@ -1,0 +1,42 @@
+<html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_table_rules --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function rowRules()
+  {
+  document.getElementById('myTable').rules="rows"
+  }
+function colRules()
+  {
+document.getElementById('myTable').rules="cols"
+  }
+</script>
+</head>
+
+<body>
+<table id="myTable" border="1">
+<tr>
+<td>Row1 cell1</td>
+<td>Row1 cell2</td>
+</tr>
+<tr>
+<td>Row2 cell1</td>
+<td>Row2 cell2</td>
+</tr>
+<tr>
+<td>Row3 cell1</td>
+<td>Row3 cell2</td>
+</tr>
+</table>
+<br />
+<input type="button" onclick="rowRules()" value="仅显示行边框">
+<input type="button" onclick="colRules()" value="仅显示列边框">
+
+</body>
+</html>

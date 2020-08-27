@@ -1,0 +1,26 @@
+<html><!-- saved from url=(0069)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_form_acceptcharset --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function showCharset()
+{
+var x=document.getElementById("myForm")
+alert(x.acceptCharset)
+}
+</script>
+</head>
+<body>
+
+<form id="myForm" acceptCharset="ISO-8859-1">
+Text: <input type="text" value="Hello World!">
+<input type="button" onclick="showCharset()" value="Show charset">
+</form>
+
+</body>
+</html>

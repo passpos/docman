@@ -1,0 +1,40 @@
+<HTML>
+<!-- saved from url=(0068)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_func_compact1 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+$firstname = &quot;Bill&quot;;
+$lastname = &quot;Gates&quot;;
+$age = &quot;60&quot;;
+
+$name = array(&quot;firstname&quot;, &quot;lastname&quot;);
+$result = compact($name, &quot;location&quot;, &quot;age&quot;);
+
+print_r($result);
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

@@ -1,0 +1,25 @@
+<html><!-- saved from url=(0066)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_createcomment_1 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books.xml");
+
+newComment=xmlDoc.createComment("Revised March 2008");
+
+x=xmlDoc.getElementsByTagName("book")[0];
+x.appendChild(newComment);
+
+document.write(x.lastChild.nodeValue);
+</script>
+</body>
+</html>

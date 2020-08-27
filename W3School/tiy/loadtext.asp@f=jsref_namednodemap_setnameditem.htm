@@ -1,0 +1,36 @@
+<!DOCTYPE html><!-- saved from url=(0077)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_namednodemap_setnameditem --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<style type="text/css">
+.democlass{
+	color:red;
+}
+</style>
+</head>
+<body>
+
+<h1>Hello World</h1>
+
+<p id="demo">请点击按钮，将 H1 的 class 属性设置为 &quot;democlass&quot;。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var h=document.getElementsByTagName("H1")[0];
+var typ=document.createAttribute("class");
+typ.nodeValue="democlass";
+h.attributes.setNamedItem(typ);
+}
+</script>
+
+</body>
+</html>

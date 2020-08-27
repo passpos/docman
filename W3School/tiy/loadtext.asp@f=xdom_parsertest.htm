@@ -1,0 +1,23 @@
+<html><!-- saved from url=(0061)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_parsertest --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books.xml");
+
+document.write(xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue);
+document.write("<br />");
+document.write(xmlDoc.getElementsByTagName("author")[0].childNodes[0].nodeValue);
+document.write("<br />");
+document.write(xmlDoc.getElementsByTagName("year")[0].childNodes[0].nodeValue);
+</script>
+</body>
+</html>

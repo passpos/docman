@@ -1,0 +1,40 @@
+<html><!-- saved from url=(0065)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_tablecell_axis --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function alertAxis()
+  {
+  alert(document.getElementById('td3').axis);
+  }
+</script>
+</head>
+<body>
+
+<table border="1">
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>City</th>
+</tr>
+<tr>
+<td id="td1">Harry</td>
+<td id="td2">Potter</td>
+<td id="td3" axis="location">NY</td>
+</tr>
+<tr>
+<td id="td4">Peter</td>
+<td id="td5">Griffin</td>
+<td id="td6" axis="location">Las Vegas</td>
+</tr>
+</table>
+<br />
+<input type="button" onclick="alertAxis()" value="Alert axis" />
+
+</body>
+</html>

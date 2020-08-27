@@ -1,0 +1,30 @@
+<html><!-- saved from url=(0060)http://www.w3school.com.cn/tiy/loadtext.asp?f=jseg_datetime2 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<script type="text/javascript">
+
+function checkTime(i)
+{
+if (i<10) 
+  {i="0" + i}
+  return i
+}
+
+var d = new Date()
+document.write(checkTime(d.getHours()))
+document.write(".")
+document.write(checkTime(d.getMinutes()))
+document.write(".")
+document.write(checkTime(d.getSeconds()))
+
+</script>
+
+</body>
+</html>

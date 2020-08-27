@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>基本用法 | Composer 中文文档 | Composer 中文网</title>
+        <meta name="description" content="Composer 是 PHP 中用来管理依赖（dependency）关系的工具">
+        <meta name="keywords" content="PHP, Composer, Packagist, 依赖管理, npm, Symfony, Laravel">
+
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/libs/prism.css">
+
+        <script src="https://cdn.bootcss.com/modernizr/2.8.2/modernizr.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                    <a href="docs_phpcomposer_default.html">首页</a>
+                    <a href="00-intro.html">入门</a>
+                    <a href="https://getcomposer.org/download/" target="_blank">下载</a>
+                    <a href="https://packagist.org/" target="_blank">安装包列表</a>
+                    <a class="last" href="https://pkg.phpcomposer.com/" target="_blank">中国镜像</a>
+            </header>
+            <div id="main" role="main">
+    
+    <p><a name="Basic-usage"></a></p>
+<h1>基本用法</h1>
+<hr>
+<ul>
+<li><a href="01-basic-usage.html#Basic-usage">基本用法</a>
+<ul>
+<li><a href="01-basic-usage.html#Installation">安装</a></li>
+<li><a href="01-basic-usage.html#composer.json-Project-Setup"><code>composer.json</code>：项目安装</a>
+<ul>
+<li><a href="01-basic-usage.html#The-require-Key">关于 <code>require</code> Key</a></li>
+<li><a href="01-basic-usage.html#Package-Names">包名称</a></li>
+<li><a href="01-basic-usage.html#Package-Versions">包版本</a></li>
+<li><a href="01-basic-usage.html#Next-Significant-Release">下一个重要版本（波浪号运算符）</a></li>
+<li><a href="01-basic-usage.html#Stability">稳定性</a></li>
+</ul>
+</li>
+<li><a href="01-basic-usage.html#Installing-Dependencies">安装依赖包</a></li>
+<li><a href="01-basic-usage.html#composer.lock-The-Lock-File"><code>composer.lock</code> - 锁文件</a></li>
+<li><a href="01-basic-usage.html#Packagist">Packagist</a></li>
+<li><a href="01-basic-usage.html#Autoloading">自动加载</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><a name="Installation"></a></p>
+<h2>安装</h2>
+<p>安装 Composer，你只需要下载 <code>composer.phar</code> 可执行文件。</p>
+<pre><code class="language-sh">curl -sS https://getcomposer.org/installer | php
+</code></pre>
+<p>详细请查看 <a href="00-intro.html">简介</a> 章节。</p>
+<p>要检查 Composer 是否正常工作，只需要通过 <code>php</code> 来执行 PHAR：</p>
+<pre><code class="language-sh">php composer.phar
+</code></pre>
+<p>这将返回给你一个可执行的命令列表。</p>
+<blockquote>
+<p><strong>注意：</strong> 你也可以仅执行 <code>--check</code> 选项而无需下载 Composer。
+要获取更多的信息请使用 <code>--help</code>。</p>
+<pre><code class="language-sh">curl -sS https://getcomposer.org/installer | php -- --help
+</code></pre>
+</blockquote>
+<p><a name="composer.json-Project-Setup"></a></p>
+<h2><code>composer.json</code>：项目安装</h2>
+<p>要开始在你的项目中使用 Composer，你只需要一个 <code>composer.json</code> 文件。该文件包含了项目的依赖和其它的一些元数据。</p>
+<p>这个 <a href="http://json.org/" target="_blank">JSON format</a> 是很容易编写的。它允许你定义嵌套结构。</p>
+<p><a name="The-require-Key"></a></p>
+<h3>关于 <code>require</code> Key</h3>
+<p>第一件事情（并且往往只需要做这一件事），你需要在 <code>composer.json</code> 文件中指定 <code>require</code> key 的值。你只需要简单的告诉 Composer 你的项目需要依赖哪些包。</p>
+<pre><code class="language-json">{
+    &quot;require&quot;: {
+        &quot;monolog/monolog&quot;: &quot;1.0.*&quot;
+    }
+}
+</code></pre>
+<p>你可以看到， <code>require</code> 需要一个 <strong>包名称</strong> （例如 <code>monolog/monolog</code>） 映射到 <strong>包版本</strong> （例如 <code>1.0.*</code>） 的对象。</p>
+<p><a name="Package-Names"></a></p>
+<h3>包名称</h3>
+<p>包名称由供应商名称和其项目名称构成。通常容易产生相同的项目名称，而供应商名称的存在则很好的解决了命名冲突的问题。它允许两个不同的人创建同样名为 <code>json</code> 的库，而之后它们将被命名为 <code>igorw/json</code> 和 <code>seldaek/json</code>。</p>
+<p>这里我们需要引入 <code>monolog/monolog</code>，供应商名称与项目的名称相同，对于一个具有唯一名称的项目，我们推荐这么做。它还允许以后在同一个命名空间添加更多的相关项目。如果你维护着一个库，这将使你可以很容易的把它分离成更小的部分。</p>
+<p><a name="Package-Versions"></a></p>
+<h3>包版本</h3>
+<p>在前面的例子中，我们引入的 monolog 版本指定为 <code>1.0.*</code>。这表示任何从 <code>1.0</code> 开始的开发分支，它将会匹配 <code>1.0.0</code>、<code>1.0.2</code> 或者 <code>1.0.20</code>。</p>
+<p>版本约束可以用几个不同的方法来指定。</p>
+<table>
+    <thead>
+        <tr>
+            <th>名称</th><th>实例</th><th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>确切的版本号</td>
+            <td><code>1.0.2</code></td>
+            <td>你可以指定包的确切版本。</td>
+        </tr>
+        <tr>
+            <td>范围</td>
+            <td>
+                <code>&gt;=1.0</code>
+                <code>&gt;=1.0,&lt;2.0</code>
+                <code>&gt;=1.0,&lt;1.1|&gt;=1.2</code>
+            </td>
+            <td>通过使用比较操作符可以指定有效的版本范围。
+            <br>有效的运算符：<code>&gt;</code>、<code>&gt;=</code>、<code>&lt;</code>、<code>&lt;=</code>、<code>!=</code>。
+            <br>你可以定义多个范围，用逗号隔开，这将被视为一个<strong>逻辑AND</strong>处理。一个管道符号<code>|</code>将作为<strong>逻辑OR</strong>处理。
+            <br>AND 的优先级高于 OR。</td>
+        </tr>
+        <tr>
+            <td>通配符</td>
+            <td><code>1.0.*</code></td>
+            <td>你可以使用通配符<code>*</code>来指定一种模式。<code>1.0.*</code>与<code>&gt;=1.0,&lt;1.1</code>是等效的。</td>
+        </tr>
+        <tr>
+            <td>赋值运算符</td>
+            <td><code>~1.2</code></td>
+            <td>这对于遵循语义化版本号的项目非常有用。<code>~1.2</code>相当于<code>&gt;=1.2,&lt;2.0</code>。想要了解更多，请阅读下一小节。</td>
+        </tr>
+    </tbody>
+</table>
+<p><a name="Next-Significant-Release"></a></p>
+<h3>下一个重要版本（波浪号运算符）</h3>
+<p><code>~</code> 最好用例子来解释： <code>~1.2</code> 相当于 <code>&gt;=1.2,&lt;2.0</code>，而 <code>~1.2.3</code> 相当于 <code>&gt;=1.2.3,&lt;1.3</code>。正如你所看到的这对于遵循 <a href="http://semver.org/" target="_blank">语义化版本号</a> 的项目最有用。一个常见的用法是标记你所依赖的最低版本，像 <code>~1.2</code> （允许1.2以上的任何版本，但不包括2.0）。由于理论上直到2.0应该都没有向后兼容性问题，所以效果很好。你还会看到它的另一种用法，使用 <code>~</code> 指定最低版本，但允许版本号的最后一位数字上升。</p>
+<blockquote>
+<p><strong>注意：</strong> 虽然 <code>2.0-beta.1</code> 严格地说是早于 <code>2.0</code>，但是，根据版本约束条件，
+例如 <code>~1.2</code> 却不会安装这个版本。就像前面所讲的 <code>~1.2</code> 只意味着 <code>.2</code>
+部分可以改变，但是 <code>1.</code> 部分是固定的。</p>
+</blockquote>
+<p><a name="Stability"></a></p>
+<h3>稳定性</h3>
+<p>默认情况下只有稳定的发行版才会被考虑在内。如果你也想获得 RC、beta、alpha 或 dev 版本，你可以使用 <a href="04-schema.html#Package-links">稳定标志</a>。你可以对所有的包做 <a href="04-schema.html#minimum-stability">最小稳定性</a> 设置，而不是每个依赖逐一设置。</p>
+<p><a name="Installing-Dependencies"></a></p>
+<h2>安装依赖包</h2>
+<p>获取定义的依赖到你的本地项目，只需要调用 <code>composer.phar</code> 运行 <code>install</code> 命令。</p>
+<pre><code class="language-sh">php composer.phar install
+</code></pre>
+<p>接着前面的例子，这将会找到 <code>monolog/monolog</code> 的最新版本，并将它下载到 <code>vendor</code> 目录。
+这是一个惯例把第三方的代码到一个指定的目录 <code>vendor</code>。如果是 monolog 将会创建 <code>vendor/monolog/monolog</code> 目录。</p>
+<blockquote>
+<p><strong>小技巧：</strong> 如果你正在使用Git来管理你的项目，
+你可能要添加 <code>vendor</code> 到你的 <code>.gitignore</code> 文件中。
+你不会希望将所有的代码都添加到你的版本库中。</p>
+</blockquote>
+<p>另一件事是 <code>install</code> 命令将创建一个 <code>composer.lock</code> 文件到你项目的根目录中。</p>
+<p><a name="composer.lock-The-Lock-File"></a></p>
+<h2><code>composer.lock</code> - 锁文件</h2>
+<p>在安装依赖后，Composer 将把安装时确切的版本号列表写入 <code>composer.lock</code> 文件。这将锁定改项目的特定版本。</p>
+<p><strong>请提交你应用程序的 <code>composer.lock</code> （包括 <code>composer.json</code>）到你的版本库中</strong></p>
+<p>这是非常重要的，因为 <code>install</code> 命令将会检查锁文件是否存在，如果存在，它将下载指定的版本（忽略 <code>composer.json</code> 文件中的定义）。</p>
+<p>这意味着，任何人建立项目都将下载与指定版本完全相同的依赖。你的持续集成服务器、生产环境、你团队中的其他开发人员、每件事、每个人都使用相同的依赖，从而减轻潜在的错误对部署的影响。即使你独自开发项目，在六个月内重新安装项目时，你也可以放心的继续工作，即使从那时起你的依赖已经发布了许多新的版本。</p>
+<p>如果不存在 <code>composer.lock</code> 文件，Composer 将读取 <code>composer.json</code> 并创建锁文件。</p>
+<p>这意味着如果你的依赖更新了新的版本，你将不会获得任何更新。此时要更新你的依赖版本请使用 <code>update</code> 命令。这将获取最新匹配的版本（根据你的 <code>composer.json</code> 文件）并将新版本更新进锁文件。</p>
+<pre><code class="language-sh">php composer.phar update
+</code></pre>
+<p>如果只想安装或更新一个依赖，你可以白名单它们：</p>
+<pre><code class="language-sh">php composer.phar update monolog/monolog [...]
+</code></pre>
+<blockquote>
+<p><strong>注意：</strong> 对于库，并不一定建议提交锁文件
+请参考：<a href="02-libraries.html#Lock-file">库的锁文件</a>.</p>
+</blockquote>
+<p><a name="Packagist"></a></p>
+<h2>Packagist</h2>
+<p><a href="https://packagist.org/" target="_blank">packagist</a> 是 Composer 的主要资源库。 一个 Composer 的库基本上是一个包的源：记录了可以得到包的地方。Packagist 的目标是成为大家使用库资源的中央存储平台。这意味着你可以 <code>require</code> 那里的任何包。</p>
+<p>当你访问 <a href="https://packagist.org/" target="_blank">packagist website</a> (packagist.org)，你可以浏览和搜索资源包。</p>
+<p>任何支持 Composer 的开源项目应该发布自己的包在 packagist 上。虽然并不一定要发布在 packagist 上来使用 Composer，但它使我们的编程生活更加轻松。</p>
+<p><a name="Autoloading"></a></p>
+<h2>自动加载</h2>
+<p>对于库的自动加载信息，Composer 生成了一个 <code>vendor/autoload.php</code> 文件。你可以简单的引入这个文件，你会得到一个免费的自动加载支持。</p>
+<pre><code class="language-php">require 'vendor/autoload.php';
+</code></pre>
+<p>这使得你可以很容易的使用第三方代码。例如：如果你的项目依赖 monolog，你就可以像这样开始使用这个类库，并且他们将被自动加载。</p>
+<pre><code class="language-php">$log = new Monolog\Logger('name');
+$log-&gt;pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
+
+$log-&gt;addWarning('Foo');
+</code></pre>
+<p>你可以在 <code>composer.json</code> 的 <code>autoload</code> 字段中增加自己的 autoloader。</p>
+<pre><code class="language-json">{
+    &quot;autoload&quot;: {
+        &quot;psr-4&quot;: {&quot;Acme\\&quot;: &quot;src/&quot;}
+    }
+}
+</code></pre>
+<p>Composer 将注册一个 <a href="http://www.php-fig.org/psr/psr-4/" target="_blank">PSR-4</a> autoloader 到 <code>Acme</code> 命名空间。</p>
+<p>你可以定义一个从命名空间到目录的映射。此时 <code>src</code> 会在你项目的根目录，与 <code>vendor</code> 文件夹同级。例如 <code>src/Foo.php</code> 文件应该包含 <code>Acme\Foo</code> 类。</p>
+<p>添加 <code>autoload</code> 字段后，你应该再次运行 <code>install</code> 命令来生成 <code>vendor/autoload.php</code> 文件。</p>
+<p>引用这个文件也将返回 autoloader 的实例，你可以将包含调用的返回值存储在变量中，并添加更多的命名空间。这对于在一个测试套件中自动加载类文件是非常有用的，例如。</p>
+<pre><code class="language-php">$loader = require 'vendor/autoload.php';
+$loader-&gt;add('Acme\\Test\\', __DIR__);
+</code></pre>
+<p>除了 PSR-4 自动加载，classmap 也是支持的。这允许类被自动加载，即使不符合 PSR-0 规范。详细请查看 <a href="04-schema.html#autoload">自动加载-参考</a>。</p>
+<blockquote>
+<p><strong>注意：</strong> Composer 提供了自己的 autoloader。如果你不想使用它，你可以仅仅引入 <code>vendor/composer/autoload_*.php</code> 文件，它返回一个关联数组，你可以通过这个关联数组配置自己的 autoloader。</p>
+</blockquote>
+<p>← <a href="00-intro.html">简介</a>  |  <a href="02-libraries.html">库（资源包）</a> →</p>
+
+
+    <p class="fork-and-edit">
+        如果您发现文档中有错误，或者能够帮我们完善文档，请提交到我们的 <a href="https://github.com/5-say/composer-doc-cn" target="_blank">Github 仓库吧</a>！
+    </p>
+            </div>
+            <footer>
+
+                <p class="license">Composer 以及本网站上的所有内容全部遵循 <a href="https://github.com/composer/composer/blob/master/LICENSE" target="_blank">MIT 开源协议</a>。</p>
+            </footer>
+        </div>
+
+        <script src="http://docs.phpcomposer.com/assets/js/libs/prism.js"></script>
+        <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F16e97907ef84179ff8cd833509017a96' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </body>
+</html>

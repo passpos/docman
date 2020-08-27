@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to Manage Configuration for Complex Backends &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tips and Tricks" href="tips-and-tricks.html" />
+    <link rel="prev" title="How to Define Custom Options for Entity Properties" href="custom-property-options.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../book/installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Manage Configuration for Complex Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#splitting-configuration-into-several-files">Splitting Configuration into Several Files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>How to Manage Configuration for Complex Backends</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/complex-backend-config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-manage-configuration-for-complex-backends">
+<h1>How to Manage Configuration for Complex Backends<a class="headerlink" href="#how-to-manage-configuration-for-complex-backends" title="Permalink to this headline">¶</a></h1>
+<p>The recommended way to start configuring your backend is to use the
+<code class="docutils literal notranslate"><span class="pre">config/packages/easy_admin.yaml</span></code> file and put your configuration under the
+<code class="docutils literal notranslate"><span class="pre">easy_admin</span></code> key. However, for medium-sized and large backends this
+configuration can be very long and hard to maintain.</p>
+<div class="section" id="splitting-configuration-into-several-files">
+<h2>Splitting Configuration into Several Files<a class="headerlink" href="#splitting-configuration-into-several-files" title="Permalink to this headline">¶</a></h2>
+<p>If your application keeps growing, it’s better to split the configuration into
+different files.</p>
+<p>Consider an application which defines the following configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">site_name</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+    <span class="c1"># ...</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+        <span class="nt">Category</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This configuration is going to be divided into four different files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">design.yml</span></code> for design related configuration;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">product.yml</span></code> for the configuration related to <code class="docutils literal notranslate"><span class="pre">Product</span></code> entity;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user.yml</span></code> for the configuration related to <code class="docutils literal notranslate"><span class="pre">User</span></code> entity;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basic.yml</span></code> for the rest of the configuration, including any entity
+different from <code class="docutils literal notranslate"><span class="pre">Product</span></code> and <code class="docutils literal notranslate"><span class="pre">User</span></code>.</p></li>
+</ul>
+<p>First, create a new <code class="docutils literal notranslate"><span class="pre">config/packages/easy_admin/</span></code> directory to store the new
+files so they don’t mess with the other Symfony configuration files. Then,
+create the four files with these contents:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin/basic.yml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">site_name</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+    <span class="c1"># ...</span>
+
+<span class="c1"># config/packages/easy_admin/design.yml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+
+<span class="c1"># config/packages/easy_admin/product.yml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+
+<span class="c1"># config/packages/easy_admin/user.yml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Beware that each configuration file must define its contents under
+the <code class="docutils literal notranslate"><span class="pre">easy_admin</span></code> key. Otherwise, Symfony won’t be able to merge
+the different configurations.</p>
+</div>
+<p>Lastly, update the contents of the main <code class="docutils literal notranslate"><span class="pre">easy_admin.yaml</span></code> file to import all
+these new files:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">imports</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> resource</span><span class="p">:</span> <span class="nv">easy_admin/</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tips-and-tricks.html" class="btn btn-neutral float-right" title="Tips and Tricks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="custom-property-options.html" class="btn btn-neutral float-left" title="How to Define Custom Options for Entity Properties" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

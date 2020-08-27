@@ -1,0 +1,37 @@
+<HTML>
+<!-- saved from url=(0072)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_aspe_datelastmodified --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="aspcode">&lt;%
+dim fs, f
+set fs=Server.CreateObject(&quot;Scripting.FileSystemObject&quot;)
+set f=fs.GetFile(Server.MapPath(&quot;testread.txt&quot;))
+Response.Write(&quot;文件 testread.txt 的最后修改时间是：&quot; & f.DateLastModified)
+set f=nothing
+set fs=nothing
+%&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

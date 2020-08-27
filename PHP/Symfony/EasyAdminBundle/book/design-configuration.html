@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 4. Design Configuration &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 5. List, Search and Show Views Configuration" href="list-search-show-configuration.html" />
+    <link rel="prev" title="Chapter 3. Basic Configuration" href="basic-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 4. Design Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-main-backend-color">Changing the Main Backend Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-custom-web-assets">Adding Custom Web Assets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#css-selectors">CSS Selectors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-favicon">Changing the favicon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-rtl-support">Enabling RTL Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-the-entire-bootstrap-framework">Loading the Entire Bootstrap Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-backend-design">Customizing the Backend Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-the-backend-assets-with-webpack">Managing the Backend Assets with Webpack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-customization-of-backend-pages">Advanced Customization of Backend Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Chapter 4. Design Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/book/design-configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-4-design-configuration">
+<h1>Chapter 4. Design Configuration<a class="headerlink" href="#chapter-4-design-configuration" title="Permalink to this headline">¶</a></h1>
+<p>The design of the backend is loosely based on the popular <a class="reference external" href="https://github.com/almasaeed2010/AdminLTE">AdminLTE template</a>
+and it’s created with <a class="reference external" href="https://github.com/twbs/bootstrap">Bootstrap 4</a>, <a class="reference external" href="https://github.com/jquery/jquery">jQuery</a> and <a class="reference external" href="https://github.com/FortAwesome/Font-Awesome">Font Awesome icons</a>. You
+can customize this design in two ways:</p>
+<ol class="arabic simple">
+<li><p>For <strong>simple backends</strong>, you can change the value of some YAML configuration
+options and create a CSS file to override some CSS variables.</p></li>
+<li><p>For <strong>more complex backends</strong>, you can process CSS and JavaScript assets with
+Webpack and you can override every template and fragment used to render the
+backend pages.</p></li>
+</ol>
+<p>All the configuration options explained in this chapter are defined under the
+global <code class="docutils literal notranslate"><span class="pre">design</span></code> YAML key:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># ... design configuration options</span>
+</pre></div>
+</div>
+<div class="section" id="changing-the-main-backend-color">
+<h2>Changing the Main Backend Color<a class="headerlink" href="#changing-the-main-backend-color" title="Permalink to this headline">¶</a></h2>
+<p>Define the <code class="docutils literal notranslate"><span class="pre">brand_color</span></code> option to change the default accent color used by the
+backend interface:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">brand_color</span><span class="p">:</span> <span class="s">&#39;#1ABC9C&#39;</span>
+
+        <span class="c1"># the value of this option can be any valid CSS color</span>
+        <span class="nt">brand_color</span><span class="p">:</span> <span class="s">&#39;red&#39;</span>
+        <span class="nt">brand_color</span><span class="p">:</span> <span class="s">&#39;rgba(26,</span><span class="nv"> </span><span class="s">188,</span><span class="nv"> </span><span class="s">156,</span><span class="nv"> </span><span class="s">0.85)&#39;</span>
+
+        <span class="c1"># if the color includes a &#39;%&#39;, you must double it to escape it in the YAML file</span>
+        <span class="nt">brand_color</span><span class="p">:</span> <span class="s">&#39;hsl(0,</span><span class="nv"> </span><span class="s">100%%,</span><span class="nv"> </span><span class="s">50%%);&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-custom-web-assets">
+<h2>Adding Custom Web Assets<a class="headerlink" href="#adding-custom-web-assets" title="Permalink to this headline">¶</a></h2>
+<p>Some backends may require to load your own CSS and JavaScript files. Use the
+<code class="docutils literal notranslate"><span class="pre">assets</span></code> option to define the paths of the web assets to load:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">assets</span><span class="p">:</span>
+            <span class="c1"># all kinds of assets are supported and linked accordingly</span>
+            <span class="nt">css</span><span class="p">:</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;//example.org/css/admin1.css&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;http://example.org/css/admin2.css&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;https://example.org/css/admin3.css&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;/bundles/user/css/admin4.css&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;bundles/app/css/admin5.css&#39;</span>
+            <span class="nt">js</span><span class="p">:</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;//example.org/js/admin1.js&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;http://example.org/js/admin2.js&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;https://example.org/js/admin3.js&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;/bundles/user/js/admin4.js&#39;</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;bundles/app/js/admin5.js&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="css-selectors">
+<h3>CSS Selectors<a class="headerlink" href="#css-selectors" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> element of every backend page includes different <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">class</span></code>
+attributes to help you target your own styles. The <code class="docutils literal notranslate"><span class="pre">id</span></code> follows this pattern:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>View</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> ID attribute</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">easyadmin-edit-&lt;entity_name&gt;-&lt;entity_id&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">easyadmin-list-&lt;entity_name&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">new</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">easyadmin-new-&lt;entity_name&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">easyadmin-show-&lt;entity_name&gt;-&lt;entity_id&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>If you are editing for example the element with <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">=</span> <span class="pre">200</span></code> of the <code class="docutils literal notranslate"><span class="pre">User</span></code> entity,
+the <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> of that page will be <code class="docutils literal notranslate"><span class="pre">&lt;body</span> <span class="pre">id=&quot;easyadmin-edit-User-200&quot;</span> <span class="pre">...&gt;</span></code>.</p>
+<p>The pattern of the <code class="docutils literal notranslate"><span class="pre">class</span></code> attribute is different because it applies several
+CSS classes at the same time:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>View</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> CSS class</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">easyadmin</span> <span class="pre">edit</span> <span class="pre">edit-&lt;entity_name&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">easyadmin</span> <span class="pre">list</span> <span class="pre">list-&lt;entity_name&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">new</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">easyadmin</span> <span class="pre">new</span> <span class="pre">new-&lt;entity_name&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">easyadmin</span> <span class="pre">show</span> <span class="pre">show-&lt;entity_name&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>If you are displaying for example the listing of <code class="docutils literal notranslate"><span class="pre">User</span></code> entity elements, the
+<code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> of that page will be <code class="docutils literal notranslate"><span class="pre">&lt;body</span> <span class="pre">class=&quot;easyadmin</span> <span class="pre">list</span> <span class="pre">list-User&quot;</span> <span class="pre">...&gt;</span></code>.</p>
+</div>
+</div>
+<div class="section" id="changing-the-favicon">
+<h2>Changing the favicon<a class="headerlink" href="#changing-the-favicon" title="Permalink to this headline">¶</a></h2>
+<p>A nice trick for backends is to change their favicon to better differentiate
+the backend from the public website (this is specially useful when opening lots
+of tabs in your browser).</p>
+<p>If you want to apply this technique, create the favicon image (using any common
+format: <code class="docutils literal notranslate"><span class="pre">.ico</span></code>, <code class="docutils literal notranslate"><span class="pre">.png</span></code>, <code class="docutils literal notranslate"><span class="pre">.gif</span></code>, <code class="docutils literal notranslate"><span class="pre">.jpg</span></code>) and set the <code class="docutils literal notranslate"><span class="pre">favicon</span></code> option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+        <span class="nt">assets</span><span class="p">:</span>
+            <span class="nt">favicon</span><span class="p">:</span> <span class="s">&#39;/assets/backend/favicon.png&#39;</span>
+
+        <span class="c1"># if the favicon uses an uncommon graphic format, define its MIME type</span>
+        <span class="nt">assets</span><span class="p">:</span>
+            <span class="nt">favicon</span><span class="p">:</span>
+                <span class="nt">path</span><span class="p">:</span> <span class="s">&#39;/assets/backend/favicon.xxx&#39;</span>
+                <span class="nt">mime_type</span><span class="p">:</span> <span class="s">&#39;image/xxx&#39;</span>
+</pre></div>
+</div>
+<p>The value of the <code class="docutils literal notranslate"><span class="pre">favicon</span></code> option is used as the value of the <code class="docutils literal notranslate"><span class="pre">href</span></code> attribute
+of the <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;icon&quot;</span> <span class="pre">...&gt;</span></code> element in the backend’s layout.</p>
+</div>
+<div class="section" id="enabling-rtl-support">
+<h2>Enabling RTL Support<a class="headerlink" href="#enabling-rtl-support" title="Permalink to this headline">¶</a></h2>
+<p>The RTL writing support is enabled automatically in the interface when the
+locale of the application is <code class="docutils literal notranslate"><span class="pre">ar</span></code> (Arabic), <code class="docutils literal notranslate"><span class="pre">fa</span></code> (Persian) or <code class="docutils literal notranslate"><span class="pre">he</span></code>
+(Hebrew). If you need a more precise control over this setting, configure the
+<code class="docutils literal notranslate"><span class="pre">rtl</span></code> boolean option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+        <span class="nt">rtl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loading-the-entire-bootstrap-framework">
+<h2>Loading the Entire Bootstrap Framework<a class="headerlink" href="#loading-the-entire-bootstrap-framework" title="Permalink to this headline">¶</a></h2>
+<p>In order to improve performance, the backend doesn’t load the entire CSS and
+JavaScript code from Bootstrap but only the parts that uses it. If you create
+custom backends, you may need to load the missing Bootstrap parts.</p>
+<p>Instead of downloading and including the entire Bootstrap yourself, you can use
+the <code class="docutils literal notranslate"><span class="pre">bootstrap-all.css</span></code> and <code class="docutils literal notranslate"><span class="pre">bootstrap-all.js</span></code> files provided by EasyAdmin
+which contains all the Bootstrap parts not included by default by the backend:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">assets</span><span class="p">:</span>
+            <span class="nt">css</span><span class="p">:</span>
+                <span class="c1"># ...</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;bundles/easyadmin/bootstrap-all.css&#39;</span>
+            <span class="nt">js</span><span class="p">:</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;bundles/easyadmin/bootstrap-all.js&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-the-backend-design">
+<h2>Customizing the Backend Design<a class="headerlink" href="#customizing-the-backend-design" title="Permalink to this headline">¶</a></h2>
+<p>The design of the backend is created with lots of CSS variables. This makes it
+easier to customize it to your own needs. You’ll find all variables in the
+<code class="docutils literal notranslate"><span class="pre">assets/css/easyadmin-theme/variables.scss</span></code> file. To override any of them,
+create a CSS file and redefine the variable values:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span>/* public/css/admin.css */
+:root {
+    /* make the backend contents as wide as the browser window */
+    --body-max-width: 100%;
+    /* change the background color of the &lt;body&gt; */
+    --body-bg: #f5f5f5;
+    /* make the base font size smaller */
+    --font-size-base: 13px;
+    /* remove all border radius to make corners straight */
+    --border-radius: 0px;
+}
+</pre></div>
+</div>
+<p>Then, load this CSS file in your backend:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">assets</span><span class="p">:</span>
+            <span class="nt">css</span><span class="p">:</span>
+                <span class="c1"># ...</span>
+                <span class="p p-Indicator">-</span> <span class="s">&#39;css/admin.css&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because of how Bootstrap styles are defined, it’s not possible to use CSS
+variables to override every style. Sometimes you may need to also override
+the value of some Sass variables (which are also defined in the same
+<code class="docutils literal notranslate"><span class="pre">assets/css/easyadmin-theme/variables.scss</span></code> file).</p>
+</div>
+</div>
+<div class="section" id="managing-the-backend-assets-with-webpack">
+<h2>Managing the Backend Assets with Webpack<a class="headerlink" href="#managing-the-backend-assets-with-webpack" title="Permalink to this headline">¶</a></h2>
+<p>EasyAdmin uses <a class="reference external" href="https://webpack.js.org/">Webpack</a> (via Symfony’s <a class="reference external" href="https://symfony.com/doc/current/frontend.html">Webpack Encore</a>) to manage its CSS
+and JavaScript assets. This bundle provides both the source files and the
+compiled versions of all assets, so you don’t have to install Webpack to use
+this bundle.</p>
+<p>However, if you want total control over the backend styles, you can use Webpack
+to integrate the SCSS and JavaScript source files provided in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code>
+directory. The only caveat is that EasyAdmin doesn’t use Webpack Encore yet when
+loading the assets, so you can’t use features like versioning. This will be
+fixed in future versions.</p>
+</div>
+<div class="section" id="advanced-customization-of-backend-pages">
+<h2>Advanced Customization of Backend Pages<a class="headerlink" href="#advanced-customization-of-backend-pages" title="Permalink to this headline">¶</a></h2>
+<p>In addition to customizing the CSS and JavaScript files used to create the
+backend interface, EasyAdmin lets you customize every single Twig template used
+to render contents.</p>
+<p>In read-only pages (<code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code>) you can override or
+create new Twig template fragments to customize the rendering of each property
+for any entity. Read the <a class="reference internal" href="list-search-show-configuration.html#list-search-show-advanced-design-configuration"><span class="std std-ref">Advanced Design Customization</span></a>
+section to learn more about it.</p>
+<p>In read-write pages (<code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code>) EasyAdmin relies on Symfony’s Form
+component to render contents, so you’ll need to create a new form theme to
+override the default design. In addition, this bundle defines some elements not
+available by default in Symfony (form tabs, fieldsets, sections, etc.) so you
+can create complex forms. Read the <a class="reference internal" href="edit-new-configuration.html#edit-new-advanced-form-design"><span class="std std-ref">Advanced Form Design</span></a>
+section to learn more about it.</p>
+<hr class="docutils" />
+<p>Next chapter: <a class="reference internal" href="list-search-show-configuration.html"><span class="doc">Chapter 5. List, Search and Show Views Configuration</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="list-search-show-configuration.html" class="btn btn-neutral float-right" title="Chapter 5. List, Search and Show Views Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic-configuration.html" class="btn btn-neutral float-left" title="Chapter 3. Basic Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

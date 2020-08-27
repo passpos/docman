@@ -1,0 +1,31 @@
+<!DOCTYPE html><!-- saved from url=(0059)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_del_get --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<h3>演示如何访问 DEL 元素</h3>
+
+<p><del id="myDel" cite="why_deleted.htm">这段文本已被删除。</del></p>
+
+<p>点击按钮来获得页面的 URL，此页面解释了文本被删除的原因。</p>
+
+<p id="demo"></p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x = document.getElementById("myDel").cite;
+document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+</body>
+</html>

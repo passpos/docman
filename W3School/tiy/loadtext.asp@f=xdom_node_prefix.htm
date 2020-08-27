@@ -1,0 +1,34 @@
+<html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_node_prefix --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+<script type="text/javascript">
+
+xmlDoc=loadXMLDoc("../example/xdom/books_ns.xml");
+var x=xmlDoc.getElementsByTagName('title');
+
+for(i=0;i<x.length;i++)
+{
+document.write("Prefix: " + x.item(i).prefix);
+document.write("<br />");
+document.write("Local name: " + x.item(i).localName);
+document.write("<br />");
+document.write("Namespace URI: " + x.item(i).namespaceURI);  
+document.write("<br />");
+document.write("Base URI: " + x.item(i).baseURI);  
+document.write("<br />");
+document.write("<br />");
+}
+  
+</script>
+</body>
+</html>

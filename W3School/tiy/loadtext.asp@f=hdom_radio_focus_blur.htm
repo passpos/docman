@@ -1,0 +1,33 @@
+<html><!-- saved from url=(0067)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_radio_focus_blur --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function setFocus()
+  {
+  document.getElementById('male').focus()
+  }
+function loseFocus()
+  {
+  document.getElementById('male').blur()
+  }
+</script>
+</head>
+<body>
+
+<form>
+Male: <input id="male" type="radio" name="Sex" value="Male" />
+<br />
+Female: <input id="female" type="radio" name="Sex" value="Female" />
+<br />
+<input type="button" onclick="setFocus()" value="Set focus" />
+<input type="button" onclick="loseFocus()" value="Lose focus" />
+</form>
+
+</body>
+</html>

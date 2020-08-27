@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>命令行 | Composer 中文文档 | Composer 中文网</title>
+        <meta name="description" content="Composer 是 PHP 中用来管理依赖（dependency）关系的工具">
+        <meta name="keywords" content="PHP, Composer, Packagist, 依赖管理, npm, Symfony, Laravel">
+
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/libs/prism.css">
+
+        <script src="https://cdn.bootcss.com/modernizr/2.8.2/modernizr.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                    <a href="docs_phpcomposer_default.html">首页</a>
+                    <a href="00-intro.html">入门</a>
+                    <a href="https://getcomposer.org/download/" target="_blank">下载</a>
+                    <a href="https://packagist.org/" target="_blank">安装包列表</a>
+                    <a class="last" href="https://pkg.phpcomposer.com/" target="_blank">中国镜像</a>
+            </header>
+            <div id="main" role="main">
+    
+    <p><a name="Command-line-interface"></a></p>
+<h1>命令行</h1>
+<p>你已经学会了如何使用命令行界面做一些事情。本章将向你介绍所有可用的命令。</p>
+<p>为了从命令行获得帮助信息，请运行 <code>composer</code> 或者 <code>composer list</code> 命令，然后结合 <code>--help</code> 命令来获得更多的帮助信息。</p>
+<hr>
+<ul>
+<li><a href="03-cli.html#Command-line-interface">命令行</a></li>
+<li><a href="03-cli.html#Global-Options">全局参数</a>
+<ul>
+<li><a href="03-cli.html#Process-Exit-Codes">进程退出代码</a></li>
+<li><a href="03-cli.html#init">初始化 <code>init</code></a> - - <a href="03-cli.html#init-Options">参数</a></li>
+<li><a href="03-cli.html#install">安装 <code>install</code></a> - - <a href="03-cli.html#install-Options">参数</a></li>
+<li><a href="03-cli.html#update">更新 <code>update</code></a> - - <a href="03-cli.html#update-Options">参数</a></li>
+<li><a href="03-cli.html#require">申明依赖 <code>require</code></a> - - <a href="03-cli.html#require-Options">参数</a></li>
+<li><a href="03-cli.html#global">全局执行 <code>global</code></a></li>
+<li><a href="03-cli.html#search">搜索 <code>search</code></a> - - <a href="03-cli.html#search-Options">参数</a></li>
+<li><a href="03-cli.html#show">展示 <code>show</code></a> - - <a href="03-cli.html#show-Options">参数</a></li>
+<li><a href="03-cli.html#depends">依赖性检测 <code>depends</code></a> - - <a href="03-cli.html#depends-Options">参数</a></li>
+<li><a href="03-cli.html#validate">有效性检测 <code>validate</code></a></li>
+<li><a href="03-cli.html#status">依赖包状态检测 <code>status</code></a></li>
+<li><a href="03-cli.html#self-update">自我更新 <code>self-update</code></a> - - <a href="03-cli.html#self-update-Options">参数</a></li>
+<li><a href="03-cli.html#config">更改配置 <code>config</code></a> - - <a href="03-cli.html#config-Usage">使用方法</a> - - <a href="03-cli.html#config-Options">参数</a> - - <a href="03-cli.html#Modifying-Repositories">修改包来源</a></li>
+<li><a href="03-cli.html#create-project">创建项目 <code>create-project</code></a> - - <a href="03-cli.html#create-project-Options">参数</a></li>
+<li><a href="03-cli.html#dump-autoload">打印自动加载索引 <code>dump-autoload</code></a> - - <a href="03-cli.html#dump-autoload-Options">参数</a></li>
+<li><a href="03-cli.html#licenses">查看许可协议 <code>licenses</code></a></li>
+<li><a href="03-cli.html#run-script">执行脚本 <code>run-script</code></a></li>
+<li><a href="03-cli.html#diagnose">诊断 <code>diagnose</code></a></li>
+<li><a href="03-cli.html#archive">归档 <code>archive</code></a> - - <a href="03-cli.html#archive-Options">参数</a></li>
+<li><a href="03-cli.html#help">获取帮助信息 <code>help</code></a></li>
+<li><a href="03-cli.html#Environment-variables">环境变量</a>
+<ul>
+<li><a href="03-cli.html#COMPOSER">COMPOSER</a></li>
+<li><a href="03-cli.html#COMPOSER_ROOT_VERSION">COMPOSER_ROOT_VERSION</a></li>
+<li><a href="03-cli.html#COMPOSER_VENDOR_DIR">COMPOSER_VENDOR_DIR</a></li>
+<li><a href="03-cli.html#COMPOSER_BIN_DIR">COMPOSER_BIN_DIR</a></li>
+<li><a href="03-cli.html#http_proxy-or-HTTP_PROXY">http_proxy or HTTP_PROXY</a></li>
+<li><a href="03-cli.html#no_proxy">no_proxy</a></li>
+<li><a href="03-cli.html#HTTP_PROXY_REQUEST_FULLURI">HTTP_PROXY_REQUEST_FULLURI</a></li>
+<li><a href="03-cli.html#HTTPS_PROXY_REQUEST_FULLURI">HTTPS_PROXY_REQUEST_FULLURI</a></li>
+<li><a href="03-cli.html#COMPOSER_HOME">COMPOSER_HOME</a>
+<ul>
+<li><a href="03-cli.html#COMPOSER_HOME-config.json">COMPOSER_HOME/config.json</a></li>
+</ul>
+</li>
+<li><a href="03-cli.html#COMPOSER_CACHE_DIR">COMPOSER_CACHE_DIR</a></li>
+<li><a href="03-cli.html#COMPOSER_PROCESS_TIMEOUT">COMPOSER_PROCESS_TIMEOUT</a></li>
+<li><a href="03-cli.html#COMPOSER_DISCARD_CHANGES">COMPOSER_DISCARD_CHANGES</a></li>
+<li><a href="03-cli.html#COMPOSER_NO_INTERACTION">COMPOSER_NO_INTERACTION</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><a name="Global-Options"></a></p>
+<h2>全局参数</h2>
+<p>下列参数可与每一个命令结合使用：</p>
+<ul>
+<li><strong>--verbose (-v):</strong> 增加反馈信息的详细度。
+<ul>
+<li>-v 表示正常输出。</li>
+<li>-vv 表示更详细的输出。</li>
+<li>-vvv 则是为了 debug。</li>
+</ul>
+</li>
+<li><strong>--help (-h):</strong> 显示帮助信息。</li>
+<li><strong>--quiet (-q):</strong> 禁止输出任何信息。</li>
+<li><strong>--no-interaction (-n):</strong> 不要询问任何交互问题。</li>
+<li><strong>--working-dir (-d):</strong> 如果指定的话，使用给定的目录作为工作目录。</li>
+<li><strong>--profile:</strong> 显示时间和内存使用信息。</li>
+<li><strong>--ansi:</strong> 强制 ANSI 输出。</li>
+<li><strong>--no-ansi:</strong> 关闭 ANSI 输出。</li>
+<li><strong>--version (-V):</strong> 显示当前应用程序的版本信息。</li>
+</ul>
+<p><a name="Process-Exit-Codes"></a></p>
+<h2>进程退出代码</h2>
+<ul>
+<li><strong>0:</strong> 正常</li>
+<li><strong>1:</strong> 通用/未知错误</li>
+<li><strong>2:</strong> 依赖关系处理错误</li>
+</ul>
+<p><a name="init"></a></p>
+<h2>初始化 <code>init</code></h2>
+<p>在 <a href="02-libraries.html">“库”</a> 那一章我们看到了如何手动创建 <code>composer.json</code> 文件。实际上还有一个 <code>init</code> 命令可以更容易的做到这一点。</p>
+<p>当您运行该命令，它会以交互方式要求您填写一些信息，同时聪明的使用一些默认值。</p>
+<pre><code class="language-sh">php composer.phar init
+</code></pre>
+<p><a name="init-Options"></a></p>
+<h3>初始化-参数</h3>
+<ul>
+<li><strong>--name:</strong> 包的名称。</li>
+<li><strong>--description:</strong> 包的描述。</li>
+<li><strong>--author:</strong> 包的作者。</li>
+<li><strong>--homepage:</strong> 包的主页。</li>
+<li><strong>--require:</strong> 需要依赖的其它包，必须要有一个版本约束。并且应该遵循 <code>foo/bar:1.0.0</code> 这样的格式。</li>
+<li><strong>--require-dev:</strong> 开发版的依赖包，内容格式与 <strong>--require</strong> 相同。</li>
+<li><strong>--stability (-s):</strong> <code>minimum-stability</code> 字段的值。</li>
+</ul>
+<p><a name="install"></a></p>
+<h2>安装 <code>install</code></h2>
+<p><code>install</code> 命令从当前目录读取 <code>composer.json</code> 文件，处理了依赖关系，并把其安装到 <code>vendor</code> 目录下。</p>
+<pre><code class="language-sh">php composer.phar install
+</code></pre>
+<p>如果当前目录下存在 <code>composer.lock</code> 文件，它会从此文件读取依赖版本，而不是根据 <code>composer.json</code> 文件去获取依赖。这确保了该库的每个使用者都能得到相同的依赖版本。</p>
+<p>如果没有 <code>composer.lock</code> 文件，composer 将在处理完依赖关系后创建它。</p>
+<p><a name="install-Options"></a></p>
+<h3>安装-参数</h3>
+<ul>
+<li><strong>--prefer-source:</strong> 下载包的方式有两种： <code>source</code>
+和 <code>dist</code>。对于稳定版本 composer 将默认使用 <code>dist</code> 方式。而 <code>source</code> 表示版本控制源 。如果 <code>--prefer-source</code> 是被启用的，composer 将从 <code>source</code> 安装（如果有的话）。如果想要使用一个 bugfix 到你的项目，这是非常有用的。并且可以直接从本地的版本库直接获取依赖关系。</li>
+<li><strong>--prefer-dist:</strong> 与 <code>--prefer-source</code> 相反，composer 将尽可能的从 <code>dist</code> 获取，这将大幅度的加快在 build servers 上的安装。这也是一个回避 git 问题的途径，如果你不清楚如何正确的设置。</li>
+<li><strong>--dry-run:</strong> 如果你只是想演示而并非实际安装一个包，你可以运行 <code>--dry-run</code> 命令，它将模拟安装并显示将会发生什么。</li>
+<li><strong>--dev:</strong> 安装 <code>require-dev</code> 字段中列出的包（这是一个默认值）。</li>
+<li><strong>--no-dev:</strong> 跳过 <code>require-dev</code> 字段中列出的包。</li>
+<li><strong>--no-scripts:</strong> 跳过 <code>composer.json</code> 文件中定义的脚本。</li>
+<li><strong>--no-plugins:</strong> 关闭 plugins。</li>
+<li><strong>--no-progress:</strong> 移除进度信息，这可以避免一些不处理换行的终端或脚本出现混乱的显示。</li>
+<li><strong>--optimize-autoloader (-o):</strong> 转换 PSR-0/4 autoloading 到 classmap 可以获得更快的加载支持。特别是在生产环境下建议这么做，但由于运行需要一些时间，因此并没有作为默认值。</li>
+</ul>
+<p><a name="update"></a></p>
+<h2>更新 <code>update</code></h2>
+<p>为了获取依赖的最新版本，并且升级 <code>composer.lock</code> 文件，你应该使用 <code>update</code> 命令。</p>
+<pre><code class="language-sh">php composer.phar update
+</code></pre>
+<p>这将解决项目的所有依赖，并将确切的版本号写入 <code>composer.lock</code>。</p>
+<p>如果你只是想更新几个包，你可以像这样分别列出它们：</p>
+<pre><code class="language-sh">php composer.phar update vendor/package vendor/package2
+</code></pre>
+<p>你还可以使用通配符进行批量更新：</p>
+<pre><code class="language-sh">php composer.phar update vendor/*
+</code></pre>
+<p><a name="update-Options"></a></p>
+<h3>更新-参数</h3>
+<ul>
+<li><strong>--prefer-source:</strong> 当有可用的包时，从 <code>source</code> 安装。</li>
+<li><strong>--prefer-dist:</strong> 当有可用的包时，从 <code>dist</code> 安装。</li>
+<li><strong>--dry-run:</strong> 模拟命令，并没有做实际的操作。</li>
+<li><strong>--dev:</strong> 安装 <code>require-dev</code> 字段中列出的包（这是一个默认值）。</li>
+<li><strong>--no-dev:</strong> 跳过 <code>require-dev</code> 字段中列出的包。</li>
+<li><strong>--no-scripts:</strong> 跳过 <code>composer.json</code> 文件中定义的脚本。</li>
+<li><strong>--no-plugins:</strong> 关闭 plugins。</li>
+<li><strong>--no-progress:</strong> 移除进度信息，这可以避免一些不处理换行的终端或脚本出现混乱的显示。</li>
+<li><strong>--optimize-autoloader (-o):</strong> 转换 PSR-0/4 autoloading 到 classmap 可以获得更快的加载支持。特别是在生产环境下建议这么做，但由于运行需要一些时间，因此并没有作为默认值。</li>
+<li><strong>--lock:</strong> 仅更新 lock 文件的 hash，取消有关 lock 文件过时的警告。</li>
+<li><strong>--with-dependencies</strong> 同时更新白名单内包的依赖关系，这将进行递归更新。</li>
+</ul>
+<p><a name="require"></a></p>
+<h2>申明依赖 <code>require</code></h2>
+<p><code>require</code> 命令增加新的依赖包到当前目录的 <code>composer.json</code> 文件中。</p>
+<pre><code class="language-sh">php composer.phar require
+</code></pre>
+<p>在添加或改变依赖时， 修改后的依赖关系将被安装或者更新。</p>
+<p>如果你不希望通过交互来指定依赖包，你可以在这条令中直接指明依赖包。</p>
+<pre><code class="language-sh">php composer.phar require vendor/package:2.* vendor/package2:dev-master
+</code></pre>
+<p><a name="require-Options"></a></p>
+<h3>申明依赖-参数</h3>
+<ul>
+<li><strong>--prefer-source:</strong> 当有可用的包时，从 <code>source</code> 安装。</li>
+<li><strong>--prefer-dist:</strong> 当有可用的包时，从 <code>dist</code> 安装。</li>
+<li><strong>--dev:</strong> 安装 <code>require-dev</code> 字段中列出的包。</li>
+<li><strong>--no-update:</strong> 禁用依赖关系的自动更新。</li>
+<li><strong>--no-progress:</strong> 移除进度信息，这可以避免一些不处理换行的终端或脚本出现混乱的显示。</li>
+<li><strong>--update-with-dependencies</strong> 一并更新新装包的依赖。</li>
+</ul>
+<p><a name="global"></a></p>
+<h2>全局执行 <code>global</code></h2>
+<p><code>global</code> 命令允许你在 <a href="03-cli.html#COMPOSER_HOME">COMPOSER_HOME</a> 目录下执行其它命令，像 <code>install</code>、<code>require</code> 或 <code>update</code>。</p>
+<p>并且如果你将 <code>$COMPOSER_HOME/vendor/bin</code> 加入到了 <code>$PATH</code> 环境变量中，你就可以用它在命令行中安装全局应用，下面是一个例子：</p>
+<pre><code class="language-sh">php composer.phar global require fabpot/php-cs-fixer:dev-master
+</code></pre>
+<p>现在 <code>php-cs-fixer</code> 就可以在全局范围使用了（假设你已经设置了你的 PATH）。如果稍后你想更新它，你只需要运行 <code>global update</code>：</p>
+<pre><code class="language-sh">php composer.phar global update
+</code></pre>
+<p><a name="search"></a></p>
+<h2>搜索 <code>search</code></h2>
+<p><code>search</code> 命令允许你为当前项目搜索依赖包，通常它只搜索 packagist.org 上的包，你可以简单的输入你的搜索条件。</p>
+<pre><code class="language-sh">php composer.phar search monolog
+</code></pre>
+<p>您也可以通过传递多个参数来进行多条件搜索。</p>
+<p><a name="search-Options"></a></p>
+<h3>搜索-参数</h3>
+<ul>
+<li><strong>--only-name (-N):</strong> 仅针对指定的名称搜索（完全匹配）。</li>
+</ul>
+<p><a name="show"></a></p>
+<h2>展示 <code>show</code></h2>
+<p>列出所有可用的软件包，你可以使用 <code>show</code> 命令。</p>
+<pre><code class="language-sh">php composer.phar show
+</code></pre>
+<p>如果你想看到一个包的详细信息，你可以输入一个包名称。</p>
+<pre><code class="language-sh">php composer.phar show monolog/monolog
+
+name     : monolog/monolog
+versions : master-dev, 1.0.2, 1.0.1, 1.0.0, 1.0.0-RC1
+type     : library
+names    : monolog/monolog
+source   : [git] http://github.com/Seldaek/monolog.git 3d4e60d0cbc4b888fe5ad223d77964428b1978da
+dist     : [zip] http://github.com/Seldaek/monolog/zipball/3d4e60d0cbc4b888fe5ad223d77964428b1978da 3d4e60d0cbc4b888fe5ad223d77964428b1978da
+license  : MIT
+
+autoload
+psr-0
+Monolog : src/
+
+requires
+php &gt;=5.3.0
+</code></pre>
+<p>你甚至可以输入一个软件包的版本号，来显示该版本的详细信息。</p>
+<pre><code class="language-sh">php composer.phar show monolog/monolog 1.0.2
+</code></pre>
+<p><a name="show-Options"></a></p>
+<h3>展示-参数</h3>
+<ul>
+<li><strong>--installed (-i):</strong> 列出已安装的依赖包。</li>
+<li><strong>--platform (-p):</strong> 仅列出平台软件包（PHP 与它的扩展）。</li>
+<li><strong>--self (-s):</strong> 仅列出当前项目信息。</li>
+</ul>
+<p><a name="depends"></a></p>
+<h2>依赖性检测 <code>depends</code></h2>
+<p><code>depends</code> 命令可以查出已安装在你项目中的某个包，是否正在被其它的包所依赖，并列出他们。</p>
+<pre><code class="language-sh">php composer.phar depends --link-type=require monolog/monolog
+
+nrk/monolog-fluent
+poc/poc
+propel/propel
+symfony/monolog-bridge
+symfony/symfony
+</code></pre>
+<p><a name="depends-Options"></a></p>
+<h3>依赖性检测-参数</h3>
+<ul>
+<li><strong>--link-type:</strong> 检测的类型，默认为 <code>require</code> 也可以是 <code>require-dev</code>。</li>
+</ul>
+<p><a name="validate"></a></p>
+<h2>有效性检测 <code>validate</code></h2>
+<p>在提交 <code>composer.json</code> 文件，和创建 tag 前，你应该始终运行 <code>validate</code> 命令。它将检测你的 <code>composer.json</code> 文件是否是有效的</p>
+<pre><code class="language-sh">php composer.phar validate
+</code></pre>
+<h3>有效性检测参数</h3>
+<ul>
+<li><strong>--no-check-all:</strong> Composer 是否进行完整的校验。</li>
+</ul>
+<p><a name="status"></a></p>
+<h2>依赖包状态检测 <code>status</code></h2>
+<p>如果你经常修改依赖包里的代码，并且它们是从 source（自定义源）进行安装的，那么 <code>status</code> 命令允许你进行检查，如果你有任何本地的更改它将会给予提示。</p>
+<pre><code class="language-sh">php composer.phar status
+</code></pre>
+<p>你可以使用 <code>--verbose</code> 系列参数（-v|vv|vvv）来获取更详细的详细：</p>
+<pre><code class="language-sh">php composer.phar status -v
+
+You have changes in the following dependencies:
+vendor/seld/jsonlint:
+    M README.mdown
+</code></pre>
+<p><a name="self-update"></a></p>
+<h2>自我更新 <code>self-update</code></h2>
+<p>将 Composer 自身升级到最新版本，只需要运行 <code>self-update</code> 命令。它将替换你的 <code>composer.phar</code> 文件到最新版本。</p>
+<pre><code class="language-sh">php composer.phar self-update
+</code></pre>
+<p>如果你想要升级到一个特定的版本，可以这样简单的指定它：</p>
+<pre><code class="language-sh">php composer.phar self-update 1.0.0-alpha7
+</code></pre>
+<p>如果你已经为整个系统安装 Composer（参见 <a href="00-intro.html#%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85">全局安装</a>），你可能需要在 <code>root</code> 权限下运行它：</p>
+<pre><code class="language-sh">sudo composer self-update
+</code></pre>
+<p><a name="self-update-Options"></a></p>
+<h3>自我更新-参数</h3>
+<ul>
+<li><strong>--rollback (-r):</strong> 回滚到你已经安装的最后一个版本。</li>
+<li><strong>--clean-backups:</strong> 在更新过程中删除旧的备份，这使得更新过后的当前版本是唯一可用的备份。</li>
+</ul>
+<p><a name="config"></a></p>
+<h2>更改配置 <code>config</code></h2>
+<p><code>config</code> 命令允许你编辑 Composer 的一些基本设置，无论是本地的 <code>composer.json</code> 或者全局的 <code>config.json</code> 文件。</p>
+<pre><code class="language-sh">php composer.phar config --list
+</code></pre>
+<p><a name="config-Usage"></a></p>
+<h3>更改配置-使用方法</h3>
+<p><code>config [options] [setting-key] [setting-value1] ... [setting-valueN]</code></p>
+<p><code>setting-key</code> 是一个配置选项的名称，<code>setting-value1</code> 是一个配置的值。可以使用数组作为配置的值（像 <code>github-protocols</code>），多个 <code>setting-value</code> 是允许的。</p>
+<p>有效的配置选项，请查看“架构”章节的 <a href="04-schema.html#config">config</a> 。</p>
+<p><a name="config-Options"></a></p>
+<h3>更改配置-参数</h3>
+<ul>
+<li><strong>--global (-g):</strong> 操作位于 <code>$COMPOSER_HOME/config.json</code> 的全局配置文件。如果不指定该参数，此命令将影响当前项目的 composer.json 文件，或 <code>--file</code> 参数所指向的文件。</li>
+<li><strong>--editor (-e):</strong> 使用文本编辑器打开 composer.json 文件。默认情况下始终是打开当前项目的文件。当存在 <code>--global</code> 参数时，将会打开全局 composer.json 文件。</li>
+<li><strong>--unset:</strong> 移除由 <code>setting-key</code> 指定名称的配置选项。</li>
+<li><strong>--list (-l):</strong> 显示当前配置选项的列表。当存在 <code>--global</code> 参数时，将会显示全局配置选项的列表。</li>
+<li><strong>--file=&quot;...&quot; (-f):</strong> 在一个指定的文件上操作，而不是 composer.json。注意：不能与 <code>--global</code> 参数一起使用。</li>
+</ul>
+<p><a name="Modifying-Repositories"></a></p>
+<h3>修改包来源</h3>
+<p>除了修改配置选项， <code>config</code> 命令还支持通过以下方法修改来源信息：</p>
+<pre><code class="language-sh">php composer.phar config repositories.foo vcs http://github.com/foo/bar
+</code></pre>
+<p><a name="create-project"></a></p>
+<h2>创建项目 <code>create-project</code></h2>
+<p>你可以使用 Composer 从现有的包中创建一个新的项目。这相当于执行了一个 <code>git clone</code> 或 <code>svn checkout</code> 命令后将这个包的依赖安装到它自己的 vendor 目录。</p>
+<p>此命令有几个常见的用途：</p>
+<ol>
+<li>你可以快速的部署你的应用。</li>
+<li>你可以检出任何资源包，并开发它的补丁。</li>
+<li>多人开发项目，可以用它来加快应用的初始化。</li>
+</ol>
+<p>要创建基于 Composer 的新项目，你可以使用 &quot;create-project&quot; 命令。传递一个包名，它会为你创建项目的目录。你也可以在第三个参数中指定版本号，否则将获取最新的版本。</p>
+<p>如果该目录目前不存在，则会在安装过程中自动创建。</p>
+<pre><code class="language-sh">php composer.phar create-project doctrine/orm path 2.2.*
+</code></pre>
+<p>此外，你也可以无需使用这个命令，而是通过现有的 <code>composer.json</code> 文件来启动这个项目。</p>
+<p>默认情况下，这个命令会在 packagist.org 上查找你指定的包。</p>
+<p><a name="create-project-Options"></a></p>
+<h3>创建项目-参数</h3>
+<ul>
+<li><strong>--repository-url:</strong> 提供一个自定义的储存库来搜索包，这将被用来代替 packagist.org。可以是一个指向 <code>composer</code> 资源库的 HTTP URL，或者是指向某个 <code>packages.json</code> 文件的本地路径。</li>
+<li><strong>--stability (-s):</strong> 资源包的最低稳定版本，默认为 <code>stable</code>。</li>
+<li><strong>--prefer-source:</strong> 当有可用的包时，从 <code>source</code> 安装。</li>
+<li><strong>--prefer-dist:</strong> 当有可用的包时，从 <code>dist</code> 安装。</li>
+<li><strong>--dev:</strong> 安装 <code>require-dev</code> 字段中列出的包。</li>
+<li><strong>--no-install:</strong> 禁止安装包的依赖。</li>
+<li><strong>--no-plugins:</strong> 禁用 plugins。</li>
+<li><strong>--no-scripts:</strong> 禁止在根资源包中定义的脚本执行。</li>
+<li><strong>--no-progress:</strong> 移除进度信息，这可以避免一些不处理换行的终端或脚本出现混乱的显示。</li>
+<li><strong>--keep-vcs:</strong> 创建时跳过缺失的 VCS 。如果你在非交互模式下运行创建命令，这将是非常有用的。</li>
+</ul>
+<p><a name="dump-autoload"></a></p>
+<h2>打印自动加载索引 <code>dump-autoload</code></h2>
+<p>某些情况下你需要更新 autoloader，例如在你的包中加入了一个新的类。你可以使用 <code>dump-autoload</code> 来完成，而不必执行 <code>install</code> 或 <code>update</code> 命令。</p>
+<p>此外，它可以打印一个优化过的，符合 PSR-0/4 规范的类的索引，这也是出于对性能的可考虑。在大型的应用中会有许多类文件，而 autoloader 会占用每个请求的很大一部分时间，使用 classmaps 或许在开发时不太方便，但它在保证性能的前提下，仍然可以获得 PSR-0/4 规范带来的便利。</p>
+<p><a name="dump-autoload-Options"></a></p>
+<h3>打印自动加载索引-参数</h3>
+<ul>
+<li><strong>--optimize (-o):</strong> 转换 PSR-0/4 autoloading 到 classmap 获得更快的载入速度。这特别适用于生产环境，但可能需要一些时间来运行，因此它目前不是默认设置。</li>
+<li><strong>--no-dev:</strong> 禁用 autoload-dev 规则。</li>
+</ul>
+<p><a name="licenses"></a></p>
+<h2>查看许可协议 <code>licenses</code></h2>
+<p>列出已安装的每个包的名称、版本、许可协议。可以使用 <code>--format=json</code> 参数来获取 JSON 格式的输出。</p>
+<p><a name="run-script"></a></p>
+<h2>执行脚本 <code>run-script</code></h2>
+<p>你可以运行此命令来手动执行 <a href="articles/scripts.html">脚本</a>，只需要指定脚本的名称，可选的 <code>--no-dev</code> 参数允许你禁用开发者模式。</p>
+<p><a name="diagnose"></a></p>
+<h2>诊断 <code>diagnose</code></h2>
+<p>如果你觉得发现了一个 bug 或是程序行为变得怪异，你可能需要运行 <code>diagnose</code> 命令，来帮助你检测一些常见的问题。</p>
+<pre><code class="language-sh">php composer.phar diagnose
+</code></pre>
+<p><a name="archive"></a></p>
+<h2>归档 <code>archive</code></h2>
+<p>此命令用来对指定包的指定版本进行 zip/tar 归档。它也可以用来归档你的整个项目，不包括 excluded/ignored（排除/忽略）的文件。</p>
+<pre><code class="language-sh">php composer.phar archive vendor/package 2.0.21 --format=zip
+</code></pre>
+<p><a name="archive-Options"></a></p>
+<h3>归档-参数</h3>
+<ul>
+<li><strong>--format (-f):</strong> 指定归档格式：tar 或 zip（默认为 tar）。</li>
+<li><strong>--dir:</strong> 指定归档存放的目录（默认为当前目录）。</li>
+</ul>
+<p><a name="help"></a></p>
+<h2>获取帮助信息 <code>help</code></h2>
+<p>使用 <code>help</code> 可以获取指定命令的帮助信息。</p>
+<pre><code class="language-sh">php composer.phar help install
+</code></pre>
+<p><a name="Environment-variables"></a></p>
+<h2>环境变量</h2>
+<p>你可以设置一些环境变量来覆盖默认的配置。建议尽可能的在 <code>composer.json</code> 的 <code>config</code> 字段中设置这些值，而不是通过命令行设置环境变量。值得注意的是环境变量中的值，将始终优先于 <code>composer.json</code> 中所指定的值。</p>
+<p><a name="COMPOSER"></a></p>
+<h3>COMPOSER</h3>
+<p>环境变量 <code>COMPOSER</code> 可以为 <code>composer.json</code> 文件指定其它的文件名。</p>
+<p>例如：</p>
+<pre><code class="language-sh">COMPOSER=composer-other.json php composer.phar install
+</code></pre>
+<p><a name="COMPOSER_ROOT_VERSION"></a></p>
+<h3>COMPOSER_ROOT_VERSION</h3>
+<p>通过设置这个环境变量，你可以指定 root 包的版本，如果程序不能从 VCS 上猜测出版本号，并且未在 <code>composer.json</code> 文件中申明。</p>
+<p><a name="COMPOSER_VENDOR_DIR"></a></p>
+<h3>COMPOSER_VENDOR_DIR</h3>
+<p>通过设置这个环境变量，你可以指定 composer 将依赖安装在 <code>vendor</code> 以外的其它目录中。</p>
+<p><a name="COMPOSER_BIN_DIR"></a></p>
+<h3>COMPOSER_BIN_DIR</h3>
+<p>通过设置这个环境变量，你可以指定 <code>bin</code>（<a href="articles/vendor-binaries.html">Vendor Binaries</a>）目录到 <code>vendor/bin</code> 以外的其它目录。</p>
+<p><a name="http_proxy-or-HTTP_PROXY"></a></p>
+<h3>http_proxy or HTTP_PROXY</h3>
+<p>如果你是通过 HTTP 代理来使用 Composer，你可以使用 <code>http_proxy</code> 或 <code>HTTP_PROXY</code> 环境变量。只要简单的将它设置为代理服务器的 URL。许多操作系统已经为你的服务设置了此变量。</p>
+<p>建议使用 <code>http_proxy</code>（小写）或者两者都进行定义。因为某些工具，像 git 或 curl 将使用 <code>http_proxy</code> 小写的版本。另外，你还可以使用 <code>git config --global http.proxy &lt;proxy url&gt;</code> 来单独设置 git 的代理。</p>
+<p><a name="no_proxy"></a></p>
+<h3>no_proxy</h3>
+<p>如果你是使用代理服务器，并且想要对某些域名禁用代理，就可以使用 <code>no_proxy</code> 环境变量。只需要输入一个逗号相隔的域名 <em>排除</em> 列表。</p>
+<p>此环境变量接受域名、IP 以及 CIDR地址块。你可以将它限制到一个端口（例如：<code>:80</code>）。你还可以把它设置为 <code>*</code> 来忽略所有的 HTTP 代理请求。</p>
+<p><a name="HTTP_PROXY_REQUEST_FULLURI"></a></p>
+<h3>HTTP_PROXY_REQUEST_FULLURI</h3>
+<p>如果你使用了 HTTP 代理，但它不支持 <code>request_fulluri</code> 标签，那么你应该设置这个环境变量为 <code>false</code> 或 <code>0</code> ，来防止 composer 从 <code>request_fulluri</code> 读取配置。</p>
+<p><a name="HTTPS_PROXY_REQUEST_FULLURI"></a></p>
+<h3>HTTPS_PROXY_REQUEST_FULLURI</h3>
+<p>如果你使用了 HTTPS 代理，但它不支持 <code>request_fulluri</code> 标签，那么你应该设置这个环境变量为 <code>false</code> 或 <code>0</code> ，来防止 composer 从 <code>request_fulluri</code> 读取配置。</p>
+<p><a name="COMPOSER_HOME"></a></p>
+<h3>COMPOSER_HOME</h3>
+<p><code>COMPOSER_HOME</code> 环境变量允许你改变 Composer 的主目录。这是一个隐藏的、所有项目共享的全局目录（对本机的所有用户都可用）。</p>
+<p>它在各个系统上的默认值分别为：</p>
+<ul>
+<li>*nix <code>/home/&lt;user&gt;/.composer</code>。</li>
+<li>OSX <code>/Users/&lt;user&gt;/.composer</code>。</li>
+<li>Windows <code>C:\Users\&lt;user&gt;\AppData\Roaming\Composer</code>。</li>
+</ul>
+<p><a name="COMPOSER_HOME-config.json"></a></p>
+<h4>COMPOSER_HOME/config.json</h4>
+<p>你可以在 <code>COMPOSER_HOME</code> 目录中放置一个 <code>config.json</code> 文件。在你执行 <code>install</code> 和 <code>update</code> 命令时，Composer 会将它与你项目中的 <code>composer.json</code> 文件进行合并。</p>
+<p>该文件允许你为用户的项目设置 <a href="04-schema.html#config">配置信息</a> 和 <a href="05-repositories.html">资源库</a>。</p>
+<p>若 <em>全局</em> 和 <em>项目</em> 存在相同配置项，那么项目中的 <code>composer.json</code> 文件拥有更高的优先级。</p>
+<p><a name="COMPOSER_CACHE_DIR"></a></p>
+<h3>COMPOSER_CACHE_DIR</h3>
+<p><code>COMPOSER_CACHE_DIR</code> 环境变量允许你设置 Composer 的缓存目录，这也可以通过 <a href="04-schema.html#config"><code>cache-dir</code></a> 进行配置。</p>
+<p>它在各个系统上的默认值分别为：</p>
+<ul>
+<li>*nix and OSX <code>$COMPOSER_HOME/cache</code>。</li>
+<li>Windows <code>C:\Users\&lt;user&gt;\AppData\Local\Composer</code> 或 <code>%LOCALAPPDATA%/Composer</code>。</li>
+</ul>
+<p><a name="COMPOSER_PROCESS_TIMEOUT"></a></p>
+<h3>COMPOSER_PROCESS_TIMEOUT</h3>
+<p>这个环境变量控制着 Composer 执行命令的等待时间（例如：git 命令）。默认值为300秒（5分钟）。</p>
+<p><a name="COMPOSER_DISCARD_CHANGES"></a></p>
+<h3>COMPOSER_DISCARD_CHANGES</h3>
+<p>这个环境变量控制着 discard-changes <a href="04-schema.html#config">config option</a>。</p>
+<p><a name="COMPOSER_NO_INTERACTION"></a></p>
+<h3>COMPOSER_NO_INTERACTION</h3>
+<p>如果设置为1，这个环境变量将使 Composer 在执行每一个命令时都放弃交互，相当于对所有命令都使用了 <code>--no-interaction</code>。可以在搭建 <em>虚拟机/持续集成服务器</em> 时这样设置。</p>
+<p>← <a href="02-libraries.html">库（资源包）</a>  |  <a href="04-schema.html">架构</a> →</p>
+
+
+    <p class="fork-and-edit">
+        如果您发现文档中有错误，或者能够帮我们完善文档，请提交到我们的 <a href="https://github.com/5-say/composer-doc-cn" target="_blank">Github 仓库吧</a>！
+    </p>
+            </div>
+            <footer>
+
+                <p class="license">Composer 以及本网站上的所有内容全部遵循 <a href="https://github.com/composer/composer/blob/master/LICENSE" target="_blank">MIT 开源协议</a>。</p>
+            </footer>
+        </div>
+
+        <script src="http://docs.phpcomposer.com/assets/js/libs/prism.js"></script>
+        <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F16e97907ef84179ff8cd833509017a96' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </body>
+</html>

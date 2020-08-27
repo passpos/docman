@@ -1,0 +1,30 @@
+<!DOCTYPE html><!-- saved from url=(0069)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_blockquote_create --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<h3>演示如何创建 BLOCKQUOTE 元素</h3>
+
+<p>请点击按钮来创建 BLOCKQUOTE 元素，此引用的来源是 worldwildlife.org。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x = document.createElement("BLOCKQUOTE");
+var t = document.createTextNode("For 50 years, WWF has been protecting the future of nature.");
+x.setAttribute("cite", "../../www.worldwildlife.org/who/index.html");
+x.appendChild(t);
+document.body.appendChild(x);
+}
+</script>
+
+</body>
+</html>

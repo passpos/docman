@@ -1,0 +1,25 @@
+<html><!-- saved from url=(0067)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_event_bind_map --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("button").bind({
+    click:function(){$("p").slideToggle();},
+    mouseover:function(){$("body").css("background-color","red");},  
+    mouseout:function(){$("body").css("background-color","#FFFFFF");}  
+  });
+});
+</script>
+</head>
+<body>
+<p>This is a paragraph.</p>
+<button>«Îµ„ª˜’‚¿Ô</button>
+</body>
+</html>

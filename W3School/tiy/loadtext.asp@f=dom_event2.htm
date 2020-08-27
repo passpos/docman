@@ -1,0 +1,29 @@
+<!DOCTYPE html><!-- saved from url=(0056)http://www.w3school.com.cn/tiy/loadtext.asp?f=dom_event2 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+</head>
+<body>
+
+<p>点击按钮来执行 <b>displayDate()</b> 函数。</p>
+
+<button id="myBtn">试一试</button>
+
+<script>
+document.getElementById("myBtn").onclick=function(){displayDate()};
+function displayDate()
+{
+document.getElementById("demo").innerHTML=Date();
+}
+</script>
+
+<p id="demo"></p>
+
+</body>
+</html>

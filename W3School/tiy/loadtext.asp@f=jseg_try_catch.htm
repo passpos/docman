@@ -1,0 +1,33 @@
+<html><!-- saved from url=(0060)http://www.w3school.com.cn/tiy/loadtext.asp?f=jseg_try_catch --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+var txt=""
+function message()
+{
+try
+   {
+   adddlert("Welcome guest!")
+   }
+catch(err)
+   {
+   txt="本页中存在错误。\n\n"
+   txt+="错误描述：" + err.description + "\n\n"
+   txt+="点击“确定”继续。\n\n"
+   alert(txt)
+   }
+}
+</script>
+</head>
+
+<body>
+<input type="button" value="查看消息" onclick="message()" />
+</body>
+
+</html>

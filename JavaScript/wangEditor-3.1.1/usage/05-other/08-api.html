@@ -1,0 +1,43 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>08-api.md</title>
+    <style type="text/css">
+            
+/* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+td, h1, h2, h3, h4, h5, p, ul, ol, li {
+    page-break-inside: avoid; 
+}
+
+        </style>
+  </head>
+  <body><div class="passage">
+    <h1 id="api">常用 API</h1>
+    <h2 id="section">属性</h2>
+    <ul>
+      <li>获取编辑器的唯一标识 <code>editor.id</code></li>
+      <li>获取编辑区域 DOM 节点 <code>editor.$textElem[0]</code></li>
+      <li>获取菜单栏 DOM 节点 <code>editor.$toolbarElem[0]</code></li>
+      <li>获取编辑器配置信息 <code>editor.config</code></li>
+      <li>获取编辑区域 DOM 节点 ID <code>editor.textElemId</code></li>
+      <li>获取菜单栏 DOM 节点 ID <code>editor.toolbarElemId</code></li>
+      <li>获取菜单栏中“图片”菜单的 DOM 节点 ID <code>editor.imgMenuId</code></li>
+    </ul>
+    <h2 id="section-1">方法</h2>
+    <h3 id="section-2">选取操作</h3>
+    <ul>
+      <li>获取选中的文字 <code>editor.selection.getSelectionText()</code></li>
+      <li>获取选取所在的 DOM 节点 <code>editor.selection.getSelectionContainerElem()[0]</code><ul><li>开始节点 <code>editor.selection.getSelectionStartElem()[0]</code></li><li>结束节点 <code>editor.selection.getSelectionEndElem()[0]</code></li></ul></li>
+      <li>折叠选取 <code>editor.selection.collapseRange()</code></li>
+      <li>更多可参见<a href="https://github.com/wangfupeng1988/wangEditor/blob/master/src/js/selection/index.js">源码中</a>定义的方法</li>
+    </ul>
+    <h3 id="section-3">编辑内容操作</h3>
+    <ul>
+      <li>插入 HTML <code>editor.cmd.do('insertHTML', '&lt;p&gt;...&lt;/p&gt;')</code></li>
+      <li>可通过<code>editor.cmd.do(name, value)</code>来执行<code>document.execCommand(name, false, value)</code>的操作</li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>别名 | Composer 中文文档 | Composer 中文网</title>
+        <meta name="description" content="Composer 是 PHP 中用来管理依赖（dependency）关系的工具">
+        <meta name="keywords" content="PHP, Composer, Packagist, 依赖管理, npm, Symfony, Laravel">
+
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/libs/prism.css">
+
+        <script src="https://cdn.bootcss.com/modernizr/2.8.2/modernizr.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                    <a href="../docs_phpcomposer_default.html">首页</a>
+                    <a href="../00-intro.html">入门</a>
+                    <a href="https://getcomposer.org/download/" target="_blank">下载</a>
+                    <a href="https://packagist.org/" target="_blank">安装包列表</a>
+                    <a class="last" href="https://pkg.phpcomposer.com/" target="_blank">中国镜像</a>
+            </header>
+            <div id="main" role="main">
+    
+    <!--
+    tagline: Alias branch names to versions
+-->
+<h1>别名</h1>
+<h2>为什么使用别名？</h2>
+<p>当你使用 VCS 资源库，你将只会得到类似于这样的版本号：从分支发布的标签获取，它看起来像 <code>2.0</code> 或 <code>2.0.x</code>。比较特殊的是，对于你的 <code>master</code> 分支，你会得到一个最新提交的 <code>dev-master</code> 版本。对于你的 <code>bugfix</code> 分支，你会得到一个最新提交的 <code>dev-bugfix</code> 版本。以此类推，这些特殊的版本标识可以用来获取最新的分支源码。</p>
+<p>如果你的 <code>master</code> 分支使用标签发布了 <code>1.0</code> 系列版本，即 <code>1.0.1</code>、<code>1.0.2</code>、<code>1.0.3</code> 等等，任何依赖它的资源包都可能会使用 <code>1.0.*</code> 这个版本约束。</p>
+<p>如果有人想要最新的 <code>dev-master</code> 版本，他们将会碰到一个问题：另一些依赖它的包可能使用了 <code>1.0.*</code> 这个版本约束，因此在 require 这个开发版本时将会产生冲突，因为 <code>dev-master</code> 不符合 <code>1.0.*</code> 的约束。</p>
+<p>这时，就可以使用别名。</p>
+<h2>分支别名</h2>
+<p><code>dev-master</code> 指向一个在你 VCS 项目上的主分支。有些用户会想要使用最新的开发版本，这是相当常见的情况。因此，Composer 允许你别名你的 <code>dev-master</code> 版本为一个 <code>1.0.x-dev</code> 的版本号。这是通过在 <code>composer.json</code> 文件中的 <code>extra</code> 下指定 <code>branch-alias</code> 字段来完成的：</p>
+<pre><code class="language-json">{
+    &quot;extra&quot;: {
+        &quot;branch-alias&quot;: {
+            &quot;dev-master&quot;: &quot;1.0.x-dev&quot;
+        }
+    }
+}
+</code></pre>
+<p>此处的分支版本必须以 <code>dev-</code> 开头（不可比较的版本名称），对应的别名必须是可比较的开发版本名称（即，以数字开头，并以 <code>.x-dev</code> 结束）。<code>branch-alias</code> 所引用的分支必须是存在的。对于 <code>dev-master</code> 你需要在 <code>master</code> 分支上提交它。</p>
+<p>其结果是，任何人都可以使用 <code>1.0.*</code> 版本约束来得到 <code>dev-master</code> 版本。</p>
+<p>为了定义分支别名，你必须是需要别名的包的所有者。如果你想别名一个第三方包，而又不想 fork 它到自己的版本库，可以使用行内别名，我们在接下来就会提到它。</p>
+<h2>使用行内别名</h2>
+<p>分支别名是非常适合用于主开发分支的。但为了使用它们，你需要拥有对源码的控制权，并且你需要提交别名修改到你控制的版本库。</p>
+<p>当你只想在本地项目中尝试一些依赖包的 bug 修正时，这并不是最好的方式。</p>
+<p>出于这个原因，你可以在 <code>require</code> 和 <code>require-dev</code> 字段中直接别名你需要的包。比方说那你找到了 <code>monolog/monolog</code> 的一个 bug。你在 GitHub 上克隆了 <a href="https://github.com/Seldaek/monolog" target="_blank">Monolog</a> 并在名为 <code>bugfix</code> 的分支上修正了一个问题。现在你想安装这个版本到你的本地项目。</p>
+<p>你所使用的 <code>symfony/monolog-bundle</code> require 了 <code>monolog/monolog</code> 并约束了版本 <code>1.*</code>. 因此你需要让你的 <code>dev-bugfix</code> 满足该版本约束。</p>
+<p>只要在你项目根目录的 <code>composer.json</code> 文件中加入以下内容：</p>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+        {
+            &quot;type&quot;: &quot;vcs&quot;,
+            &quot;url&quot;: &quot;https://github.com/you/monolog&quot;
+        }
+    ],
+    &quot;require&quot;: {
+        &quot;symfony/monolog-bundle&quot;: &quot;2.0&quot;,
+        &quot;monolog/monolog&quot;: &quot;dev-bugfix as 1.0.x-dev&quot;
+    }
+}
+</code></pre>
+<p>它将会在你的 GitHub 上获取 <code>monolog/monolog</code> 的 <code>dev-bugfix</code> 版本并将其版本别名为 <code>1.0.x-dev</code>。</p>
+<blockquote>
+<p><strong>注意：</strong> 如果要对一个资源包使用行内别名，这个别名（<code>as</code> 的右边）必须能够使用版本约束。<code>as</code> 左边的部分在这之后将被丢弃。因此，如果 A 依赖 B 而 B 又依赖 <code>monolog/monolog</code> 且版本约束为 <code>dev-bugfix as 1.0.x-dev</code>，那么安装 A 时将使用 B 的版本约束，并识别为 <code>1.0.x-dev</code>，此时必须真实存在一个“分支别名”或“1.0 系列分支”。否则就必须在 A 的 <code>composer.json</code> 文件中再次定义行内别名。</p>
+</blockquote>
+<blockquote>
+<p><strong>注意：</strong> 应该尽量避免行内别名，特别是对已经发布的包。如果你发现了一个 bug，请尝试将你的修复合并到上游分支。这将避免使用你资源包的用户出现问题。</p>
+</blockquote>
+
+
+    <p class="fork-and-edit">
+        如果您发现文档中有错误，或者能够帮我们完善文档，请提交到我们的 <a href="https://github.com/5-say/composer-doc-cn" target="_blank">Github 仓库吧</a>！
+    </p>
+            </div>
+            <footer>
+
+                <p class="license">Composer 以及本网站上的所有内容全部遵循 <a href="https://github.com/composer/composer/blob/master/LICENSE" target="_blank">MIT 开源协议</a>。</p>
+            </footer>
+        </div>
+
+        <script src="http://docs.phpcomposer.com/assets/js/libs/prism.js"></script>
+        <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F16e97907ef84179ff8cd833509017a96' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </body>
+</html>

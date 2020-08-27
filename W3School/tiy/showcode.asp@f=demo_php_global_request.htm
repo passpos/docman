@@ -1,0 +1,39 @@
+<HTML>
+<!-- saved from url=(0069)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_global_request --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;form method=&quot;post&quot; action=&quot;<code class="phpcode">&lt;?php echo $_SERVER['PHP_SELF'];?&gt;</code>&quot;&gt;
+Name: &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;
+&lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+
+<code class="phpcode">&lt;?php 
+$name = $_REQUEST['fname']; 
+echo $name; 
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

@@ -1,0 +1,23 @@
+<html><!-- saved from url=(0073)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_event_preventdefault --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").click(function(event){
+    event.preventDefault();
+  });
+});
+</script>
+</head>
+<body>
+<a href="../../w3school.com.cn/default.htm">W3School</a>
+<p>preventDefault() 方法将防止上面的链接打开 URL。</p>
+</body>
+</html>

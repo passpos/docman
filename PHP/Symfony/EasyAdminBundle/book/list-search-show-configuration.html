@@ -1,0 +1,1159 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 5. List, Search and Show Views Configuration &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6. Edit and New Views Configuration" href="edit-new-configuration.html" />
+    <link rel="prev" title="Chapter 4. Design Configuration" href="design-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 5. List, Search and Show Views Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-search-and-show-views">List, Search and Show Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-configuration">General Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#customize-the-title-of-the-page">Customize the Title of the Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-a-help-message-in-the-page">Display a Help Message in the Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customize-the-number-of-rows-displayed">Customize the Number of Rows Displayed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customize-the-properties-displayed">Customize the Properties Displayed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customize-the-properties-appearance">Customize the Properties Appearance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatting-dates-and-numbers">Formatting Dates and Numbers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-date-and-time-properties">Customizing Date and Time Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-numeric-properties">Customizing Numeric Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#virtual-properties">Virtual Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sorting-entity-listings">Sorting Entity Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filtering-entities">Filtering Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#property-types-defined-by-easyadmin">Property Types Defined by EasyAdmin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#email-data-type">Email Data Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#url-data-type">URL Data Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#telephone-data-type">Telephone Data Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toggle-and-boolean-data-types">Toggle and Boolean Data Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image-data-type">Image Data Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-data-type">File Data Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raw-data-type">Raw Data Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-design-configuration">Advanced Design Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overriding-the-default-templates-using-symfony-s-mechanism">Overriding the Default Templates Using Symfony’s Mechanism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-your-own-templates-to-display-the-list-search-show-views">Using your Own Templates to Display the list/search/show Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-template-used-to-render-each-property">Customizing the Template Used to Render Each Property</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Chapter 5. List, Search and Show Views Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/book/list-search-show-configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-5-list-search-and-show-views-configuration">
+<h1>Chapter 5. List, Search and Show Views Configuration<a class="headerlink" href="#chapter-5-list-search-and-show-views-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This chapter explains how to customize the read-only views: <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>
+and <code class="docutils literal notranslate"><span class="pre">show</span></code>. You’ll learn all their configuration options and how to override
+or tweak their templates.</p>
+<div class="section" id="list-search-and-show-views">
+<h2>List, Search and Show Views<a class="headerlink" href="#list-search-and-show-views" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>List View</strong> displays the items that match the given criteria and provides
+automatic pagination and column sorting:</p>
+<img alt="List view interface" src="../_images/easyadmin-list-view.png" />
+<p>The <strong>Search View</strong> displays the results of any query performed by the user.
+It reuses most of the design and features of the <code class="docutils literal notranslate"><span class="pre">list</span></code> view to ensure a
+consistent user experience:</p>
+<img alt="Search view interface" src="../_images/easyadmin-search-view.png" />
+<p>The <strong>Show View</strong> displays the contents of a given entity:</p>
+<img alt="Show view interface" src="../_images/easyadmin-show-view.png" />
+</div>
+<div class="section" id="general-configuration">
+<h2>General Configuration<a class="headerlink" href="#general-configuration" title="Permalink to this headline">¶</a></h2>
+<p>In order to make examples more concise, this section only shows the
+configuration for the <code class="docutils literal notranslate"><span class="pre">list</span></code> view, but you can apply the exact same options to
+the other <code class="docutils literal notranslate"><span class="pre">search</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views.</p>
+<div class="section" id="customize-the-title-of-the-page">
+<h3>Customize the Title of the Page<a class="headerlink" href="#customize-the-title-of-the-page" title="Permalink to this headline">¶</a></h3>
+<p>This option refers both to the value of the <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code> element and to the visible
+title displayed at the top of the page. By default the title is just the name of
+the entity. Define the <code class="docutils literal notranslate"><span class="pre">title</span></code> option to set a custom page title:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">label</span><span class="p">:</span> <span class="s">&#39;Customers&#39;</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">title</span><span class="p">:</span> <span class="s">&quot;Most</span><span class="nv"> </span><span class="s">recent</span><span class="nv"> </span><span class="s">customers&quot;</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">title</span></code> value can include the following special variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%entity_label%</span></code>, resolves to the value defined in the <code class="docutils literal notranslate"><span class="pre">label</span></code> option of
+the entity. If you haven’t defined it, this value will be equal to the
+entity name. In the example above, this value would be <code class="docutils literal notranslate"><span class="pre">Customers</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%entity_name%</span></code>, resolves to the entity name, which is the YAML key used
+to configure the entity in the backend configuration file. In the example
+above, this value would be <code class="docutils literal notranslate"><span class="pre">Customer</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%entity_id%</span></code>, it’s only available for the <code class="docutils literal notranslate"><span class="pre">show</span></code> view and it resolves to
+the value of the primary key of the entity being showed. Even if the option
+is called <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, it also works for primary keys with names different
+from <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>In Symfony applications, YAML values enclosed with <code class="docutils literal notranslate"><span class="pre">%</span></code> and <code class="docutils literal notranslate"><span class="pre">%</span></code> have a
+special meaning (they are considered container parameters). Escape these
+values doubling the <code class="docutils literal notranslate"><span class="pre">%</span></code> characters:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">label</span><span class="p">:</span> <span class="s">&#39;Customers&#39;</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;%%entity_label%%</span><span class="nv"> </span><span class="s">listing&#39;</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<p>If several entities use the same custom title, you can define the default title
+for all entities in the global <code class="docutils literal notranslate"><span class="pre">list.title</span></code> and <code class="docutils literal notranslate"><span class="pre">show.title</span></code> options (these
+global titles are always overridden by the title defined by each entity):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;list.%%entity_label%%&#39;</span>
+    <span class="nt">show</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;%%entity_label%%</span><span class="nv"> </span><span class="s">(#%%entity_id%%)&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="display-a-help-message-in-the-page">
+<h3>Display a Help Message in the Page<a class="headerlink" href="#display-a-help-message-in-the-page" title="Permalink to this headline">¶</a></h3>
+<p>Entities can define a global help message that is displayed below the title of
+the page. This is useful to add instructions or warning messages for the end
+users (e.g. “The upload process can take a lot of time (don’t close the browser
+window)”).</p>
+<p>The help message is defined with the <code class="docutils literal notranslate"><span class="pre">help</span></code> configuration option, which can be
+added to the entity (all views display the same message) and to each of the
+entity views:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">help</span><span class="p">:</span> <span class="s">&#39;Global</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">displayed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">views&#39;</span>
+            <span class="c1"># ...</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">help</span><span class="p">:</span> <span class="s">&#39;The</span><span class="nv"> </span><span class="s">list</span><span class="nv"> </span><span class="s">view</span><span class="nv"> </span><span class="s">overrides</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">global</span><span class="nv"> </span><span class="s">help</span><span class="nv"> </span><span class="s">message&#39;</span>
+                <span class="c1"># ...</span>
+            <span class="nt">show</span><span class="p">:</span>
+                <span class="c1"># &#39;help&#39; is not defined, so the global help message is displayed</span>
+                <span class="c1"># ...</span>
+            <span class="nt">search</span><span class="p">:</span>
+                <span class="c1"># use the null value to not display the inherited global help message</span>
+                <span class="nt">help</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
+                <span class="c1"># ...</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customize-the-number-of-rows-displayed">
+<h3>Customize the Number of Rows Displayed<a class="headerlink" href="#customize-the-number-of-rows-displayed" title="Permalink to this headline">¶</a></h3>
+<p>By default, listings in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> display a maximum of 15
+rows. To change this value, define the <code class="docutils literal notranslate"><span class="pre">max_results</span></code> option under the global
+<code class="docutils literal notranslate"><span class="pre">list</span></code> key or the local <code class="docutils literal notranslate"><span class="pre">list</span></code> key of any entity:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">max_results</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Category</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">max_results</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In addition, the <code class="docutils literal notranslate"><span class="pre">show</span></code> view displays a maximum of 10 items for fields related
+with other entities (e.g. if <code class="docutils literal notranslate"><span class="pre">Category</span></code> and <code class="docutils literal notranslate"><span class="pre">Product</span></code> entities are related,
+it displays a maximum of 10 products when browsing the details of some
+category). To change this value, define the <code class="docutils literal notranslate"><span class="pre">max_results</span></code> option under the
+global <code class="docutils literal notranslate"><span class="pre">show</span></code> key or the local <code class="docutils literal notranslate"><span class="pre">show</span></code> key of any entity:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">show</span><span class="p">:</span>
+        <span class="nt">max_results</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Category</span><span class="p">:</span>
+            <span class="nt">show</span><span class="p">:</span>
+                <span class="nt">max_results</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customize-the-properties-displayed">
+<h3>Customize the Properties Displayed<a class="headerlink" href="#customize-the-properties-displayed" title="Permalink to this headline">¶</a></h3>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">show</span></code> view displays all the entity properties and the
+<code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> views make some “smart guesses” to decide which columns
+to display to make listings look good.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">fields</span></code> option to explicitly set the properties to display:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;id&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;firstName&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;lastName&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;phone&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">]</span>
+
+            <span class="c1"># if the field name contains a dot, it&#39;s the property of a Doctrine association</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="c1"># this config displays the &#39;email&#39; and &#39;phone&#39; properties of the</span>
+                <span class="c1"># Doctrine entity associated via the &#39;user&#39; property of &#39;Customer&#39;</span>
+                <span class="nt">fields</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;id&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;age&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;user.email&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;user.phone&#39;</span><span class="p p-Indicator">]</span>
+
+            <span class="c1"># Doctrine associations are also supported in the &#39;search&#39; view. This config looks</span>
+            <span class="c1"># for data in the &#39;email&#39; and &#39;phone&#39; properties of the associated &#39;user&#39; entity</span>
+            <span class="nt">search</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;user.email&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;user.phone&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This option is also useful to reorder the properties, because by default they
+are displayed in the same order as defined in the related Doctrine entity.</p>
+<p>In the case of the <code class="docutils literal notranslate"><span class="pre">search</span></code> view, this <code class="docutils literal notranslate"><span class="pre">fields</span></code> option defines the
+properties included in the search query. Otherwise, the query is performed on
+all entity properties except those with special data types, such as <code class="docutils literal notranslate"><span class="pre">binary</span></code>,
+<code class="docutils literal notranslate"><span class="pre">blob</span></code>, <code class="docutils literal notranslate"><span class="pre">object</span></code>, etc.</p>
+</div>
+</div>
+<div class="section" id="customize-the-properties-appearance">
+<h2>Customize the Properties Appearance<a class="headerlink" href="#customize-the-properties-appearance" title="Permalink to this headline">¶</a></h2>
+<p>When entity properties are not configured explicitly, the backend displays them
+with the most appropriate appearance according to their data types. If you
+prefer to control their appearance, start by using the extended field
+configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;id&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact&#39;</span> <span class="p p-Indicator">}]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Instead of using a string to define the property (e.g. <code class="docutils literal notranslate"><span class="pre">'email'</span></code>) you have to
+define a hash with the name of the property (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">property:</span> <span class="pre">'email'</span> <span class="pre">}</span></code>) and the
+options you want to define for it (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...,</span> <span class="pre">label:</span> <span class="pre">'Contact'</span> <span class="pre">}</span></code>).</p>
+<p>If your entity contains lots of properties, consider using the alternative YAML
+sequence syntax to improve the legibility of your backend configuration. The
+following example is equivalent to the above example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact&#39;</span> <span class="p p-Indicator">}</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>These are the options that you can define for each field:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">property</span></code> (mandatory): the name of the property to be displayed. This is
+the only mandatory option when using the extended field configuration format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> (optional): the title displayed for the field (as the column name in
+the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> views and as the <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> element in the
+<code class="docutils literal notranslate"><span class="pre">show</span></code> view).</p>
+<p>If you don’t define this option or set it to <code class="docutils literal notranslate"><span class="pre">null</span></code>, the title is generated
+automatically as the “humanized” version of the property name (e.g. <code class="docutils literal notranslate"><span class="pre">published</span></code>
+is displayed as <code class="docutils literal notranslate"><span class="pre">Published</span></code> and <code class="docutils literal notranslate"><span class="pre">dateOfBirth</span></code> as <code class="docutils literal notranslate"><span class="pre">Date</span> <span class="pre">of</span> <span class="pre">birth</span></code>).</p>
+<p>If you don’t want to display any title for a field (e.g. when displaying an
+image in the “avatar” property) set this option to <code class="docutils literal notranslate"><span class="pre">false</span></code>. This also sets
+the <code class="docutils literal notranslate"><span class="pre">sortable</span></code> option to <code class="docutils literal notranslate"><span class="pre">false</span></code> for the field.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">css_class</span></code> (optional): the CSS class applied to the parent HTML element that
+encloses the field contents. In the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> views, this class
+is also applied to the <code class="docutils literal notranslate"><span class="pre">&lt;th&gt;</span></code> header of the column associated with this field.
+For example, to align the contents of some column to the right, use <code class="docutils literal notranslate"><span class="pre">css_class:</span> <span class="pre">text-right</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template</span></code> (optional): the name of the custom template used to render the
+contents of the field. This option is fully explained later in this chapter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> (optional): the type of data stored in the property, which affects
+how the contents are displayed. The allowed values are:</p>
+<ul class="simple">
+<li><p>Any of the Doctrine types: <code class="docutils literal notranslate"><span class="pre">array</span></code>, <code class="docutils literal notranslate"><span class="pre">association</span></code>, <code class="docutils literal notranslate"><span class="pre">bigint</span></code>, <code class="docutils literal notranslate"><span class="pre">blob</span></code>,
+<code class="docutils literal notranslate"><span class="pre">boolean</span></code>, <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">datetimetz</span></code>, <code class="docutils literal notranslate"><span class="pre">decimal</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>,
+<code class="docutils literal notranslate"><span class="pre">guid</span></code>, <code class="docutils literal notranslate"><span class="pre">integer</span></code>, <code class="docutils literal notranslate"><span class="pre">json_array</span></code>, <code class="docutils literal notranslate"><span class="pre">object</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_array</span></code>,
+<code class="docutils literal notranslate"><span class="pre">smallint</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>.</p></li>
+<li><p>Any of the custom EasyAdmin types: <code class="docutils literal notranslate"><span class="pre">email</span></code>, <code class="docutils literal notranslate"><span class="pre">file</span></code>, <code class="docutils literal notranslate"><span class="pre">image</span></code>, <code class="docutils literal notranslate"><span class="pre">raw</span></code>,
+<code class="docutils literal notranslate"><span class="pre">tel</span></code>, <code class="docutils literal notranslate"><span class="pre">toggle</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code> (they are explained later in this chapter).</p></li>
+</ul>
+</li>
+</ul>
+<p>The fields of the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> views define another option:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sortable</span></code> (optional): if <code class="docutils literal notranslate"><span class="pre">true</span></code> the backend allows to sort results by
+this property; set it to <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable sorting. All properties are
+<em>sortable</em> by default except virtual properties (explained later in this
+chapter) and those related with Doctrine associations of any type.</p></li>
+</ul>
+<p>The fields of the <code class="docutils literal notranslate"><span class="pre">show</span></code> view can define another option:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code> (optional): the help message displayed below the field contents.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In addition to these options defined by EasyAdmin, you can define any custom
+option for the fields. This way you can create very powerful backend
+customizations, as explained in this tutorial: <a class="reference internal" href="../tutorials/custom-property-options.html"><span class="doc">How to Define Custom Options for Entity Properties</span></a>.</p>
+</div>
+</div>
+<div class="section" id="formatting-dates-and-numbers">
+<h2>Formatting Dates and Numbers<a class="headerlink" href="#formatting-dates-and-numbers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="customizing-date-and-time-properties">
+<h3>Customizing Date and Time Properties<a class="headerlink" href="#customizing-date-and-time-properties" title="Permalink to this headline">¶</a></h3>
+<p>By default, these are the formats applied to date and time properties (read the
+<a class="reference external" href="http://php.net/manual/en/function.date.php">date configuration options</a> in the PHP manual if you don’t understand the
+meaning of these formats):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code>: <code class="docutils literal notranslate"><span class="pre">Y-m-d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>:  <code class="docutils literal notranslate"><span class="pre">H:i:s</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">datetime</span></code>: <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">j,</span> <span class="pre">Y</span> <span class="pre">H:i</span></code></p></li>
+</ul>
+<p>These default formats can be overridden in two ways: globally for all entities
+and locally for each entity property. The global <code class="docutils literal notranslate"><span class="pre">formats</span></code> option sets the
+formats for all entities and their properties:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">formats</span><span class="p">:</span>
+        <span class="nt">date</span><span class="p">:</span>     <span class="s">&#39;d/m/Y&#39;</span>
+        <span class="nt">time</span><span class="p">:</span>     <span class="s">&#39;H:i&#39;</span>
+        <span class="nt">datetime</span><span class="p">:</span> <span class="s">&#39;d/m/Y</span><span class="nv"> </span><span class="s">H:i:s&#39;</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The values of the <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">datetime</span></code> options are passed to the
+<code class="docutils literal notranslate"><span class="pre">format()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> class, so you can use any of the
+<a class="reference external" href="http://php.net/manual/en/function.date.php">date configuration options</a> defined by PHP.</p>
+<p>Date/time formatting can also be defined in each property configuration using
+the <code class="docutils literal notranslate"><span class="pre">format</span></code> option. This local option always overrides the global format:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;dateOfBirth&#39;</span><span class="p p-Indicator">,</span><span class="nt"> format</span><span class="p">:</span> <span class="s">&#39;j/n/Y&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-numeric-properties">
+<h3>Customizing Numeric Properties<a class="headerlink" href="#customizing-numeric-properties" title="Permalink to this headline">¶</a></h3>
+<p>Numeric properties (<code class="docutils literal notranslate"><span class="pre">bigint</span></code>, <code class="docutils literal notranslate"><span class="pre">integer</span></code>, <code class="docutils literal notranslate"><span class="pre">smallint</span></code>, <code class="docutils literal notranslate"><span class="pre">decimal</span></code>,
+<code class="docutils literal notranslate"><span class="pre">float</span></code>) are formatted by default according to the locale of your Symfony
+application. This formatting can be overridden globally for all entities or
+locally for each property.</p>
+<p>The global <code class="docutils literal notranslate"><span class="pre">formats</span></code> option applies the same formatting for all entities:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">formats</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+        <span class="nt">number</span><span class="p">:</span> <span class="s">&#39;%.2f&#39;</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In this case, the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> option is passed to the <code class="docutils literal notranslate"><span class="pre">sprintf()</span></code>
+function, so you can use any of the <a class="reference external" href="http://php.net/manual/en/function.sprintf.php">PHP format specifiers</a>.</p>
+<p>Numeric properties can also define their formatting using the <code class="docutils literal notranslate"><span class="pre">format</span></code>
+option. This local option always overrides the global format:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;serialNumber&#39;</span><span class="p p-Indicator">,</span><span class="nt"> format</span><span class="p">:</span> <span class="s">&#39;%010s&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;margin&#39;</span><span class="p p-Indicator">,</span><span class="nt"> format</span><span class="p">:</span> <span class="s">&#39;%01.2f&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="virtual-properties">
+<h2>Virtual Properties<a class="headerlink" href="#virtual-properties" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, it’s useful to display values which are not entity properties. For
+example, if your <code class="docutils literal notranslate"><span class="pre">Customer</span></code> entity defines the <code class="docutils literal notranslate"><span class="pre">firstName</span></code> and <code class="docutils literal notranslate"><span class="pre">lastName</span></code>
+properties, you may want to display a column called <code class="docutils literal notranslate"><span class="pre">Name</span></code> with both values
+merged. These are called <em>virtual properties</em> because they don’t really exist as
+Doctrine entity properties.</p>
+<p>First add the virtual property to the entity configuration as any other property:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="c1"># &#39;name&#39; doesn&#39;t exist as a Doctrine entity property</span>
+                <span class="nt">fields</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;id&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;phone&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Now, if you reload the backend, you’ll see that the virtual property only
+displays <code class="docutils literal notranslate"><span class="pre">Inaccessible</span></code> as its value. The reason is that <code class="docutils literal notranslate"><span class="pre">name</span></code> does not
+match any of the entity’s properties. To fix this issue, add a new public method
+in your entity called <code class="docutils literal notranslate"><span class="pre">getName()</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
+
+<span class="sd">/** @ORM\Entity */</span>
+<span class="k">class</span> <span class="nc">Customer</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFirstName</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLastName</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>That’s it. Reload your backend and now you’ll see the value of this virtual
+property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The values or virtual properties are get using the <a class="reference external" href="https://symfony.com/doc/current/components/property_access.html">PropertyAccess component</a>
+from Symfony, which requires to follow a strict syntax for getter names:
+<code class="docutils literal notranslate"><span class="pre">get</span></code> + camelized version of the property name. Example: <code class="docutils literal notranslate"><span class="pre">name</span></code> -&gt;
+<code class="docutils literal notranslate"><span class="pre">getName()</span></code>; <code class="docutils literal notranslate"><span class="pre">firstName</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">getFirstName()</span></code>; <code class="docutils literal notranslate"><span class="pre">first_and_last_name</span></code> -&gt;
+<code class="docutils literal notranslate"><span class="pre">getFirstAndLastName()</span></code>.</p>
+</div>
+<p>By default, virtual properties are displayed as text contents. If your virtual
+property is a <em>boolean</em> value or a date, use the <code class="docutils literal notranslate"><span class="pre">type</span></code> option to set a more
+appropriate data type:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="s">&#39;id&#39;</span>
+                    <span class="c1"># these virtual properties define their &#39;type&#39; option to not display them as text</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;is_eligible&#39;</span><span class="p p-Indicator">,</span><span class="nt">  type</span><span class="p">:</span> <span class="s">&#39;boolean&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;last_contact&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;datetime&#39;</span> <span class="p p-Indicator">}</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The main limitation of virtual properties is that you cannot sort listings
+using these fields.</p>
+</div>
+<div class="section" id="sorting-entity-listings">
+<h2>Sorting Entity Listings<a class="headerlink" href="#sorting-entity-listings" title="Permalink to this headline">¶</a></h2>
+<p>By default the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> views sort the rows in descending order
+according to the value of the primary key. You can sort by any other entity
+property using the <code class="docutils literal notranslate"><span class="pre">sort</span></code> configuration option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="c1"># if the sort order is not specified, &#39;DESC&#39; is used</span>
+                <span class="nt">sort</span><span class="p">:</span> <span class="s">&#39;createdAt&#39;</span>
+            <span class="nt">search</span><span class="p">:</span>
+                <span class="c1"># use an array to also define the sorting direction</span>
+                <span class="nt">sort</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;createdAt&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;ASC&#39;</span><span class="p p-Indicator">]</span>
+
+        <span class="nt">Purchase</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="c1"># the &#39;sort&#39; option supports Doctrine associations up to one level</span>
+            <span class="c1"># (e.g. &#39;sort: user.name&#39; works but &#39;sort: user.group.name&#39; won&#39;t work)</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">sort</span><span class="p">:</span> <span class="s">&#39;user.name&#39;</span>
+            <span class="nt">search</span><span class="p">:</span>
+                <span class="nt">sort</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;user.name&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;ASC&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">sort</span></code> option of each entity is only used as the default content sorting. If
+the query string includes the optional <code class="docutils literal notranslate"><span class="pre">sortField</span></code> and <code class="docutils literal notranslate"><span class="pre">sortDirection</span></code>
+parameters, their values override this <code class="docutils literal notranslate"><span class="pre">sort</span></code> option. This happens for example
+when defining a different sorting in a custom menu and when clicking on the
+listings columns to reorder the displayed contents.</p>
+</div>
+<div class="section" id="filtering-entities">
+<h2>Filtering Entities<a class="headerlink" href="#filtering-entities" title="Permalink to this headline">¶</a></h2>
+<p>A common need for backends is to filter the entities included in listings (for
+example: don’t display expired offers, display only clients that spend more than
+a given amount, etc.) You can achieve this with the features explained later in
+this chapter to modify the behavior of the <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views.</p>
+<p>However, for simple filters it’s more convenient to use the <code class="docutils literal notranslate"><span class="pre">dql_filter</span></code> option,
+which defines the conditions passed to the <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause of the Doctrine query
+used to get the entities displayed in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> views.</p>
+<p>The following example manages the same <code class="docutils literal notranslate"><span class="pre">User</span></code> entity in two different ways using
+a basic filter to differentiate each type of user:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">VipCustomers</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">dql_filter</span><span class="p">:</span> <span class="s">&#39;entity.budget</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">100000&#39;</span>
+        <span class="nt">RegularCustomers</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">dql_filter</span><span class="p">:</span> <span class="s">&#39;entity.budget</span><span class="nv"> </span><span class="s">&lt;=</span><span class="nv"> </span><span class="s">100000&#39;</span>
+</pre></div>
+</div>
+<p>The Doctrine DQL expression defined in the <code class="docutils literal notranslate"><span class="pre">dql_filter</span></code> option must always use
+<code class="docutils literal notranslate"><span class="pre">entity</span></code> as the name of the entity, regardless of your actual entity name.</p>
+<p>Since this is a regular YAML configuration file, you can also include container
+parameters inside the filter to use different values depending on the environment
+or even dynamic values:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">VipCustomers</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">dql_filter</span><span class="p">:</span> <span class="s">&#39;entity.budget</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">%customers.budget_threshold%&#39;</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The value of the <code class="docutils literal notranslate"><span class="pre">dql_filter</span></code> can combine several conditions (in fact, you can
+put anything that is considered valid as a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause in a Doctrine query):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">UrgentIssues</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Issue</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">dql_filter</span><span class="p">:</span> <span class="s">&quot;entity.label</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">&#39;CRITICAL&#39;</span><span class="nv"> </span><span class="s">OR</span><span class="nv"> </span><span class="s">entity.priority</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">4&quot;</span>
+        <span class="nt">ImportantIssues</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Issue</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">dql_filter</span><span class="p">:</span> <span class="s">&quot;entity.priority</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">AND</span><span class="nv"> </span><span class="s">entity.numComments</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">10&quot;</span>
+        <span class="nt">AllIssues</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Issue</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default the <code class="docutils literal notranslate"><span class="pre">dql_filter</span></code> option from the <code class="docutils literal notranslate"><span class="pre">list</span></code> view is also used in the
+<code class="docutils literal notranslate"><span class="pre">search</span></code> view. If you prefer to apply different filters, define the
+<code class="docutils literal notranslate"><span class="pre">dql_filter</span></code> option explicitly for the <code class="docutils literal notranslate"><span class="pre">search</span></code> view:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Issues</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Issue</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">dql_filter</span><span class="p">:</span> <span class="s">&quot;LOWER(entity.title)</span><span class="nv"> </span><span class="s">LIKE</span><span class="nv"> </span><span class="s">&#39;%%issue%%&#39;&quot;</span>
+            <span class="nt">search</span><span class="p">:</span>
+                <span class="c1"># defining a different condition than &#39;list&#39;</span>
+                <span class="nt">dql_filter</span><span class="p">:</span> <span class="s">&quot;entity.status</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&#39;DELETED&#39;&quot;</span>
+                <span class="c1"># using an empty value to not apply any condition when searching</span>
+                <span class="c1"># elements (this prevents inheriting the &#39;dql_filter&#39; value defined in &#39;list&#39;)</span>
+                <span class="nt">dql_filter</span><span class="p">:</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Combine the <code class="docutils literal notranslate"><span class="pre">dql_filter</span></code> option with a custom menu (as explained in the next
+chapters) to improve the navigation of the backend.</p>
+</div>
+</div>
+<div class="section" id="property-types-defined-by-easyadmin">
+<h2>Property Types Defined by EasyAdmin<a class="headerlink" href="#property-types-defined-by-easyadmin" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the Doctrine data types, properties can use any of the following
+data types defined by EasyAdmin.</p>
+<div class="section" id="email-data-type">
+<h3>Email Data Type<a class="headerlink" href="#email-data-type" title="Permalink to this headline">¶</a></h3>
+<p>It displays the contents of the property as a clickable <code class="docutils literal notranslate"><span class="pre">mailto:</span></code> link:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;contact&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;email&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="url-data-type">
+<h3>URL Data Type<a class="headerlink" href="#url-data-type" title="Permalink to this headline">¶</a></h3>
+<p>It displays the contents of the property as a clickable link which opens in a
+new browser tab:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;blogUrl&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;url&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="telephone-data-type">
+<h3>Telephone Data Type<a class="headerlink" href="#telephone-data-type" title="Permalink to this headline">¶</a></h3>
+<p>It displays the contents of the property as a clickable telephone number. Beware
+that some browsers don’t support these links:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;workPhoneNumber&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;tel&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="toggle-and-boolean-data-types">
+<h3>Toggle and Boolean Data Types<a class="headerlink" href="#toggle-and-boolean-data-types" title="Permalink to this headline">¶</a></h3>
+<p>If an entity is editable, the <code class="docutils literal notranslate"><span class="pre">list</span></code> view applies the <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">'toggle'</span></code>
+option to all its boolean properties. This data type makes these properties be
+rendered as “flip switches” that allow to toggle their values very easily:</p>
+<img alt="Advanced boolean fields" src="../_images/easyadmin-boolean-field-toggle.gif" />
+<p>When you change the value of any boolean property, an Ajax request is made to
+actually change that value in the database. If something goes wrong, the switch
+automatically returns to its original value and it disables itself until the
+page is refreshed to avoid further issues:</p>
+<img alt="Boolean field behavior when an error happens" src="../_images/easyadmin-boolean-field-toggle-error.gif" />
+<p>In you prefer to disable these “toggles”, define the <code class="docutils literal notranslate"><span class="pre">type</span></code> of the property
+explicitly as <code class="docutils literal notranslate"><span class="pre">boolean</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;hasStock&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;boolean&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Now the boolean value is rendered as a simple label and its value cannot be
+modified from the <code class="docutils literal notranslate"><span class="pre">list</span></code> view:</p>
+<img alt="Boolean field displayed as a label" src="../_images/easyadmin-boolean-field-label.png" />
+</div>
+<div class="section" id="image-data-type">
+<h3>Image Data Type<a class="headerlink" href="#image-data-type" title="Permalink to this headline">¶</a></h3>
+<p>If any of your properties stores the URL or path of an image, this type allows
+you to display the actual image instead of its path. In most cases, you just
+need to set the <code class="docutils literal notranslate"><span class="pre">type</span></code> property to <code class="docutils literal notranslate"><span class="pre">image</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;photo&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;image&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In the above example, the <code class="docutils literal notranslate"><span class="pre">photo</span></code> property is displayed as a <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> HTML
+element whose <code class="docutils literal notranslate"><span class="pre">src</span></code> attribute is the value stored in the property.</p>
+<p>If the property stores relative paths, define the <code class="docutils literal notranslate"><span class="pre">base_path</span></code> option to set the
+path to be prefixed to the image path:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;photo&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> base_path</span><span class="p">:</span> <span class="s">&#39;/img/&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The value of the <code class="docutils literal notranslate"><span class="pre">base_path</span></code> can be a relative or absolute URL and even a
+Symfony parameter:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># relative path</span>
+<span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;photo&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> base_path</span><span class="p">:</span> <span class="s">&#39;/img/products/&#39;</span> <span class="p p-Indicator">}</span>
+
+<span class="c1"># absolute path pointing to an external host</span>
+<span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;photo&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> base_path</span><span class="p">:</span> <span class="s">&#39;http://static.acme.org/img/&#39;</span> <span class="p p-Indicator">}</span>
+
+<span class="c1"># Symfony container parameter</span>
+<span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;photo&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> base_path</span><span class="p">:</span> <span class="s">&#39;%vich_uploader.mappings.product_image%&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>The image base path can also be set in the entity, to avoid repeating its
+value for different properties or different views:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">image_base_path</span><span class="p">:</span> <span class="s">&#39;http://static.acme.org/img/&#39;</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;photo&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;image&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The base paths defined for a property always have priority over the one defined
+globally for the entity.</p>
+</div>
+<div class="section" id="file-data-type">
+<h3>File Data Type<a class="headerlink" href="#file-data-type" title="Permalink to this headline">¶</a></h3>
+<p>If any of your properties stores the URL or path of a file, this type allows you
+to display a link to the actual file. In most cases, you just need to set the
+<code class="docutils literal notranslate"><span class="pre">type</span></code> property to <code class="docutils literal notranslate"><span class="pre">file</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;instructions&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;file&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In the above example, the <code class="docutils literal notranslate"><span class="pre">instructions</span></code> property is displayed as an <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code>
+HTML element whose <code class="docutils literal notranslate"><span class="pre">href</span></code> attribute is the value stored in the property.</p>
+<p>If the property stores relative paths, define the <code class="docutils literal notranslate"><span class="pre">base_path</span></code> option to set the
+absolute or relative path to be prefixed to the file path:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;instructions&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;file&#39;</span><span class="p p-Indicator">,</span><span class="nt"> base_path</span><span class="p">:</span> <span class="s">&#39;/pdf/&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The file base path can also be set in the entity, to avoid repeating its
+value for different properties or different views:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">file_base_path</span><span class="p">:</span> <span class="s">&#39;http://static.acme.org/pdf/&#39;</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;instructions&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;file&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The base paths defined for a property always have priority over the one defined
+globally for the entity.</p>
+<p>The name of the file is displayed by default as the text of the <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> link.
+If this is undesired, define the <code class="docutils literal notranslate"><span class="pre">filename</span></code> property to set the <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> text
+explicitly:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;instructions&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;file&#39;</span><span class="p p-Indicator">,</span><span class="nt"> filename</span><span class="p">:</span> <span class="s">&#39;View</span><span class="nv"> </span><span class="s">instructions</span><span class="nv"> </span><span class="s">(PDF)&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="raw-data-type">
+<h3>Raw Data Type<a class="headerlink" href="#raw-data-type" title="Permalink to this headline">¶</a></h3>
+<p>All the string-based data types are escaped before displaying them. For that
+reason, if the property stores HTML content, you’ll see the HTML tags instead of
+the rendered HTML content. In case you want to display the contents unescaped,
+define the <code class="docutils literal notranslate"><span class="pre">type</span></code> option with a <code class="docutils literal notranslate"><span class="pre">raw</span></code> value:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;features&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;raw&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="advanced-design-configuration">
+<span id="list-search-show-advanced-design-configuration"></span><h2>Advanced Design Configuration<a class="headerlink" href="#advanced-design-configuration" title="Permalink to this headline">¶</a></h2>
+<p>This section explains how to completely customize the design of the <code class="docutils literal notranslate"><span class="pre">list</span></code>,
+<code class="docutils literal notranslate"><span class="pre">search</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views. EasyAdmin defines several Twig templates to
+create its interface. These are the templates related to <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>
+and <code class="docutils literal notranslate"><span class="pre">show</span></code> views:</p>
+<ul class="simple" id="default-templates">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/layout.html.twig</span></code>, the common layout that decorates the
+rest of the main templates;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/show.html.twig</span></code>, renders the contents stored by a given
+entity;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/list.html.twig</span></code>, renders the entity listings and the
+search results page;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/paginator.html.twig</span></code>, renders the pagination of the
+<code class="docutils literal notranslate"><span class="pre">list</span></code> view.</p></li>
+</ul>
+<p>In addition, EasyAdmin uses several template fragments to render the value of
+each property according to its type. For example, properties of type <code class="docutils literal notranslate"><span class="pre">string</span></code>
+are rendered with the <code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/field_string.html.twig</span></code> template.
+There are also other fragments to render special values, such as
+<code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/label_null.html.twig</span></code> for <code class="docutils literal notranslate"><span class="pre">null</span></code> values. Check out the
+<code class="docutils literal notranslate"><span class="pre">src/Resources/views/</span></code> directory of the bundle to see all the available
+templates.</p>
+<p>Depending on your needs, there are several customization options:</p>
+<ol class="arabic simple">
+<li><p>Override the default EasyAdmin templates using Symfony’s overriding mechanism.
+Useful to add or change minor things in the default interface.</p></li>
+<li><p>Use your own templates to display the list/search/show views and all their
+elements. Useful if you want to customize the interface entirely.</p></li>
+<li><p>Use a template fragment to customize just one property of some entity in the
+list/search/show views. Useful to completely change how some property is
+displayed.</p></li>
+</ol>
+<div class="section" id="overriding-the-default-templates-using-symfony-s-mechanism">
+<h3>Overriding the Default Templates Using Symfony’s Mechanism<a class="headerlink" href="#overriding-the-default-templates-using-symfony-s-mechanism" title="Permalink to this headline">¶</a></h3>
+<p>Symfony allows to <a class="reference external" href="https://symfony.com/doc/current/bundles/override.html">override any part of third-party bundles</a>. To override one
+of the default EasyAdmin templates, create a new template inside
+<code class="docutils literal notranslate"><span class="pre">templates/bundles/EasyAdminBundle/default/</span></code> with the same path as the
+template to override. Example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">your</span><span class="o">-</span><span class="nx">project</span><span class="o">/</span>
+<span class="nx">├─</span> <span class="o">...</span>
+<span class="nx">└─</span> <span class="nx">templates</span><span class="o">/</span>
+   <span class="nx">└─</span> <span class="nx">bundles</span><span class="o">/</span>
+      <span class="nx">└─</span> <span class="nx">EasyAdminBundle</span><span class="o">/</span>
+         <span class="nx">└─</span> <span class="k">default</span><span class="o">/</span>
+            <span class="nx">├─</span> <span class="k">list</span><span class="o">.</span><span class="nx">html</span><span class="o">.</span><span class="nx">twig</span>
+            <span class="nx">├─</span> <span class="nx">edit</span><span class="o">.</span><span class="nx">html</span><span class="o">.</span><span class="nx">twig</span>
+            <span class="nx">└─</span> <span class="nx">paginator</span><span class="o">.</span><span class="nx">html</span><span class="o">.</span><span class="nx">twig</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Add an empty <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">dump()</span> <span class="pre">}}</span></code> call in your custom templates to know which
+variables are passed to them by EasyAdmin.</p>
+</div>
+<p>Instead of creating the new templates from scratch, you can extend from the
+original templates and change only the parts you want to override. However, you
+must use a special syntax inside <code class="docutils literal notranslate"><span class="pre">extends</span></code> to avoid an infinite loop:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/bundles/EasyAdminBundle/default/layout.html.twig #}</span><span class="x"></span>
+
+<span class="c">{# DON&#39;T DO THIS: it will cause an infinite loop #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;@EasyAdmin/default/layout.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# DO THIS: the &#39;!&#39; symbol tells Symfony to extend from the original template #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;@!EasyAdmin/default/layout.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">sidebar</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# ... #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-your-own-templates-to-display-the-list-search-show-views">
+<span id="overriding-the-default-templates-by-configuration"></span><h3>Using your Own Templates to Display the list/search/show Views<a class="headerlink" href="#using-your-own-templates-to-display-the-list-search-show-views" title="Permalink to this headline">¶</a></h3>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">templates</span></code> option (globally or only to some entities) to define the
+path of the Twig template used to render each part of the interface:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># these custom templates are applied to all entities</span>
+        <span class="nt">templates</span><span class="p">:</span>
+            <span class="nt">paginator</span><span class="p">:</span> <span class="s">&#39;admin/my_paginator.html.twig&#39;</span>
+            <span class="nt">layout</span><span class="p">:</span> <span class="s">&#39;admin/layouts/custom_layout.html.twig&#39;</span>
+            <span class="nt">label_null</span><span class="p">:</span> <span class="s">&#39;admin/null_value.html.twig&#39;</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="c1"># these custom templates are only applied to this entity and</span>
+            <span class="c1"># they override any global template defined in &#39;design.templates&#39;</span>
+            <span class="nt">templates</span><span class="p">:</span>
+                <span class="nt">list</span><span class="p">:</span> <span class="s">&#39;admin/customizations/customer_list.html.twig&#39;</span>
+                <span class="nt">field_string</span><span class="p">:</span> <span class="s">&#39;admin/types/long_strings.html.twig&#39;</span>
+</pre></div>
+</div>
+<p>The name of the config option matches the name of the template files inside
+<code class="docutils literal notranslate"><span class="pre">src/Resources/views/</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">layout</span></code>, <code class="docutils literal notranslate"><span class="pre">field_string</span></code>, <code class="docutils literal notranslate"><span class="pre">label_null</span></code>,
+etc.) The value of the options can be any valid Twig template path.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Add an empty <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">dump()</span> <span class="pre">}}</span></code> call in your custom templates to know which
+variables are passed to them by EasyAdmin.</p>
+</div>
+<p>Instead of creating the new templates from scratch, you can extend from the
+original templates and change only the parts you want to override. Suppose you
+only want to change the search form of the <code class="docutils literal notranslate"><span class="pre">list</span></code> view. To do so, create the
+following <code class="docutils literal notranslate"><span class="pre">list.html.twig</span></code> template extending from the default one and
+override only the <code class="docutils literal notranslate"><span class="pre">search_action</span></code> Twig block:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/admin/list.html.twig #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;@EasyAdmin/default/list.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">search_action</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# ... customize the search form ... #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-the-template-used-to-render-each-property">
+<h3>Customizing the Template Used to Render Each Property<a class="headerlink" href="#customizing-the-template-used-to-render-each-property" title="Permalink to this headline">¶</a></h3>
+<p>This method is useful to use a custom template just to render a single property
+of some entity. To do so, define the path of the custom template in the
+<code class="docutils literal notranslate"><span class="pre">template</span></code> option of the property:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Invoice</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;total&#39;</span><span class="p p-Indicator">,</span><span class="nt"> template</span><span class="p">:</span> <span class="s">&#39;admin/invoice_total.html.twig&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Instead of using the default <code class="docutils literal notranslate"><span class="pre">field_float.html.twig</span></code> template, the value of
+the <code class="docutils literal notranslate"><span class="pre">total</span></code> property is rendered with the <code class="docutils literal notranslate"><span class="pre">admin/invoice_total.html.twig</span></code>
+template. The value of <code class="docutils literal notranslate"><span class="pre">template</span></code> can be any valid Twig template path.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Add an empty <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">dump()</span> <span class="pre">}}</span></code> call in your custom templates to know which
+variables are passed to them by EasyAdmin.</p>
+</div>
+<hr class="docutils" />
+<p>Next chapter: <a class="reference internal" href="edit-new-configuration.html"><span class="doc">Chapter 6. Edit and New Views Configuration</span></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="edit-new-configuration.html" class="btn btn-neutral float-right" title="Chapter 6. Edit and New Views Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="design-configuration.html" class="btn btn-neutral float-left" title="Chapter 4. Design Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

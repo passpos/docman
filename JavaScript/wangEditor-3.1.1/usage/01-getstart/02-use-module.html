@@ -1,0 +1,59 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>02-use-module.md</title>
+    <style type="text/css">
+
+      /* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+      td, h1, h2, h3, h4, h5, p, ul, ol, li {
+          page-break-inside: avoid; 
+      }
+
+    </style>
+  </head>
+  <body>
+<div class="passage">
+    <h1 id="section">使用模块定义</h1>
+    <p>wangEditor 除了直接使用<code>&lt;script&gt;</code>引用之外，还支持<code>AMD</code>和<code>CommonJS</code>的引用方式。</p>
+    <h2 id="amd">AMD</h2>
+    <p>以<code>require.js</code>为例演示</p>
+    <p>先创建<code>main.js</code>，代码为</p>
+    <pre>
+    require(['/wangEditor.min.js'], function (E) {
+      var editor = new E('#editor')
+      editor.create()
+    })</pre>
+    <p>然后创建页面，代码为</p>
+    <pre>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;wangEditor demo&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id="editor"&gt;
+          &lt;p&gt;欢迎使用 wangEditor 富文本编辑器&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;script 
+          data-main="./main.js" 
+          src="//cdn.bootcss.com/require.js/2.3.3/require.js"&gt;
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</pre>
+    <h2 id="commonjs">CommonJS</h2>
+    <p>可以使用<code>npm install wangeditor</code>安装（注意，这里<code>wangeditor</code>全是<strong>小写字母</strong>）</p>
+    <pre>
+    // 引用
+    var E = require('wangeditor')  // 使用 npm 安装
+    var E = require('/wangEditor.min.js')  // 使用下载的源码
+
+    // 创建编辑器
+    var editor = new E('#editor')
+    editor.create()</pre>
+  </div>
+</body>
+</html>

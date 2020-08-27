@@ -1,0 +1,31 @@
+<!DOCTYPE html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_script_get --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<h3>演示如何访问 SCRIPT 元素</h3>
+
+<script id="myScript" src="../demo/demo_script_src.js"></script>
+
+<p>点击按钮来获得外部脚本文件的 URL。</p>
+
+<p id="demo"></p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x = document.getElementById("myScript").src;
+document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+</body>
+</html>

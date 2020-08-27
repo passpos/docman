@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to Translate the Backend &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to Define Custom Actions" href="custom-actions.html" />
+    <link rel="prev" title="Configuration Reference" href="../book/configuration-reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../book/installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Translate the Backend</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#translate-the-backend-interface">Translate the Backend Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#translate-the-main-menu-labels">Translate the Main Menu Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#translate-property-labels">Translate Property Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#translate-action-names">Translate Action Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#translate-custom-templates">Translate Custom Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-custom-translation-domain">Using a custom translation domain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>How to Translate the Backend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/i18n.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-translate-the-backend">
+<h1>How to Translate the Backend<a class="headerlink" href="#how-to-translate-the-backend" title="Permalink to this headline">¶</a></h1>
+<p>EasyAdmin leverages the Symfony Translation component to provide built-in
+support for translating backends into any language. The translation process is
+divided into two steps:</p>
+<ul class="simple">
+<li><p>Translating the elements of the EasyAdmin interface;</p></li>
+<li><p>Translating your own contents (such as the main menu and the property labels).</p></li>
+</ul>
+<p>The elements of the interface are translated under the <code class="docutils literal notranslate"><span class="pre">EasyAdminBundle</span></code>
+translation domain. The rest of the elements are translated by default using the
+<code class="docutils literal notranslate"><span class="pre">messages</span></code> domain, but you can use any other domain with the
+<code class="docutils literal notranslate"><span class="pre">translation_domain</span></code> option, as explained at the end of this article.</p>
+<p>Before translating your backend, make sure that the <code class="docutils literal notranslate"><span class="pre">translator</span></code> service is
+enabled in the application (projects based on the Symfony Standard Edition have
+it disabled by default):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/translation.yaml</span>
+<span class="nt">framework</span><span class="p">:</span>
+    <span class="nt">translator</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> fallbacks</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="s">&quot;en&quot;</span> <span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<div class="section" id="translate-the-backend-interface">
+<h2>Translate the Backend Interface<a class="headerlink" href="#translate-the-backend-interface" title="Permalink to this headline">¶</a></h2>
+<p>The backend interface uses the same language as the underlying Symfony
+application. If you want to change it, update the value of the <code class="docutils literal notranslate"><span class="pre">locale</span></code> option
+in the <code class="docutils literal notranslate"><span class="pre">config/services.yaml</span></code> file.</p>
+<p>EasyAdmin is already translated into tens of languages thanks to the generosity
+of its community. We’re actively looking for more translations, so please
+consider contributing a translation for your own language.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although it’s not recommended to do it, if you want to change any of the
+built-in translations defined under the <code class="docutils literal notranslate"><span class="pre">EasyAdminBundle</span></code> domain, use the
+<a class="reference external" href="https://symfony.com/doc/current/cookbook/bundles/override.html#translations">translation override mechanism</a> provided by Symfony.</p>
+</div>
+</div>
+<div class="section" id="translate-the-main-menu-labels">
+<h2>Translate the Main Menu Labels<a class="headerlink" href="#translate-the-main-menu-labels" title="Permalink to this headline">¶</a></h2>
+<p>Menu items use the <strong>entity name</strong> as their label. The entity name is the YAML
+key used to define the configuration of each entity. For example, the following
+configuration would show two menu items called <code class="docutils literal notranslate"><span class="pre">Customers</span></code> and <code class="docutils literal notranslate"><span class="pre">Orders</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customers</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+        <span class="nt">Orders</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Purchase</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">messages.xx.yml</span></code> (or <code class="docutils literal notranslate"><span class="pre">messages.xx.xlf</span></code>) file for the previous example
+would need to use <code class="docutils literal notranslate"><span class="pre">Customers</span></code> and <code class="docutils literal notranslate"><span class="pre">Orders</span></code> as the keys of the translations.
+Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># translations/messages.es.yml</span>
+<span class="nt">Customers</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Clientes</span>
+<span class="nt">Orders</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ventas</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Main menu labels can be customized thanks to the <code class="docutils literal notranslate"><span class="pre">label</span></code> option of each entity.
+You can even use structured translation keys instead of the real contents:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customers</span><span class="p">:</span>
+            <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">menu.customers</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+        <span class="nt">Orders</span><span class="p">:</span>
+            <span class="nt">label</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">menu.orders</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Purchase</span>
+</pre></div>
+</div>
+<p>In this case, the translation file should use the value of the <code class="docutils literal notranslate"><span class="pre">label</span></code> option
+as the keys of the translations (and you should also create the file for the
+original language used by the translation keys):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># translations/messages.en.yml</span>
+<span class="nt">menu.customers</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Customers</span>
+<span class="nt">menu.orders</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Orders</span>
+<span class="c1"># ...</span>
+
+<span class="c1"># translations/messages.es.yml</span>
+<span class="nt">menu.customers</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Clientes</span>
+<span class="nt">menu.orders</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ventas</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="translate-property-labels">
+<h2>Translate Property Labels<a class="headerlink" href="#translate-property-labels" title="Permalink to this headline">¶</a></h2>
+<p>The behavior of the property labels is very similar to the one explained in the
+previous section for the main menu. By default, the label of each property is
+the “humanized” version of its name:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property value</p></th>
+<th class="head"><p>Default property label</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">propertyname</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Propertyname</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">propertyName</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Property</span> <span class="pre">name</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">property_name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Property</span> <span class="pre">name</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Consider the following configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;firstName&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;lastName&#39;</span><span class="p p-Indicator">]</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The backend will display <code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">name</span></code> as the labels of the
+properties, so those are the translation keys that must be used:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># translations/messages.es.yml</span>
+<span class="nt">First name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Nombre</span>
+<span class="nt">Last name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Apellidos</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Alternatively, you can use the <code class="docutils literal notranslate"><span class="pre">label</span></code> option of each property to define its
+label explicitly. You can even use structured translation keys instead of the
+real contents:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;firstName&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;users.firstName&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;lastName&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;users.lastName&#39;</span> <span class="p p-Indicator">}</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In this case, the translation file should use the value of the <code class="docutils literal notranslate"><span class="pre">label</span></code> option as
+the keys of the translations (and you should also create the file for the
+original language used by the translation keys):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># translations/messages.en.yml</span>
+<span class="nt">users.firstName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">First name</span>
+<span class="nt">users.lastName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Last name</span>
+<span class="c1"># ...</span>
+
+<span class="c1"># translations/messages.es.yml</span>
+<span class="nt">users.firstName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Nombre</span>
+<span class="nt">users.lastName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Apellidos</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="translate-action-names">
+<h2>Translate Action Names<a class="headerlink" href="#translate-action-names" title="Permalink to this headline">¶</a></h2>
+<p>The action labels are translated using the <code class="docutils literal notranslate"><span class="pre">messages</span></code> domain, even for the
+built-in actions provided by EasyAdmin (Save, Edit, Delete, etc.) This is done
+on purpose so you can override them more easily just by adding them to your main
+translation file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># translations/messages.en.yml</span>
+<span class="nt">action.save</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Save Now</span>
+<span class="nt">action.new</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Create</span>
+<span class="c1"># ...</span>
+
+<span class="c1"># translations/messages.es.yml</span>
+<span class="nt">action.save</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Guardar Ahora</span>
+<span class="nt">action.new</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Crear</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="translate-custom-templates">
+<h2>Translate Custom Templates<a class="headerlink" href="#translate-custom-templates" title="Permalink to this headline">¶</a></h2>
+<p>All the built-in templates include the following tag to set <code class="docutils literal notranslate"><span class="pre">EasyAdminBundle</span></code>
+as the default domain used to translate the contents of that template:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">trans_default_domain</span> <span class="s2">&quot;EasyAdminBundle&quot;</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>When overriding templates in any of your views or properties, make sure to add
+this tag at the top of each file to not break the backend internationalization.
+If needed, you can also define any other translation domain and skip the default
+one in your templates:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="s1">&#39;content_to_translate&#39;</span> <span class="o">|</span> <span class="nf">trans</span><span class="o">({},</span> <span class="s1">&#39;MyCustomTranslationDomain&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>The above template uses the translations defined in the
+<code class="docutils literal notranslate"><span class="pre">/translations/MyCustomTranslationDomain.en.xlf</span></code> file (replace <code class="docutils literal notranslate"><span class="pre">en</span></code> by your
+locale and <code class="docutils literal notranslate"><span class="pre">xlf</span></code> by the desired translation format) instead of the default
+EasyAdmin translations.</p>
+</div>
+<div class="section" id="using-a-custom-translation-domain">
+<h2>Using a custom translation domain<a class="headerlink" href="#using-a-custom-translation-domain" title="Permalink to this headline">¶</a></h2>
+<p>By default EasyAdmin uses the <code class="docutils literal notranslate"><span class="pre">messages</span></code> domain to translate the contents of
+your backend. Define the global <code class="docutils literal notranslate"><span class="pre">translation_domain</span></code> option to use your own
+custom domain:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">translation_domain</span><span class="p">:</span> <span class="s">&#39;admin&#39;</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customers</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+        <span class="nt">Orders</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This translation domain is applied to all entities, but it can be overridden
+locally by each entity:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">translation_domain</span><span class="p">:</span> <span class="s">&#39;admin&#39;</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customers</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+        <span class="nt">Orders</span><span class="p">:</span>
+            <span class="nt">translation_domain</span><span class="p">:</span> <span class="s">&#39;messages&#39;</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In the above example, the contents of the <code class="docutils literal notranslate"><span class="pre">Customers</span></code> entity are translated
+with the <code class="docutils literal notranslate"><span class="pre">admin</span></code> domain whereas the contents of the <code class="docutils literal notranslate"><span class="pre">Orders</span></code> entity are
+translated with the <code class="docutils literal notranslate"><span class="pre">messages</span></code> domain.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">false</span></code> as the value of the <code class="docutils literal notranslate"><span class="pre">translation_domain</span></code> option to disable
+the translations of a specific entity or the entire backend.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="custom-actions.html" class="btn btn-neutral float-right" title="How to Define Custom Actions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../book/configuration-reference.html" class="btn btn-neutral float-left" title="Configuration Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

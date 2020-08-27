@@ -1,0 +1,34 @@
+<html><!-- saved from url=(0064)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_table_caption --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function alertCaption()
+  {
+  alert(document.getElementById("table1").caption.innerHTML);
+  }
+</script>
+</head>
+<body>
+
+<table id="table1" border="1">
+<caption>This is a table caption</caption>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+</tr>
+<tr>
+<td>Peter</td>
+<td>Griffin</td>
+</tr>
+</table>
+<br />
+<input type="button" onclick=alertCaption() value="Alert table caption" />
+
+</body>
+</html>

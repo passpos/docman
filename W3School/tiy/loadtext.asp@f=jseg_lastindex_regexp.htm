@@ -1,0 +1,24 @@
+<html><!-- saved from url=(0067)http://www.w3school.com.cn/tiy/loadtext.asp?f=jseg_lastindex_regexp --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<script type="text/javascript">
+var str = "The rain in Spain stays mainly in the plain";
+var patt1 = new RegExp("ain", "g");
+
+for(i = 0; i < 4; i++) 
+  {
+  patt1.test(str)
+  document.write("ain found. index now at: " + patt1.lastIndex);
+  document.write("<br />");
+  }
+</script>
+
+</body>
+</html>

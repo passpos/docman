@@ -1,0 +1,26 @@
+<html><!-- saved from url=(0072)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_event_keydown_keyup --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("input").keydown(function(){
+    $("input").css("background-color","#FFFFCC");
+  });
+  $("input").keyup(function(){
+    $("input").css("background-color","#D6D6FF");
+  });
+});
+</script>
+</head>
+<body>
+Enter your name: <input type="text" />
+<p>当发生 keydown 和 keyup 事件时，输入域会改变颜色。请试着在其中输入内容。</p>
+</body>
+</html>

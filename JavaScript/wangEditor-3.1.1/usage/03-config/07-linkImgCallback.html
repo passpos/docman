@@ -1,0 +1,30 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>07-linkImgCallback.md</title>
+    <style type="text/css">
+            
+/* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+td, h1, h2, h3, h4, h5, p, ul, ol, li {
+    page-break-inside: avoid; 
+}
+
+        </style>
+  </head>
+  <body><div class="passage">
+    <h1 id="section">插入网络图片的回调</h1>
+    <p>插入网络图片时，可通过如下配置获取到图片的信息。<code>v3.0.10</code>开始支持。</p>
+    <pre>
+      <code class="language-js">var E = window.wangEditor
+var editor = new E('#div1')
+editor.customConfig.linkImgCallback = function (url) {
+    console.log(url) // url 即插入图片的地址
+}
+editor.create()
+</code>
+    </pre>
+  </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html><!-- saved from url=(0060)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_area_host --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<img src="../i/eg_planets.jpg"
+usemap="#planetmap" />
+
+<map name="planetmap">
+<area
+id="venus"
+shape="circle"
+coords="180,139,14"
+href ="../example/html/venus.html"
+alt="Venus" />
+</map>
+
+<p>"Venus" 区域的 hostname 和 port 是：
+<script type="text/javascript">
+x=document.getElementById('venus');
+document.write(x.host);
+</script>
+</p>
+
+</body>
+</html>

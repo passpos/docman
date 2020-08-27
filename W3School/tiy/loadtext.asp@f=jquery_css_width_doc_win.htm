@@ -1,0 +1,26 @@
+<html><!-- saved from url=(0070)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_css_width_doc_win --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".btn1").click(function(){
+    $("#span1").text($(window).width());
+    $("#span2").text($(document).width());
+  });
+});
+</script>
+</head>
+<body>
+<p>窗口的宽度是 <span id="span1">unknown</span> px。</p>
+<p>文档的宽度是 <span id="span2">unknown</span> px。</p>
+<button class="btn1">获得宽度</button>
+<p>在本例中，窗口和文档的宽度是相同的，因为它们在 iframe 中显示。</p>
+</body>
+</html>

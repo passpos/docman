@@ -1,0 +1,32 @@
+<html><!-- saved from url=(0065)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_reset_tabindex --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function showTabIndex()
+  {
+  var email=document.getElementById('email').tabIndex;
+  var r1=document.getElementById('reset1').tabIndex;
+  document.write("Tab index of email: " + email);
+  document.write("<br />");
+  document.write("Tab index of reset button: " + r1);
+  }
+</script>
+</head>
+<body>
+
+<form>
+Email: <input type="text" id="email" tabIndex="1" size="25" value="someone@example.com" />
+<br />
+<input type="reset" id="reset1" tabIndex="2" />
+<br /><br />
+<input type="button" onclick="showTabIndex()" value="Show tabIndex" />
+</form>
+
+</body>
+</html>

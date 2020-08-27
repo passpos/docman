@@ -1,0 +1,33 @@
+<html><!-- saved from url=(0063)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_option_index --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function getIndex()
+  {
+  var x=document.getElementById("mySelect")
+  alert(x.selectedIndex)
+  }
+</script>
+</head>
+<body>
+
+<form>
+Select your favorite fruit:
+<select id="mySelect">
+  <option>Apple</option>
+  <option>Orange</option>
+  <option>Pineapple</option>
+  <option>Banana</option>
+</select>
+<br /><br />
+<input type="button" onclick="getIndex()" value="Alert index of selected option">
+</form>
+
+</body>
+</html>

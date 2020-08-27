@@ -1,0 +1,30 @@
+<html><!-- saved from url=(0071)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_examples_imgposition --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function moveleft()
+{
+document.getElementById('image').style.position="absolute"
+document.getElementById('image').style.left="0"
+}
+function moveback()
+{
+document.getElementById('image').style.position="relative"
+}
+</script>
+</head>
+
+<body>
+
+<img id="image" src="../i/eg_bulbon.gif"
+onmouseover="moveleft()"
+onmouseout="moveback()"  />
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<HTML>
+<!-- saved from url=(0073)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_func_date_sun_info --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+
+echo &quot;&lt;h3&gt;日期：2016 年 1 月 1 日：&lt;/h3&gt;&quot;;
+$sun_info=date_sun_info(strtotime(&quot;2016-01-01&quot;),31.7667,35.2333);
+foreach ($sun_info as $key=&gt;$val)
+  {
+  echo &quot;$key: &quot; . date(&quot;H:i:s&quot;,$val) . &quot;&lt;br&gt;&quot;;
+  }
+
+echo &quot;&lt;h3&gt;日期：2016 年 6 月 1 日：&lt;/h3&gt;&quot;;
+$sun_info=date_sun_info(strtotime(&quot;2016-06-01&quot;),31.7667,35.2333);
+foreach ($sun_info as $key=&gt;$val)
+  {
+  echo &quot;$key: &quot; . date(&quot;H:i:s&quot;,$val) . &quot;&lt;br&gt;&quot;;
+  }
+
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

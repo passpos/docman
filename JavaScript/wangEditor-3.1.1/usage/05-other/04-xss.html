@@ -1,0 +1,40 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>04-xss.md</title>
+    <style type="text/css">
+            
+/* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+td, h1, h2, h3, h4, h5, p, ul, ol, li {
+    page-break-inside: avoid; 
+}
+
+        </style>
+  </head>
+  <body><div class="passage">
+    <h1 id="xss">预防 XSS 攻击</h1>
+    <blockquote>
+      <p>术业有专攻</p>
+    </blockquote>
+    <p>要想在前端预防 xss 攻击，还得依赖于其他工具，例如<a href="http://jsxss.com/zh/index.html">xss.js</a>（如果打不开页面，就从百度搜一下）</p>
+    <p>代码示例如下</p>
+    <pre>
+      &lt;script src='/xss.js'&gt;&lt;/script&gt;
+&lt;script src='/wangEditor.min.js'&gt;&lt;/script&gt;
+&lt;script&gt;
+    var E = window.wangEditor
+    var editor = new E('#div1')
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        var html = editor.txt.html()
+        var filterHtml = filterXSS(html)  // 此处进行 xss 攻击过滤
+        alert(filterHtml)
+    }, false)
+&lt;/script&gt;
+</code>
+    </pre>
+  </div>
+</body>
+</html>

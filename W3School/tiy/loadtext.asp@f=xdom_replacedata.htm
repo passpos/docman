@@ -1,0 +1,27 @@
+<html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_replacedata --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books.xml");
+
+var x=xmlDoc.getElementsByTagName("title")[0].childNodes[0];
+document.write(x.nodeValue);
+x.replaceData(0,8,"Hello");
+
+document.write("<br />");
+document.write(x.nodeValue);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1079 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 6. Edit and New Views Configuration &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 7. Actions Configuration" href="actions-configuration.html" />
+    <link rel="prev" title="Chapter 5. List, Search and Show Views Configuration" href="list-search-show-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 6. Edit and New Views Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#edit-new-and-form-views">Edit, New and Form Views</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-special-form-view">The Special <code class="docutils literal notranslate"><span class="pre">form</span></code> View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general-configuration">General Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#customize-the-title-of-the-page">Customize the Title of the Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-a-help-message-in-the-page">Display a Help Message in the Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customize-the-properties-displayed">Customize the Properties Displayed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#virtual-properties">Virtual Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-custom-form-options">Defining Custom Form Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customize-the-form-fields">Customize the Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatting-dates-and-numbers">Formatting Dates and Numbers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-date-and-time-properties">Customizing Date and Time Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-numeric-properties">Customizing Numeric Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-doctrine-types">Custom Doctrine Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#easyadmin-form-types">EasyAdmin Form Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#autocomplete">Autocomplete</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-form-design">Advanced Form Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-the-form-theme">Selecting the Form Theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-form-fields">Customizing the Form Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-form-layout">Customizing the Form Layout</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#form-sections">Form Sections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#form-groups">Form Groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#form-tabs">Form Tabs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-design-configuration">Advanced Design Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overriding-the-default-templates-using-symfony-s-mechanism">Overriding the Default Templates Using Symfony’s Mechanism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-your-own-templates-to-display-the-list-search-show-views">Using your Own Templates to Display the list/search/show Views</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Chapter 6. Edit and New Views Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/book/edit-new-configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-6-edit-and-new-views-configuration">
+<h1>Chapter 6. Edit and New Views Configuration<a class="headerlink" href="#chapter-6-edit-and-new-views-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This chapter explains how to customize the read-and-write views: <code class="docutils literal notranslate"><span class="pre">edit</span></code> and
+<code class="docutils literal notranslate"><span class="pre">new</span></code>. You’ll learn all their configuration options and how to override or
+tweak their templates.</p>
+<div class="section" id="edit-new-and-form-views">
+<h2>Edit, New and Form Views<a class="headerlink" href="#edit-new-and-form-views" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Edit View</strong> is displayed when modifying the contents of any existing
+entity. The <strong>New View</strong> is used when creating new items of the given entity.
+The design of both views is almost identical:</p>
+<img alt="Edit view interface" src="../_images/easyadmin-edit-view.png" />
+<div class="section" id="the-special-form-view">
+<h3>The Special <code class="docutils literal notranslate"><span class="pre">form</span></code> View<a class="headerlink" href="#the-special-form-view" title="Permalink to this headline">¶</a></h3>
+<p>Most of the times you apply the same or very similar configuration to both the
+<code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views. Instead of duplicating the configuration, you can
+use the special <code class="docutils literal notranslate"><span class="pre">form</span></code> view:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>  <span class="c1"># &lt;-- &#39;form&#39; is applied to both &#39;new&#39; and &#39;edit&#39; views</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="s">&#39;id&#39;</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Any option defined in the <code class="docutils literal notranslate"><span class="pre">form</span></code> view is copied into the <code class="docutils literal notranslate"><span class="pre">new</span></code> and <code class="docutils literal notranslate"><span class="pre">edit</span></code>
+views. However, any option defined in the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> view overrides
+the corresponding <code class="docutils literal notranslate"><span class="pre">form</span></code> option. In other words, always use the <code class="docutils literal notranslate"><span class="pre">form</span></code>
+action to define the common configuration, and then use the <code class="docutils literal notranslate"><span class="pre">new</span></code> and <code class="docutils literal notranslate"><span class="pre">edit</span></code>
+views to define just the specific options you want to override:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;Add</span><span class="nv"> </span><span class="s">customer&#39;</span>
+                <span class="nt">form_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> validation_groups</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Default&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+            <span class="nt">new</span><span class="p">:</span>
+                <span class="nt">form_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> validation_groups</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Default&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;Customer&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+            <span class="nt">edit</span><span class="p">:</span>
+                <span class="nt">title</span><span class="p">:</span>  <span class="s">&#39;Edit</span><span class="nv"> </span><span class="s">customer&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The above configuration is equivalent to the following:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">new</span><span class="p">:</span>
+                <span class="nt">title</span><span class="p">:</span>  <span class="s">&#39;Add</span><span class="nv"> </span><span class="s">customer&#39;</span>
+                <span class="nt">form_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> validation_groups</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Default&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;Customer&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+            <span class="nt">edit</span><span class="p">:</span>
+                <span class="nt">title</span><span class="p">:</span>  <span class="s">&#39;Edit</span><span class="nv"> </span><span class="s">customer&#39;</span>
+                <span class="nt">form_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> validation_groups</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Default&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The merging of the <code class="docutils literal notranslate"><span class="pre">form</span></code> fields configuration is done recursively, so you can
+change or add any option to any property. In addition, the following processing
+takes place:</p>
+<ol class="arabic simple">
+<li><p>All the fields defined in the <code class="docutils literal notranslate"><span class="pre">form</span></code> view are copied in the same order into
+the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views.</p></li>
+<li><p>Any field defined in the <code class="docutils literal notranslate"><span class="pre">edit</span></code> or <code class="docutils literal notranslate"><span class="pre">new</span></code> view which is not present in the
+<code class="docutils literal notranslate"><span class="pre">form</span></code> view is added after the <code class="docutils literal notranslate"><span class="pre">form</span></code> fields.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views can remove any field defined in the <code class="docutils literal notranslate"><span class="pre">form</span></code> view
+just by prefixing the name of the removed field with a dash <code class="docutils literal notranslate"><span class="pre">-</span></code> (e.g. add
+a property called <code class="docutils literal notranslate"><span class="pre">-name</span></code> to remove the <code class="docutils literal notranslate"><span class="pre">name</span></code> property defined in <code class="docutils literal notranslate"><span class="pre">form</span></code>)</p></li>
+</ol>
+<p>Consider the following complex form field configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;user&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> css_class</span><span class="p">:</span> <span class="s">&#39;input-large&#39;</span> <span class="p p-Indicator">}</span>
+            <span class="nt">new</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="s">&#39;-id&#39;</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> required</span><span class="p">:</span> <span class="nv">false</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+            <span class="nt">edit</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;customer&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> help</span><span class="p">:</span> <span class="s">&#39;Phone</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">preferred&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">phone</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The above configuration is equivalent to the following:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">new</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;user&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> css_class</span><span class="p">:</span> <span class="s">&#39;input-large&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> required</span><span class="p">:</span> <span class="nv">false</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+            <span class="nt">edit</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;customer&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> css_class</span><span class="p">:</span> <span class="s">&#39;input-large&#39;</span><span class="p p-Indicator">,</span><span class="nt"> help</span><span class="p">:</span> <span class="s">&#39;Phone</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">preferred&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">phone</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="general-configuration">
+<h2>General Configuration<a class="headerlink" href="#general-configuration" title="Permalink to this headline">¶</a></h2>
+<p>In order to make examples more concise, this section only shows the
+configuration for the special <code class="docutils literal notranslate"><span class="pre">form</span></code> view, but you can apply the same options
+to the other <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views.</p>
+<div class="section" id="customize-the-title-of-the-page">
+<h3>Customize the Title of the Page<a class="headerlink" href="#customize-the-title-of-the-page" title="Permalink to this headline">¶</a></h3>
+<p>This option refers both to the value of the <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code> element and to the visible
+title displayed at the top of the page. By default the title is just the name of
+the entity. Define the <code class="docutils literal notranslate"><span class="pre">title</span></code> option to set a custom page title:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">label</span><span class="p">:</span> <span class="s">&#39;Customers&#39;</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">title</span><span class="p">:</span> <span class="s">&quot;Add/edit</span><span class="nv"> </span><span class="s">customers&quot;</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">title</span></code> option can include the following special variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%entity_label%</span></code>, resolves to the value defined in the <code class="docutils literal notranslate"><span class="pre">label</span></code> option of
+the entity. If you haven’t defined it, this value will be equal to the
+entity name. In the example above, this value would be <code class="docutils literal notranslate"><span class="pre">Customers</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%entity_name%</span></code>, resolves to the entity name, which is the YAML key used
+to configure the entity in the backend configuration file. In the example
+above, this value would be <code class="docutils literal notranslate"><span class="pre">Customer</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%entity_id%</span></code>, it’s only available for the <code class="docutils literal notranslate"><span class="pre">edit</span></code> view and it resolves to
+the value of the primary key of the entity being edited. Even if the option
+is called <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, it also works for primary keys with names different
+from <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>In Symfony applications, YAML values enclosed with <code class="docutils literal notranslate"><span class="pre">%</span></code> and <code class="docutils literal notranslate"><span class="pre">%</span></code> have a
+special meaning (they are considered container parameters). Escape these
+values doubling the <code class="docutils literal notranslate"><span class="pre">%</span></code> characters:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">label</span><span class="p">:</span> <span class="s">&#39;Customers&#39;</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;%%entity_label%%</span><span class="nv"> </span><span class="s">listing&#39;</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<p>If several entities use the same custom title, you can define the default title
+for all entities in the global <code class="docutils literal notranslate"><span class="pre">edit.title</span></code> and <code class="docutils literal notranslate"><span class="pre">new.title</span></code> options (these
+global titles are always overridden by the title defined by each entity):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">edit</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;%%entity_label%%_edit&#39;</span>
+    <span class="nt">new</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;New</span><span class="nv"> </span><span class="s">%%entity_label%%&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="display-a-help-message-in-the-page">
+<h3>Display a Help Message in the Page<a class="headerlink" href="#display-a-help-message-in-the-page" title="Permalink to this headline">¶</a></h3>
+<p>Entities can define a global help message that is displayed below the title of
+the page. This is useful to add instructions or warning messages for the end
+users (e.g. “The upload process can take a lot of time (don’t close the browser
+window)”).</p>
+<p>The help message is defined with the <code class="docutils literal notranslate"><span class="pre">help</span></code> configuration option, which can be
+added to the entity (all views display the same message) and to each of the
+entity views:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">help</span><span class="p">:</span> <span class="s">&#39;Global</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">displayed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">views&#39;</span>
+            <span class="c1"># ...</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">help</span><span class="p">:</span> <span class="s">&#39;The</span><span class="nv"> </span><span class="s">form</span><span class="nv"> </span><span class="s">view</span><span class="nv"> </span><span class="s">overrides</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">global</span><span class="nv"> </span><span class="s">help</span><span class="nv"> </span><span class="s">message&#39;</span>
+                <span class="c1"># ...</span>
+            <span class="nt">edit</span><span class="p">:</span>
+                <span class="c1"># &#39;help&#39; is not defined, so the global help message is displayed</span>
+                <span class="c1"># ...</span>
+            <span class="nt">new</span><span class="p">:</span>
+                <span class="c1"># use the null value to not display the inherited global help message</span>
+                <span class="nt">help</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
+                <span class="c1"># ...</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customize-the-properties-displayed">
+<h3>Customize the Properties Displayed<a class="headerlink" href="#customize-the-properties-displayed" title="Permalink to this headline">¶</a></h3>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views display all the entity properties.
+Use the <code class="docutils literal notranslate"><span class="pre">fields</span></code> option to explicitly set the properties to display in each
+view:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;firstName&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;lastName&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;phone&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This option is also useful to reorder the form fields, because by default they
+are displayed in the same order as defined in the related Doctrine entity.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Fields that represent an association with another entity are displayed as
+<code class="docutils literal notranslate"><span class="pre">&lt;select&gt;</span></code> lists. For that reason, you must define the <code class="docutils literal notranslate"><span class="pre">__toString()</span></code>
+magic method in any entity which is used in a Doctrine relation. Otherwise
+you’ll see the following error message:
+<code class="docutils literal notranslate"><span class="pre">Catchable</span> <span class="pre">Fatal</span> <span class="pre">Error:</span> <span class="pre">Object</span> <span class="pre">of</span> <span class="pre">class</span> <span class="pre">XY</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">converted</span> <span class="pre">to</span> <span class="pre">string</span></code></p>
+</div>
+<div class="section" id="virtual-properties">
+<h4>Virtual Properties<a class="headerlink" href="#virtual-properties" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">fields</span></code> option can also include properties that are not defined in the
+Doctrine entities. These properties are called “virtual properties” and the only
+requirement is that they must define a <em>setter</em> method for them. For example, if
+your entity contains a <code class="docutils literal notranslate"><span class="pre">setName()</span></code> method but not a <code class="docutils literal notranslate"><span class="pre">name</span></code> property, the
+<code class="docutils literal notranslate"><span class="pre">fields</span></code> option can include the <code class="docutils literal notranslate"><span class="pre">name</span></code> <em>virtual property</em> to set its value.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The values or virtual properties are set using the <a class="reference external" href="https://symfony.com/doc/current/components/property_access.html">PropertyAccess component</a>
+from Symfony, which requires to follow a strict syntax for setter names:
+<code class="docutils literal notranslate"><span class="pre">set</span></code> + camelized version of the property name. Example: <code class="docutils literal notranslate"><span class="pre">name</span></code> -&gt;
+<code class="docutils literal notranslate"><span class="pre">setName()</span></code>; <code class="docutils literal notranslate"><span class="pre">firstName</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">setFirstName()</span></code>; <code class="docutils literal notranslate"><span class="pre">first_and_last_name</span></code> -&gt;
+<code class="docutils literal notranslate"><span class="pre">setFirstAndLastName()</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="defining-custom-form-options">
+<h2>Defining Custom Form Options<a class="headerlink" href="#defining-custom-form-options" title="Permalink to this headline">¶</a></h2>
+<p>By default, the forms built to create and edit entities only define the
+<code class="docutils literal notranslate"><span class="pre">data_class</span></code> configuration option:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createFormBuilder</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;data_class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;App\Entity\Customer&#39;</span><span class="p">,</span>
+<span class="p">))</span>
+<span class="o">-&gt;</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>If you need to pass custom options to the forms, define the <code class="docutils literal notranslate"><span class="pre">form_options</span></code>
+option under the <code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code> or <code class="docutils literal notranslate"><span class="pre">form</span></code> options:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">form_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> validation_groups</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;Default&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;my_validation_group&#39;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The above example makes the backend use the following PHP code to build the form:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createFormBuilder</span><span class="p">(</span><span class="nv">$entity</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;data_class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;App\Entity\Customer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Default&#39;</span><span class="p">,</span> <span class="s1">&#39;my_validation_group&#39;</span><span class="p">),</span>
+<span class="p">))</span>
+<span class="o">-&gt;</span> <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customize-the-form-fields">
+<h2>Customize the Form Fields<a class="headerlink" href="#customize-the-form-fields" title="Permalink to this headline">¶</a></h2>
+<p>When form fields are not configured explicitly, the backend renders them with
+the most appropriate widget according to their data types. If you prefer to
+control their appearance, start by using the extended field configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;name&#39;</span><span class="p p-Indicator">,</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact&#39;</span> <span class="p p-Indicator">}]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Instead of using a string to define the property (e.g. <code class="docutils literal notranslate"><span class="pre">'email'</span></code>) you have to
+define a hash with the name of the property (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">property:</span> <span class="pre">'email'</span> <span class="pre">}</span></code>) and the
+options you want to define for it (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...,</span> <span class="pre">label:</span> <span class="pre">'Contact'</span> <span class="pre">}</span></code>).</p>
+<p>If your entity contains lots of properties, consider using the alternative YAML
+sequence syntax to improve the legibility of your backend configuration. The
+following example is equivalent to the above example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact&#39;</span> <span class="p p-Indicator">}</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>These are the options that you can define for each field:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">property</span></code> (mandatory): the name of the property to bet set (in <code class="docutils literal notranslate"><span class="pre">new</span></code> view)
+or modified (in <code class="docutils literal notranslate"><span class="pre">edit</span></code> view). This is the only mandatory option when using
+the extended field configuration format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> (optional): the content displayed in the <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> element of the
+form field. The default label is the “humanized” version of the property name
+(e.g. <code class="docutils literal notranslate"><span class="pre">published</span></code> is displayed as <code class="docutils literal notranslate"><span class="pre">Published</span></code> and <code class="docutils literal notranslate"><span class="pre">dateOfBirth</span></code> as
+<code class="docutils literal notranslate"><span class="pre">Date</span> <span class="pre">of</span> <span class="pre">birth</span></code>).</p>
+<p>If the form field renders a collection of items, the numeric auto-increment
+label of the collection items is hidden by default. If you want to display it,
+set the <code class="docutils literal notranslate"><span class="pre">entry_options.label</span></code> option to <code class="docutils literal notranslate"><span class="pre">true</span></code>:
+<code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">{</span> <span class="pre">property:</span> <span class="pre">'...',</span> <span class="pre">type:</span> <span class="pre">'collection',</span> <span class="pre">type_options:</span> <span class="pre">{</span> <span class="pre">entry_options:</span> <span class="pre">{</span> <span class="pre">label:</span> <span class="pre">true</span> <span class="pre">}</span> <span class="pre">}</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code> (optional): the help message displayed below the form field.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">css_class</span></code> (optional): the CSS class applied to the parent HTML element
+that contains the entire form field. For example, when using the default
+Bootstrap form theme, this value is applied to the <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> element which
+wraps the label, the widget and the error messages of the field.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> (optional): the Symfony Form type used to render this field. In
+addition to its fully qualified class name (e.g.
+<code class="docutils literal notranslate"><span class="pre">Symfony\Component\Form\Extension\Core\Type\EmailType</span></code>), you can also use
+the short type name (e.g. <code class="docutils literal notranslate"><span class="pre">email</span></code>) (the map between names and classes is
+done internally by the bundle). The allowed values are:</p>
+<ul class="simple">
+<li><p>Any of the <a class="reference external" href="https://symfony.com/doc/current/reference/forms/types.html">Symfony Form types</a>.</p></li>
+<li><p>Any of the custom EasyAdmin form types: <code class="docutils literal notranslate"><span class="pre">easyadmin_autocomplete</span></code> (they are
+explained later in this chapter).</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type_options</span></code> (optional), a hash with the options passed to the Symfony
+Form type used to render the field.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">type_options</span></code> is the most powerful option because it literally comprises
+tens of options suited for each form type:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="s">&#39;id&#39;</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;email&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> trim</span><span class="p">:</span> <span class="nv">true</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;interests&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> expanded</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> multiple</span><span class="p">:</span> <span class="nv">true</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;updated_at&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> widget</span><span class="p">:</span> <span class="s">&#39;single_text&#39;</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Read the <a class="reference external" href="https://symfony.com/doc/current/reference/forms/types.html">Symfony Form types</a>  reference to learn about all the available
+options, their usage and allowed values.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Symfony makes Doctrine relations nullable by default. Instead of adding the
+<code class="docutils literal notranslate"><span class="pre">type_options:</span> <span class="pre">{</span> <span class="pre">required:</span> <span class="pre">true</span> <span class="pre">}</span></code> option to all those fields, it’s simpler
+to add <code class="docutils literal notranslate"><span class="pre">&#64;ORM\JoinColumn(nullable=false)</span></code> to the property that defines the
+relation in the entity class.</p>
+</div>
+</div>
+<div class="section" id="formatting-dates-and-numbers">
+<h2>Formatting Dates and Numbers<a class="headerlink" href="#formatting-dates-and-numbers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="customizing-date-and-time-properties">
+<h3>Customizing Date and Time Properties<a class="headerlink" href="#customizing-date-and-time-properties" title="Permalink to this headline">¶</a></h3>
+<p>Unlike the <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views, there are no configuration
+options to define the date/time format for <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> form fields. You
+must use instead the options defined by Symfony’s <code class="docutils literal notranslate"><span class="pre">DateTimeType</span></code>, <code class="docutils literal notranslate"><span class="pre">DateType</span></code>
+and <code class="docutils literal notranslate"><span class="pre">TimeType</span></code> types.</p>
+<p>For example, to display your dates as a single <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> text element, define
+the <code class="docutils literal notranslate"><span class="pre">widget</span></code> form field option (commonly used together with <code class="docutils literal notranslate"><span class="pre">format</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Event</span><span class="p">:</span>
+            <span class="nt">edit</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;startsAt&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> widget</span><span class="p">:</span> <span class="s">&#39;single_text&#39;</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-numeric-properties">
+<h3>Customizing Numeric Properties<a class="headerlink" href="#customizing-numeric-properties" title="Permalink to this headline">¶</a></h3>
+<p>Similarly, there are no configuration options to define the formatting of the
+numeric values for the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views. You must use instead the
+options defined by Symfony’s <code class="docutils literal notranslate"><span class="pre">NumberType</span></code>, <code class="docutils literal notranslate"><span class="pre">IntegerType</span></code>, <code class="docutils literal notranslate"><span class="pre">MoneyType</span></code> and
+<code class="docutils literal notranslate"><span class="pre">PercentType</span></code> types.</p>
+<p>For example, to display a numeric property that stores prices, you can define
+the <code class="docutils literal notranslate"><span class="pre">currency</span></code> option of the <code class="docutils literal notranslate"><span class="pre">MoneyType</span></code> form type:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">edit</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;price&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;money&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> currency</span><span class="p">:</span> <span class="s">&#39;EUR&#39;</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="custom-doctrine-types">
+<h2>Custom Doctrine Types<a class="headerlink" href="#custom-doctrine-types" title="Permalink to this headline">¶</a></h2>
+<p>When your application defines custom Doctrine DBAL types, you must also define
+a custom form type for them before using them as form fields. Imagine that your
+application defines a <code class="docutils literal notranslate"><span class="pre">UTCDateTime</span></code> type to convert the timezone of datetime
+values to UTC before saving them in the database.</p>
+<p>If you add that type in a property as follows, you’ll get an error message
+saying that the <code class="docutils literal notranslate"><span class="pre">utcdatetime</span></code> type couldn’t be loaded:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;createdAt&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;utcdatetime&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This problem is solved defining a custom <code class="docutils literal notranslate"><span class="pre">utcdatetime</span></code> Form Type. Read the
+<a class="reference external" href="https://symfony.com/doc/current/cookbook/form/create_custom_field_type.html">How to Create a Custom Form Field Type</a> article to learn how to define
+custom form types.</p>
+</div>
+<div class="section" id="easyadmin-form-types">
+<h2>EasyAdmin Form Types<a class="headerlink" href="#easyadmin-form-types" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the Symfony Form types, fields can use any of the following types
+defined by EasyAdmin.</p>
+<div class="section" id="autocomplete">
+<h3>Autocomplete<a class="headerlink" href="#autocomplete" title="Permalink to this headline">¶</a></h3>
+<p>It’s similar to Symfony’s <code class="docutils literal notranslate"><span class="pre">Entity</span></code> type, but the values are loaded on demand
+via Ajax requests based on the user’s input. This type is useful to improve the
+backend performance when a field is related to an entity with lots of database
+records:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;category&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;easyadmin_autocomplete&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">easyadmin_autocomplete</span></code> type configures the class of the related entity
+automatically. If you prefer to define it explicitly, do it in the type options:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+<span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;category&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;easyadmin_autocomplete&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> class</span><span class="p">:</span> <span class="s">&#39;App\Entity\Category&#39;</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>When the user types in an autocomplete field, EasyAdmin performs a fuzzy search
+on all the properties of the related entity. This is the same behavior applied
+when using the backend search form.</p>
+<p>The autocomplete action returns to the browser a JSON array of
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">id:</span> <span class="pre">'...',</span> <span class="pre">text:</span> <span class="pre">'...'</span> <span class="pre">}</span></code> tuples. The <code class="docutils literal notranslate"><span class="pre">id</span></code> is used as the form field value
+and the <code class="docutils literal notranslate"><span class="pre">text</span></code> is the value displayed to the user.</p>
+<p>By default, the entity’s primary key is used for the <code class="docutils literal notranslate"><span class="pre">id</span></code> property and the
+<code class="docutils literal notranslate"><span class="pre">(string)</span> <span class="pre">$entity</span></code> conversion is used for the <code class="docutils literal notranslate"><span class="pre">text</span></code> property. Therefore,
+you must define the <code class="docutils literal notranslate"><span class="pre">__toString()</span></code> method in all the entities used in
+autocomplete form fields.</p>
+<p>If the number of autocomplete suggestions is large, they are paginated to
+display a maximum of <code class="docutils literal notranslate"><span class="pre">10</span></code> results. Define the <code class="docutils literal notranslate"><span class="pre">show.max_results</span></code> option to
+change this value (globally or per entity):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">show</span><span class="p">:</span>
+        <span class="nt">max_results</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Category</span><span class="p">:</span>
+            <span class="nt">show</span><span class="p">:</span>
+                <span class="nt">max_results</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="advanced-form-design">
+<span id="edit-new-advanced-form-design"></span><h2>Advanced Form Design<a class="headerlink" href="#advanced-form-design" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="selecting-the-form-theme">
+<h3>Selecting the Form Theme<a class="headerlink" href="#selecting-the-form-theme" title="Permalink to this headline">¶</a></h3>
+<p>By default, forms are displayed using a proprietary form theme compatible with
+the Bootstrap 4 CSS framework.</p>
+<img alt="Default form style" src="../_images/easyadmin-new-view.png" />
+<p>The form style can be changed with the <code class="docutils literal notranslate"><span class="pre">form_theme</span></code> design option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+
+        <span class="c1"># this is the default form theme used by backends</span>
+        <span class="nt">form_theme</span><span class="p">:</span> <span class="s">&#39;@EasyAdmin/form/bootstrap_4.html.twig&#39;</span>
+
+        <span class="c1"># you can use your own form theme</span>
+        <span class="nt">form_theme</span><span class="p">:</span> <span class="s">&#39;@App/form/custom_layout.html.twig&#39;</span>
+
+        <span class="c1"># you can also define an array of form themes to use all of them</span>
+        <span class="nt">form_theme</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="s">&#39;admin/form/custom_layout.html.twig&#39;</span>
+            <span class="p p-Indicator">-</span> <span class="s">&#39;form_div_layout.html.twig&#39;</span>
+            <span class="p p-Indicator">-</span> <span class="s">&#39;@EasyAdmin/form/bootstrap_4.html.twig&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-the-form-fields">
+<h3>Customizing the Form Fields<a class="headerlink" href="#customizing-the-form-fields" title="Permalink to this headline">¶</a></h3>
+<p>Unlike the properties displayed on the <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views,
+you can’t easily override the template fragment used to render each form field.
+Instead, EasyAdmin forms follow the same mechanism defined by Symfony to
+<a class="reference external" href="https://symfony.com/doc/current/form/form_customization.html#how-to-customize-an-individual-field">customize individual form fields</a>.</p>
+<p>Imagine a form field where you want to include a <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> element that links to
+additional information. If the field is called <code class="docutils literal notranslate"><span class="pre">title</span></code> and belongs to a
+<code class="docutils literal notranslate"><span class="pre">Product</span></code> entity, the configuration would look like this:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Product</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="nv">title</span><span class="p p-Indicator">,</span><span class="nt"> type_options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> block_name</span><span class="p">:</span> <span class="s">&#39;custom_title&#39;</span> <span class="p p-Indicator">}</span> <span class="p p-Indicator">}</span>
+                    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The next step is to define the template fragment used by that field, which
+requires to know the <a class="reference external" href="https://symfony.com/doc/current/form/form_themes.html#form-template-blocks">form fragment naming rules</a> defined by Symfony:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/admin/form.html.twig #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">_product_custom_title_widget</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# ... #}</span><span class="x"></span>
+<span class="x">    &lt;a href=&quot;...&quot;&gt;More information&lt;/a&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Finally, add this custom theme to the list of themes used to render backend forms:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">form_theme</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="s">&#39;@EasyAdmin/form/bootstrap_4.html.twig&#39;</span>
+            <span class="c1"># the following Twig template can be located anywhere in the application.</span>
+            <span class="c1"># it can also be added to the twig.form_themes option to use it in the</span>
+            <span class="c1"># entire application, not only the backend</span>
+            <span class="p p-Indicator">-</span> <span class="s">&#39;admin/form.html.twig&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-the-form-layout">
+<h3>Customizing the Form Layout<a class="headerlink" href="#customizing-the-form-layout" title="Permalink to this headline">¶</a></h3>
+<p>The default form layout is pretty basic: fields are displayed in the same order
+they were defined and they span the full browser window width. However, forms
+can also include special design elements (tabs, groups, sections) to create
+more advanced layouts.</p>
+<div class="section" id="form-sections">
+<h4>Form Sections<a class="headerlink" href="#form-sections" title="Permalink to this headline">¶</a></h4>
+<p>This design element helps you divide a long form into different sections using
+a subtle line. They are defined with elements of type <code class="docutils literal notranslate"><span class="pre">section</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;section&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;User</span><span class="nv"> </span><span class="s">Details&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">surname</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;section&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact</span><span class="nv"> </span><span class="s">information&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;phone&#39;</span><span class="p p-Indicator">,</span>
+<span class="nt">                        help</span><span class="p">:</span> <span class="s">&#39;Phone</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">preferred&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">email</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">phoneNumber</span>
+</pre></div>
+</div>
+<p>The configurable options of this element are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), leave it empty if you only want to display
+a separator line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), the name of the FontAwesome icon without the
+<code class="docutils literal notranslate"><span class="pre">fa-</span></code> prefix (e.g. don’t use <code class="docutils literal notranslate"><span class="pre">fa</span> <span class="pre">fa-user</span></code> or <code class="docutils literal notranslate"><span class="pre">fa-user</span></code> but <code class="docutils literal notranslate"><span class="pre">user</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">css_class</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), you can apply multiple classes separating
+them with white spaces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), text displayed to describe the form section
+or display helpful messages. It can include HTML elements.</p></li>
+</ul>
+<p>A form that includes sections is still displayed as a single form that spans
+the entire available width. Multi-column forms are created with “groups”
+as explained below.</p>
+<img alt="A form using sections to separate its fields" src="../_images/easyadmin-form-section.png" />
+</div>
+<div class="section" id="form-groups">
+<h4>Form Groups<a class="headerlink" href="#form-groups" title="Permalink to this headline">¶</a></h4>
+<p>This element groups one or more fields using <code class="docutils literal notranslate"><span class="pre">&lt;fieldset&gt;</span></code> elements and
+displays them separately from the rest of the form fields. It’s useful to create
+multi-column forms and to create very advanced layouts. They are defined with
+elements of type <code class="docutils literal notranslate"><span class="pre">group</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\Customer</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;group&#39;</span><span class="p p-Indicator">,</span><span class="nt"> columns</span><span class="p">:</span> <span class="nv">4</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Basic</span><span class="nv"> </span><span class="s">information&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">surname</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;group&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact</span><span class="nv"> </span><span class="s">information&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;phone&#39;</span><span class="p p-Indicator">,</span><span class="nt"> columns</span><span class="p">:</span> <span class="nv">6</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">email</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">phoneNumber</span>
+</pre></div>
+</div>
+<img alt="A form using groups to separate its fields" src="../_images/easyadmin-form-group.png" />
+<p>The configurable options of this element are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), leave it empty if you only want to display
+a the <code class="docutils literal notranslate"><span class="pre">&lt;fieldset&gt;</span></code> without the <code class="docutils literal notranslate"><span class="pre">&lt;legend&gt;</span></code> element.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), the name of the FontAwesome icon without the
+<code class="docutils literal notranslate"><span class="pre">fa-</span></code> prefix (e.g. don’t use <code class="docutils literal notranslate"><span class="pre">fa</span> <span class="pre">fa-user</span></code> or <code class="docutils literal notranslate"><span class="pre">fa-user</span></code> but <code class="docutils literal notranslate"><span class="pre">user</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">css_class</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), you can apply multiple classes separating
+them with white spaces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">integer</span></code>), the number of columns that spans this
+form group. The default value is <code class="docutils literal notranslate"><span class="pre">12</span></code>, which spans the whole row. Ideal to
+display complex forms as multi-column forms.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), text displayed to describe the form group
+or display helpful messages. It can include HTML elements.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Because of the way CSS works, when creating multi-column forms is common to
+have ugly gaps between some rows and columns. Use the <code class="docutils literal notranslate"><span class="pre">.w-100</span></code> CSS class
+provided by Bootstrap 4 to force the form group to be displayed in a new row:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+<span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;group&#39;</span><span class="p p-Indicator">,</span><span class="nt"> css_class</span><span class="p">:</span> <span class="s">&#39;w-100</span><span class="nv"> </span><span class="s">...&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>This solves most of the issues, but sometimes you might be forced to also
+reorder the form group positions.</p>
+</div>
+</div>
+<div class="section" id="form-tabs">
+<h4>Form Tabs<a class="headerlink" href="#form-tabs" title="Permalink to this headline">¶</a></h4>
+<p>This element groups one or more fields and displays them in a separate tab. You
+can combine it with the other elements (tabs can contain groups, but no the other
+way around) to create clean interfaces when forms contains lots of fields. They
+are defined with elements of type <code class="docutils literal notranslate"><span class="pre">tab</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">App\Entity\User</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;tab&#39;</span> <span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Basic</span><span class="nv"> </span><span class="s">Information&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">surname</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;tab&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="s">&#39;Contact</span><span class="nv"> </span><span class="s">Information&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;phone&#39;</span> <span class="p p-Indicator">}</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">email</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">phone</span>
+</pre></div>
+</div>
+<img alt="A form using tabs to separate its fields" src="../_images/easyadmin-form-tabs.png" />
+<p>The configurable options of this element are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> (mandatory, <code class="docutils literal notranslate"><span class="pre">string</span></code>), displayed as the clickable name of the tab.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), the name of the FontAwesome icon without the
+<code class="docutils literal notranslate"><span class="pre">fa-</span></code> prefix (e.g. don’t use <code class="docutils literal notranslate"><span class="pre">fa</span> <span class="pre">fa-user</span></code> or <code class="docutils literal notranslate"><span class="pre">fa-user</span></code> but <code class="docutils literal notranslate"><span class="pre">user</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">css_class</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), you can apply multiple classes separating
+them with white spaces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code> (optional, <code class="docutils literal notranslate"><span class="pre">string</span></code>), text displayed to describe the form tab
+or display helpful messages. It can include HTML elements.</p></li>
+</ul>
+<p>Design elements can be combined to display sections inside groups and create
+advanced layouts:</p>
+<img alt="A complex form layout combining sections and groups" src="../_images/easyadmin-form-complex-layout.png" />
+</div>
+</div>
+</div>
+<div class="section" id="advanced-design-configuration">
+<h2>Advanced Design Configuration<a class="headerlink" href="#advanced-design-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The previous sections explain how to customize the design of the forms and their
+fields using Symfony’s Form component features. EasyAdmin also lets you
+customize the entire <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views, similar to how the other
+views (<code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span></code>, etc.) are customized.</p>
+<p>EasyAdmin defines several Twig templates to create its interface. These are the
+templates related to <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views:</p>
+<ul class="simple" id="default-templates">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/layout.html.twig</span></code>, the common layout that decorates the
+rest of the main templates;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/new</span></code>, renders the page where new entities are created;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;EasyAdmin/default/edit</span></code>, renders the page where entity contents are edited;</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The special <code class="docutils literal notranslate"><span class="pre">form</span></code> view doesn’t have a template associated. The template
+configured for <code class="docutils literal notranslate"><span class="pre">form</span></code> will be used for both <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> unless
+they override that template in their own configuration.</p>
+</div>
+<p>Depending on your needs, there are several customization options:</p>
+<ol class="arabic simple">
+<li><p>Override the default EasyAdmin templates using Symfony’s overriding mechanism.
+Useful to add or change minor things in the default interface.</p></li>
+<li><p>Use your own templates to display the edit/new views and all their elements.
+Useful if you want to customize the interface entirely.</p></li>
+</ol>
+<div class="section" id="overriding-the-default-templates-using-symfony-s-mechanism">
+<h3>Overriding the Default Templates Using Symfony’s Mechanism<a class="headerlink" href="#overriding-the-default-templates-using-symfony-s-mechanism" title="Permalink to this headline">¶</a></h3>
+<p>Symfony allows to <a class="reference external" href="https://symfony.com/doc/current/bundles/override.html">override any part of third-party bundles</a>. To override one
+of the default EasyAdmin templates, create a new template inside
+<code class="docutils literal notranslate"><span class="pre">templates/bundles/EasyAdminBundle/default/</span></code> with the same path as the
+template to override. Example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">your</span><span class="o">-</span><span class="nx">project</span><span class="o">/</span>
+<span class="nx">├─</span> <span class="o">...</span>
+<span class="nx">└─</span> <span class="nx">templates</span><span class="o">/</span>
+   <span class="nx">└─</span> <span class="nx">bundles</span><span class="o">/</span>
+      <span class="nx">└─</span> <span class="nx">EasyAdminBundle</span><span class="o">/</span>
+         <span class="nx">└─</span> <span class="k">default</span><span class="o">/</span>
+            <span class="nx">├─</span> <span class="k">new</span><span class="o">.</span><span class="nx">html</span><span class="o">.</span><span class="nx">twig</span>
+            <span class="nx">└─</span> <span class="nx">edit</span><span class="o">.</span><span class="nx">html</span><span class="o">.</span><span class="nx">twig</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Add an empty <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">dump()</span> <span class="pre">}}</span></code> call in your custom templates to know which
+variables are passed to them by EasyAdmin.</p>
+</div>
+<p>Instead of creating the new templates from scratch, you can extend from the
+original templates and change only the parts you want to override. However, you
+must use a special syntax inside <code class="docutils literal notranslate"><span class="pre">extends</span></code> to avoid an infinite loop:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/bundles/EasyAdminBundle/default/layout.html.twig #}</span><span class="x"></span>
+
+<span class="c">{# DON&#39;T DO THIS: it will cause an infinite loop #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;@EasyAdmin/default/layout.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# DO THIS: the &#39;!&#39; symbol tells Symfony to extend from the original template #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;@!EasyAdmin/default/layout.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">sidebar</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# ... #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-your-own-templates-to-display-the-list-search-show-views">
+<span id="overriding-the-default-templates-by-configuration"></span><h3>Using your Own Templates to Display the list/search/show Views<a class="headerlink" href="#using-your-own-templates-to-display-the-list-search-show-views" title="Permalink to this headline">¶</a></h3>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">templates</span></code> option (globally or only to some entities) to define the
+path of the Twig template used to render each part of the interface:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># these custom templates are applied to all entities</span>
+        <span class="nt">templates</span><span class="p">:</span>
+            <span class="nt">edit</span><span class="p">:</span> <span class="s">&#39;admin/custom_edit_form.html.twig&#39;</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="c1"># these custom templates are only applied to this entity and</span>
+            <span class="c1"># they override any global template defined in &#39;design.templates&#39;</span>
+            <span class="nt">templates</span><span class="p">:</span>
+                <span class="nt">edit</span><span class="p">:</span> <span class="s">&#39;admin/customer/edit.html.twig&#39;</span>
+                <span class="nt">new</span><span class="p">:</span> <span class="s">&#39;admin/customizations/customer_new.html.twig&#39;</span>
+</pre></div>
+</div>
+<p>The name of the config option matches the name of the template files inside
+<code class="docutils literal notranslate"><span class="pre">src/Resources/views/</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">layout</span></code>, <code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code>, etc.) The value of
+the options can be any valid Twig template path.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Add an empty <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">dump()</span> <span class="pre">}}</span></code> call in your custom templates to know which
+variables are passed to them by EasyAdmin.</p>
+</div>
+<p>Instead of creating the new templates from scratch, you can extend from the
+original templates and change only the parts you want to override. Suppose you
+only want to change the way titles are displayed on the <code class="docutils literal notranslate"><span class="pre">new</span></code> view. To do so,
+create the following <code class="docutils literal notranslate"><span class="pre">new.html.twig</span></code> template extending from the default one
+and override only the <code class="docutils literal notranslate"><span class="pre">content_title</span></code> Twig block:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/admin/new.html.twig #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;@EasyAdmin/default/new.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content_title</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# ... customize the content title ... #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Next chapter: <a class="reference internal" href="actions-configuration.html"><span class="doc">Chapter 7. Actions Configuration</span></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="actions-configuration.html" class="btn btn-neutral float-right" title="Chapter 7. Actions Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="list-search-show-configuration.html" class="btn btn-neutral float-left" title="Chapter 5. List, Search and Show Views Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

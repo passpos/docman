@@ -1,0 +1,30 @@
+<html><!-- saved from url=(0076)http://www.w3school.com.cn/tiy/loadtext.asp?f=jseg_pro_js_object_modifying_3 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<script type="text/javascript">
+
+Array.prototype.indexOf = function (vItem) {
+
+  for (var i=0; i < this.length; i++) {
+    if (vItem == this[i]) {
+	  return i;
+    }
+  }
+
+  return -1;
+}
+
+var aColors = new Array("red", "green", "blue");
+document.write(aColors.indexOf("green"));
+
+</script>
+
+</body>
+</html>

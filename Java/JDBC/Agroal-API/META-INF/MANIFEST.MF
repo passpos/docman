@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Implementation-Title: Agroal API
+Implementation-Version: 1.8
+Java-Version: 1.8.0_242
+Built-By: barreiro
+Scm-Connection: scm:git:git://github.com/agroal/agroal.git/agroal-api
+Specification-Vendor: JBoss by Red Hat
+Os-Arch: amd64
+Specification-Title: Agroal API
+Implementation-Vendor-Id: io.agroal
+Java-Vendor: Oracle Corporation
+Os-Name: Linux
+Scm-Url: https://github.com/agroal/agroal/agroal-api
+Implementation-Vendor: JBoss by Red Hat
+Os-Version: 5.5.11-200.fc31.x86_64
+Scm-Revision: 4f373f985337bd40caacd72514bbba701298c2f3
+Created-By: Apache Maven 3.5.4
+Build-Jdk: 1.8.0_242
+Specification-Version: 1.8
+Implementation-URL: https://github.com/agroal/agroal-api
+

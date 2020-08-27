@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 7. Actions Configuration &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 8. Menu Configuration" href="menu-configuration.html" />
+    <link rel="prev" title="Chapter 6. Edit and New Views Configuration" href="edit-new-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 7. Actions Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#disable-actions-for-some-or-all-entities">Disable Actions for Some or All Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-the-actions-displayed-in-each-view">Configure the Actions Displayed in Each View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-actions-globally">Adding Actions Globally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removing-actions-globally">Removing Actions Globally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-actions-per-entity">Adding Actions Per Entity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removing-actions-per-entity">Removing Actions Per Entity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-actions-displayed-in-each-view">Customizing the Actions Displayed in Each View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#removing-action-labels-and-displaying-just-icons">Removing Action Labels and Displaying Just Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-item-actions-in-a-dropdown-menu">Displaying Item Actions in a Dropdown Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-actions">Batch Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Chapter 7. Actions Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/book/actions-configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-7-actions-configuration">
+<h1>Chapter 7. Actions Configuration<a class="headerlink" href="#chapter-7-actions-configuration" title="Permalink to this headline">¶</a></h1>
+<p>EasyAdmin backends consist of <strong>views</strong> and <strong>actions</strong>. The <strong>view</strong> is the
+page where you are (<code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span></code>, etc.) and the <strong>action</strong> is
+what you do on that page (<code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">delete</span></code>, etc.)</p>
+<p>Views include one or more <strong>actions</strong> to perform operations on the items
+displayed in that view. For example, the default <code class="docutils literal notranslate"><span class="pre">list</span></code> view interface
+includes four actions as buttons or links:</p>
+<img alt="List view interface" src="../_images/easyadmin-list-view-actions.png" />
+<p>These are the built-in actions included by default in each view:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>View</p></th>
+<th class="head"><p>Default Actions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code>, <code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">new</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code>, <code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>In this chapter you’ll learn how to enable, disable and customize these built-in
+actions. If you want to create your own actions read the
+<a class="reference internal" href="../tutorials/custom-actions.html"><span class="doc">How to Define Custom Actions</span></a> tutorial.</p>
+<div class="section" id="disable-actions-for-some-or-all-entities">
+<h2>Disable Actions for Some or All Entities<a class="headerlink" href="#disable-actions-for-some-or-all-entities" title="Permalink to this headline">¶</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">disabled_actions</span></code> option to disable any action globally or just for
+some entity. For example, to disable the <code class="docutils literal notranslate"><span class="pre">show</span></code> action for all entities:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">disabled_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;show&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>When an action is disabled, the backend no longer displays it in any of the
+views. Moreover, if some user tries to <em>hack</em> the URL to access to a disabled
+action, they’ll see a <em>Forbidden Action</em> error page.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">disabled_actions</span></code> option can also be defined per entity. For example, to
+disable the <code class="docutils literal notranslate"><span class="pre">new</span></code> action just for the <code class="docutils literal notranslate"><span class="pre">User</span></code> entity:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">disabled_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;new&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>The values of the <code class="docutils literal notranslate"><span class="pre">disabled_actions</span></code> options are merged in cascade for each
+entity. If the backend configuration is the following:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">disabled_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;show&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">disabled_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;new&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">User</span></code> entity will have both the <code class="docutils literal notranslate"><span class="pre">new</span></code> and the <code class="docutils literal notranslate"><span class="pre">show</span></code> actions disabled.</p>
+</div>
+<div class="section" id="configure-the-actions-displayed-in-each-view">
+<h2>Configure the Actions Displayed in Each View<a class="headerlink" href="#configure-the-actions-displayed-in-each-view" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-actions-globally">
+<h3>Adding Actions Globally<a class="headerlink" href="#adding-actions-globally" title="Permalink to this headline">¶</a></h3>
+<p>Define the actions to display on each backend view using the <code class="docutils literal notranslate"><span class="pre">actions</span></code> option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">edit</span><span class="p">:</span>
+        <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;show&#39;</span><span class="p p-Indicator">]</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;edit&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;search&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The value of the <code class="docutils literal notranslate"><span class="pre">actions</span></code> option is merged with the default action
+configuration for each view. In the above example, the <code class="docutils literal notranslate"><span class="pre">edit</span></code> view of all
+entities will include the <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">delete</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> actions (the first
+two are the default actions and the last one is explicitly configured).</p>
+</div>
+<div class="section" id="removing-actions-globally">
+<h3>Removing Actions Globally<a class="headerlink" href="#removing-actions-globally" title="Permalink to this headline">¶</a></h3>
+<p>Instead of adding new actions, sometimes you want to remove them. To do so, use
+the same <code class="docutils literal notranslate"><span class="pre">actions</span></code> option but prefix each action name with a dash (<code class="docutils literal notranslate"><span class="pre">-</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">edit</span><span class="p">:</span>
+        <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;show&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;-delete&#39;</span><span class="p p-Indicator">]</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;edit&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;search&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;-delete&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In the above example, the <code class="docutils literal notranslate"><span class="pre">edit</span></code> view will now include just the <code class="docutils literal notranslate"><span class="pre">list</span></code> and
+the <code class="docutils literal notranslate"><span class="pre">show</span></code> actions because of the following configuration merge:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 63%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration merge</p></th>
+<th class="head"><p>Actions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Default actions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">delete</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Actions added by global config</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Actions deleted by global config</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Resulting actions for entities</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="adding-actions-per-entity">
+<h3>Adding Actions Per Entity<a class="headerlink" href="#adding-actions-per-entity" title="Permalink to this headline">¶</a></h3>
+<p>Define the actions to add to each entity view using the <code class="docutils literal notranslate"><span class="pre">actions</span></code> option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Invoice</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;show&#39;</span><span class="p p-Indicator">]</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The global <code class="docutils literal notranslate"><span class="pre">action</span></code> configuration (if any) is merged with the entity’s
+<code class="docutils literal notranslate"><span class="pre">action</span></code> configuration, as explained in the next section.</p>
+</div>
+<div class="section" id="removing-actions-per-entity">
+<h3>Removing Actions Per Entity<a class="headerlink" href="#removing-actions-per-entity" title="Permalink to this headline">¶</a></h3>
+<p>Define the actions to remove to each entity view using the <code class="docutils literal notranslate"><span class="pre">actions</span></code> option and
+prefixing the action name with a dash (<code class="docutils literal notranslate"><span class="pre">-</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;-search&#39;</span><span class="p p-Indicator">]</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The global <code class="docutils literal notranslate"><span class="pre">action</span></code> configuration (if any) is merged in cascade with the
+entity’s <code class="docutils literal notranslate"><span class="pre">action</span></code> configuration. Consider the following example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;-edit&#39;</span><span class="p p-Indicator">]</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Customer</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;-search&#39;</span><span class="p p-Indicator">]</span>
+            <span class="c1"># ...</span>
+        <span class="nt">Invoice</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;edit&#39;</span><span class="p p-Indicator">]</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This would be the configuration merging process for the <code class="docutils literal notranslate"><span class="pre">Invoice</span></code> entity:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration merge</p></th>
+<th class="head"><p>Actions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Default actions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Actions added by global config</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-even"><td><p>Actions deleted by global config</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Actions added by entity</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Actions removed by entity</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Resulting actions for entity</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>This would be the configuration merging process for the <code class="docutils literal notranslate"><span class="pre">Customer</span></code> entity:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration merge</p></th>
+<th class="head"><p>Actions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Default actions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Actions added by global config</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-even"><td><p>Actions deleted by global config</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">edit</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Actions added by entity</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-even"><td><p>Actions removed by entity</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">search</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Resulting actions for entity</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">new</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Beware that the <code class="docutils literal notranslate"><span class="pre">actions</span></code> option just defines if an action should be
+displayed or not, but it doesn’t disable the action (a malicious user could
+<em>hack</em> the URL and change the <code class="docutils literal notranslate"><span class="pre">action</span></code> parameter manually). Use the
+<code class="docutils literal notranslate"><span class="pre">disabled_actions</span></code> options to ban those actions entirely.</p>
+</div>
+</div>
+</div>
+<div class="section" id="customizing-the-actions-displayed-in-each-view">
+<h2>Customizing the Actions Displayed in Each View<a class="headerlink" href="#customizing-the-actions-displayed-in-each-view" title="Permalink to this headline">¶</a></h2>
+<p>In addition to adding or removing actions, you can also configure their
+properties, such as their labels and icons. To do so, you must use the expanded
+configuration format:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="c1"># shortcut configuration format</span>
+        <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;edit&#39;</span><span class="p p-Indicator">]</span>
+
+        <span class="c1"># expanded configuration format</span>
+        <span class="nt">actions</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&#39;edit&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Then, define any of the following options to customize the action:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>, this is the only mandatory option. You can freely choose this value,
+but it must be valid as a PHP method name (use characters, numbers and
+underscores only).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>, is the text displayed in the button or link associated with the
+action. If not defined, the action label is the <em>humanized</em> version of its
+<code class="docutils literal notranslate"><span class="pre">name</span></code> option. Set it to <code class="docutils literal notranslate"><span class="pre">null</span></code> or an empty string to hide it and only
+display the associated icon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>, is the text used in the <code class="docutils literal notranslate"><span class="pre">title</span></code> HTML attribute of the <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code>
+element associated with the action. Most of the times you can safely ignore
+this option, but it’s useful to display a helpful message when the action
+hides its label and only displays its icon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">css_class</span></code>, is the CSS class or classes applied to the link or button used
+to render the action.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon</span></code>, is the name of the FontAwesome icon displayed next to the link or
+inside the button used to render the action. You don’t have to include the
+<code class="docutils literal notranslate"><span class="pre">fa-</span></code> prefix of the icon name (e.g. to display the icon of a user, don’t
+use <code class="docutils literal notranslate"><span class="pre">fa</span> <span class="pre">fa-user</span></code> or <code class="docutils literal notranslate"><span class="pre">fa-user</span></code>; just use <code class="docutils literal notranslate"><span class="pre">user</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code>, is the value of the <code class="docutils literal notranslate"><span class="pre">target</span></code> HTML attribute applied to the button
+or link associated with the action (e.g. <code class="docutils literal notranslate"><span class="pre">_blank</span></code> to open the action in a
+new browser tab/window).</p></li>
+</ul>
+</div>
+<div class="section" id="removing-action-labels-and-displaying-just-icons">
+<h2>Removing Action Labels and Displaying Just Icons<a class="headerlink" href="#removing-action-labels-and-displaying-just-icons" title="Permalink to this headline">¶</a></h2>
+<p>By default, the actions showed in the <code class="docutils literal notranslate"><span class="pre">list</span></code> view only display their label
+(<code class="docutils literal notranslate"><span class="pre">Edit</span></code>, <code class="docutils literal notranslate"><span class="pre">Show</span></code>, etc.):</p>
+<img alt="Action Labels in Entity Listing" src="../_images/easyadmin-listing-actions-label-only.png" />
+<p>This is configurable thanks to the <code class="docutils literal notranslate"><span class="pre">icon</span></code>, <code class="docutils literal notranslate"><span class="pre">label</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code> options:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">actions</span><span class="p">:</span>
+            <span class="c1"># displays both the action label and a custom icon</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&#39;edit&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;pencil&#39;</span> <span class="p p-Indicator">}</span>
+
+            <span class="c1"># hides the action label and displays only the icon</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&#39;edit&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;pencil&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="nv">false</span> <span class="p p-Indicator">}</span>
+
+            <span class="c1"># the &#39;title&#39; content is displayed when the cursor is over the icon</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&#39;edit&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;pencil&#39;</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span> <span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> title</span><span class="p">:</span> <span class="s">&#39;Search&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="displaying-item-actions-in-a-dropdown-menu">
+<h2>Displaying Item Actions in a Dropdown Menu<a class="headerlink" href="#displaying-item-actions-in-a-dropdown-menu" title="Permalink to this headline">¶</a></h2>
+<p>In complex backends it’s common to display lots of fields on each list row. In
+those cases it’s recommended to display the actions in a dropdown menu instead
+of the expanded design used by default.</p>
+<p>To do so, set the <code class="docutils literal notranslate"><span class="pre">collapse_actions</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in the global <code class="docutils literal notranslate"><span class="pre">list</span></code> option
+or the local <code class="docutils literal notranslate"><span class="pre">list</span></code> option of each entity (the local option overrides the
+global option):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="c1"># hide actions by default in a dropdown menu...</span>
+        <span class="nt">collapse_actions</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="c1"># ...</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Category</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="c1"># ...except for this entity, where actions are displayed expanded</span>
+                <span class="nt">collapse_actions</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="batch-actions">
+<h2>Batch Actions<a class="headerlink" href="#batch-actions" title="Permalink to this headline">¶</a></h2>
+<p>Batch actions are the actions which are applied to multiple items at the same
+time. They are only available in the views that display more than one item:
+<code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code>.</p>
+<p>These actions are configured in the <code class="docutils literal notranslate"><span class="pre">batch_actions</span></code> option, which can be
+defined globally and/or per entity (entity config overrides the global config).
+The only built-in batch action is <code class="docutils literal notranslate"><span class="pre">delete</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="c1"># allow deleting multiple items at once ...</span>
+        <span class="nt">batch_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;delete&#39;</span><span class="p p-Indicator">]</span>
+        <span class="c1"># ...</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="c1"># ... except for this &#39;User&#39; entity</span>
+            <span class="nt">batch_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;-delete&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>Batch actions are configured the same as regular actions, so you can change
+their label, icon and title as explained in the previous sections. The merging
+of global and local config is also done in the same way and the config of
+<code class="docutils literal notranslate"><span class="pre">disabled_actions</span></code> is applied to these batch actions too.</p>
+<p>Read how to <a class="reference internal" href="../tutorials/custom-actions.html#custom-batch-actions"><span class="std std-ref">create your own batch actions</span></a> to get
+the most out of this feature.</p>
+<hr class="docutils" />
+<p>Next chapter: <a class="reference internal" href="menu-configuration.html"><span class="doc">Chapter 8. Menu Configuration</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="menu-configuration.html" class="btn btn-neutral float-right" title="Chapter 8. Menu Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="edit-new-configuration.html" class="btn btn-neutral float-left" title="Chapter 6. Edit and New Views Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

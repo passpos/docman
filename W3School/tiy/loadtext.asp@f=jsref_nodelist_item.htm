@@ -1,0 +1,23 @@
+<!DOCTYPE html><!-- saved from url=(0065)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_nodelist_item --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body><p id="demo">点击按钮来获得 body 元素首个子节点的名称。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x=document.getElementById("demo");  
+x.innerHTML=document.body.childNodes.item(0).nodeName;
+}
+</script>
+
+</body>
+</html>

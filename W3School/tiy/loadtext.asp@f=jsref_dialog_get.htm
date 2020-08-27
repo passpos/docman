@@ -1,0 +1,31 @@
+<!DOCTYPE html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_dialog_get --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<h3>演示如何访问 Dialog 元素</h3>
+
+<p>点击按钮来打开对话窗口。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<p><b>注释：</b>目前只有 Chrome Canary 和 Safari 6 支持 &lt;dialog&gt; 元素。</p>
+
+<dialog id="myDialog">This is an open dialog window</dialog>
+
+<script>
+function myFunction()
+{
+var x = document.getElementById("myDialog");
+x.open = true;
+}
+</script>
+
+</body>
+</html>

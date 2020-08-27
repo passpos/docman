@@ -1,0 +1,30 @@
+<html><!-- saved from url=(0064)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_event_metakey --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function isKeyPressed(event)
+{
+  if (event.metaKey==1)
+    {
+    alert("The meta key was pressed!")
+    }
+  else
+    {
+    alert("The meta key was NOT pressed!")
+    }
+  }
+
+</script>
+</head>
+<body onmousedown="isKeyPressed(event)">
+
+<p>Click somewhere in the document. An alert box will tell you if you pressed the meta key or not.</p>
+
+</body>
+</html>

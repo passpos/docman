@@ -1,0 +1,35 @@
+<!DOCTYPE html><!-- saved from url=(0061)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_ol_create --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<h3>演示如何创建 OL 元素</h3>
+
+<p>点击按钮来创建 OL 元素和 LI 元素。</p>
+
+<p id="demo"></p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x = document.createElement("OL");
+x.setAttribute("id", "myOl");
+document.body.appendChild(x);
+
+var y = document.createElement("LI");
+var t = document.createTextNode("咖啡");
+y.appendChild(t);
+document.getElementById("myOl").appendChild(y);
+}
+</script>
+
+</body>
+</html>

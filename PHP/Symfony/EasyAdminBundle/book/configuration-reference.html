@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration Reference &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to Translate the Backend" href="../tutorials/i18n.html" />
+    <link rel="prev" title="Chapter 9. Creating Complex and Dynamic Backends" href="complex-dynamic-backends.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#site-name">site_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formats">formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#date">date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time">time</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datetime">datetime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#number">number</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#disabled-actions">disabled_actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user">user</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avatar-property-path">avatar_property_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-avatar">display_avatar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-name">display_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#name-property-path">name_property_path</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#design">design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brand-color">brand_color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#form-theme">form_theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assets">assets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#css">css</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#js">js</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#templates">templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#list">list</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#title">title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#actions">actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#batch-actions">batch_actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collapse-actions">collapse_actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#max-results">max_results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new">new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#show">show</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">max_results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#entities">entities</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/book/configuration-reference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration-reference">
+<h1>Configuration Reference<a class="headerlink" href="#configuration-reference" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the entire list of configuration options available to
+customize your backends. All options are defined under the root <code class="docutils literal notranslate"><span class="pre">easy_admin</span></code>
+config key:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#site-name">site_name</a></p></li>
+<li><p><a class="reference internal" href="#formats">formats</a></p></li>
+<li><p><a class="reference internal" href="#date">date</a></p></li>
+<li><p><a class="reference internal" href="#time">time</a></p></li>
+<li><p><a class="reference internal" href="#datetime">datetime</a></p></li>
+<li><p><a class="reference internal" href="#number">number</a></p></li>
+<li><p><a class="reference internal" href="#disabled-actions">disabled_actions</a></p></li>
+<li><p><a class="reference internal" href="#user">user</a></p>
+<ul>
+<li><p><a class="reference internal" href="#avatar-property-path">avatar_property_path</a></p></li>
+<li><p><a class="reference internal" href="#display-avatar">display_avatar</a></p></li>
+<li><p><a class="reference internal" href="#display-name">display_name</a></p></li>
+<li><p><a class="reference internal" href="#name-property-path">name_property_path</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#design">design</a></p>
+<ul>
+<li><p><a class="reference internal" href="#brand-color">brand_color</a></p></li>
+<li><p><a class="reference internal" href="#form-theme">form_theme</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#assets">assets</a></p>
+<ul>
+<li><p><a class="reference internal" href="#css">css</a></p></li>
+<li><p><a class="reference internal" href="#js">js</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#templates">templates</a></p></li>
+<li><p><a class="reference internal" href="#list">list</a></p>
+<ul>
+<li><p><a class="reference internal" href="#reference-list-title"><span class="std std-ref">title</span></a></p></li>
+<li><p><a class="reference internal" href="#reference-list-actions"><span class="std std-ref">actions</span></a></p></li>
+<li><p><a class="reference internal" href="#reference-list-batch-actions"><span class="std std-ref">batch_actions</span></a></p></li>
+<li><p><a class="reference internal" href="#reference-list-collapse-actions"><span class="std std-ref">collapse_actions</span></a></p></li>
+<li><p><a class="reference internal" href="#reference-list-max-results"><span class="std std-ref">max_results</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#edit">edit</a></p></li>
+<li><p><a class="reference internal" href="#new">new</a></p></li>
+<li><p><a class="reference internal" href="#show">show</a></p></li>
+<li><p><a class="reference internal" href="#entities">entities</a></p></li>
+</ul>
+<div class="section" id="site-name">
+<h2>site_name<a class="headerlink" href="#site-name" title="Permalink to this headline">¶</a></h2>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">'Easy</span> <span class="pre">Admin'</span></code>, <strong>type</strong>: string)</p>
+<p>The name displayed as the title of the administration zone (e.g. your company
+name, the project name, etc.) Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">site_name</span><span class="p">:</span> <span class="s">&#39;ACME</span><span class="nv"> </span><span class="s">Inc.&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This value is displayed in the backend “as is”, so you can include HTML tags and
+they will be rendered as HTML content. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">site_name</span><span class="p">:</span> <span class="s">&#39;&lt;strong&gt;ACME&lt;/strong&gt;&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="formats">
+<h2>formats<a class="headerlink" href="#formats" title="Permalink to this headline">¶</a></h2>
+<p>This is the parent key of the four options that configure the formats used to
+display dates and numbers.</p>
+<div class="section" id="date">
+<h3>date<a class="headerlink" href="#date" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">'Y-m-d'</span></code>, <strong>type</strong>: string)</p>
+<p>The format applied in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views to display the properties
+of type <code class="docutils literal notranslate"><span class="pre">date</span></code>. This format doesn’t affect to <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">datetime</span></code>
+properties. The value must be a valid PHP date format according to the syntax
+options defined in <a class="reference external" href="http://php.net/date">http://php.net/date</a>. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">formats</span><span class="p">:</span>
+        <span class="nt">date</span><span class="p">:</span> <span class="s">&#39;d/m/Y&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="time">
+<h3>time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">'H:i:s'</span></code>, <strong>type</strong>: string)</p>
+<p>The format applied in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views to display the properties
+of type <code class="docutils literal notranslate"><span class="pre">time</span></code>. This format doesn’t affect to <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">datetime</span></code>
+properties. The value must be a valid PHP time format according to the syntax
+options defined in <a class="reference external" href="http://php.net/date">http://php.net/date</a>. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">formats</span><span class="p">:</span>
+        <span class="nt">time</span><span class="p">:</span> <span class="s">&#39;h:i</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">e&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="section" id="datetime">
+<h4>datetime<a class="headerlink" href="#datetime" title="Permalink to this headline">¶</a></h4>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">'F</span> <span class="pre">j,</span> <span class="pre">Y</span> <span class="pre">H:i'</span></code>, <strong>type</strong>: string)</p>
+<p>The format applied in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views to display the properties
+of type <code class="docutils literal notranslate"><span class="pre">datetime</span></code>. This format doesn’t affect to <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">time</span></code>
+properties. The value must be a valid PHP time format according to the syntax
+options defined in <a class="reference external" href="http://php.net/date">http://php.net/date</a>. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">formats</span><span class="p">:</span>
+        <span class="nt">datetime</span><span class="p">:</span> <span class="s">&#39;d/m/Y</span><span class="nv"> </span><span class="s">h:i</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">e&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="number">
+<h3>number<a class="headerlink" href="#number" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: none, <strong>type</strong>: string)</p>
+<p>The format applied in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views to display the numeric
+properties. The value must be a format according to the syntax options defined
+in <a class="reference external" href="http://php.net/sprintf">http://php.net/sprintf</a>. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">formats</span><span class="p">:</span>
+        <span class="nt">number</span><span class="p">:</span> <span class="s">&#39;%0.2f&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="disabled-actions">
+<h2>disabled_actions<a class="headerlink" href="#disabled-actions" title="Permalink to this headline">¶</a></h2>
+<p>(<strong>default value</strong>: empty array, <strong>type</strong>: array)</p>
+<p>The names of the actions disabled for all backend entities. This value can be
+overridden in a entity-by-entity basis, so you can disable some actions globally
+and then re-enable some of them for some entities. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">disabled_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;new&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;edit&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user">
+<h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="avatar-property-path">
+<h3>avatar_property_path<a class="headerlink" href="#avatar-property-path" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">null</span></code>, <strong>type</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code> | <code class="docutils literal notranslate"><span class="pre">null</span></code>)</p>
+<p>The value of this option is any valid <a class="reference external" href="https://symfony.com/components/PropertyAccess">PropertyAccess component</a> expression.
+It is applied to the <code class="docutils literal notranslate"><span class="pre">app.user</span></code> object of the Twig template to get the value
+of the user avatar. This value is used in the <code class="docutils literal notranslate"><span class="pre">src</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code>
+element used to display the avatar.</p>
+</div>
+<div class="section" id="display-avatar">
+<h3>display_avatar<a class="headerlink" href="#display-avatar" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">true</span></code>, <strong>type</strong>: bool)</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the avatar of the logged in user is displayed on all pages. Set it
+to <code class="docutils literal notranslate"><span class="pre">false</span></code> to hide it. By default, the avatar is a generic user icon. Use the
+<code class="docutils literal notranslate"><span class="pre">avatar_property_path</span></code> to change this.</p>
+</div>
+<div class="section" id="display-name">
+<h3>display_name<a class="headerlink" href="#display-name" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">true</span></code>, <strong>type</strong>: bool)</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the name of the logged in user is displayed on all pages. Set it
+to <code class="docutils literal notranslate"><span class="pre">false</span></code> to hide it. By default, the user name is the string conversion of
+the user object returned by <code class="docutils literal notranslate"><span class="pre">app.user</span></code> in the Twig template. Use the
+<code class="docutils literal notranslate"><span class="pre">name_property_path</span></code> to change this.</p>
+</div>
+<div class="section" id="name-property-path">
+<h3>name_property_path<a class="headerlink" href="#name-property-path" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">__toString</span></code>, <strong>type</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code> | <code class="docutils literal notranslate"><span class="pre">null</span></code>)</p>
+<p>The value of this option is any valid <a class="reference external" href="https://symfony.com/components/PropertyAccess">PropertyAccess component</a> expression.
+It is applied to the <code class="docutils literal notranslate"><span class="pre">app.user</span></code> object of the Twig template to get the value
+of the user name. The special <code class="docutils literal notranslate"><span class="pre">__toString</span></code> value is used to perform a string
+conversion of the user object.</p>
+</div>
+</div>
+<div class="section" id="design">
+<h2>design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h2>
+<p>This is the parent key of the options that configure the options related to the
+visual design of the backend.</p>
+<div class="section" id="brand-color">
+<h3>brand_color<a class="headerlink" href="#brand-color" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">'#E67E22'</span></code>, <strong>type</strong>: string, <strong>values</strong>: any valid CSS
+expression to define a color)</p>
+<p>This is the color used to highlight important elements of the backend, such as
+the site name, links and buttons. Use the main color of your company or project
+to create a backend that matches your branding perfectly. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">brand_color</span><span class="p">:</span> <span class="s">&#39;#3B5998&#39;</span>
+        <span class="c1"># any valid CSS color syntax can be used</span>
+        <span class="c1"># brand_color: &#39;rgba(59, 89, 152, 0.5)&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="form-theme">
+<h3>form_theme<a class="headerlink" href="#form-theme" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">'&#64;EasyAdmin/form/bootstrap_4.html.twig'</span></code>, <strong>type</strong>: string or array of strings,
+<strong>values</strong>: any valid form theme template path)</p>
+<p>The form theme used to render the form fields in the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> views.
+By default forms use the design created by EasyAdmin, buy you can use your own
+form themes and the default Symfony form theme for Bootstrap 4 too:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="c1"># using your own custom form theme</span>
+        <span class="nt">form_theme</span><span class="p">:</span> <span class="s">&#39;@App/custom_form_theme.html.twig&#39;</span>
+
+        <span class="c1"># using multiple custom form themes</span>
+        <span class="nt">form_theme</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;@App/custom_form_theme.html.twig&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;@Acme/form/global_theme.html.twig&#39;</span><span class="p p-Indicator">]</span>
+
+        <span class="c1"># using EasyAdmin theme and your own custom theme</span>
+        <span class="nt">form_theme</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;@EasyAdmin/form/bootstrap_4.html.twig&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;@App/custom_form_theme.html.twig&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="assets">
+<h3>assets<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h3>
+<p>This is the parent key of the <code class="docutils literal notranslate"><span class="pre">css</span></code> and <code class="docutils literal notranslate"><span class="pre">js</span></code> keys that allow to include any
+number of CSS and JavaScript assets in the backend layout.</p>
+<div class="section" id="css">
+<h4>css<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h4>
+<p>(<strong>default value</strong>: empty array, <strong>type</strong>: array, <strong>values</strong>: any valid link
+to CSS files)</p>
+<p>This option defines the custom CSS file (or files) that are included in the
+backend layout after loading the default CSS files. It’s useful to link to the
+CSS files that customize the design of your backends. The values of this option
+are output directly in a <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> HTML element, so you can use relative or
+absolute links. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">assets</span><span class="p">:</span>
+            <span class="nt">css</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;/bundles/app/custom_backend.css&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;https://example.com/css/theme.css&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>CSS files are included in the same order as defined. This option cannot be used
+to remove the default CSS files loaded by EasyAdmin. To do so, you must override
+the <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> part of the layout template using a custom template.</p>
+</div>
+<div class="section" id="js">
+<h4>js<a class="headerlink" href="#js" title="Permalink to this headline">¶</a></h4>
+<p>(<strong>default value</strong>: empty array, <strong>type</strong>: array, <strong>values</strong>: any valid link
+to JavaScript files)</p>
+<p>This option defines the custom JavaScript file (or files) that are included in
+the backend layout after loading the default JavaScript files. It’s useful to
+link to the JavaScript files that customize the behavior of your backends. The
+values of this option are output directly in a <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> HTML element, so you
+can use relative or absolute links. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">assets</span><span class="p">:</span>
+            <span class="nt">js</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;/bundles/app/custom_widgets.js&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;https://example.com/js/animations.js&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>JavaScript files are included in the same order as defined. This option cannot
+be used to remove the default JavaScript files loaded by EasyAdmin. To do so,
+you must override the <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> part of the layout template using a custom template.</p>
+</div>
+</div>
+<div class="section" id="templates">
+<h3>templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: none, <strong>type</strong>: strings, <strong>values</strong>: any valid Twig template path)</p>
+<p>This option allows to redefine the template used to render each backend element,
+from the global layout to the micro-templates used to render each form field type.
+For example, to use your own template to display the properties of type <code class="docutils literal notranslate"><span class="pre">boolean</span></code>
+redefine the <code class="docutils literal notranslate"><span class="pre">field_boolean</span></code> template:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">templates</span><span class="p">:</span>
+            <span class="nt">field_boolean</span><span class="p">:</span> <span class="s">&#39;@MyBundle/backend/boolean.html.twig&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Similarly, to customize the entire backend layout (used to render all pages)
+redefine the <code class="docutils literal notranslate"><span class="pre">layout</span></code> template:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">templates</span><span class="p">:</span>
+            <span class="nt">layout</span><span class="p">:</span> <span class="s">&#39;@MyBundle/backend/base.html.twig&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This is the full list of templates that can be redefined:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">templates</span><span class="p">:</span>
+            <span class="c1"># Used to decorate the main templates (list, edit, new and show)</span>
+            <span class="nt">layout</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render the page where entities are edited</span>
+            <span class="nt">edit</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render the listing page and the search results page</span>
+            <span class="nt">list</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render the page where new entities are created</span>
+            <span class="nt">new</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render the contents stored by a given entity</span>
+            <span class="nt">show</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render the notification area were flash messages are displayed</span>
+            <span class="nt">flash_messages</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render the paginator in the list page</span>
+            <span class="nt">paginator</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render array field types</span>
+            <span class="nt">field_array</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render fields that store Doctrine associations</span>
+            <span class="nt">field_association</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render bigint field types</span>
+            <span class="nt">field_bigint</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render boolean field types</span>
+            <span class="nt">field_boolean</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render date field types</span>
+            <span class="nt">field_date</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render datetime field types</span>
+            <span class="nt">field_datetime</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render datetimetz field types</span>
+            <span class="nt">field_datetimetz</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render decimal field types</span>
+            <span class="nt">field_decimal</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render float field types</span>
+            <span class="nt">field_float</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render the field called &quot;id&quot;. This avoids formatting its</span>
+            <span class="c1"># value as any other regular number (with decimals and thousand separators)</span>
+            <span class="nt">field_id</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render image field types (a special type that displays the image contents)</span>
+            <span class="nt">field_image</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render integer field types</span>
+            <span class="nt">field_integer</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render unescaped values</span>
+            <span class="nt">field_raw</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render simple array field types</span>
+            <span class="nt">field_simple_array</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render smallint field types</span>
+            <span class="nt">field_smallint</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render string field types</span>
+            <span class="nt">field_string</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render text field types</span>
+            <span class="nt">field_text</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render time field types</span>
+            <span class="nt">field_time</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used to render toggle field types (a special type that display</span>
+            <span class="c1"># booleans as flip switches)</span>
+            <span class="nt">field_toggle</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used when the field to render is an empty collection</span>
+            <span class="nt">label_empty</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used when is not possible to access the value of the field</span>
+            <span class="c1"># to render (there is no getter or public property)</span>
+            <span class="nt">label_inaccessible</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used when the value of the field to render is null</span>
+            <span class="nt">label_null</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+            <span class="c1"># Used when any kind of error or exception happens when trying to</span>
+            <span class="c1"># access the value of the field to render</span>
+            <span class="nt">label_undefined</span><span class="p">:</span> <span class="s">&#39;...&#39;</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">label_*</span></code> and <code class="docutils literal notranslate"><span class="pre">field_*</span></code> templates are only applied in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and
+<code class="docutils literal notranslate"><span class="pre">show</span></code> templates. In order to customize the fields of the forms displayed in
+the <code class="docutils literal notranslate"><span class="pre">new</span></code> and <code class="docutils literal notranslate"><span class="pre">edit</span></code> views, use the <code class="docutils literal notranslate"><span class="pre">easy_admin.design.form_theme</span></code> option.</p>
+</div>
+</div>
+<div class="section" id="list">
+<h2>list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
+<p>Defines the options applied globally for the <code class="docutils literal notranslate"><span class="pre">list</span></code> view of all entities.</p>
+<div class="section" id="title">
+<span id="reference-list-title"></span><h3>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>type</strong>: string)</p>
+<p>The default title for all entities (it can be overridden individually by each
+entity).</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;list.%%entity_label%%&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="actions">
+<span id="reference-list-actions"></span><h3>actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: empty array, <strong>type</strong>: array)</p>
+<p>Defines the actions available in the <code class="docutils literal notranslate"><span class="pre">list</span></code> view, which can be built-in
+actions (<code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span></code>) or
+<a class="reference internal" href="../tutorials/custom-actions.html"><span class="doc">custom actions</span></a>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;new&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;show&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;myAction&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;myOtherAction&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>The actions defined in this option are added to the default ones for each view.
+To remove an action, add it to this list prepending its name with a dash (<code class="docutils literal notranslate"><span class="pre">-</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;-new&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;-show&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;myAction&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;myOtherAction&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="batch-actions">
+<span id="reference-list-batch-actions"></span><h3>batch_actions<a class="headerlink" href="#batch-actions" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: empty array, <strong>type</strong>: array)</p>
+<p>Defines the “batch actions” available in the <code class="docutils literal notranslate"><span class="pre">list</span></code> view, which are those
+actions applied to multiple items at the same time. The only built-in batch
+action is <code class="docutils literal notranslate"><span class="pre">delete</span></code>, but you can create your own
+<a class="reference internal" href="../tutorials/custom-actions.html#custom-batch-actions"><span class="std std-ref">custom batch actions</span></a>.</p>
+<p>This option can be defined globally and/or per entity (entity config overrides
+the global config). To remove an action, add it to this list prefixing its name
+with a dash (<code class="docutils literal notranslate"><span class="pre">-</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="nt">batch_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;delete&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;myAction&#39;</span><span class="p p-Indicator">]</span>
+    <span class="c1"># ...</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">batch_actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;-delete&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;myOtherAction&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="collapse-actions">
+<span id="reference-list-collapse-actions"></span><h3>collapse_actions<a class="headerlink" href="#collapse-actions" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: <code class="docutils literal notranslate"><span class="pre">false</span></code>, <strong>type</strong>: boolean)</p>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the actions of each listing item are displayed inside a
+dropdown menu that is revealed when moving the mouse over it. It’s useful for
+complex backends that display lots of information on each list row and don’t
+have enough space to display the actions expanded.</p>
+</div>
+<div class="section" id="max-results">
+<span id="reference-list-max-results"></span><h3>max_results<a class="headerlink" href="#max-results" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: 15, <strong>type</strong>: integer)</p>
+<p>The maximum number of rows displayed in the <code class="docutils literal notranslate"><span class="pre">list</span></code> view and in the search
+result page.</p>
+</div>
+</div>
+<div class="section" id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Permalink to this headline">¶</a></h2>
+<p>Defines the options applied globally for the <code class="docutils literal notranslate"><span class="pre">edit</span></code> view of all entities. The
+available options are <code class="docutils literal notranslate"><span class="pre">actions</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code>, which behave in the same way as
+explained above for the <code class="docutils literal notranslate"><span class="pre">list</span></code> view.</p>
+</div>
+<div class="section" id="new">
+<h2>new<a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h2>
+<p>Defines the options applied globally for the <code class="docutils literal notranslate"><span class="pre">new</span></code> view of all entities. The
+available options are <code class="docutils literal notranslate"><span class="pre">actions</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code>, which behave in the same way as
+explained above for the <code class="docutils literal notranslate"><span class="pre">list</span></code> view.</p>
+</div>
+<div class="section" id="show">
+<h2>show<a class="headerlink" href="#show" title="Permalink to this headline">¶</a></h2>
+<p>Defines the options applied globally for the <code class="docutils literal notranslate"><span class="pre">show</span></code> view of all entities.</p>
+<div class="section" id="id1">
+<h3>title<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>type</strong>: string)</p>
+<p>The default title for all entities (it can be overridden individually by each
+entity).</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">show</span><span class="p">:</span>
+        <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;show.%%entity_label%%&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>actions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: empty array, <strong>type</strong>: array)</p>
+<p>It works as explained above for the <code class="docutils literal notranslate"><span class="pre">list</span></code> view.</p>
+</div>
+<div class="section" id="id3">
+<h3>max_results<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>(<strong>default value</strong>: 10, <strong>type</strong>: integer)</p>
+<p>If some entity property defines a relation with another entity, in the <code class="docutils literal notranslate"><span class="pre">show</span></code>
+view this property is displayed as a list of links to the related items. For
+example, if your <code class="docutils literal notranslate"><span class="pre">User</span></code> and <code class="docutils literal notranslate"><span class="pre">Article</span></code> entities are related, when displaying
+the details of any user you’ll also see a list of links to their articles.</p>
+<p>This option defines the maximum number of items displayed for those relations,
+preventing issues when relations contains lots of elements. This option is also
+used as the maximum number of suggestions displayed for autocomplete fields.</p>
+</div>
+</div>
+<div class="section" id="entities">
+<h2>entities<a class="headerlink" href="#entities" title="Permalink to this headline">¶</a></h2>
+<p>(<strong>default value</strong>: empty array, <strong>type</strong>: array)</p>
+<p>Defines the list of entities managed by the bundle.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tutorials/i18n.html" class="btn btn-neutral float-right" title="How to Translate the Backend" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="complex-dynamic-backends.html" class="btn btn-neutral float-left" title="Chapter 9. Creating Complex and Dynamic Backends" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

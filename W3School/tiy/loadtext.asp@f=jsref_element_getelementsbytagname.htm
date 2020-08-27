@@ -1,0 +1,27 @@
+<!DOCTYPE html><!-- saved from url=(0080)http://www.w3school.com.cn/tiy/loadtext.asp?f=jsref_element_getelementsbytagname --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<body>
+
+<ul><li>Coffee</li><li>Tea</li></ul>
+
+<p id="demo">请点击按钮来改变某个列表项的文本。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var list = document.getElementsByTagName("UL")[0]
+list.getElementsByTagName("LI")[0].innerHTML = "Milk";
+}
+</script>
+
+</body>
+</html>

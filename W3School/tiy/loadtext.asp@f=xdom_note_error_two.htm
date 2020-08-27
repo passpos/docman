@@ -1,0 +1,22 @@
+<html><!-- saved from url=(0065)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_note_error_two --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<script type="text/javascript">
+var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+xmlDoc.async="false";
+xmlDoc.load("../example/xdom/note_error.xml");
+
+document.write("Error code: " + xmlDoc.parseError.errorCode);
+document.write("<br />Error reason: " + xmlDoc.parseError.reason);
+document.write("<br />Error line: " + xmlDoc.parseError.line);
+</script>
+
+</body>
+</html>

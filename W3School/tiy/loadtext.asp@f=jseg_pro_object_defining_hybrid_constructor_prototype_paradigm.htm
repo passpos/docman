@@ -1,0 +1,36 @@
+<html><!-- saved from url=(0108)http://www.w3school.com.cn/tiy/loadtext.asp?f=jseg_pro_object_defining_hybrid_constructor_prototype_paradigm --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<body>
+
+<script type="text/javascript">
+
+function Car(sColor,iDoors,iMpg) {
+  this.color = sColor;
+  this.doors = iDoors;
+  this.mpg = iMpg;
+  this.drivers = new Array("Mike","John");
+}
+
+Car.prototype.showColor = function() {
+  document.write(this.color);
+};
+
+var oCar1 = new Car("red",4,23);
+var oCar2 = new Car("blue",3,25);
+
+oCar1.drivers.push("Bill");
+
+document.write(oCar1.drivers);
+document.write("<br />")
+document.write(oCar2.drivers);
+
+</script>
+
+</body>
+</html>

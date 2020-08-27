@@ -1,0 +1,30 @@
+<html><!-- saved from url=(0065)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_event_shiftkey --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function isKeyPressed(event)
+{
+  if (event.shiftKey==1)
+    {
+    alert("The shift key was pressed!")
+    }
+  else
+    {
+    alert("The shift key was NOT pressed!")
+    }
+  }
+</script>
+</head>
+
+<body onmousedown="isKeyPressed(event)">
+
+<p>在文档中点击某个位置。消息框会告诉你是否按下了 shift 键。</p>
+
+</body>
+</html>

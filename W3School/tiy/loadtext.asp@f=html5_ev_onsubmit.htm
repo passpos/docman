@@ -1,0 +1,28 @@
+<!DOCTYPE html><!-- saved from url=(0063)http://www.w3school.com.cn/tiy/loadtext.asp?f=html5_ev_onsubmit --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script>
+function checkForm()
+{
+alert("表单已提交！");
+}
+</script>
+</head>
+<body>
+
+<form action="/demo/demo_form.asp" onsubmit="checkForm()">
+姓：<input type="text" name="lname"><br>
+名：<input type="text" name="fname"><br>
+<input type="submit" value="提交">
+
+<p>函数 checkForm() 在提交按钮被点击时触发。此函数向用户显示一段消息。</p>
+
+</body>
+</html>

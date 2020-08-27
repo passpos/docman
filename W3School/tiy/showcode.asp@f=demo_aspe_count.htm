@@ -1,0 +1,37 @@
+<HTML>
+<!-- saved from url=(0061)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_aspe_count --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="aspcode">&lt;%
+dim d, a, s, i
+set d=Server.CreateObject(&quot;Scripting.Dictionary&quot;)
+d.Add &quot;c&quot;, &quot;China&quot;
+d.Add &quot;i&quot;, &quot;Italy&quot;
+Response.Write(&quot;key/item 对的数目是：&quot; & d.Count)
+set d=nothing
+%&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

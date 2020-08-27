@@ -1,0 +1,55 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>01-set-content.md</title>
+    <style type="text/css">
+
+      /* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+      td, h1, h2, h3, h4, h5, p, ul, ol, li {
+          page-break-inside: avoid; 
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="passage">
+      
+      <h1 id="section">设置内容</h1>
+      <p>以下方式中，如果条件允许，尽量使用第一种方式，效率最高。</p>
+      <h2 id="html">html 初始化内容</h2>
+      <p>直接将内容写到要创建编辑器的<code>&lt;div&gt;</code>标签中</p>
+      <pre>
+    &lt;div id="div1"&gt;
+      &lt;p&gt;初始化的内容&lt;/p&gt;
+      &lt;p&gt;初始化的内容&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script type="text/javascript" src="/wangEditor.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      var E = window.wangEditor
+      var editor = new E('#div1')
+      editor.create()
+    &lt;/script&gt;</pre>
+      
+      <h2 id="js">js 设置内容</h2>
+      <p>创建编辑器之后，使用<code>editor.txt.html(...)</code>设置编辑器内容</p>
+      <pre>
+    &lt;div id="div1"&gt;&lt;/div&gt;
+
+    &lt;script type="text/javascript" src="/wangEditor.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      var E = window.wangEditor
+      var editor = new E('#div1')
+      editor.create()
+      editor.txt.html('&lt;p&gt;用 JS 设置的内容&lt;/p&gt;')
+    &lt;/script&gt;
+      </pre>
+      <h2 id="section-1">追加内容</h2>
+      <p>创建编辑器之后，可使用<code>editor.txt.append('&lt;p&gt;追加的内容&lt;/p&gt;')</code>继续追加内容。</p>
+      <h2 id="section-2">清空内容</h2>
+      <p>可使用<code>editor.txt.clear()</code>清空编辑器内容</p>
+    </div>
+  </body>
+</html>

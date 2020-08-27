@@ -1,0 +1,36 @@
+<html><!-- saved from url=(0068)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_createattribute_4 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books.xml");
+
+x=xmlDoc.getElementsByTagName("title");
+
+//add a new attribute to each title element
+for(i=0;i<x.length;i++)
+{
+x[i].setAttribute("edition","first");
+}
+
+//Output title and edition value
+for (i=0;i<x.length;i++)
+{
+document.write(x[i].childNodes[0].nodeValue);
+document.write(" - Edition: ");
+document.write(x[i].getAttribute("edition"));
+document.write("<br />");
+}
+</script>
+</body>
+</html>

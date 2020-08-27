@@ -1,0 +1,30 @@
+<!DOCTYPE html><!-- saved from url=(0064)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_html_after2 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script src="../jquery/jquery-1.11.1.min.js"></script>
+<script>
+function afterText()
+{
+var txt1="<b>I </b>";                    // 以 HTML 创建元素
+var txt2=$("<i></i>").text("love ");     // 通过 jQuery 创建元素
+var txt3=document.createElement("big");  // 通过 DOM 创建元素
+txt3.innerHTML="jQuery!";
+$("img").after(txt1,txt2,txt3);          // 在 img 之后插入新元素
+}
+</script>
+</head>
+<body>
+
+<img src="../i/eg_w3school.gif" alt="W3School Logo" />
+<br><br>
+<button onclick="afterText()">在图片后面添加文本</button>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html><!-- saved from url=(0059)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_checkbox --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function convertToUcase()
+{
+document.getElementById("fname").value=document.getElementById("fname").value.toUpperCase()
+document.getElementById("lname").value=document.getElementById("lname").value.toUpperCase()
+}
+</script>
+</head>
+
+<body>
+<form name="form1">
+名：<input type="text" id="fname" size="20" />
+<br /><br />
+姓：<input type="text" id="lname" size="20" />
+<br /><br />
+转换为大写
+<input type="checkBox" onclick="if (this.checked) {convertToUcase()}">
+</form>
+</body>
+
+</html>

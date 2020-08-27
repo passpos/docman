@@ -1,0 +1,39 @@
+<HTML>
+<!-- saved from url=(0060)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_date7 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+$startdate=strtotime(&quot;Saturday&quot;);
+$enddate=strtotime(&quot;+6 weeks&quot;,$startdate);
+
+while ($startdate &lt;  $enddate) {
+   echo date(&quot;M d&quot;, $startdate),&quot;&lt;br&gt;&quot;;
+   $startdate = strtotime(&quot;+1 week&quot;, $startdate);
+}
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

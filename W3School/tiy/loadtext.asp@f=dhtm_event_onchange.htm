@@ -1,0 +1,30 @@
+<html><!-- saved from url=(0065)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_event_onchange --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function preferedBrowser()
+{
+prefer=document.forms[0].browsers.value
+alert("您浏览器互联网时喜欢使用 " + prefer)
+}
+</script>
+</head>
+
+<body>
+
+<form>
+请选择您喜欢的浏览器：
+<select id="browsers" onchange="preferedBrowser()">
+<option value="Internet Explorer">Internet Explorer
+<option value="Netscape">Netscape
+</select>
+</form>
+
+</body>
+</html>

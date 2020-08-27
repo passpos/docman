@@ -1,0 +1,62 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>03-sperate.md</title>
+    <style type="text/css">
+
+      /* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+      td, h1, h2, h3, h4, h5, p, ul, ol, li {
+          page-break-inside: avoid; 
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="passage">
+      <h1 id="section">菜单和编辑区域分离</h1>
+      <p>如果你想要像 知乎专栏、简书、石墨、网易云笔记 这些编辑页面一样，将编辑区域和菜单分离，也可以实现。</p>
+      <p>这样，菜单和编辑器区域就是使用者可自己控制的元素，可自定义样式。例如：将菜单<code>fixed</code>、编辑器区域高度自动增加等</p>
+      <h2 id="section-1">代码示例</h2>
+      <pre>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;wangEditor 菜单和编辑器区域分离&lt;/title&gt;
+        &lt;style type="text/css"&gt;
+          .toolbar {
+            border: 1px solid #ccc;
+          }
+          .text {
+            border: 1px solid #ccc;
+            height: 400px;
+          }
+        &lt;/style&gt;
+
+      &lt;/head&gt;
+
+      &lt;body&gt;
+        &lt;div <code>id="div1"</code> class="toolbar"&gt;&lt;/div&gt;
+        &lt;div style="padding: 5px 0; color: #ccc"&gt;中间隔离带&lt;/div&gt;
+        &lt;div <code>id="div2"</code> class="text"&gt; &lt;!--可使用 min-height 实现编辑区域自动增加高度--&gt;
+          &lt;p&gt;请输入内容&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;script type="text/javascript" src="/wangEditor.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+          var E = window.wangEditor
+          var editor1 = new E(<code>'#div1', '#div2'</code>)  // 两个参数也可以传入 elem 对象，class 选择器
+          editor1.create()
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</pre>
+      <h2 id="section-2">显示效果</h2>
+      <p>从上面代码可以看出，菜单和编辑区域其实就是两个单独的<code>&lt;div&gt;</code>，位置、尺寸都可以随便定义。</p>
+      <p>
+        <img src="http://images2015.cnblogs.com/blog/138012/201705/138012-20170531224756289-7442240.png" alt="" />
+      </p>
+    </div>
+  </body>
+</html>

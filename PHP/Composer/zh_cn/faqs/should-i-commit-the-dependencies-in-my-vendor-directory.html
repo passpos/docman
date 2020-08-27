@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>我应该提交 vendor 目录中的依赖包吗？ | Composer 中文文档 | Composer 中文网</title>
+        <meta name="description" content="Composer 是 PHP 中用来管理依赖（dependency）关系的工具">
+        <meta name="keywords" content="PHP, Composer, Packagist, 依赖管理, npm, Symfony, Laravel">
+
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/libs/prism.css">
+
+        <script src="https://cdn.bootcss.com/modernizr/2.8.2/modernizr.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                    <a href="../docs_phpcomposer_default.html">首页</a>
+                    <a href="../00-intro.html">入门</a>
+                    <a href="https://getcomposer.org/download/" target="_blank">下载</a>
+                    <a href="https://packagist.org/" target="_blank">安装包列表</a>
+                    <a class="last" href="https://pkg.phpcomposer.com/" target="_blank">中国镜像</a>
+            </header>
+            <div id="main" role="main">
+    
+    <h1>我应该提交 vendor 目录中的依赖包吗？</h1>
+<p>一般情况下 <strong>不建议</strong>。vendor 目录（或者你安装依赖的其它目录）都应该被添加进 <code>.gitignore</code>/<code>svn:ignore</code>/等等。</p>
+<p>最好这么做，然后让所有开发人员使用 Composer 来安装依赖包。同样，build server、CI、deployment tools 等等，应进行修改，使运行 Composer 成为其项目引导的一部分。</p>
+<p>虽然在某些环境下提交它是很让人心动的，但它将导致一些问题：</p>
+<ul>
+<li>当你更新代码时，将极大的增加 VCS 仓库的体积和差异。</li>
+<li>在你自己的 VCS 中将产生与你依赖的资源包重复的历史记录。</li>
+<li>通过 git 的一个 git 仓库安装添加依赖，将把它们视作子模块。这是有问题的，因为它们并不是真正的子模块，并且你将会遇到这些问题。</li>
+</ul>
+<p>如果你真的觉得你必须这样做，你有几个选择：</p>
+<ol>
+<li>限制自己安装标记版本（无 dev 版本），这样你只会得到 zip 压缩的安装，并避免 git“子模块”出现的问题。</li>
+<li>使用 --prefer-dist 或在 <a href="../04-schema.html#config">config</a> 选项中设置 <code>preferred-install</code> 为 <code>dist</code>。</li>
+<li>在每一个依赖安装后删除其下的 <code>.git</code> 文件夹，然后你就可以添加它们到你的 git repo 中。你可以运行 <code>rm -rf vendor/**/.git</code> 命令快捷的操作，但这意味着你在运行 composer update 命令前需要先删除磁盘中的依赖文件。</li>
+<li>新增一个 .gitignore 规则（<code>vendor/.git</code>）来忽略 vendor 下所有 <code>.git</code> 目录。这种方法不需要你在运行 composer update 命令前删除你磁盘中的依赖文件。</li>
+</ol>
+
+
+    <p class="fork-and-edit">
+        如果您发现文档中有错误，或者能够帮我们完善文档，请提交到我们的 <a href="https://github.com/5-say/composer-doc-cn" target="_blank">Github 仓库吧</a>！
+    </p>
+            </div>
+            <footer>
+
+                <p class="license">Composer 以及本网站上的所有内容全部遵循 <a href="https://github.com/composer/composer/blob/master/LICENSE" target="_blank">MIT 开源协议</a>。</p>
+            </footer>
+        </div>
+
+        <script src="http://docs.phpcomposer.com/assets/js/libs/prism.js"></script>
+        <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F16e97907ef84179ff8cd833509017a96' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html><!-- saved from url=(0080)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquerymobile_events_document_ready --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("p").on("click",function(){
+    $(this).hide();
+  });
+});
+</script>
+</head>
+<body>
+
+<p>如果您点击我，我会消失。</p>
+<p>点击我，我会消失。</p>
+<p>点击我，我也会消失。</p>
+
+</body>
+</html>

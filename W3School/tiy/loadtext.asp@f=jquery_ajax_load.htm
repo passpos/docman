@@ -1,0 +1,28 @@
+<!DOCTYPE html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=jquery_ajax_load --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script src="../jquery/jquery-1.11.1.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $('#test').load('../example/jquery/demo_test.txt');
+  })
+})
+</script>
+</head>
+
+<body>
+
+<h3 id="test">请点击下面的按钮，通过 jQuery AJAX 改变这段文本。</h3>
+<button id="btn1" type="button">获得外部的内容</button>
+
+</body>
+</html>

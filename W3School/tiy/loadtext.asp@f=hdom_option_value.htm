@@ -1,0 +1,33 @@
+<html><!-- saved from url=(0063)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_option_value --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function alertValue()
+  {
+  var x=document.getElementById("mySelect").selectedIndex;
+  alert(document.getElementsByTagName("option")[x].value);
+  }
+</script>
+</head>
+<body>
+
+<form>
+Select your favorite fruit:
+<select id="mySelect">
+  <option value="apple">Apple</option>
+  <option value="orange">Orange</option>
+  <option value="pineapple">Pineapple</option>
+  <option value="banana">Banana</option>
+</select>
+<br /><br />
+<input type="button" onclick="alertValue()" value="Alert selected value">
+</form>
+
+</body>
+</html>

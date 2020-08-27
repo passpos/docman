@@ -1,0 +1,38 @@
+<HTML>
+<!-- saved from url=(0072)http://www.w3school.com.cn/tiy/showcode.asp?f=demo_php_func_array_reduce --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="showcode.css" />
+</head>
+
+<body>
+
+<pre>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+<code class="phpcode">&lt;?php
+function myfunction($v1,$v2)
+{
+return $v1 . &quot;-&quot; . $v2;
+}
+$a=array(&quot;Dog&quot;,&quot;Cat&quot;,&quot;Horse&quot;);
+print_r(array_reduce($a,&quot;myfunction&quot;));
+?&gt;</code>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>

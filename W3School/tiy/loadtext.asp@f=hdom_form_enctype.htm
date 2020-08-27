@@ -1,0 +1,27 @@
+<html><!-- saved from url=(0063)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_form_enctype --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function showEnctype()
+  {
+  var x=document.getElementById("myForm")
+  alert(x.enctype)
+  }
+</script>
+</head>
+<body>
+
+<form id="myForm" enctype="application/x-www-form-urlencoded">
+Name: <input type="text" value="Mickey Mouse" />
+<input type="button" onclick="showEnctype()"
+value="Show enctype" />
+</form>
+
+</body>
+</html>

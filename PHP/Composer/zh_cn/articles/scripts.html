@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>脚本 | Composer 中文文档 | Composer 中文网</title>
+        <meta name="description" content="Composer 是 PHP 中用来管理依赖（dependency）关系的工具">
+        <meta name="keywords" content="PHP, Composer, Packagist, 依赖管理, npm, Symfony, Laravel">
+
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/libs/prism.css">
+
+        <script src="https://cdn.bootcss.com/modernizr/2.8.2/modernizr.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                    <a href="../docs_phpcomposer_default.html">首页</a>
+                    <a href="../00-intro.html">入门</a>
+                    <a href="https://getcomposer.org/download/" target="_blank">下载</a>
+                    <a href="https://packagist.org/" target="_blank">安装包列表</a>
+                    <a class="last" href="https://pkg.phpcomposer.com/" target="_blank">中国镜像</a>
+            </header>
+            <div id="main" role="main">
+    
+    <!--
+    tagline: Script are callbacks that are called before/after installing packages
+-->
+<h1>脚本</h1>
+<h2>什么是脚本？</h2>
+<p>一个脚本，在 Composer 中，可以是一个 PHP 回调（定义为静态方法）或任何命令行可执行的命令。脚本对于在 Composer 运行过程中，执行一个资源包的自定义代码或包专用命令是非常有用的。</p>
+<blockquote>
+<p>**注意：**只有在根包的 <code>composer.json</code> 中定义的脚本才会被执行。即便根包的外部依赖定义了其自身的脚本，Composer 也不会去执行这些额外的脚本。</p>
+</blockquote>
+<p><a name="event-names"></a></p>
+<h2>事件名称</h2>
+<p>Composer 在运行过程中将会触发以下事件：</p>
+<table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>详细说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pre-install-cmd</strong></td>
+<td>在 <code>install</code> 命令执行前触发。</td>
+</tr>
+<tr>
+<td><strong>post-install-cmd</strong></td>
+<td>在 <code>install</code> 命令执行后触发。</td>
+</tr>
+<tr>
+<td><strong>pre-update-cmd</strong></td>
+<td>在 <code>update</code> 命令执行前触发。</td>
+</tr>
+<tr>
+<td><strong>post-update-cmd</strong></td>
+<td>在 <code>update</code> 命令执行后触发。</td>
+</tr>
+<tr>
+<td><strong>pre-status-cmd</strong></td>
+<td>在 <code>status</code> 命令执行前触发。</td>
+</tr>
+<tr>
+<td><strong>post-status-cmd</strong></td>
+<td>在 <code>status</code> 命令执行后触发。</td>
+</tr>
+<tr>
+<td><strong>pre-package-install</strong></td>
+<td>在资源包安装前触发。</td>
+</tr>
+<tr>
+<td><strong>post-package-install</strong></td>
+<td>在资源包安装后触发。</td>
+</tr>
+<tr>
+<td><strong>pre-package-update</strong></td>
+<td>在资源包更新前触发。</td>
+</tr>
+<tr>
+<td><strong>post-package-update</strong></td>
+<td>在资源包更新后触发。</td>
+</tr>
+<tr>
+<td><strong>pre-package-uninstall</strong></td>
+<td>在资源包被卸载前触发。</td>
+</tr>
+<tr>
+<td><strong>post-package-uninstall</strong></td>
+<td>在资源包被卸载后触发。</td>
+</tr>
+<tr>
+<td><strong>pre-autoload-dump</strong></td>
+<td>在自动加载器被转储前触发，无论是 <code>install</code>/<code>update</code> 还是 <code>dump-autoload</code> 命令都会触发。</td>
+</tr>
+<tr>
+<td><strong>post-autoload-dump</strong></td>
+<td>在自动加载器被转储后触发，无论是 <code>install</code>/<code>update</code> 还是 <code>dump-autoload</code> 命令都会触发。</td>
+</tr>
+<tr>
+<td><strong>post-root-package-install</strong></td>
+<td>在 <code>create-project</code> 命令期间，根包安装完成后触发。</td>
+</tr>
+<tr>
+<td><strong>post-create-project-cmd</strong></td>
+<td>在 <code>create-project</code> 命令执行后触发。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>pre-archive-cmd</strong>: occurs before the <code>archive</code> command is executed.</li>
+<li><strong>post-archive-cmd</strong>: occurs after the <code>archive</code> command is executed.</li>
+</ul>
+<blockquote>
+<p>**注意：**Composer 不会去执行任何依赖包中定义的 <code>install</code> 或 <code>update</code> 相关脚本。因此你不应该在依赖包中申明 <code>pre-update-cmd</code> 或 <code>pre-install-cmd</code>。如果你需要在执行 <code>install</code> 或 <code>update</code> 命令前使用脚本，请确保它们已被定义在根包中。</p>
+</blockquote>
+<h2>定义脚本</h2>
+<p>在 <code>composer.json</code> 的根 JSON 对象中应该有一个名为 <code>&quot;scripts&quot;</code> 的属性，它包含有一系列的事件名称，以及对应的事件脚本。一个事件的脚本可以被定义为一个字符串（仅适用于单个脚本）或数组（单个或多个脚本）。</p>
+<p>对于任何给定的事件：</p>
+<ul>
+<li>脚本将按照事件和定义的顺序触发。</li>
+<li>一个脚本数组可以包含 PHP 回调和命令行可执行命令。</li>
+<li>由 PHP 类文件包含的回调，其存放的位置必须确保 Composer 能够正确的载入。</li>
+</ul>
+<p>脚本定义实例：</p>
+<pre><code class="language-json">{
+    &quot;scripts&quot;: {
+        &quot;post-update-cmd&quot;: &quot;MyVendor\\MyClass::postUpdate&quot;,
+        &quot;post-package-install&quot;: [
+            &quot;MyVendor\\MyClass::postPackageInstall&quot;
+        ],
+        &quot;post-install-cmd&quot;: [
+            &quot;MyVendor\\MyClass::warmCache&quot;,
+            &quot;phpunit -c app/&quot;
+        ]
+    }
+}
+</code></pre>
+<p>使用前面定义的例子，这里的 <code>MyVendor\MyClass</code> 类，就可以被使用来执行 PHP 的回调：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace MyVendor;
+
+use Composer\Script\Event;
+
+class MyClass
+{
+    public static function postUpdate(Event $event)
+    {
+        $composer = $event-&gt;getComposer();
+        // do stuff
+    }
+
+    public static function postPackageInstall(Event $event)
+    {
+        $installedPackage = $event-&gt;getOperation()-&gt;getPackage();
+        // do stuff
+    }
+
+    public static function warmCache(Event $event)
+    {
+        // make cache toasty
+    }
+}
+</code></pre>
+<p>当一个事件被触发，Composer 的内部事件处理程序将接收一个 <code>Composer\Script\Event</code> 对象，这是传递给您的 PHP 回调的第一个参数。这个 <code>Event</code> 对象拥有一些 getter 方法来帮助你取得当前事件的上下文：</p>
+<ul>
+<li><code>getComposer()</code>: 返回当前的 <code>Composer\Composer</code> 对象实例。</li>
+<li><code>getName()</code>: 返回事件名称的字符串。</li>
+<li><code>getIO()</code>: 返回当前的 输入\输出 流，它实现了 <code>Composer\IO\IOInterface</code> 接口，以便在控制台中使用。</li>
+</ul>
+<h2>手动运行脚本</h2>
+<p>如果你想手动运行事件脚本，可以使用下面的语法结构：</p>
+<pre><code class="language-sh">composer run-script [--dev] [--no-dev] script
+</code></pre>
+<p>例如 <code>composer run-script post-install-cmd</code> 将会运行所有 <strong>post-install-cmd</strong> 事件下定义的脚本。</p>
+
+
+    <p class="fork-and-edit">
+        如果您发现文档中有错误，或者能够帮我们完善文档，请提交到我们的 <a href="https://github.com/5-say/composer-doc-cn" target="_blank">Github 仓库吧</a>！
+    </p>
+            </div>
+            <footer>
+
+                <p class="license">Composer 以及本网站上的所有内容全部遵循 <a href="https://github.com/composer/composer/blob/master/LICENSE" target="_blank">MIT 开源协议</a>。</p>
+            </footer>
+        </div>
+
+        <script src="http://docs.phpcomposer.com/assets/js/libs/prism.js"></script>
+        <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F16e97907ef84179ff8cd833509017a96' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </body>
+</html>

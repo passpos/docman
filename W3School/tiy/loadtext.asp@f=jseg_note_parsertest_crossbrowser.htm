@@ -1,0 +1,44 @@
+<html><!-- saved from url=(0079)http://www.w3school.com.cn/tiy/loadtext.asp?f=jseg_note_parsertest_crossbrowser --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+var xmlDoc
+function loadXML()
+{
+//load xml file code for IE
+if (window.ActiveXObject)
+{
+xmlDoc = new ActiveXObject("Microsoft.XMLDOM")
+xmlDoc.async=false;
+xmlDoc.load("../example/xdom/note.xml")
+displaymessage()
+}
+// code for Mozilla, etc.
+else if (document.implementation && document.implementation.createDocument)
+{
+xmlDoc= document.implementation.createDocument("","",null)
+xmlDoc.load("../example/xdom/note.xml");
+xmlDoc.onload=displaymessage
+}
+else
+{
+document.write("Your browser cannot handle this script")
+}
+}
+
+function displaymessage()
+{
+document.write(xmlDoc.getElementsByTagName("body")[0].firstChild.nodeValue)
+}
+</script>
+</head>
+
+<body onload="loadXML()">
+</body>
+</html>

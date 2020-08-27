@@ -1,0 +1,32 @@
+<html><!-- saved from url=(0062)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_area_target --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function changeTarget()
+{
+document.getElementById('venus').target="_blank"
+}
+</script>
+</head>
+<body>
+
+<img src ="../i/eg_planets.jpg"
+alt="Planets"
+usemap ="#planetmap" />
+
+<map name ="planetmap">
+<area shape ="circle" coords ="180,139,14"
+href ="../example/hdom/venus.html" id="venus" />
+</map>
+<br />
+<input type="button" onclick="changeTarget()" 
+value="¸ü¸Ä target" />
+
+</body>
+</html>

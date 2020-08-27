@@ -1,0 +1,28 @@
+<html><!-- saved from url=(0064)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_event_onkeyup --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+
+<head>
+<script type="text/javascript">
+function writeMessage()
+{
+document.forms[0].mySecondInput.value=document.forms[0].myInput.value
+}
+</script>
+</head>
+
+<body>
+<p>当键盘按键上升时，会发生 onkeyup 事件。</p>
+<form>
+请编写一条消息：<br />
+<input type="text" name="myInput" onkeyup="writeMessage()" size="20">
+<input type="text" name="mySecondInput" size="20">
+</form>
+</body>
+
+</html>

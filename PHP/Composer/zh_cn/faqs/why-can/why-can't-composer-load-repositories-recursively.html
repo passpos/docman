@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>为什么 Composer 不递归加载储存库？ | Composer 中文文档 | Composer 中文网</title>
+        <meta name="description" content="Composer 是 PHP 中用来管理依赖（dependency）关系的工具">
+        <meta name="keywords" content="PHP, Composer, Packagist, 依赖管理, npm, Symfony, Laravel">
+
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet" href="../../assets/css/libs/prism.css">
+
+        <script src="https://cdn.bootcss.com/modernizr/2.8.2/modernizr.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                    <a href="../../docs_phpcomposer_default.html">首页</a>
+                    <a href="../../00-intro.html">入门</a>
+                    <a href="https://getcomposer.org/download/" target="_blank">下载</a>
+                    <a href="https://packagist.org/" target="_blank">安装包列表</a>
+                    <a class="last" href="https://pkg.phpcomposer.com/" target="_blank">中国镜像</a>
+            </header>
+            <div id="main" role="main">
+    
+    <h1>为什么 Composer 不递归加载储存库？</h1>
+<p>当你使用自定义库时，你可能会碰到问题，因为 Composer 不会递归加载你要求的储存库，所以你必须修改这些储存库中所有的 <code>composer.json</code> 文件。</p>
+<p>在详细说明为什么是这样之前，你需要明白：使用自定义 VCS &amp; 包储存库去尝试某些事情，或者使用你 fork 的一个分支，直到你的 pull request 被合并，等等。你不应该使用它们来跟踪你的私人资源包，关于这点你应该看看 <a href="../../articles/handling-private-packages-with-satis.html">setting up Satis</a> 来为你的公司甚至自己处理私人资源包。</p>
+<p>这里有三个途径可以使依赖解析器使用你自定义的储存库：</p>
+<ul>
+<li>
+<p>读取根包的存储库，从定义的存储库得到所有的软件包，解析依赖需求。这是目前的状态，它工作得很好，除了有“无法递归的加载储存库”这个限制。</p>
+</li>
+<li>
+<p>读取根包的存储库，同时从定义的 repos 初始化资源包，递归的初始化，根据所有依赖包中定义的 repos，以及这些依赖包所依赖的其它包中定义的 repos，等等，然后再解析依赖需求。这可能可以工作，但会严重影响初始化的速度，因为每读取一个 VCS repos 都需要几秒钟。它可能最终执行失败，因为一个包的不同版本，可能来自一个包资源库中一个相同的包，但来至不同的 dist/source 。这样有太多的可能会出错。</p>
+</li>
+<li>
+<p>读取根包的存储库，然后读取第一级依赖，接着读取这些依赖包所依赖的其它包，等等，然后再解析依赖需求。这样听起来更有效率，但仍然存在第二种解决方案中的问题。因为加载依赖的储存库并不像听起来那么容易。你需要加载所有可能匹配的依赖包的 repos，而这些包的定义又可能是互相冲突的。</p>
+</li>
+</ul>
+
+
+    <p class="fork-and-edit">
+        如果您发现文档中有错误，或者能够帮我们完善文档，请提交到我们的 <a href="https://github.com/5-say/composer-doc-cn" target="_blank">Github 仓库吧</a>！
+    </p>
+            </div>
+            <footer>
+
+                <p class="license">Composer 以及本网站上的所有内容全部遵循 <a href="https://github.com/composer/composer/blob/master/LICENSE" target="_blank">MIT 开源协议</a>。</p>
+            </footer>
+        </div>
+
+        <script src="http://docs.phpcomposer.com/assets/js/libs/prism.js"></script>
+        <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F16e97907ef84179ff8cd833509017a96' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </body>
+</html>

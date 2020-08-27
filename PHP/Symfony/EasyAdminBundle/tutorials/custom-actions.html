@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to Define Custom Actions &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to Define Custom Options for Entity Properties" href="custom-property-options.html" />
+    <link rel="prev" title="How to Translate the Backend" href="i18n.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../book/installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Define Custom Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#method-based-actions">Method Based Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#route-based-actions">Route Based Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-actions">Batch Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/vichuploaderbundle.html">Integrating VichUploaderBundle to Upload Files and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>How to Define Custom Actions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/custom-actions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-define-custom-actions">
+<h1>How to Define Custom Actions<a class="headerlink" href="#how-to-define-custom-actions" title="Permalink to this headline">¶</a></h1>
+<p>One of the most powerful features of EasyAdmin is the possibility of defining
+your own actions. In addition to the built-in <code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code>,
+<code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">delete</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> actions, you can create any number of custom
+actions and display them in any view (<code class="docutils literal notranslate"><span class="pre">edit</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">new</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>,
+<code class="docutils literal notranslate"><span class="pre">show</span></code>).</p>
+<p>There are two types of custom actions:</p>
+<ul class="simple">
+<li><p><strong>Method</strong> based actions, which execute a method of the AdminController
+class. This is the default type in EasyAdmin;</p></li>
+<li><p><strong>Route</strong> based actions, which execute the controller associated with the
+given route (and which can be defined anywhere in your application).</p></li>
+</ul>
+<div class="section" id="method-based-actions">
+<h2>Method Based Actions<a class="headerlink" href="#method-based-actions" title="Permalink to this headline">¶</a></h2>
+<p>This is the most simple type of action and it just executes a method of the
+AdminController associated with the backend. Suppose that in your backend, one
+of the most common tasks is to restock a product adding 100 units to its current
+stock. Instead of editing a product, manually adding those 100 units and saving
+the changes, you can display a new <code class="docutils literal notranslate"><span class="pre">Restock</span></code> action in the <code class="docutils literal notranslate"><span class="pre">list</span></code> view.</p>
+<p>First, define a new <code class="docutils literal notranslate"><span class="pre">restock</span></code> action using the <code class="docutils literal notranslate"><span class="pre">actions</span></code> option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;restock&#39;</span><span class="p p-Indicator">]</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>If you reload the backend, you’ll see a new <code class="docutils literal notranslate"><span class="pre">Restock</span></code> action displayed as a
+link in the <em>Actions</em> column of the <code class="docutils literal notranslate"><span class="pre">Product</span></code> entity listing. However, if you
+click on any of the <code class="docutils literal notranslate"><span class="pre">Restock</span></code> links, you’ll see an error because the
+<code class="docutils literal notranslate"><span class="pre">restockAction()</span></code> method is not defined in the AdminController.</p>
+<p>Therefore, the next step is to create a custom <code class="docutils literal notranslate"><span class="pre">AdminController</span></code> in your
+Symfony application and to make it extend from the base AdminController
+provided by EasyAdmin. This will take you less than a minute and it’s explained
+in detail in the <a class="reference internal" href="../book/complex-dynamic-backends.html#overriding-the-default-controller"><span class="std std-ref">Customization Based on Controller Methods</span></a>
+section. Make sure to read it before continuing.</p>
+<p>Now you can define the <code class="docutils literal notranslate"><span class="pre">restockAction()</span></code> method in your own controller:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController</span> <span class="k">as</span> <span class="nx">BaseAdminController</span><span class="p">;</span>
+<span class="c1">// ...</span>
+
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">BaseAdminController</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">restockAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// controllers extending the base AdminController get access to the</span>
+        <span class="c1">// following variables:</span>
+        <span class="c1">//   $this-&gt;request, stores the current request</span>
+        <span class="c1">//   $this-&gt;em, stores the Entity Manager for this Doctrine entity</span>
+
+        <span class="c1">// change the properties of the given entity and save the changes</span>
+        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">query</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;Product::class&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+        <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">setStock</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getStock</span><span class="p">());</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="c1">// redirect to the &#39;list&#39; view of the given entity ...</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirectToRoute</span><span class="p">(</span><span class="s1">&#39;easyadmin&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">query</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;entity&#39;</span><span class="p">),</span>
+        <span class="p">));</span>
+
+        <span class="c1">// ... or redirect to the &#39;edit&#39; view of the given entity item</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirectToRoute</span><span class="p">(</span><span class="s1">&#39;easyadmin&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;edit&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+            <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">query</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;entity&#39;</span><span class="p">),</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And that’s it! Click again on the <code class="docutils literal notranslate"><span class="pre">Restock</span></code> action and everything will work as
+expected. Custom actions can define any of the properties available for the
+built-in actions:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">actions</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&#39;restock&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;plus-square&#39;</span> <span class="p p-Indicator">}</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The inheritance of actions is also applied to custom actions:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">list</span><span class="p">:</span>
+        <span class="c1"># show the &#39;restock&#39; action for all entities except those which remove it</span>
+        <span class="nt">actions</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&#39;restock&#39;</span><span class="p p-Indicator">,</span><span class="nt"> icon</span><span class="p">:</span> <span class="s">&#39;plus-square&#39;</span> <span class="p p-Indicator">}</span>
+
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">actions</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;-restock&#39;</span><span class="p p-Indicator">]</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="route-based-actions">
+<h2>Route Based Actions<a class="headerlink" href="#route-based-actions" title="Permalink to this headline">¶</a></h2>
+<p>This type of actions allows you to execute any controller defined in your
+existing application, without the need to define a custom AdminController. In
+this case, the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the action is treated as the route name and you must
+add a <code class="docutils literal notranslate"><span class="pre">type</span></code> option with the <code class="docutils literal notranslate"><span class="pre">route</span></code> value:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">actions</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&#39;product_restock&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;route&#39;</span> <span class="p p-Indicator">}</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Route based actions are displayed as regular links or buttons, but they don’t
+link to the usual <code class="docutils literal notranslate"><span class="pre">easyadmin</span></code> route but to the route configured by the action.
+In addition, the route is passed two parameters in the query string: <code class="docutils literal notranslate"><span class="pre">entity</span></code>
+(the name of the entity) and, when available, the <code class="docutils literal notranslate"><span class="pre">id</span></code> of the related entity.</p>
+<p>Following the same example as above, the controller of this route based action
+would look as follows:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/ProductController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ProductController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Route(path = &quot;/admin/product/restock&quot;, name = &quot;product_restock&quot;)</span>
+<span class="sd">     * @Security(&quot;has_role(&#39;ROLE_ADMIN&#39;)&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">restockAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// change the properties of the given entity and save the changes</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+        <span class="nv">$repository</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;Product::class&#39;</span><span class="p">);</span>
+
+        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">query</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$repository</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+        <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">setStock</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getStock</span><span class="p">());</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="c1">// redirect to the &#39;list&#39; view of the given entity ...</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirectToRoute</span><span class="p">(</span><span class="s1">&#39;easyadmin&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">query</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;entity&#39;</span><span class="p">),</span>
+        <span class="p">));</span>
+
+        <span class="c1">// ... or redirect to the &#39;edit&#39; view of the given entity item</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirectToRoute</span><span class="p">(</span><span class="s1">&#39;easyadmin&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;edit&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+            <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">query</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;entity&#39;</span><span class="p">),</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similarly to method based actions, you can configure any option for these
+actions (icons, labels, etc.) and you can also leverage the action inheritance
+mechanism.</p>
+</div>
+<div class="section" id="batch-actions">
+<span id="custom-batch-actions"></span><h2>Batch Actions<a class="headerlink" href="#batch-actions" title="Permalink to this headline">¶</a></h2>
+<p>Batch actions are the actions which are applied to multiple items at the same
+time. They are only available in the views that display more than one item:
+<code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code>. The only built-in batch action is <code class="docutils literal notranslate"><span class="pre">delete</span></code>, but you
+can create your own batch actions.</p>
+<p>Imagine that you manage users with a <code class="docutils literal notranslate"><span class="pre">User</span></code> entity and a common administration
+task is to approve their sign ups. Instead of creating a normal <code class="docutils literal notranslate"><span class="pre">approve</span></code>
+action as explained in the previous section, create a batch action to be more
+productive and approve multiple users at once.</p>
+<p>The first step is to <a class="reference internal" href="../book/complex-dynamic-backends.html#overriding-the-default-controller"><span class="std std-ref">create a custom AdminController</span></a>.
+Then, create a new method to handle the batch action. The method name must
+follow the pattern <code class="docutils literal notranslate"><span class="pre">action_name</span></code> + <code class="docutils literal notranslate"><span class="pre">BatchAction()</span></code> and they receive an array
+argument with the IDs of the entities the action should be applied to. In this
+example, create an <code class="docutils literal notranslate"><span class="pre">approveBatchAction()</span></code> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/Controller/AdminController.php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController</span><span class="p">;</span>
+<span class="c1">// ...</span>
+
+<span class="k">class</span> <span class="nc">AdminController</span> <span class="k">extends</span> <span class="nx">EasyAdminController</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">approveBatchAction</span><span class="p">(</span><span class="k">array</span> <span class="nv">$ids</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$class</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">entity</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">];</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManagerForClass</span><span class="p">(</span><span class="nv">$class</span><span class="p">);</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$ids</span> <span class="k">as</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+            <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">approve</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="c1">// don&#39;t return anything or redirect to any URL because it will be ignored</span>
+        <span class="c1">// when a batch action finishes, user is redirected to the original page</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Batch actions can be configured in the same way as regular actions (icon, label,
+etc.) and they can be defined globally or locally per entity.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="custom-property-options.html" class="btn btn-neutral float-right" title="How to Define Custom Options for Entity Properties" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="i18n.html" class="btn btn-neutral float-left" title="How to Translate the Backend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

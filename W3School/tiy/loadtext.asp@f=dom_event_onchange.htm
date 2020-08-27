@@ -1,0 +1,25 @@
+<!DOCTYPE html><!-- saved from url=(0064)http://www.w3school.com.cn/tiy/loadtext.asp?f=dom_event_onchange --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<html>
+<head>
+<script>
+function myFunction()
+{
+var x=document.getElementById("fname");
+x.value=x.value.toUpperCase();
+}
+</script>
+</head>
+<body>
+
+请输入你的英文名：<input type="text" id="fname" onchange="myFunction()">
+<p>当你离开输入框时，被触发的函数会把你输入的文本转换为大写字母。</p>
+
+</body>
+</html>

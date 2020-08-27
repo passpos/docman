@@ -1,0 +1,1968 @@
+//
+
+  * <https://www.csdn.net/>
+  * 博客 <https://blog.csdn.net/>
+  * 学院 <https://edu.csdn.net/>
+  * 下载 <https://download.csdn.net/>
+  * 图文课 <https://gitchat.csdn.net/?utm_source=csdn_toolbar>
+  * 论坛 <https://bbs.csdn.net/>
+  * APP <https://www.csdn.net/app/>
+  * 问答 <https://ask.csdn.net/>
+  * 商城 <https://mall.csdn.net/>
+  * VIP会员 <https://mall.csdn.net/vip_code>
+  * 活动 <https://huiyi.csdn.net/>
+  * 招聘 <http://job.csdn.net/>
+  * ITeye <http://www.iteye.com/>
+  * GitChat <https://gitbook.cn/?ref=csdn>
+
+  * <#>
+  *
+    <https://so.csdn.net/so/>
+  * 写博客 <https://mp.csdn.net/postedit>
+  * 赚零钱 <https://gitbook.cn/new/gitchat/activity?utm_source=csdnblog1>
+  * 传资源 <https://download.csdn.net/upload>
+  * 登录 <https://passport.csdn.net/account/login>注册
+    <https://passport.csdn.net/account/login>
+  *
+    <https://i.csdn.net/>
+    //我的关注 <https://www.csdn.net/nav/watchers>
+    //我的收藏 <https://i.csdn.net/#/uc/favorite-list>
+    //消息(3) <https://msg.csdn.net/>
+    //个人中心 <https://i.csdn.net/#/uc/profile>
+    //帐号设置 <https://i.csdn.net/#/account/index>
+    //我的博客 <https://mp.csdn.net/>
+    //我的学院 <https://edu.csdn.net/mycollege>
+    //我的下载 <https://download.csdn.net/my/downloads>
+    //我的C币 <https://my.csdn.net/my/score>
+    //订单中心 <https://order.csdn.net/myorder>
+    //帮助 <https://blog.csdn.net/home/help.html>
+    //退出 <https://passport.csdn.net/account/logout>
+    关注和收藏在这里
+
+  *
+
+
+    股票交易系统，c++程序设计作业 - fqhutuytyufhfy
+
+    03-22
+    立即下载
+    <https://download.csdn.net/download/abc414307660/3117006>
+  *
+
+
+    模拟股票交易系统Java - rongrongxie
+
+    05-03
+    立即下载
+    <https://download.csdn.net/download/rongrongxie/8657237>
+  *
+
+
+    BaoStock:一个免费、开源的python证券数据接口包 - dongdong...
+
+    01-143444
+    <https://blog.csdn.net/dongdong2980/article/details/79059789>
+  *
+
+
+    linux下股票 软件
+
+    07-12
+    立即下载
+    <https://download.csdn.net/download/wcaowu/2536906>
+  *
+
+
+    证券交易所的运作系统 - yzpbright的博客
+
+    06-16321
+    <https://blog.csdn.net/yzpbright/article/details/80712627>
+  *
+
+
+    我的股票交易策略 - LSGO软件技术团队
+
+    06-29659
+    <https://blog.csdn.net/LSGO_MYP/article/details/80857828>
+  *
+
+
+    StockTerms.exe 股票术语大全工具软件 - tugangw2000
+
+    08-09
+    立即下载
+    <https://download.csdn.net/download/tugangw2000/5899859>
+  *
+
+
+    免费开源的 股票 自动化 交易接口 alphaquant 支持各种语言
+
+    12-11
+    立即下载
+    <https://download.csdn.net/download/jtxqd521/10153983>
+  *
+
+
+    Java获取股市交易日 - qingzhukl的专栏
+
+    09-183231
+    <https://blog.csdn.net/qingzhukl/article/details/48528619>
+  *
+
+
+    证券数据接口 查询证券编码及基本上市信息 - webserviceapi
+
+    11-022331
+    <https://blog.csdn.net/webserviceapi/article/details/49585459>
+  *
+
+
+    完成程序设计课程的大作业，用python写的简单的股票交易系统...
+
+    09-12806
+    <https://blog.csdn.net/nanolity/article/details/52510659>
+  *
+
+
+    java做的简易股票交易系统
+
+    12-21
+    立即下载
+    <https://download.csdn.net/download/liliang1988120988/1923467>
+  *
+
+
+    Python编程的例子----股票数据接口 - jike080401的博客
+
+    01-131.5万
+    <https://blog.csdn.net/jike080401/article/details/50510609>
+  *
+
+
+    程序化交易之：使用python的baostock接口，实现股票自动盯盘...
+
+    05-236196
+    <https://blog.csdn.net/dongdong2980/article/details/80420220>
+  *
+
+
+    自己做量化交易软件(5)通通量化中创作的布林指标BOLL线 - he...
+
+    09-15307
+    <https://blog.csdn.net/hepu8/article/details/82719010>
+  *
+
+
+    数据接口-免费版（股票数据API） - 李明的博客
+
+    04-141.6万
+    <https://blog.csdn.net/Llingmiao/article/details/79941066>
+  *
+
+
+    算法-股票交易日 - oscar999的专栏
+
+    02-26794
+    <https://blog.csdn.net/oscar999/article/details/79378693>
+  *
+
+
+    股票建仓、平仓、持仓是什么意思 - YYYstation的博客
+
+    07-281025
+    <https://blog.csdn.net/YYYstation/article/details/76252634>
+  *
+
+
+    【第二章】证券交易程序_整理 - nina的测试小屋
+
+    11-27313
+    <https://blog.csdn.net/u012966411/article/details/16994153>
+  *
+
+
+    股票基本术语i - 雪后残阳
+
+    12-10348
+    <https://blog.csdn.net/dhz123/article/details/3488591>
+  *
+
+
+    出于好奇，我去暗网里瞧了瞧 —— 你就别去了 - Marvel__Dea...
+
+    11-10292199
+    <https://blog.csdn.net/Marvel__Dead/article/details/78499468>
+  *
+
+
+    PC傻瓜式安装黑苹果并打造成全能逆向工作站 - 艾小米
+
+    06-0159480
+    <https://blog.csdn.net/mier9042/article/details/80541368>
+  *
+
+
+    UVa10168 拓展哥德巴赫猜想 - 帅比王的博客
+
+    08-30967
+    <https://blog.csdn.net/weixin_41162823/article/details/82227151>
+  *
+
+
+    详细讲解混合编程——C++调用MATLAB程序，以及常用问题解决（...
+
+    11-229374
+    <https://blog.csdn.net/qq_26464039/article/details/84305030>
+  *
+
+
+    pixiv（P站）网页版进不去打不开的恢复方法 - yukinoai的博客...
+
+    08-1245596
+    <https://blog.csdn.net/yukinoai/article/details/81603819>
+  *
+
+
+    暗网网址集合+搜索引擎 - lukabruce的博客
+
+    09-0541690
+    <https://blog.csdn.net/lukabruce/article/details/82416129>
+  *
+
+
+    通讯录拉群、精准粉拉群,云控系统为你带来wxid爆粉新思路 - ...
+
+    11-22890
+    <https://blog.csdn.net/wuji1767559510/article/details/84347819>
+  *
+
+
+    mongodb的高级操作(游标、聚合) - 卖克的专栏
+
+    12-0915280
+    <https://blog.csdn.net/zy_281870667/article/details/50242441>
+  *
+
+
+    mongodb的基本操作(crud) - 卖克的专栏
+
+    12-0414950
+    <https://blog.csdn.net/zy_281870667/article/details/50180661>
+  *
+
+
+    zepto.js 实时监听输入框 - zmall博客
+
+    03-285889
+    <https://blog.csdn.net/wad13965/article/details/67654742>
+  *
+
+
+    java 生产者消费者模式 - 卖克的专栏
+
+    04-2714759
+    <https://blog.csdn.net/zy_281870667/article/details/70853474>
+  *
+
+
+    大数据与伦理 - dkshkb的博客
+
+    11-2818766
+    <https://blog.csdn.net/dkshkb/article/details/78657098>
+  *
+
+
+    可视化FreeBasic集成开发环境 - yfvb2010的专栏
+
+    02-25377920
+    <https://blog.csdn.net/yfvb2010/article/details/79369125>
+  *
+
+
+    如何把百度网盘下载速度提高 100 倍，我推荐这个下载工具 - ...
+
+    05-2683989
+    <https://blog.csdn.net/zhige_me/article/details/80465191>
+  *
+
+
+    KMP算法--Next数组详解与优化 - 帅比王的博客
+
+    10-15952
+    <https://blog.csdn.net/weixin_41162823/article/details/83060304>
+
+原	
+
+
+  股票证券交易术语
+
+2016年04月02日 16:08:46 娱乐靠球 <https://me.csdn.net/tiplip> 阅读
+数：2886 标签： 股票
+<http://so.csdn.net/so/search/s.do?q=%E8%82%A1%E7%A5%A8&t=blog>
+
+*Trade*：交易；发生时机：当卖家同意以某个特定价格转移一定数量的股票（或
+有价证券）所有权给买家
+
+*Orders*：买卖盘；买家和卖家如何实现Trade（交易），这就需要一个中心市
+场，Stock Market（股市），掮客们汇聚股市，然后对特定的股票叫买或叫卖，比
+如我想以￥35.50的价格买入500股东方科技的股票，以￥65.34的价格卖出中国石
+油的股票，这都是买卖盘
+
+*Buy Orders*（*Bid Orders*）：买盘
+
+*Sell Orders*（*Ask Orders*或*Offer Orders*）：卖盘
+
+
+交易发生两种情形：当买盘价格高于或等于当前最低的卖盘价格的时候，或当卖盘
+价格低于或等于最高的买盘价时。这个过程又叫*Match*（*撮合*），关于撮合交
+易系统的设计，参考这个问答
+
+
+    如何设计一个证券期货撮合竞价引擎？
+    <http://www.zhihu.com/question/27841709>
+
+如果提交的Order（委托或报价）不能被撮合，会发生什么事情？它会被放入一个
+叫Order Book（委托记录或报价单）的地方，里面有一连串的Order，这些委托会
+一直保存到交易人员取消或交易过期（比如当日委托闭市后）
+
+有些委托会在部分成交后立即过期，被称作'immediate or cancel' (IOC)
+或'fill and kill' (FAK)，就是
+
+按最优报价最大限度成交，不成部分系统自动撤单
+
+这部分过期的委托不会再次进入Order Book，不管它们是否Match
+
+
+*Order Book*（委托记录或报价单）
+
+Order Book记录了所有的未成交的股票买卖委托，它就像一个分类广告牌，任何人
+都可以看到所有的买卖信息，这些记录，可以被称作book，depth，queue
+
+
+Order Book中的委托的只能与新出现的一条Order进行撮合，该Order必须在Book中
+的最优先位置上。
+
+
+Order Book中的Order是以*price-time priority*（价格时间优先）排序的，先委
+托的最高买价优先级最高，先委托的最低卖价优先级最高
+
+一个交易的实例
+
+买价和卖价相交，交易系统检查相交的价格然后执行相交数量的交易，买价的全部
+100股与卖价150股当中的100股在23.34的价格处成交，卖价的50股重新放置到Book中，
+
+
+*Market Quotes*（市场行情）
+
+比如最高买入价，最低卖出价，以及有多少买入卖出
+
+
+*Spead*（价差）
+
+最高买价（Bid）与最低卖价（Ask）之间的差异被称作Spread
+
+买卖的价格变动必须有一定的幅度（specified increments），股票交易中最小的
+价格变动称为tick size，因此每支股票的最小价差就由最小变动幅度tick size指
+示，国内的tick size为￥0.01元，其它国家的tick size可能是其它值
+
+
+*Market Data*（市场数据）
+
+有几种不同等级的市场数据，数据的质量取决于粒度Granularity与详情Detail
+
+Granularity（粒度）
+
+指的是可观测时间间隔内的数据，快照记录的是特定时间点，比如收盘价或一天内
+每一分钟的市场行情
+
+基于事件的观测在每一次有相关字段更新时被记录，比如交易更新，委托记录变动
+
+
+*Detail*
+
+指的是数据集中包含何种信息，有三种等级的市场数据，分别是trades, quotes
+and depth <http://www.smartquant.cn/forum/forum.php?mod=viewthread&tid=659>
+
+*tick数据*
+
+*交易所收到的是tick数据，也就是分笔行情数据，也可以被称为成交明细数据。
+一半每秒钟两次，但如果没有行情的话，也可能没有
+*
+
+*Trade数据*
+也就是交易数据，每来一个tick数据，CTP插件就会检查该tick内是否有新的交易
+产生，如果有的话，则组合成一个新的trade数据，trade数据中主要包括：价格和
+成交量。
+
+*Quote数据*
+也就是行情数据，每来一个tick数据，CTP插件就会组合出一个quote数据，包括：
+买一，卖一相关数据。
+
+*Market Depth数据*
+深度行情数据，每来一个tick数据，CTP期货插件就会产生两条Market Depth数
+据，分别包括买一价，买一量；卖一价，卖一量。
+
+
+Level1
+
+以国内沪深股市为例，十几年来level1的即时行情始终保持了6秒一次的快照刷新
+频率（最近几年提升为3秒），提供的买卖挂盘信息从3档变更为5档。
+
+
+通常把Trade和Quote数据的更新合称为Level1，而把Depth数据的更新称作Level2
+
+
+Trade Update（交易更新）
+
+交易价格形式的更新是最简单的一种，比如每日收盘价
+
+下面是某股市上某支股票的日收盘价样本
+
+Date		Open	High	Low	Close	Volume
+2013-02-05	37.80 	37.94 	37.68 	37.92 	5683782
+2013-02-04	37.38 	37.61 	37.33 	37.48 	6140610
+2013-02-03	37.50 	37.64 	37.42 	37.62 	6676410
+2013-02-02	37.30 	37.30 	37.04 	37.17 	6936594
+2013-02-01	37.25 	37.27 	36.95 	37.10 	13737522
+2013-01-31	36.90 	37.22 	36.82 	37.16 	7174644
+2013-01-30	37.00 	37.15 	36.86 	37.06 	9143136
+2013-01-29	36.54 	36.85 	36.50 	36.58 	5569151
+
+在日收盘价的基础上再往前一步就是盘中交易记录（又叫tick data），也就是说
+某支股票一系列的记录，包含每一笔交易的详情，大概包含如下字段
+
+  * *Symbol* - Security symbol (e.g. BHP)证券代码
+  * *Exchange* - Exchange the trade occurred on (e.g. ASX, CXA)交易所
+  * *Price* - Transaction price交易价
+  * *Quantity* - Transaction quantity交易量
+  * *Time* - Transaction date and time (this will be in milliseconds or
+    microseconds if it's a good dataset)交易时间
+  * *Trade Type (Condition Codes)* - What type of trade it was (e.g.
+    standard, off-market trade report, booking purpose trade)交易类型，
+    标准，场外，预约
+
+实例
+
+
+Date		Time		Symbol	Exch	Price	Quantity	Type
+20110930	11:14:24.475	FMG	ASX	4.62	1000	
+20110930	11:14:24.475	FMG	ASX	4.62	5000		XT
+20110930	11:14:24.475	FMG	ASX	4.62	249	
+20110930	11:14:24.477	FMG	ASX	4.62	25722	
+20110930	11:14:24.480	FMG	ASX	4.62	1518		XT
+20110930	11:14:24.482	FMG	ASX	4.62	113		XT
+20110930	11:14:25.046	FMG	ASX	4.62	2702	
+
+盘中交易记录通常是第三方软件供应商制作盘中K线图和技术分析，有时候用来做回测
+
+Tick数据是指：每秒两条的快照，国内期货最细粒度就是每秒两次，时间带毫秒。
+
+
+Quote Updates
+
+一个好的行情包含
+
+  * *Symbol* - Security symbol (e.g. BHP)股票代号
+  * *Exchange* - Exchange the quote is from交易所
+  * *Time* - Quote update time行情更新时间
+  * *BidPrice* - Highest market bid price最高买入价
+  * *BidQuantity* - Total quantity available at market bid price买入数量
+  * *AskPrice* - Lowest market ask price最低卖出价
+  * *AskQuantity* - Total quantity available at market ask price卖出数量
+  * *BidOrders* - Number of orders at market bid price
+  * *AskOrders* - Number of orders at market ask price 
+
+
+*Adjusted Closing Price*（Adj price）已调整收盘价，参看如何计算
+<http://www.investopedia.com/ask/answers/06/adjustedclosingprice.asp>
+
+14：57分收盘停止挂单，15：00正式停盘，但是还有没有完成的委托买进，卖出的
+交易还在进行.基本上15；01才结束。这时的收盘价才是标准的---已调整收盘价。
+你看见的15：00的收盘价不一定就是完全正确的，15：03以后看见的产生准确的。
+
+========================================================================================================================
+
+
+    数据库存储方案
+
+参考一个国外的方案：
+
+
+  Securities Master Database with MySQL and Python
+  <https://www.quantstart.com/articles/Securities-Master-Database-with-MySQL-and-Python>
+
+
+创建三个表；
+table1：股票代码，存放市场所有的股票
+table2：行情表，存放所有股票每天的行情数据
+table3：关联表，创建一个id字典，同时在table1，table2中都添加对应的id，然
+后table1通过table3关联出table2相关的行情数据
+
+
+至少两个:
+1.股票代码表
+如 股票代码:10000 股票名称：浦发银行 上市日期 
+2.股票行情表 
+代码 开盘价格 收盘价格 最高价格 最低价格 日期
+3.股票公司表
+如10000, 公司 ，F10信息
+
+
+股票基本资料表（股票代码、股票名称、简写、类别<创业板、上证、深证
+等>） ：股票代码作主键
+交易行情表(交易日期、股票代码、收盘价、开盘价、最高价、最低价、平均价、
+振幅、换手率、成交量(手)、成交额......)：交易日期、股票代码联合作主键
+
+一个有问题的数据库设计
+<http://bbs.csdn.net/topics/340231949>
+
+http://bbs.csdn.net/topics/340231949
+
+<javascript:void(0);>
+// <#insertcode>
+发表评论 <#>
+添加代码片
+
+  * HTML/XML
+  * objective-c
+  * Ruby
+  * PHP
+  * C
+  * C++
+  * JavaScript
+  * Python
+  * Java
+  * CSS
+  * SQL
+  * 其它
+
+还能输入/1000/个字符
+
+下载
+
+
+/股票/撮合系统 - Donotsaysaddr
+
+12-05
+试利用单链表作为存放委托的数据结构（撮合队列），编写一模拟股票交易的程
+序，该程序有以下几个功能： 1. 委托申请： 输入：每个委托包括四个数据项，
+股票编码（ 4 位数字）、价格（浮点数）、数量（整数）
+<https://download.csdn.net/download/u013057555/6665043>
+
+
+类似/股票/交易系统的DB底层的关键表设计 - liujing666888的专栏
+
+02-13 517
+
+<https://blog.csdn.net/liujing666888/article/details/78812646>
+
+用户的几个关键的行为有 : 转入钱、转出钱、买入ETF、卖出ETF；实践下来，最
+中重要的几块有：用户的账户流水、用户账户的总金额、用户的订单流水；买入|
+卖出操作会产生的有：1、信息流-&amp;gt;...
+<https://blog.csdn.net/liujing666888/article/details/78812646> 来自：
+liujing666888的专栏 <https://blog.csdn.net/liujing666888>
+
+
+交易系统 - verytiny
+
+06-04 43
+
+<https://blog.csdn.net/abc098oo/article/details/83159188>
+
+郑大豫龙软件产（股）权交易系统解决方案 一、产（股）权交易系...
+<https://blog.csdn.net/abc098oo/article/details/83159188> 来自：
+verytiny <https://blog.csdn.net/abc098oo>
+
+下载
+
+
+基于C++的/股票/小型交易系统
+
+11-17
+股票交易系统是一个小型的管理程序，在这个系统里，可以管理至多5只股票的交
+易。首先用户要注册，注册完后方可登陆。在登陆的界面中，管理员登陆后可以删
+减股票，挂起股票，解挂股票等等，通过这些功能来管理股票。
+<https://download.csdn.net/download/llopllpo/2838879>
+
+
+/股票//术语/整理大全 - dwf_android的博客
+
+01-18 835
+
+<https://blog.csdn.net/dwf_android/article/details/79101829>
+
+套牢套牢是指进行股票交易时所遭遇的交易风险。例如投资者预计股价将上涨，但
+在买进后股价却一直呈下跌趋势，这种现象称为多头套牢。相反，投资者预计股价
+将下跌，将所有股票放空卖出，但股价却一直上涨，这种现象称...
+<https://blog.csdn.net/dwf_android/article/details/79101829> 来自：
+dwf_android的博客 <https://blog.csdn.net/dwf_android>
+
+
+/证券交易/系统 -- 为什么要低延迟？ - heroesjun的博客
+
+09-22 2329
+
+<https://blog.csdn.net/heroesjun/article/details/48654269>
+
+最近几年在证券交易领域最热门的话题不是技术分析，不是交易算法，而是高频交
+易和高频交易的技术核心，低延迟的交易系统。 在很久以前，所有的交易都是手
+工完成的。人们买卖股票就是凭证件到券商的窗口去...
+<https://blog.csdn.net/heroesjun/article/details/48654269> 来自：
+heroesjun的博客 <https://blog.csdn.net/heroesjun>
+
+
+常用股市/术语/ - mustbelove的专栏
+
+02-06 1480
+
+<https://blog.csdn.net/mustbelove/article/details/1503038>
+
+1．利多：对于多头有利，能刺激股价上 涨的各种因素和消息，如：银行利率降
+低，公司经营状况好转等。 　　2．利空：对空头有利，能促使股价下跌的因素和
+信息，如：银根抽紧，利率上 升，经济衰退，公司经营状况...
+<https://blog.csdn.net/mustbelove/article/details/1503038> 来自：
+mustbelove的专栏 <https://blog.csdn.net/mustbelove>
+
+
+/股票/基础：基本/术语/ - Just do IT
+
+03-05 814
+
+<https://blog.csdn.net/wangnan537/article/details/60494044>
+
+股票股票是股份公司发行的所有权凭证，是股份公司为筹集资金而发行给各个股东
+作为持股凭证并借以取得股息和红利的一种有价证券。...
+<https://blog.csdn.net/wangnan537/article/details/60494044> 来自： Just
+do IT <https://blog.csdn.net/wangnan537>
+
+
+证券基础知识——证券标识代码 - 大头客的专栏
+
+05-20 7646
+
+<https://blog.csdn.net/peachpi/article/details/6435557>
+
+证券标识代码，symbol（ticker）, CUSIP, ISIN, SEDOL, RIC, WPK, WKN,
+bloomberg code, MIC, Valor, Bloomberg open...
+<https://blog.csdn.net/peachpi/article/details/6435557> 来自： 大头客的
+专栏 <https://blog.csdn.net/peachpi>
+
+
+          文章热词
+
+机器学习 <https://edu.csdn.net/courses/o5329_s5330_k> 机器学习课程
+<https://edu.csdn.net/courses/o5329_s5330_k> 机器学习教程
+<https://edu.csdn.net/courses/o5329_s5330_k> 深度学习视频教程
+<https://edu.csdn.net/combos/o5329_s5331_l0_t> 深度学习学习
+<https://edu.csdn.net/combos/o5329_s5331_l0_t>
+
+
+          相关热词
+
+android股票 <https://www.csdn.net/gather_2a/MtTakg4sNjg5Ni1ibG9n.html>
+c# 股票
+<https://www.csdn.net/gather_2e/MtTaEgxsMzEtYmxvZwO0O0OO0O0O.html> c++获
+取股票历史数据
+<https://www.csdn.net/gather_2a/MtzaUg2sNjgtYmxvZwO0O0OO0O0O.html> c# 源
+股票 <https://www.csdn.net/gather_27/MtzaQgysNC1ibG9n.html> android制作
+股票显示 <https://www.csdn.net/gather_2e/MtTakg4sODg1Ny1ibG9n.html> 区块
+链行业术语 <https://www.csdn.net/gather_4a/MtTaAg3sNzItZWR1.html> python
+股票机器学习 <https://www.csdn.net/gather_4a/MtTaAgwsNi1lZHUO0O0O.html>
+
+
+万得/股票/历史数据接口 - ROSE的博客
+
+03-24 7940
+
+<https://blog.csdn.net/qq_31558353/article/details/50971762>
+
+// TDBEasyDemo.cpp : 定义控制台应用程序的入口点。 // #include
+"tdf/TDBAPI.h" #include "iostream" #include #inclu...
+<https://blog.csdn.net/qq_31558353/article/details/50971762> 来自： ROSE
+的博客 <https://blog.csdn.net/qq_31558353>
+
+happen_chen
+
+<https://blog.csdn.net/HAPPENgft>
+
+
+          happen_chen
+
+<https://blog.csdn.net/HAPPENgft>
+
+关注31篇文章
+
+童年的天空
+
+<https://blog.csdn.net/scorpio3k>
+
+
+          童年的天空
+
+<https://blog.csdn.net/scorpio3k>
+
+关注474篇文章
+
+oscar999
+
+<https://blog.csdn.net/oscar999>
+
+
+          oscar999
+
+<https://blog.csdn.net/oscar999>
+
+关注602篇文章
+
+chengying332 <https://blog.csdn.net/chengying332>
+
+
+          chengying332
+
+<https://blog.csdn.net/chengying332>
+
+关注906篇文章
+
+
+开源/证券交易/撮合引擎 jOpenExchg V0.01 预览版 - hyb1234hi的专栏
+
+06-06 1564
+
+<https://blog.csdn.net/hyb1234hi/article/details/80599027>
+
+项目名称：Java Open Exchange Project (jOpenExchg / jopenexchg)项目当前版
+本：V0.01 项目简介：基于GPL Licence的Java的开源证券交易...
+<https://blog.csdn.net/hyb1234hi/article/details/80599027> 来自：
+hyb1234hi的专栏 <https://blog.csdn.net/hyb1234hi>
+
+
+/股票/数据API整理 - xp5xp6的博客
+
+11-10 3.6万
+
+<https://blog.csdn.net/xp5xp6/article/details/53121481>
+
+最近在做股票分析系统，数据获取源头成了一大问题，经过仔细的研究发现了很多
+获取办法，这里整理一下，方便后来者使用。 获取股票数据的源头主要有：数据
+超市、雅虎、新浪、Google、和讯、搜狐、Chi...
+<https://blog.csdn.net/xp5xp6/article/details/53121481> 来自： xp5xp6的
+博客 <https://blog.csdn.net/xp5xp6>
+
+
+定义一个/股票/类Stock - vivi_and_qiao的博客
+
+01-01 3212
+
+<https://blog.csdn.net/vivi_and_qiao/article/details/53966238>
+
+定义一个名为Stock的股票类，这个类包括：一个名为symbol的字符串数据域表示
+股票代码。一个名为name的字符串数据域表示股票名称。一个名为
+previousClosingPrice的double数...
+<https://blog.csdn.net/vivi_and_qiao/article/details/53966238> 来自：
+vivi_and_qiao的博客 <https://blog.csdn.net/vivi_and_qiao>
+
+
+深度学习技术在/股票/交易上的应用研究调查 - roslei的博客
+
+12-08 1485
+
+<https://blog.csdn.net/roslei/article/details/53517132>
+
+文中缩写： 　　DBN = 深度信念网络 　　LSTM = 长短期记忆网络 　　MLP = 多
+层感知器 　　RBM = 受限玻尔兹曼机 　　ReLU = 修正线性单元 　　CN...
+<https://blog.csdn.net/roslei/article/details/53517132> 来自： roslei的
+博客 <https://blog.csdn.net/roslei>
+
+
+股市公式编辑器 - JackieFrederickHYZ的博客
+
+03-01 1924
+
+<https://blog.csdn.net/JackieFrederickHYZ/article/details/59110574>
+
+通达信公式教程 公式入门 我们大多数的用户并不是完全了解“公式编辑器”的意
+义，简单地，我们可以从以下几个角度进行理解： 一、指标分析： “公式编辑器”
+好比是一个工作母床，通过这个工作母床可以制...
+<https://blog.csdn.net/JackieFrederickHYZ/article/details/59110574> 来
+自： JackieFrederickHYZ的博客 <https://blog.csdn.net/JackieFrederickHYZ>
+
+
+/股票/暴跌，欲哭无泪 - 网络隐士的专栏
+
+01-21 1127
+
+<https://blog.csdn.net/nethermit/article/details/262119>
+
+Last Trade:83.33Trade Time:4:01PM ETChange: 19.72 (19.14%)Prev
+Close:103.05Open:86.57Bid:81.44 x 500...
+<https://blog.csdn.net/nethermit/article/details/262119> 来自： 网络隐士
+的专栏 <https://blog.csdn.net/nethermit>
+
+
+【爬虫】获取LedgerX的交易数据 - seabreeze912的博客
+
+06-30 198
+
+<https://blog.csdn.net/seabreeze912/article/details/80863504>
+
+import requests import json import openpyxl import datetime def
+get_datetime(): start = str(in...
+<https://blog.csdn.net/seabreeze912/article/details/80863504> 来自：
+seabreeze912的博客 <https://blog.csdn.net/seabreeze912>
+
+
+获取全部当前交易行情数据 - hellocsz的博客
+
+03-16 1309
+
+<https://blog.csdn.net/hellocsz/article/details/79588109>
+
+一次性获取当前交易所有股票的行情数据（如果是节假日，即为上一交易日）返回
+值说明：code：代码name:名称changepercent:涨跌幅trade:现价open:开盘价
+high:最高价low:最...
+<https://blog.csdn.net/hellocsz/article/details/79588109> 来自：
+hellocsz的博客 <https://blog.csdn.net/hellocsz>
+
+
+R语言对高频交易订单流进行建模分析 3 - oxuzhenyi的博客
+
+08-25 739
+
+<https://blog.csdn.net/oxuzhenyi/article/details/77586465>
+
+一、实验介绍--订单流数据描述分析 1.1 实验知识点 订单流数据表示订单间隔分
+析订单信息率平稳性研究订单流动性研究限价单相对价格分析 1.2 实验环境 R
+3.4.1Rstudio ...
+<https://blog.csdn.net/oxuzhenyi/article/details/77586465> 来自：
+oxuzhenyi的博客 <https://blog.csdn.net/oxuzhenyi>
+
+
+PyalgoTrade基本概念 - u010302494的博客
+
+09-06 221
+
+<https://blog.csdn.net/u010302494/article/details/77864554>
+
+bar——一根K线frequency——K线的周期（日线，周线等）position——仓位 open
+position——开仓close position——平仓long position——多头仓...
+<https://blog.csdn.net/u010302494/article/details/77864554> 来自：
+u010302494的博客 <https://blog.csdn.net/u010302494>
+
+
+Backtrader量化平台教程（三）Indicator - lyx的专栏
+
+04-21 3311
+
+<https://blog.csdn.net/qtlyx/article/details/70306623>
+
+AD：（本人录制的backtrader视频课程，大家多多支持哦~ https://edu.csdn.net
+/course/detail/9040）    前面两篇文章，讲了大致的框架，接下来涉及的更...
+<https://blog.csdn.net/qtlyx/article/details/70306623> 来自： lyx的专栏
+<https://blog.csdn.net/qtlyx>
+
+
+陈晨-/证券交易/系统架构设计_挑战与实施经验分享 - chengying332
+
+12-24 1823
+
+<https://blog.csdn.net/chengying332/article/details/42119709>
+
+陈晨-证券交易系统架构设计_挑战与实施经验分享 本次分享主要结合交易系统的
+研发过程和实践经验，介绍了传统证券交易所在系统架构层面的设计思路以及如何
+应对高可用、高性能等主要技术需求。其中会对交...
+<https://blog.csdn.net/chengying332/article/details/42119709> 来自：
+chengying332 <https://blog.csdn.net/chengying332>
+
+下载
+
+
+/证券交易/系统java源代码
+
+11-28
+这是用java编写的证券交易系统，带有java源代码，已经测试过，可以正确运行
+<https://download.csdn.net/download/lyboat/9695259>
+
+
+android：/股票/代码大全 - huaxa程序猿
+
+01-07 398
+
+<https://blog.csdn.net/u014299265/article/details/54176598>
+
+http://blog.csdn.net/lb521200200/article/details/53557184?locationNum=5&fps=1 
+股票代码大全 <https://blog.csdn.net/u014299265/article/details/54176598>
+来自： huaxa程序猿 <https://blog.csdn.net/u014299265>
+
+下载
+
+
+/股票/交易系统源代码
+
+12-01
+一套股票交易系统的代码，希望大家能用到，谢谢您的关注。
+<https://download.csdn.net/download/meirixin/3868168>
+
+
+[经济]/股票/的基本知识和部分专业/术语/的解释 - Forgive Me
+
+02-10 872
+
+<https://blog.csdn.net/android_ruben/article/details/54960208>
+
+1.什么是股票 股票是一种身份和权利，它表示一种上市公司股东的身份并能够享
+有股东所应有的权利，比如：参加股东大会、参与公司重大决策、投票表决和享有
+收取股息和分红的权利等等。 同时持有上市公司...
+<https://blog.csdn.net/android_ruben/article/details/54960208> 来自：
+Forgive Me <https://blog.csdn.net/android_ruben>
+
+
+构建/股票/交易平台专业/术语/ - qq_37634812的博客
+
+01-22 129
+
+<https://blog.csdn.net/qq_37634812/article/details/79130605>
+
+Trade：交易；发生时机：当卖家同意以某个特定价格转移一定数量的股票（或有
+价证券）所有权给买家 Orders：买卖盘；买家和卖家如何实现Trade（交易），这
+就需要一个中心市场，Stock ...
+<https://blog.csdn.net/qq_37634812/article/details/79130605> 来自：
+qq_37634812的博客 <https://blog.csdn.net/qq_37634812>
+
+
+交易委托账本 order book - wqfhenanxc的专栏
+
+04-09 715
+
+<https://blog.csdn.net/wqfhenanxc/article/details/79869089>
+
+﻿﻿交易委托账本处于证券交易的核心位置，所有的交易都围绕它进行。这个词很多
+人可能没听说过，但我们日常看到的不同形式的一级和二级股票行情就是委托账本
+的不同表现形式，这样说的话大家可能就能猜到它的重要性。...
+<https://blog.csdn.net/wqfhenanxc/article/details/79869089> 来自：
+wqfhenanxc的专栏 <https://blog.csdn.net/wqfhenanxc>
+
+
+证券基本名词 - xrj2001811的专栏
+
+03-11 614
+
+<https://blog.csdn.net/xrj2001811/article/details/1526312>
+
+开盘价：　　是指当日开盘后该股票的第一笔交易成交的价格。如果开市后30分钟
+内无成交价，则以前日的收盘价作为开盘价。收盘价：　　指每天成交中最后一笔
+股票的价格，也就是收盘价格。最高价：　　是指当日所成交...
+<https://blog.csdn.net/xrj2001811/article/details/1526312> 来自：
+xrj2001811的专栏 <https://blog.csdn.net/xrj2001811>
+
+
+量化交易----利用机器学习预测/股票/价格趋势 - 郭大侠写leetcode
+
+11-04 8074
+
+<https://blog.csdn.net/u013547284/article/details/78443712>
+
+有了股票历史数据，如果我们决定采用机器学习的方法来制定策略算法的话，接下
+的步骤就是分析数据、选择特征和机器学习模型、预测结果等等。 由于股票的数
+据分析和特征选择比较多样化，这里我们随意选取股票前两天...
+<https://blog.csdn.net/u013547284/article/details/78443712> 来自： 郭大
+侠写leetcode <https://blog.csdn.net/u013547284>
+
+
+用R来进行/股票/分析 - joomlaer的专栏
+
+05-29 8637
+
+<https://blog.csdn.net/joomlaer/article/details/46239195>
+
+当今股市如火如荼，程序猿们除了coding，另一个致富的机会来了，就是股票。说
+到数据，这可是程序猿的拿手绝活， 海口是夸下了，但如何来抓取数据，并且分
+析数据的相关指标，并且指导我们实际操作呢。接下来...
+<https://blog.csdn.net/joomlaer/article/details/46239195> 来自：
+joomlaer的专栏 <https://blog.csdn.net/joomlaer>
+
+
+泰国/证券交易/委员会公布了ICO监管规则出台的日期 - 区块链铅笔
+
+07-07 58
+
+<https://blog.csdn.net/IJXR1A64JI53L/article/details/80970706>
+
+... <https://blog.csdn.net/IJXR1A64JI53L/article/details/80970706> 来
+自： 区块链铅笔 <https://blog.csdn.net/IJXR1A64JI53L>
+
+
+/证券交易//术语/ - gtyi999的专栏
+
+09-05 419
+
+<https://blog.csdn.net/gtyi999/article/details/48225711>
+
+1，什么是证卷交易经手费？ 答：是证券公司在证券交易所的场内交易成交后，按
+实际成交金额计算的一定比例向证券交易所交纳的交易费用。经手费和佣金在性质
+上均属于交易费用，但也存在明显的区别。经手费是券商交...
+<https://blog.csdn.net/gtyi999/article/details/48225711> 来自： gtyi999
+的专栏 <https://blog.csdn.net/gtyi999>
+
+
+获取全球各大/证券交易/所的全部/股票/交易信息 - HAPPENgft的博客
+
+03-28 2.5万
+
+<https://blog.csdn.net/HAPPENgft/article/details/66973512>
+
+幻想过这样的两种能力，一是回到过去，二是预见未来。时间逆转回到过去，这更
+多的是在文艺作品中能够出现的情节。而预见未来，我们正在努力，希望可以更准
+确地预见更长时间内更多的细节。例如在瞬息万变的股票交易市...
+<https://blog.csdn.net/HAPPENgft/article/details/66973512> 来自：
+HAPPENgft的博客 <https://blog.csdn.net/HAPPENgft>
+
+
+券商/股票/程序化交易接口(转) - Mage的专栏
+
+11-03 8853
+
+<https://blog.csdn.net/fengmm521/article/details/78438746>
+
+自已一直想，为什么没有人用自动交互软件来进行股票交易，谁曾知道，我这个想
+法竟然是目前金融的前沿。还好我是程序员，精通C++,python等各种编程语
+言。。。。。 欧美等发达金融市场中有一半以上成交量是...
+<https://blog.csdn.net/fengmm521/article/details/78438746> 来自： Mage的
+专栏 <https://blog.csdn.net/fengmm521>
+
+
+证券投资系统中英文对照（一） - 重剑无锋，大巧不工。。。
+
+07-19 2328
+
+<https://blog.csdn.net/scorpio3k/article/details/6616769>
+
+交割单（Deliver Order） 平仓（Close Position） 库存股（Treasury Stock）
+证券（Securities） 债券（Bond） 基金（Fund） 公...
+<https://blog.csdn.net/scorpio3k/article/details/6616769> 来自： 重剑无
+锋，大巧不工。。。 <https://blog.csdn.net/scorpio3k>
+
+
+爬虫——爬取/证券交易/数据 - 都市的背包客____博客
+
+05-10 494
+
+<https://blog.csdn.net/weixin_41524763/article/details/80272383>
+
+import requests from multiprocessing.dummy import Pool as ThreadingPool
+from lxml import etree from ...
+<https://blog.csdn.net/weixin_41524763/article/details/80272383> 来自：
+都市的背包客____博客 <https://blog.csdn.net/weixin_41524763>
+
+下载
+
+
+java/股票/交易模拟系统 - 其实都没有明天
+
+06-20
+java开发的股票交易模拟系统，你用了公开的新浪，腾讯股票数据接口，而且使用
+了第三方的java开源项目-jfreechart ，程序所用的各种jar包也一并在压缩包
+里，在工程中添加后build path即可使用
+<https://download.csdn.net/download/u011976127/7527975>
+
+
+/股票//术语/ - 冷冰雪的专栏
+
+06-06 1056
+
+<https://blog.csdn.net/coldicesnows/article/details/1640231>
+
+开盘价：指每天成交中最先的一笔成交的价格。 收盘价：指每天成交中最后的一
+笔股票的价格，也就是收盘价格。 成交数量：指当天成交的股票数量。 最高价：
+指当天股票成交的各种不同价格是最高的成交价格。 最低价...
+<https://blog.csdn.net/coldicesnows/article/details/1640231> 来自： 冷冰
+雪的专栏 <https://blog.csdn.net/coldicesnows>
+
+
+/股票//术语/了解 - heqiang2015的博客
+
+10-25 87
+
+<https://blog.csdn.net/heqiang2015/article/details/83380807>
+
+股票（stock）是股份公司发行的所有权凭证，是股份公司为筹集资金而发行给各
+个股东作为持股凭证并借以取得股息和红利的一种有价证券。每股股票都代表股东
+对企业拥有一个基本单位的所有权。每家上市公司都会发行...
+<https://blog.csdn.net/heqiang2015/article/details/83380807> 来自：
+heqiang2015的博客 <https://blog.csdn.net/heqiang2015>
+
+下载
+
+
+/股票/交易系统，c++程序设计作业 - fqhutuytyufhfy
+
+03-22
+c++程序设计作业，欢迎下载。需要的话+qq414307660
+<https://download.csdn.net/download/abc414307660/3117006>
+下载
+
+
+模拟/股票/交易系统Java - rongrongxie
+
+05-03
+股票交易系统的需求分析文档，概要设计和详细设计文档
+<https://download.csdn.net/download/rongrongxie/8657237>
+
+
+BaoStock:一个免费、开源的python证券数据接口包 - dongdong2980的博客
+
+01-14 3443
+
+<https://blog.csdn.net/dongdong2980/article/details/79059789>
+
+BaoStock:一个免费、开源的python证券数据接口包
+<https://blog.csdn.net/dongdong2980/article/details/79059789> 来自：
+dongdong2980的博客 <https://blog.csdn.net/dongdong2980>
+
+下载
+
+
+linux下/股票/ 软件
+
+07-12
+linux下股票软件，很好用，非wine
+<https://download.csdn.net/download/wcaowu/2536906>
+
+
+/证券交易/所的运作系统 - yzpbright的博客
+
+06-16 321
+
+<https://blog.csdn.net/yzpbright/article/details/80712627>
+
+证券交易所的运行系统包括： 交易系统，主要作用是组织证券交易； 结算系统，
+为证券交易提供结算、交收和过户； 信息系统，实时发布每日证券交易的行情信
+息和市场信息； 监察系统，负责证券交易所对市场...
+<https://blog.csdn.net/yzpbright/article/details/80712627> 来自：
+yzpbright的博客 <https://blog.csdn.net/yzpbright>
+
+
+我的/股票/交易策略 - LSGO软件技术团队
+
+06-29 658
+
+<https://blog.csdn.net/LSGO_MYP/article/details/80857828>
+
+投资股市已经成为我们进行资产配置的一个重要选择。在这个市场中主流的投资方
+式无外乎 价值投资 和 趋势投资 两种。价值投资需要了解各种财务指标来评价各
+支股票，在被市场低估时买入，在被市场高估时卖出。这对...
+<https://blog.csdn.net/LSGO_MYP/article/details/80857828> 来自： LSGO软
+件技术团队 <https://blog.csdn.net/LSGO_MYP>
+
+下载
+
+
+StockTerms.exe /股票//术语/大全工具软件 - tugangw2000
+
+08-09
+在这里可以找到绝大多数股票术语的说明，股票中的名次解释大全，可以通过术语
+拼音的首字母来搜索术语，可以收藏自己关注的术语，可以添加自己关注的术语，
+还可以修改术语的说明，加上自己的理解
+<https://download.csdn.net/download/tugangw2000/5899859>
+下载
+
+
+免费开源的 /股票/ 自动化 交易接口 alphaquant 支持各种语言
+
+12-11
+免费开源的 股票 自动化 交易接口 alphaquant 支持各种语言(自己编译哈) 说
+明： 本SDK仅供参考学习，方便自动化下单，使用请遵守相关国家法规，不配资，
+不操纵股价。 ============================...
+<https://download.csdn.net/download/jtxqd521/10153983>
+
+
+Java获取股市交易日 - qingzhukl的专栏
+
+09-18 3231
+
+<https://blog.csdn.net/qingzhukl/article/details/48528619>
+
+获取交易日的java代码，包括了分析和设计描述，同时粘贴了基本实现代码，方便
+进行思路展示。...
+<https://blog.csdn.net/qingzhukl/article/details/48528619> 来自：
+qingzhukl的专栏 <https://blog.csdn.net/qingzhukl>
+
+
+证券数据接口 查询证券编码及基本上市信息 - webserviceapi
+
+11-02 2331
+
+<https://blog.csdn.net/webserviceapi/article/details/49585459>
+
+证券数据接口调用代码，可输入一个或多个证券交易代码，获取证券ID，证券在数
+据结构中的一个唯一识别的编码；同时可以获取输入证券的基本上市信息，如交易
+市场，上市状态，交易币种，ISIN编码等。 接口名称...
+<https://blog.csdn.net/webserviceapi/article/details/49585459> 来自：
+webserviceapi <https://blog.csdn.net/webserviceapi>
+
+
+        出于好奇，我去暗网里瞧了瞧 —— 你就别去了 - Marvel__Dead 胡艺宝的
+博客
+
+11-10 292199
+
+<https://blog.csdn.net/Marvel__Dead/article/details/78499468>
+
+赤裸裸的欲望躲在信息背后支撑起每一个页面，它像一个黑洞，把精力与金钱吸
+入，吞吐出的，是极度满足后的虚妄。生活不也正是如此吗？ 暗网已经不再是个
+新鲜的词汇了，但大多数人只对它有个印象 —— 常人无法进入...
+<https://blog.csdn.net/Marvel__Dead/article/details/78499468> 来自：
+Marvel__Dead 胡艺宝的博客 <https://blog.csdn.net/Marvel__Dead>
+
+
+PC傻瓜式安装黑苹果并打造成全能逆向工作站 - 艾小米
+
+06-01 59480
+
+<https://blog.csdn.net/mier9042/article/details/80541368>
+
+0×01.为什么要安装黑苹果为什么要安装黑苹果？对于这个问题，不同的人应该有
+不同的回答。对于学生党来说，花小钱就能体验原版macOS操作系统，不管是什么
+牌子的电脑，只要上了苹果的操作系统，逼格发生了翻...
+<https://blog.csdn.net/mier9042/article/details/80541368> 来自： 艾小米
+<https://blog.csdn.net/mier9042>
+
+
+UVa10168 拓展哥德巴赫猜想 - 帅比王的博客
+
+08-30 967
+
+<https://blog.csdn.net/weixin_41162823/article/details/82227151>
+
+原题链接：UVa10168 解析： 当n&amp;lt;8时，不能分解为4个素数的和 当n为偶
+数时，前两个可以分解为2 2，此时n = n-4 当n为奇数时，前两个可以分解为2
+3，此时n =...
+<https://blog.csdn.net/weixin_41162823/article/details/82227151> 来自：
+帅比王的博客 <https://blog.csdn.net/weixin_41162823>
+
+
+        详细讲解混合编程——C++调用MATLAB程序，以及常用问题解决（附加程序
+演示和下载） - qq_26464039的博客
+
+11-22 9374
+
+<https://blog.csdn.net/qq_26464039/article/details/84305030>
+
+       本篇文章主要介绍混合编程——C++调用MATLAB程序，以及常用问题解决，并
+给出通过测试的示例程序。 目录： C++调用MATLAB程序方法 示例程序 常用问题
+解决 程序下载 ...
+<https://blog.csdn.net/qq_26464039/article/details/84305030> 来自：
+qq_26464039的博客 <https://blog.csdn.net/qq_26464039>
+
+
+pixiv（P站）网页版进不去打不开的恢复方法 - yukinoai的博客
+
+08-12 45596
+
+<https://blog.csdn.net/yukinoai/article/details/81603819>
+
+转自https://2heng.xin/2017/09/19/pixiv/ 作者：Mashiro 来源：樱花庄的白猫
+首先，用文本编辑器（比如记事本）打开 &quot;C:\Windows\Syste...
+<https://blog.csdn.net/yukinoai/article/details/81603819> 来自：
+yukinoai的博客 <https://blog.csdn.net/yukinoai>
+
+
+暗网网址集合+搜索引擎 - lukabruce的博客
+
+09-05 41690
+
+<https://blog.csdn.net/lukabruce/article/details/82416129>
+
+1.tor浏览器的默认搜索引擎--DuckDuckGo https://3g2upl4pq6kufc4m.onion/
+2.not Evil http://hss3uro2hsxfogfq.oni...
+<https://blog.csdn.net/lukabruce/article/details/82416129> 来自：
+lukabruce的博客 <https://blog.csdn.net/lukabruce>
+
+
+        通讯录拉群、精准粉拉群,云控系统为你带来wxid爆粉新思路 -
+wuji1767559510的博客
+
+11-22 890
+
+<https://blog.csdn.net/wuji1767559510/article/details/84347819>
+
+微信早已是全国最 大的社交平台，截至今年已经有10亿多的用户，有着汹涌澎湃
+的流量，在这个流量为王的时代，营销也盯上了这块兵家必争之地。 有需求便有
+市场，很多互联网公司开始着手研发微信营销软件，其中不...
+<https://blog.csdn.net/wuji1767559510/article/details/84347819> 来自：
+wuji1767559510的博客 <https://blog.csdn.net/wuji1767559510>
+
+
+mongodb的高级操作(游标、聚合) - 卖克的专栏
+
+12-09 15280
+
+<https://blog.csdn.net/zy_281870667/article/details/50242441>
+
+mongodb的游标 mongodb的游标类似c#的延迟加载、类似hibernate的session懒加
+载 1.定义list 接受find()的结果集，默认find()的数据是100条数据或者是4M
+的... <https://blog.csdn.net/zy_281870667/article/details/50242441> 来
+自： 卖克的专栏 <https://blog.csdn.net/zy_281870667>
+
+
+mongodb的基本操作(crud) - 卖克的专栏
+
+12-04 14950
+
+<https://blog.csdn.net/zy_281870667/article/details/50180661>
+
+当初次使用mongodb，第一个就是创建数据库和切换数据库了 1.use  创建\切换数
+据库 但是，很奇怪了，创建了数据库了，但是，show dbs还是没显示出来，果断
+百度 一百度，真相居然是 ...
+<https://blog.csdn.net/zy_281870667/article/details/50180661> 来自： 卖
+克的专栏 <https://blog.csdn.net/zy_281870667>
+
+
+zepto.js 实时监听输入框 - zmall博客
+
+03-28 5889
+
+<https://blog.csdn.net/wad13965/article/details/67654742>
+
+$('#phone').on('input', function(e) { //实时监听手机号码输入框变化
+if($('#phone').val()) ...
+<https://blog.csdn.net/wad13965/article/details/67654742> 来自： zmall博
+客 <https://blog.csdn.net/wad13965>
+
+
+java 生产者消费者模式 - 卖克的专栏
+
+04-27 14759
+
+<https://blog.csdn.net/zy_281870667/article/details/70853474>
+
+java的生产者消费者模式，有三个部分组成，一个是生产者，一个是消费者，一个
+是缓存。 这么做有什么好处呢？ 1.解耦(去依赖)，如果是消费者直接调用生产
+者，那如果生产者的代码变动了，消费者的代码也...
+<https://blog.csdn.net/zy_281870667/article/details/70853474> 来自： 卖
+克的专栏 <https://blog.csdn.net/zy_281870667>
+
+
+大数据与伦理 - dkshkb的博客
+
+11-28 18766
+
+<https://blog.csdn.net/dkshkb/article/details/78657098>
+
+当今时代，互联网以及各种智能设备的使用越来越普遍，云计算等技术帮助我们更
+好地处理广泛的信息，我们已经进入了大数据时代。在这个时代中，各种数据的高
+度自由与共享，自然会引发我们的数据安全问题的担忧。因此，...
+<https://blog.csdn.net/dkshkb/article/details/78657098> 来自： dkshkb的
+博客 <https://blog.csdn.net/dkshkb>
+
+
+可视化FreeBasic集成开发环境 - yfvb2010的专栏
+
+02-25 377920
+
+<https://blog.csdn.net/yfvb2010/article/details/79369125>
+
+类似VisualBasic6的FreeBasic语言集成开发环境。拥有和VB6高度相似的语法规
+则，  具有和C语言一样强大的功能，支持面向对象，这就是VisualFreeBasic。很
+绿色，很纯净，不...
+<https://blog.csdn.net/yfvb2010/article/details/79369125> 来自：
+yfvb2010的专栏 <https://blog.csdn.net/yfvb2010>
+
+
+如何把百度网盘下载速度提高 100 倍，我推荐这个下载工具 - 志哥的博客
+
+05-26 83989
+
+<https://blog.csdn.net/zhige_me/article/details/80465191>
+
+应该有很多小伙伴平时的文件、资源都会放到百度网盘上面，或者从别人网盘上找
+到各种资源，但是当你下载的时候你就发现百度云是以这种速度龟速下载。对，每
+秒几十 KB，小的文件还好，如果稍微大点的软件，就得先去...
+<https://blog.csdn.net/zhige_me/article/details/80465191> 来自： 志哥的
+博客 <https://blog.csdn.net/zhige_me>
+
+
+KMP算法--Next数组详解与优化 - 帅比王的博客
+
+10-15 952
+
+<https://blog.csdn.net/weixin_41162823/article/details/83060304>
+
+本篇文章直接跳过蛮力算法以及一些简单背景，着重讨论Next数组的意义以及其是
+如何工作的，并对如何求Next数组做详细记录。 1.背景 1.1 KMP算法的应用：KMP
+算法用来解决模式串匹配问题...
+<https://blog.csdn.net/weixin_41162823/article/details/83060304> 来自：
+帅比王的博客 <https://blog.csdn.net/weixin_41162823>
+
+
+Xmind 8 pro 软件破解版 - 小白的未来—视界
+
+07-09 71071
+
+<https://blog.csdn.net/qq_16093323/article/details/80967867>
+
+          Xmind是一款非常专业的思维导图软件，收费好几百元，不过还是很多
+用户，因为目前用的最多，也简单易用。XMind界面友好、功能优秀、可用性极
+强，从而数百万人选择了它，XMind不...
+<https://blog.csdn.net/qq_16093323/article/details/80967867> 来自：
+Immediate setback <https://blog.csdn.net/qq_16093323>
+
+
+什么是桶排序？ - 卖克的专栏
+
+11-05 7970
+
+<https://blog.csdn.net/zy_281870667/article/details/83722570>
+
+上一篇说了计数排序，一种稳定的排序，时间复杂度是指数级，但是，计数排序不
+适用于跨度很大或者浮点数，那么有没有可以处理浮点类型的稳定排序呢？桶排序
+就是。 桶排序的实现 　　首先说一下桶排序的桶是什么...
+<https://blog.csdn.net/zy_281870667/article/details/83722570> 来自： 卖
+克的专栏 <https://blog.csdn.net/zy_281870667>
+
+
+解决上p站问题，关于国内上pixiv插画站的方法 - heizai2009的博客
+
+11-29 2728
+
+<https://blog.csdn.net/heizai2009/article/details/84641041>
+
+        种种原因国内访问不了有名的pixiv网站，当然我们可以稍微掌握点小技
+术就可以轻松解决这个问题。 具体方法请百度搜索  雷雷日志 认真做好 技术分
+享  注意中间的空格，进...
+<https://blog.csdn.net/heizai2009/article/details/84641041>
+
+
+矩阵乘法模板C/C++ - 帅比王的博客
+
+11-12 991
+
+<https://blog.csdn.net/weixin_41162823/article/details/83990051>
+
+由于矩阵相乘是诸多算法中的基础，就像乘法之于快速幂一样，所以有必要熟练掌
+握，以下模板是我个人觉得用起来比较方便的，但是随着时间迁移肯定是需要对其
+进行精进的。 代码示例： struct Matri...
+<https://blog.csdn.net/weixin_41162823/article/details/83990051> 来自：
+帅比王的博客 <https://blog.csdn.net/weixin_41162823>
+
+
+从Microsoft Teams技术栈看前端技术发展趋势 - Tony.X
+
+11-22 1084
+
+<https://blog.csdn.net/xxjjxx/article/details/84336673>
+
+在前不久的微软美国一年一度的Ignite大会上，微软宣布Microsoft Teams是微软
+历史上发展最快的应用。它将取代Skype for business，成为语音视频协作的主打
+产品。 我也有幸... <https://blog.csdn.net/xxjjxx/article/details/84336673>
+
+
+        智慧树走进故宫章节测试答案智慧树走进故宫刷课插件2018年智慧树走进
+故宫期末考试答案 - 柠檬很酸的博客
+
+05-31 63927
+
+<https://blog.csdn.net/qq_22644927/article/details/80529208>
+
+欢迎通过微信客户端搜索jiutu2019或者扫描下方二维码关注樛图公众号获取智慧
+树刷题插件。 智慧树刷课插件获取方法：微信关注公众号（jiutu2019）后，后台
+回复“智慧树刷课插件”即可获取。 ...
+<https://blog.csdn.net/qq_22644927/article/details/80529208> 来自： 柠檬
+很酸的博客 <https://blog.csdn.net/qq_22644927>
+
+
+vs2017安装和使用教程（详细） - qq_36556893的博客
+
+03-03 192797
+
+<https://blog.csdn.net/qq_36556893/article/details/79430133>
+
+VS2017如此强大，不仅仅是C语
+言，Python，ios，Android，Web，Node.js，Azure，Unity，JavaScript等开发都
+可以执行，大家快来使用呀~ 目录 一、官网下...
+<https://blog.csdn.net/qq_36556893/article/details/79430133> 来自：
+qq_36556893的博客 <https://blog.csdn.net/qq_36556893>
+
+
+各大磁力种子搜索引擎对比 - lizhengnanhua的专栏
+
+11-27 403059
+
+<https://blog.csdn.net/lizhengnanhua/article/details/41531579>
+
+现在磁力种子搜索引擎质量参差不齐，现在就重点整理几个常用的种子搜索站，做
+个对比分析 1.屌丝搜-最懂屌丝的搜索引擎（www.diaosisou.com） 号称最懂屌丝
+的BT搜索引擎，确实名副其实，屌丝...
+<https://blog.csdn.net/lizhengnanhua/article/details/41531579> 来自：
+lizhengnanhua的专栏 <https://blog.csdn.net/lizhengnanhua>
+
+
+mongodb3.0.6的下载和安装 - 卖克的专栏
+
+12-04 15744
+
+<https://blog.csdn.net/zy_281870667/article/details/50180215>
+
+mongodb3.0.6的资源zip mongodb--windows下安装
+<https://blog.csdn.net/zy_281870667/article/details/50180215> 来自： 卖
+克的专栏 <https://blog.csdn.net/zy_281870667>
+
+
+mongodb的集群部分的问题及其理解整理 - 卖克的专栏
+
+12-15 15247
+
+<https://blog.csdn.net/zy_281870667/article/details/50302771>
+
+1.如何实现主从模式 启动时，-master指定主， -source标志是从(从库是没有写
+的权限). 2.主从模式，主挂了，能否自动切换? 不能，只能手动切换.(副本集模
+式，可实现自动切换) ...
+<https://blog.csdn.net/zy_281870667/article/details/50302771> 来自： 卖
+克的专栏 <https://blog.csdn.net/zy_281870667>
+
+
+军事理论课答案（中国国防史） - ling_wang的博客
+
+11-27 228556
+
+<https://blog.csdn.net/ling_wang/article/details/78648058>
+
+中国国防史——秦至两晋南北朝已完成 成绩： 100.0分 1 【单选题】中国哪个历史
+时期的国防是“变法图强，改革军制；奖赏军功，百家论兵”？（） A、元朝时期
+B、先秦时期 C、清朝时期 ...
+<https://blog.csdn.net/ling_wang/article/details/78648058> 来自：
+ling_wang的博客 <https://blog.csdn.net/ling_wang>
+
+
+微信点击短链接直接跳转到支付宝领红包教程 附带例子 - FENG_LIN的博客
+
+01-05 44741
+
+<https://blog.csdn.net/weifenglin1997/article/details/78985570>
+
+最近支付宝的领红包可真是刷爆了各个微信群啊，满群都是支付宝口令。支付宝推
+出的抢“10亿红包”进行的十分炽热，各大网站、QQ群微信群里都是分享领红包的二
+维码或口令，到店支付优惠也是很有诚意，是的，支付宝...
+<https://blog.csdn.net/weifenglin1997/article/details/78985570> 来自：
+FENG_LIN的博客 <https://blog.csdn.net/weifenglin1997>
+
+
+        手把手教你如何安装Pycharm——靠谱的Pycharm安装详细教程 -
+pdcfighting的博客
+
+05-13 241965
+
+<https://blog.csdn.net/pdcfighting/article/details/80297499>
+
+今天小编给大家分享如何在本机上下载和安装Pycharm，具体的教程如下：1、首先
+去Pycharm官网，或者直接输入网址：http://www.jetbrains.com/pycharm
+/downloa... <https://blog.csdn.net/pdcfighting/article/details/80297499>
+来自： pdcfighting的博客 <https://blog.csdn.net/pdcfighting>
+
+
+100个小学生猜字谜大全及答案 - 欢迎光临 包国工作室
+
+12-05 179022
+
+<https://blog.csdn.net/linbaoguo1314520/article/details/78715483>
+
+100个小学生猜字谜大全及答案 1.字谜：山上还有山。猜一字，答案是:出 2.字
+谜：十张口，一颗心。猜一字，答案是:思 3.字谜：说它小，下边大，说它大，上
+边小。猜一字，答案是:...
+<https://blog.csdn.net/linbaoguo1314520/article/details/78715483> 来自：
+欢迎光临 包国工作室 <https://blog.csdn.net/linbaoguo1314520>
+
+
+DirectX修复工具增强版 - VBcom的专栏
+
+02-09 1667945
+
+<https://blog.csdn.net/VBcom/article/details/7245186>
+
+最后更新：2018-11-23 DirectX修复工具最新版：DirectX Repair V3.7 增强
+版  NEW! 版本号：V3.7.0.26539 大小: 107MB/7z格式压缩，18...
+<https://blog.csdn.net/VBcom/article/details/7245186> 来自： VBcom的专栏
+<https://blog.csdn.net/VBcom>
+
+
+Dijkstra算法模板 C++ - 帅比王的博客
+
+08-24 988
+
+<https://blog.csdn.net/weixin_41162823/article/details/82018867>
+
+代码出自：《算法竞赛入门经典——训练指南》P328
+#include&amp;lt;iostream&amp;gt; #include&amp;lt;vector&amp;gt;
+#include...
+<https://blog.csdn.net/weixin_41162823/article/details/82018867> 来自：
+帅比王的博客 <https://blog.csdn.net/weixin_41162823>
+
+
+Swagger教程三 - 愤怒的懒洋洋的博客
+
+08-24 20132
+
+<https://blog.csdn.net/qq_25814003/article/details/82017668>
+
+Springfox-Swagger教程优化 一、前言         上一章节我们说的是swaggerfox-
+swagger也就是swagger2,因为章节太长我讲解的是原生态的，接下来我们说的
+是... <https://blog.csdn.net/qq_25814003/article/details/82017668> 来
+自： 愤怒的懒洋洋的博客 <https://blog.csdn.net/qq_25814003>
+
+
+国内用户无法使用TikTok(国外版抖音)的解决方案 - 潇风寒月
+
+09-14 29399
+
+<https://blog.csdn.net/xfhy_/article/details/82697609>
+
+首先,我是不推荐程序员使用这个东西的,毕竟很浪费时间.我平时比较忙,也是没时
+间玩这些. 1. 背景 娱乐娱乐也是可以,但不要沉迷其中.我们可以从这款产品中学
+习它的优点. 无独有偶,那天忽然在...
+<https://blog.csdn.net/xfhy_/article/details/82697609> 来自： 潇风寒月
+<https://blog.csdn.net/xfhy_>
+
+
+教大家一个可以用迅雷全速下载百度网盘文件的方法 - lemonix7的博客
+
+07-09 87763
+
+<https://blog.csdn.net/lemonix7/article/details/80978143>
+
+本帖最后由 古道吹西风 于 2017-8-28 22:11 编辑 百度的各种限制，相信大家都
+是苦难言，每年赚那么多的钱，还这样小气，开通会员也一样的下载慢，我只说
+“我去年买了个表”这个方法网上有教程，...
+<https://blog.csdn.net/lemonix7/article/details/80978143> 来自：
+lemonix7的博客 <https://blog.csdn.net/lemonix7>
+
+
+Kafka了解一下 - 卖克的专栏
+
+04-15 69400
+
+<https://blog.csdn.net/zy_281870667/article/details/79946919>
+
+Kafka背景       Kafka最初是由LinkedIn公司使用Scala语言实现的，用作
+LinkedIn的活动流（Activity Stream）和运营数据处理管道（Pipeline）的基
+础。... <https://blog.csdn.net/zy_281870667/article/details/79946919> 来
+自： 卖克的专栏 <https://blog.csdn.net/zy_281870667>
+
+
+POJ 3321 Apple Tree（树状数组模板） - 帅比王的博客
+
+08-28 965
+
+<https://blog.csdn.net/weixin_41162823/article/details/82143246>
+
+原题链接：POJ3321 解析：这题我按照郭炜老师的讲义来练习树状数组的模板，但
+是也遇到了一些问题： 如果对一些图或树来用树状数组解题，就需要给他每个节
+点一个从1到nCount的编号，因为树状数组...
+<https://blog.csdn.net/weixin_41162823/article/details/82143246> 来自：
+帅比王的博客 <https://blog.csdn.net/weixin_41162823>
+
+
+C#Winform窗口移动 - Maybe_ch的博客
+
+08-07 19913
+
+<https://blog.csdn.net/Maybe_ch/article/details/81482054>
+
+在我们将Winform自带的边框隐藏之后，我们需要自己编写窗口的移动。 思路就是
+1.获得点击左键时当前鼠标的坐标 2.获得移动后鼠标的坐标 3.窗体的坐标=移动
+后的鼠标坐标-移动前的鼠标坐标 pr...
+<https://blog.csdn.net/Maybe_ch/article/details/81482054> 来自：
+Maybe_ch的博客 <https://blog.csdn.net/Maybe_ch>
+
+
+什么是B-树？ - 卖克的专栏
+
+09-24 14542
+
+<https://blog.csdn.net/zy_281870667/article/details/82831196>
+
+什么是B-树呢？B-树全名 Balance Tree，读做B树(中间的-，只是分隔作用，不要
+读做B减树哦)。 #　　B树的特征 B树首先它也是属于树结构，除了树结构的节点
+有序、查找高效外，还有以下...
+<https://blog.csdn.net/zy_281870667/article/details/82831196> 来自： 卖
+克的专栏 <https://blog.csdn.net/zy_281870667>
+
+
+迅雷因版权方无法下载解决方法，附带破解不限速方法 - boy火巨的博客
+
+08-23 29793
+
+<https://blog.csdn.net/qq_42221334/article/details/81981504>
+
+迅雷下载有的电影电视剧的时候会出现：应版权方要求，文件无法下载，或者显示
+迅雷任务包含违规内容 无法继续下载。这个是因为版权方和迅雷公司交涉，迅雷
+公司通过技术手段阻止了迅雷任务的下载，比如下载最近的《人...
+<https://blog.csdn.net/qq_42221334/article/details/81981504> 来自： boy
+火巨的博客 <https://blog.csdn.net/qq_42221334>
+
+
+Proxyee-down的下载与安装教程 - shadandeajian的博客
+
+05-17 118523
+
+<https://blog.csdn.net/shadandeajian/article/details/80349939>
+
+Proxyee-down是monkeyWie在Github上的一个开源项目，向作者致敬。 最新版的
+Proxyee-down为3.12（2018.10更新），因为作者在3.x后的版本中并未发布exe
+版... <https://blog.csdn.net/shadandeajian/article/details/80349939> 来
+自： shadandeajian的博客 <https://blog.csdn.net/shadandeajian>
+
+没有更多推荐了，返回首页 <https://blog.csdn.net/>
+
+<https://blog.csdn.net/tiplip>
+
+娱乐靠球 <https://blog.csdn.net/tiplip>
+
+关注
+
+原创 <https://blog.csdn.net/tiplip?t=1>
+    34 <https://blog.csdn.net/tiplip?t=1>
+
+粉丝
+    46
+
+喜欢
+    13
+
+评论
+    37
+
+等级：
+    <https://blog.csdn.net/home/help.html#level> 
+
+访问：
+    10万+ 
+
+积分：
+    1345 
+
+排名：
+    4万+
+
+勋章：
+
+持之以恒
+
+授予每个自然月内发布4篇或4篇以上原创或翻译IT博文的用户。不积跬步无以至千
+里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累！
+
+
+      最新文章
+
+  * 淘宝天猫定时抢购
+    <https://blog.csdn.net/tiplip/article/details/83902999>
+  * 网页自动化操作之-全自动下单（淘宝/天猫）
+    <https://blog.csdn.net/tiplip/article/details/82959840>
+  * 微信聊天实时监控系统
+    <https://blog.csdn.net/tiplip/article/details/82717564>
+  * 订单导出工具（淘宝，天猫）
+    <https://blog.csdn.net/tiplip/article/details/79333217>
+  * 基于C++与JS技术实现的网上挂号助手
+    <https://blog.csdn.net/tiplip/article/details/75136569>
+
+
+      个人分类
+
+  * 版本更新记录 1篇
+    <https://blog.csdn.net/tiplip/article/category/1677939>
+  * 脚本 5篇 <https://blog.csdn.net/tiplip/article/category/2121657>
+  * 数据库 1篇 <https://blog.csdn.net/tiplip/article/category/2785643>
+  * 综合 1篇 <https://blog.csdn.net/tiplip/article/category/2788099>
+  * 即时通讯 2篇 <https://blog.csdn.net/tiplip/article/category/2788115>
+  * 企业信息化 5篇 <https://blog.csdn.net/tiplip/article/category/2788755>
+  * 网站优化 1篇 <https://blog.csdn.net/tiplip/article/category/2810979>
+  * 在线地图 2篇 <https://blog.csdn.net/tiplip/article/category/2822941>
+  * shell 1篇 <https://blog.csdn.net/tiplip/article/category/6329517>
+  * Python 1篇 <https://blog.csdn.net/tiplip/article/category/6459149>
+
+展开
+
+
+      归档
+
+  * 2018年11月 1篇 <https://blog.csdn.net/tiplip/article/month/2018/11>
+  * 2018年10月 1篇 <https://blog.csdn.net/tiplip/article/month/2018/10>
+  * 2018年9月 1篇 <https://blog.csdn.net/tiplip/article/month/2018/09>
+  * 2018年3月 1篇 <https://blog.csdn.net/tiplip/article/month/2018/03>
+  * 2017年7月 1篇 <https://blog.csdn.net/tiplip/article/month/2017/07>
+  * 2017年1月 1篇 <https://blog.csdn.net/tiplip/article/month/2017/01>
+  * 2016年10月 1篇 <https://blog.csdn.net/tiplip/article/month/2016/10>
+  * 2016年8月 1篇 <https://blog.csdn.net/tiplip/article/month/2016/08>
+  * 2016年7月 1篇 <https://blog.csdn.net/tiplip/article/month/2016/07>
+  * 2016年4月 3篇 <https://blog.csdn.net/tiplip/article/month/2016/04>
+  * 2015年7月 1篇 <https://blog.csdn.net/tiplip/article/month/2015/07>
+  * 2015年1月 4篇 <https://blog.csdn.net/tiplip/article/month/2015/01>
+  * 2014年12月 3篇 <https://blog.csdn.net/tiplip/article/month/2014/12>
+  * 2014年11月 1篇 <https://blog.csdn.net/tiplip/article/month/2014/11>
+  * 2014年10月 3篇 <https://blog.csdn.net/tiplip/article/month/2014/10>
+  * 2014年8月 1篇 <https://blog.csdn.net/tiplip/article/month/2014/08>
+  * 2014年3月 3篇 <https://blog.csdn.net/tiplip/article/month/2014/03>
+  * 2013年11月 1篇 <https://blog.csdn.net/tiplip/article/month/2013/11>
+  * 2013年10月 3篇 <https://blog.csdn.net/tiplip/article/month/2013/10>
+  * 2013年9月 2篇 <https://blog.csdn.net/tiplip/article/month/2013/09>
+
+展开
+
+
+      热门文章
+
+  * VC2012编译CEF3 <https://blog.csdn.net/tiplip/article/details/42047815>
+
+    阅读量：13402
+
+  * C++写动态网站之HelloWorld!
+    <https://blog.csdn.net/tiplip/article/details/40856203>
+
+    阅读量：6999
+
+  * C++开发的论坛系统 - BBS
+    <https://blog.csdn.net/tiplip/article/details/10980397>
+
+    阅读量：5682
+
+  * 基于地图的商户信息采集系统
+    <https://blog.csdn.net/tiplip/article/details/46974413>
+
+    阅读量：5522
+
+  * 订单导出工具（淘宝，天猫）
+    <https://blog.csdn.net/tiplip/article/details/79333217>
+
+    阅读量：5079
+
+
+      最新评论
+
+  * 网页自动化操作之-全自动下单（淘宝...
+    <https://blog.csdn.net/tiplip/article/details/82959840#comments>
+
+    qq_21829413 <https://my.csdn.net/qq_21829413>：下单会遇到滑动验证吗？
+
+  * 网页自动化操作之-全自动下单（淘宝...
+    <https://blog.csdn.net/tiplip/article/details/82959840#comments>
+
+    xiaoleixyz <https://my.csdn.net/xiaoleixyz>：请问有源码共享吗。
+
+  * 网页自动化操作之-全自动下单（淘宝...
+    <https://blog.csdn.net/tiplip/article/details/82959840#comments>
+
+    tiplip <https://my.csdn.net/tiplip>：[reply]qq_41995940[/reply] 降低
+    人工使用率
+
+  * 网页自动化操作之-全自动下单（淘宝...
+    <https://blog.csdn.net/tiplip/article/details/82959840#comments>
+
+    qq_41995940 <https://my.csdn.net/qq_41995940>：想问一哈，这个软件的
+    意义何在..
+
+  * 基于地图的商户信息采集系统
+    <https://blog.csdn.net/tiplip/article/details/46974413#comments>
+
+    dadadadadadadadi <https://my.csdn.net/dadadadadadadadi>：欢迎加入POI
+    数据爬取交流群<a target="_blank" hre...
+
+
+      联系我们
+
+微信客服 <https://bbs.csdn.net/forums/Service?utm_source=csdn_footer>
+
+微信客服
+
+QQ客服
+<http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDE4MDEwNl80ODc3MzVfODAwMTgwMTA2XzJf>
+
+QQ客服
+
+kefu@csdn.net <mailto:webmaster@csdn.net>
+/QQ客服
+<http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDE4MDEwNl80ODc3MzVfODAwMTgwMTA2XzJf>
+
+/
+
+/客服论坛 <http://bbs.csdn.net/forums/Service>
+
+/ 400-660-0108
+
+工作时间 8:00-22:00
+
+关于我们 <https://www.csdn.net/company/index.html#about>招聘
+<https://www.csdn.net/company/index.html#recruit>广告服务
+<https://www.csdn.net/company/index.html#contact> 网站地图
+<https://www.csdn.net/gather/A>
+
+/百度提供站内搜索/ <https://zn.baidu.com/cse/home/index> 京ICP证09002463
+号 <http://www.miibeian.gov.cn/>
+
+©1999-2018 江苏乐知网络技术有限公司
+
+江苏知之为计算机有限公司 北京创新乐知信息技术有限公司版权所有
+
+经营性网站备案信息
+<http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010>
+/网络110报警服务 <http://www.cyberpolice.cn/>
+
+/
+
+北京互联网违法和不良信息举报中心 <http://www.bjjubao.org/>
+
+中国互联网举报中心 <http://www.12377.cn/>
+
+  * 点赞 取消点赞
+
+    0
+  * 评论
+
+    <#commentBox>
+  * 目录
+     1. 如何设计一个证券期货撮合竞价引擎？ <#t0>
+     2. 数据库存储方案 <#t1>
+     3. Securities Master Database with MySQL and Python <#t2>
+  * 收藏
+  * <#> 手机看
+  * 上一篇 <https://blog.csdn.net/tiplip/article/details/44802611>
+  * 下一篇 <https://blog.csdn.net/tiplip/article/details/46974413>
+  *
+  * 更多 <#chatqa>
+      o 上一篇 <https://blog.csdn.net/tiplip/article/details/44802611>
+      o 下一篇 <https://blog.csdn.net/tiplip/article/details/46974413>
+
+<https://mall.csdn.net/vip_code>
+
+<#>
+
+<#>
+*猿学习*
+
+  *
+
+
+                Python全栈工程师免费试听
+
+    <https://edu.csdn.net/topic/python115?utm_source=blogright>
+  *
+  *
+
+
+                人工智能工程师
+
+    <https://edu.csdn.net/topic/ai30?utm_source=blogright>
+  *
+
+
+    不良信息举报
+
+举报内容：
+
+股票证券交易术语 - C++与Web
+
+举报原因：
+
+色情 政治 抄袭 广告 侵权 骂人 其他
+原文地址：
+原因补充：
+
+最多只允许输入30个字
+

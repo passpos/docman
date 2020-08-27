@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Integrating VichUploaderBundle to Upload Files and Images &mdash;   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Integrating FOSUserBundle to Manage Users" href="fosuserbundle.html" />
+    <link rel="prev" title="Tips and Tricks" href="../tutorials/tips-and-tricks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../book/installation.html">Chapter 1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/your-first-backend.html">Chapter 2. Your First Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/basic-configuration.html">Chapter 3. Basic Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/design-configuration.html">Chapter 4. Design Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/list-search-show-configuration.html">Chapter 5. List, Search and Show Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/edit-new-configuration.html">Chapter 6. Edit and New Views Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/actions-configuration.html">Chapter 7. Actions Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/menu-configuration.html">Chapter 8. Menu Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/complex-dynamic-backends.html">Chapter 9. Creating Complex and Dynamic Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/configuration-reference.html">Configuration Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/i18n.html">How to Translate the Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-actions.html">How to Define Custom Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom-property-options.html">How to Define Custom Options for Entity Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complex-backend-config.html">How to Manage Configuration for Complex Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tips-and-tricks.html">Tips and Tricks</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Integrating VichUploaderBundle to Upload Files and Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-the-file-uploader-bundle">Installing the File Uploader Bundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uploading-image-files">Uploading Image Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-uploading-of-image-files">Configuring the Uploading of Image Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-your-entities-to-persist-images">Preparing your Entities to Persist Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#displaying-the-images-in-the-list-and-show-views">Displaying the Images in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uploading-the-images-in-the-edit-and-new-views">Uploading the Images in the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#uploading-other-types-of-files">Uploading Other Types of Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-uploading-of-files">Configuring the Uploading of Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-your-entities-to-persist-files">Preparing your Entities to Persist Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#displaying-the-files-in-the-list-and-show-views">Displaying the Files in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uploading-the-files-in-the-edit-and-new-views">Uploading the Files in the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-form-fields-for-image-and-file-uploading">Customizing Form Fields for Image and File Uploading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fosuserbundle.html">Integrating FOSUserBundle to Manage Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ivoryckeditorbundle.html">Integrating FOSCKEditorBundle to Create a WYSIWYG Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fosrestbundle.html">Integrating FOSRestBundle to Create APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/about.html">About this Project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html"></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Integrating VichUploaderBundle to Upload Files and Images</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/integration/vichuploaderbundle.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="integrating-vichuploaderbundle-to-upload-files-and-images">
+<h1>Integrating VichUploaderBundle to Upload Files and Images<a class="headerlink" href="#integrating-vichuploaderbundle-to-upload-files-and-images" title="Permalink to this headline">¶</a></h1>
+<p>In this article you’ll learn how to allow uploading files in your backends, both
+images and regular files, such as PDF files.</p>
+<p>Although EasyAdmin doesn’t provide any built-in feature to upload files, it
+integrates seamlessly with <a class="reference external" href="https://github.com/dustin10/VichUploaderBundle">VichUploaderBundle</a>, the most popular file uploader
+Symfony bundle.</p>
+<div class="section" id="installing-the-file-uploader-bundle">
+<h2>Installing the File Uploader Bundle<a class="headerlink" href="#installing-the-file-uploader-bundle" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Install the bundle:</p></li>
+</ol>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>$ composer require vich/uploader-bundle
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Add the minimal configuration that makes the bundle work:</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/vich_uploader.yaml</span>
+<span class="nt">vich_uploader</span><span class="p">:</span>
+    <span class="nt">db_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">orm</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="uploading-image-files">
+<h2>Uploading Image Files<a class="headerlink" href="#uploading-image-files" title="Permalink to this headline">¶</a></h2>
+<p>First you’ll learn how to upload and preview images in the backend. Then, in the
+next section, you’ll see how to upload other types of files (such as PDFs).</p>
+<div class="section" id="configuring-the-uploading-of-image-files">
+<h3>Configuring the Uploading of Image Files<a class="headerlink" href="#configuring-the-uploading-of-image-files" title="Permalink to this headline">¶</a></h3>
+<p>Before uploading files, you must configure the “mappings” for the
+VichUploaderBundle. These “mappings” tell the bundle where should the files be
+uploaded and which paths should be used to display them in the application.</p>
+<p>This is the configuration needed for this example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/services.yaml</span>
+<span class="nt">parameters</span><span class="p">:</span>
+    <span class="nt">app.path.product_images</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/uploads/images/products</span>
+    <span class="c1"># ...</span>
+
+<span class="c1"># config/packages/vich_uploader.yaml</span>
+<span class="nt">vich_uploader</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">mappings</span><span class="p">:</span>
+        <span class="nt">product_images</span><span class="p">:</span>
+            <span class="nt">uri_prefix</span><span class="p">:</span>         <span class="s">&#39;%app.path.product_images%&#39;</span>
+            <span class="nt">upload_destination</span><span class="p">:</span> <span class="s">&#39;%kernel.project_dir%/public%app.path.product_images%&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">product_images</span></code> value is a freely chosen name which holds the configuration
+for a specific mapping. This value will be used later in the entity configuration.</p>
+<p>The uploaded images are stored in the directory defined in <code class="docutils literal notranslate"><span class="pre">upload_destination</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">uri_prefix</span></code> option defines the base path prepended to file paths so they
+can be displayed in the application. In this example, the <code class="docutils literal notranslate"><span class="pre">uri_prefix</span></code> value is
+defined as a container parameter, because we’ll reuse this value in the EasyAdmin
+configuration later.</p>
+</div>
+<div class="section" id="preparing-your-entities-to-persist-images">
+<h3>Preparing your Entities to Persist Images<a class="headerlink" href="#preparing-your-entities-to-persist-images" title="Permalink to this headline">¶</a></h3>
+<p>Considering that the <code class="docutils literal notranslate"><span class="pre">Product</span></code> entity is already created, the first change you
+need to make is adding the <code class="docutils literal notranslate"><span class="pre">Uploadable</span></code> annotation to the entity class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\File\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Vich\UploaderBundle\Mapping\Annotation</span> <span class="k">as</span> <span class="nx">Vich</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @ORM\Entity</span>
+<span class="sd"> * @Vich\Uploadable</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">Product</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then, you need to add two new properties (<code class="docutils literal notranslate"><span class="pre">image</span></code> and <code class="docutils literal notranslate"><span class="pre">imageFile</span></code>):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\File\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Vich\UploaderBundle\Mapping\Annotation</span> <span class="k">as</span> <span class="nx">Vich</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @ORM\Entity</span>
+<span class="sd"> * @Vich\Uploadable</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">Product</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\Column(type=&quot;string&quot;, length=255)</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$image</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Vich\UploadableField(mapping=&quot;product_images&quot;, fileNameProperty=&quot;image&quot;)</span>
+<span class="sd">     * @var File</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$imageFile</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\Column(type=&quot;datetime&quot;)</span>
+<span class="sd">     * @var \DateTime</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$updatedAt</span><span class="p">;</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setImageFile</span><span class="p">(</span><span class="nx">File</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">imageFile</span> <span class="o">=</span> <span class="nv">$image</span><span class="p">;</span>
+
+        <span class="c1">// VERY IMPORTANT:</span>
+        <span class="c1">// It is required that at least one field changes if you are using Doctrine,</span>
+        <span class="c1">// otherwise the event listeners won&#39;t be called and the file is lost</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$image</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// if &#39;updatedAt&#39; is not defined in your entity, use another property</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">updatedAt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getImageFile</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">imageFile</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setImage</span><span class="p">(</span><span class="nv">$image</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image</span> <span class="o">=</span> <span class="nv">$image</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getImage</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">image</span></code> property stores just the name of the uploaded image and it’s
+persisted in the database. The <code class="docutils literal notranslate"><span class="pre">imageFile</span></code> property stores the binary contents
+of the image file and it’s not persisted in the database (that’s why it doesn’t
+define a <code class="docutils literal notranslate"><span class="pre">&#64;ORM</span></code> annotation).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">imageFile</span></code> property must define a <code class="docutils literal notranslate"><span class="pre">&#64;Vich\UploadableField</span></code> annotation that
+configures both the “mapping” to use (<code class="docutils literal notranslate"><span class="pre">product_images</span></code> in this case) and the
+entity property that stores the image name (<code class="docutils literal notranslate"><span class="pre">image</span></code> in this case).</p>
+</div>
+<div class="section" id="displaying-the-images-in-the-list-and-show-views">
+<h3>Displaying the Images in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> Views<a class="headerlink" href="#displaying-the-images-in-the-list-and-show-views" title="Permalink to this headline">¶</a></h3>
+<p>Use the special <code class="docutils literal notranslate"><span class="pre">image</span></code> type in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views to display the
+contents of a property as an image:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> base_path</span><span class="p">:</span> <span class="s">&#39;%app.path.product_images%&#39;</span> <span class="p p-Indicator">}</span>
+            <span class="c1"># ...</span>
+            <span class="nt">show</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> base_path</span><span class="p">:</span> <span class="s">&#39;%app.path.product_images%&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>The property used to display the image must be the one that stores the image path
+(<code class="docutils literal notranslate"><span class="pre">image</span></code> in this case) and not the one that stores the binary contents of the
+image (<code class="docutils literal notranslate"><span class="pre">imageFile</span></code>). Since this property only stores the image name, you must also
+define the <code class="docutils literal notranslate"><span class="pre">base_path</span></code> option to prepend the path to make the image accessible.</p>
+<p>Instead of hardcoding the <code class="docutils literal notranslate"><span class="pre">base_path</span></code> value, this example uses the
+<code class="docutils literal notranslate"><span class="pre">app.path.product_images</span></code> container parameter which also was used in the
+VichUploaderBundle configuration.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you define <a class="reference external" href="https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/namers.md">custom namers</a> in VichUploaderBundle, images won’t be
+displayed correctly because their paths will be wrong. The simplest solution
+is to define a custom template fragment to display the image and use in it
+the <code class="docutils literal notranslate"><span class="pre">vich_uploader_asset()</span></code> Twig function:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;image&#39;</span><span class="p p-Indicator">,</span><span class="nt"> template</span><span class="p">:</span> <span class="s">&#39;vich_uploader_image.html.twig&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="c">{# templates/vich_uploader_image.html.twig #}</span><span class="x"></span>
+<span class="x">&lt;a href=&quot;#&quot; class=&quot;easyadmin-thumbnail&quot; data-featherlight=&quot;#easyadmin-lightbox-</span><span class="cp">{{</span> <span class="nv">item.id</span> <span class="cp">}}</span><span class="x">&quot; data-featherlight-close-on-click=&quot;anywhere&quot;&gt;</span>
+<span class="x">    </span><span class="c">{# the second parameter is the name of the property with the UploadableField annotation #}</span><span class="x"></span>
+<span class="x">    &lt;img src=&quot;</span><span class="cp">{{</span> <span class="nv">vich_uploader_asset</span><span class="o">(</span><span class="nv">item</span><span class="o">,</span> <span class="s1">&#39;imageFile&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="x">&lt;/a&gt;</span>
+
+<span class="x">&lt;div id=&quot;easyadmin-lightbox-</span><span class="cp">{{</span> <span class="nv">item.id</span> <span class="cp">}}</span><span class="x">&quot; class=&quot;easyadmin-lightbox&quot;&gt;</span>
+<span class="x">    </span><span class="c">{# the second parameter is the name of the property with the UploadableField annotation #}</span><span class="x"></span>
+<span class="x">    &lt;img src=&quot;</span><span class="cp">{{</span> <span class="nv">vich_uploader_asset</span><span class="o">(</span><span class="nv">item</span><span class="o">,</span> <span class="s1">&#39;imageFile&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="uploading-the-images-in-the-edit-and-new-views">
+<h3>Uploading the Images in the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> Views<a class="headerlink" href="#uploading-the-images-in-the-edit-and-new-views" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to enable uploading images in the forms of the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and
+<code class="docutils literal notranslate"><span class="pre">new</span></code> views is to define the type of the property as <code class="docutils literal notranslate"><span class="pre">file</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;imageFile&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;file&#39;</span> <span class="p p-Indicator">}</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In this case, the property must be the one which stores the binary contents of
+the image (<code class="docutils literal notranslate"><span class="pre">imagefile</span></code> in this case) and not the one that stores just the name
+(<code class="docutils literal notranslate"><span class="pre">image</span></code> in this case).</p>
+<p>Although this works as expected, its behavior is too basic (for example you can’t
+see a preview of the existing image before uploading a new file). In order to get
+the best experience, use <code class="docutils literal notranslate"><span class="pre">VichImageType</span></code> as the type of the property:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;imageFile&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;vich_image&#39;</span> <span class="p p-Indicator">}</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Even if your application uses Symfony 3 there is no need to use the FQCN of
+the VichImageType (<code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">'Vich\UploaderBundle\Form\Type\VichImageType'</span></code>)
+because EasyAdmin supports the short types for some popular third-party bundles.</p>
+</div>
+</div>
+</div>
+<div class="section" id="uploading-other-types-of-files">
+<h2>Uploading Other Types of Files<a class="headerlink" href="#uploading-other-types-of-files" title="Permalink to this headline">¶</a></h2>
+<p>Adding support for uploading other types of files (such as PDF files) is similar
+to uploading images. That’s why in the next sections we’ll show the required
+steps, but we won’t repeat the same explanations. In this example, we’ll add
+support for uploading PDFs that represent the contracts subscribed by the users.</p>
+<div class="section" id="configuring-the-uploading-of-files">
+<h3>Configuring the Uploading of Files<a class="headerlink" href="#configuring-the-uploading-of-files" title="Permalink to this headline">¶</a></h3>
+<p>Define the “mapping” for the new user contracts:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/services.yaml</span>
+<span class="nt">parameters</span><span class="p">:</span>
+    <span class="nt">app.path.user_contracts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/uploads/files/user/contracts</span>
+    <span class="c1"># ...</span>
+
+<span class="c1"># config/packages/vich_uploader.yaml</span>
+<span class="nt">vich_uploader</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">mappings</span><span class="p">:</span>
+        <span class="nt">user_contracts</span><span class="p">:</span>
+            <span class="nt">uri_prefix</span><span class="p">:</span> <span class="s">&#39;%app.path.user_contracts%&#39;</span>
+            <span class="nt">upload_destination</span><span class="p">:</span> <span class="s">&#39;%kernel.project_dir%/public%app.path.user_contracts%&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preparing-your-entities-to-persist-files">
+<h3>Preparing your Entities to Persist Files<a class="headerlink" href="#preparing-your-entities-to-persist-files" title="Permalink to this headline">¶</a></h3>
+<p>Considering that the <code class="docutils literal notranslate"><span class="pre">User</span></code> entity already exists, add two new properties to
+store the name of the contract (<code class="docutils literal notranslate"><span class="pre">contract</span></code> property) and the binary contents of
+the PDF file (<code class="docutils literal notranslate"><span class="pre">contractFile</span></code> property). Only the first property is persisted in
+the database:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\File\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Vich\UploaderBundle\Mapping\Annotation</span> <span class="k">as</span> <span class="nx">Vich</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @ORM\Entity</span>
+<span class="sd"> * @Vich\Uploadable</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\Column(type=&quot;string&quot;, length=255)</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$contract</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Vich\UploadableField(mapping=&quot;user_contracts&quot;, fileNameProperty=&quot;contract&quot;)</span>
+<span class="sd">     * @var File</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$contractFile</span><span class="p">;</span>
+
+    <span class="c1">// ... getters and setters for these properties</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="displaying-the-files-in-the-list-and-show-views">
+<h3>Displaying the Files in the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> Views<a class="headerlink" href="#displaying-the-files-in-the-list-and-show-views" title="Permalink to this headline">¶</a></h3>
+<p>This is the most tricky part of adding support for file uploads. Contrary to
+images, it’s not easy to provide a preview of the contents for any kind of file.
+Instead of trying to do that, we’ll display a <em>View contract (PDF)</em> link in the
+<code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> views.</p>
+<p>First, add the <code class="docutils literal notranslate"><span class="pre">contract</span></code> property to the list of properties to display:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contract</span>
+</pre></div>
+</div>
+<p>Then, add the <code class="docutils literal notranslate"><span class="pre">template</span></code> option to define the custom template to use to render
+the contents of this property:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">User</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">list</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="c1"># ...</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;contract&#39;</span><span class="p p-Indicator">,</span><span class="nt"> template</span><span class="p">:</span> <span class="s">&#39;contract.html.twig&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Now you must create the <code class="docutils literal notranslate"><span class="pre">templates/contract.html.twig</span></code> template with this content:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">value</span> <span class="cp">}}</span><span class="x">&quot;&gt;View contract (PDF)&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Reload your backend and you’ll see the link to the contract PDF. However, if you
+click on the link, you won’t see the file. The reason is that the <code class="docutils literal notranslate"><span class="pre">contract</span></code>
+property only stores the name of the file, but you also need the public path to
+that file (which in this case is stored in the <code class="docutils literal notranslate"><span class="pre">app.path.user_contracts</span></code> parameter).</p>
+<p>The solution is simple: you can define any number of arbitrary options for a
+property and they will be available in your custom template via the <code class="docutils literal notranslate"><span class="pre">field_options</span></code>
+option. So you just need to add a new option in the property definition:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Before</span>
+<span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;contract&#39;</span><span class="p p-Indicator">,</span><span class="nt"> template</span><span class="p">:</span> <span class="s">&#39;contract.html.twig&#39;</span> <span class="p p-Indicator">}</span>
+
+<span class="c1"># After</span>
+<span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;contract&#39;</span><span class="p p-Indicator">,</span><span class="nt"> template</span><span class="p">:</span> <span class="s">&#39;contract.html.twig&#39;</span><span class="p p-Indicator">,</span><span class="nt"> base_path</span><span class="p">:</span> <span class="s">&#39;%app.path.user_contracts%&#39;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Then, update the custom template to use this new option:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">field_options.base_path</span> <span class="o">~</span> <span class="s1">&#39;/&#39;</span> <span class="o">~</span> <span class="nv">value</span> <span class="cp">}}</span><span class="x">&quot;&gt;View contract (PDF)&lt;/a&gt;</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also solve this issue using Symfony asset packages instead of relying
+on EasyAdmin options. The custom template would look like this:</p>
+<div class="highlight-twig notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="nv">value</span><span class="o">,</span> <span class="s1">&#39;user_contracts&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;View contract (PDF)&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="uploading-the-files-in-the-edit-and-new-views">
+<h3>Uploading the Files in the <code class="docutils literal notranslate"><span class="pre">edit</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> Views<a class="headerlink" href="#uploading-the-files-in-the-edit-and-new-views" title="Permalink to this headline">¶</a></h3>
+<p>Thanks to the custom <code class="docutils literal notranslate"><span class="pre">VichFileType</span></code> provided by the bundle, this is pretty
+straightforward:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="nt">entities</span><span class="p">:</span>
+        <span class="nt">Product</span><span class="p">:</span>
+            <span class="c1"># ...</span>
+            <span class="nt">form</span><span class="p">:</span>
+                <span class="nt">fields</span><span class="p">:</span>
+                    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> property</span><span class="p">:</span> <span class="s">&#39;contractFile&#39;</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span> <span class="s">&#39;vich_file&#39;</span> <span class="p p-Indicator">}</span>
+            <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Even if your application uses Symfony 3 there is no need to use the FQCN of
+the VichFileType (<code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">'Vich\UploaderBundle\Form\Type\VichFileType'</span></code>)
+because EasyAdmin supports the short types for some popular third-party bundles.</p>
+</div>
+</div>
+</div>
+<div class="section" id="customizing-form-fields-for-image-and-file-uploading">
+<h2>Customizing Form Fields for Image and File Uploading<a class="headerlink" href="#customizing-form-fields-for-image-and-file-uploading" title="Permalink to this headline">¶</a></h2>
+<p>EasyAdmin renders the VichUploaderBundle form fields using a custom form theme
+that improves their default styling. For example, image fields are rendered as
+thumbnails which display the original images when clicking on them.</p>
+<p>If you prefer to use the original VichUploaderBundle styles, add its form theme
+in the <code class="docutils literal notranslate"><span class="pre">form_theme</span></code> configuration option (put it at the end to override
+EasyAdmin’s default form theme):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># config/packages/easy_admin.yaml</span>
+<span class="nt">easy_admin</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">design</span><span class="p">:</span>
+        <span class="nt">form_theme</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="s">&#39;@EasyAdmin/form/bootstrap_4.html.twig&#39;</span>
+            <span class="p p-Indicator">-</span> <span class="s">&#39;@VichUploader/Form/fields.html.twig&#39;</span>
+</pre></div>
+</div>
+<p>Apply the same technique in case you want to use your own form theme instead
+of the one provided by VichUploaderBundle.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fosuserbundle.html" class="btn btn-neutral float-right" title="Integrating FOSUserBundle to Manage Users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../tutorials/tips-and-tricks.html" class="btn btn-neutral float-left" title="Tips and Tricks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2010-2019, Thomas Rabaix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

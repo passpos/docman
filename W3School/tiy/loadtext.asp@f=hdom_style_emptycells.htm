@@ -1,0 +1,33 @@
+<html><!-- saved from url=(0067)http://www.w3school.com.cn/tiy/loadtext.asp?f=hdom_style_emptycells --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript">
+function showEmptyCells()
+{
+document.getElementById('myTable').style.emptyCells="show";
+}
+</script>
+</head>
+<body>
+
+<table border="1" id="myTable">
+<tr>
+<td>100</td>
+<td>200</td>
+</tr>
+<tr>
+<td>300</td>
+<td></td>
+</tr>
+</table>
+
+<input type="button" onclick="showEmptyCells()" value="Show empty cells">
+
+</body>
+</html>

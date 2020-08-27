@@ -1,0 +1,38 @@
+<html><!-- saved from url=(0061)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_typewriter --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+
+<script type="text/javascript">
+message="_25d7_25ee_25ba_25c3_25b5_25c4_25d1_25a7_25cf_25b0_25b7_25bd_25b7_25a8_25a3_25ac_25ca_25c7_25d1_25a7_25cf_25b0_25ca_25b5_25c0_25fd_25a1_25a3-www.w3school.com.cn.htm"
+pos=0
+maxlength=message.length+1
+
+function writemsg()
+{
+if (pos<maxlength)
+	{
+	txt=message.substring(pos,0)
+	document.forms[0].msgfield.value=txt
+	pos++ 
+	timer=setTimeout("writemsg()", 50)
+	}
+}
+function stoptimer()
+{
+clearTimeout(timer)
+}
+</script>
+</head>
+
+<body onload="writemsg()" onunload="stoptimer()">
+<form>
+<input id="msgfield" size="65">
+</form>
+</body>
+</html>

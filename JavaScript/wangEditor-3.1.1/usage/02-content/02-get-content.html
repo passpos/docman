@@ -1,0 +1,95 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>02-get-content.md</title>
+    <style type="text/css">
+
+      /* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+      td, h1, h2, h3, h4, h5, p, ul, ol, li {
+          page-break-inside: avoid; 
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="passage">
+      <h1 id="section">读取内容</h1>
+      <p>可以<code>html</code>和<code>text</code>的方式读取编辑器的内容。</p>
+      <pre>
+    &lt;div id="div1"&gt;
+      &lt;p&gt;欢迎使用 wangEditor 编辑器&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button id="btn1"&gt;获取html&lt;/button&gt;
+    &lt;button id="btn2"&gt;获取text&lt;/button&gt;
+
+    &lt;script type="text/javascript" src="/wangEditor.min.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript"&gt;
+      // 创建编辑器
+      var E = window.wangEditor
+      var editor = new E('#div1')
+      editor.<code>create()</code>
+
+      document.getElementById('btn1').addEventListener('click', function () {
+        // 读取 html
+        alert(editor.txt.<code>html()</code>)
+      }, false)
+
+      document.getElementById('btn2').addEventListener('click', function () {
+        // 读取 text
+        alert(editor.txt.<code>text()</code>)
+      }, false)
+
+    &lt;/script&gt;</pre>
+      <p>需要注意的是：<strong>从编辑器中获取的 html 代码是不包含任何样式的纯 html</strong>，如果显示的时候需要对其中的<code>&lt;table&gt;</code><code>&lt;code&gt;</code><code>&lt;blockquote&gt;</code>等标签进行自定义样式（这样既可实现多皮肤功能），下面提供了编辑器中使用的样式供参考</p>
+      <pre>
+    /* table 样式 */
+    table {
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+    }
+    table td,
+    table th {
+      border-bottom: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      padding: 3px 5px;
+    }
+    table th {
+      border-bottom: 2px solid #ccc;
+      text-align: center;
+    }
+
+    /* blockquote 样式 */
+    blockquote {
+      display: block;
+      border-left: 8px solid #d0e5f2;
+      padding: 5px 10px;
+      margin: 10px 0;
+      line-height: 1.4;
+      font-size: 100%;
+      background-color: #f1f1f1;
+    }
+
+    /* code 样式 */
+    code {
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      background-color: #f1f1f1;
+      border-radius: 3px;
+      padding: 3px 5px;
+      margin: 0 3px;
+    }
+    pre code {
+      display: block;
+    }
+
+    /* ul ol 样式 */
+    ul, ol {
+      margin: 10px 0 10px 20px;
+    }</pre>
+    </div>
+  </body>
+</html>

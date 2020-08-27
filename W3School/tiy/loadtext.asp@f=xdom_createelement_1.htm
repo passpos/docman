@@ -1,0 +1,31 @@
+<html><!-- saved from url=(0066)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_createelement_1 --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books.xml");
+
+newel=xmlDoc.createElement("edition");
+newtext=xmlDoc.createTextNode("first");
+newel.appendChild(newtext);
+
+x=xmlDoc.getElementsByTagName("book")[0];
+x.appendChild(newel);
+
+//Output title and edition
+document.write(x.getElementsByTagName("title")[0].childNodes[0].nodeValue);
+document.write(" - Edition: ");
+document.write(x.getElementsByTagName("edition")[0].childNodes[0].nodeValue);
+</script>
+</body>
+</html>

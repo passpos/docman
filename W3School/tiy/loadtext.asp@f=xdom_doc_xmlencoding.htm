@@ -1,0 +1,28 @@
+<html><!-- saved from url=(0066)http://www.w3school.com.cn/tiy/loadtext.asp?f=xdom_doc_xmlencoding --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<script type="text/javascript" src="../example/xdom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+
+<script type="text/javascript">
+xmlDoc=loadXMLDoc("../example/xdom/books.xml");
+
+document.write("XML encoding: " + xmlDoc.xmlEncoding);
+document.write("<br />");
+document.write("XML standalone: " + xmlDoc.xmlStandalone);
+document.write("<br />");
+document.write("XML version: " + xmlDoc.xmlVersion);
+document.write("<br />");
+document.write("Encoding used when parsing: " + xmlDoc.inputEncoding);
+</script>
+
+</body>
+</html>

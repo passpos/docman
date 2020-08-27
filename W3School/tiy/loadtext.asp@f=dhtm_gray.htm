@@ -1,0 +1,32 @@
+<html><!-- saved from url=(0055)http://www.w3school.com.cn/tiy/loadtext.asp?f=dhtm_gray --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<link rel="shortcut icon" href="../favicon.ico" /><SCRIPT language="JavaScript">
+<!--
+  function CatchJavaScriptErrors() {return true;}
+  window.onerror = CatchJavaScriptErrors;
+//-->
+</SCRIPT>
+
+<head>
+<style>
+img
+{
+filter:gray()
+}
+</style>
+<script type="text/javascript">
+function color()
+{
+document.getElementById('myImage').style.filter=false
+}
+function gray()
+{
+document.getElementById('myImage').style.filter="gray()"
+}
+</script>
+</head>
+
+<body>
+<b>Mouse over the image</b><br />
+<img id="myImage" src="../i/eg_landscape.jpg" onmouseover="color()" onmouseout="gray()" />
+</body>
+</html>
