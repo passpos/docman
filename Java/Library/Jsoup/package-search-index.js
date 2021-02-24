@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"org.jsoup"},{"l":"org.jsoup.examples"},{"l":"org.jsoup.helper"},{"l":"org.jsoup.internal"},{"l":"org.jsoup.nodes"},{"l":"org.jsoup.parser"},{"l":"org.jsoup.safety"},{"l":"org.jsoup.select"},{"l":"所有程序包","url":"allpackages-index.html"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.jsoup"},{"l":"org.jsoup.examples"},{"l":"org.jsoup.helper"},{"l":"org.jsoup.internal"},{"l":"org.jsoup.nodes"},{"l":"org.jsoup.parser"},{"l":"org.jsoup.safety"},{"l":"org.jsoup.select"}]
