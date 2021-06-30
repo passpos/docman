@@ -29,7 +29,7 @@
 <li><a href="#options-for-javadoc">Options for javadoc</a></li>
 <li><a href="#extended-options">Extended Options</a></li>
 <li><a href="#standard-doclet-options">Standard doclet Options</a></li>
-<li><a href="#additional-options-provided-by-the-standard-doclet">Additional Options Provided by the Standard doclet</a></li>
+<li><a href="#additional-options-provided-by-the-standard-doclet">Additional Options Provided by the Standard Doclet</a></li>
 </ul>
 </nav>
 <main><h2 id="name">Name</h2>
@@ -71,7 +71,7 @@
 <li><p><code>--module-path</code> or <code>-p</code></p></li>
 <li><p><code>--module-source-path</code></p></li>
 <li><p><code>--release</code></p></li>
-<li><p><code>-source</code></p></li>
+<li><p><code>--source</code> or <code>-source</code></p></li>
 <li><p><code>--source-path</code> or <code>-sourcepath</code></p></li>
 <li><p><code>--system</code></p></li>
 <li><p><code>--upgrade-module-path</code></p></li>
@@ -91,13 +91,13 @@
 <dd>Generates output by using an alternate doclet. Use the fully qualified name. This doclet defines the content and formats the output. If the <code>-doclet</code> option isn't used, then the <code>javadoc</code> tool uses the standard doclet for generating the default HTML format. This class must contain the <code>start(Root)</code> method. The path to this starting class is defined by the <code>-docletpath</code> option.
 </dd>
 <dt><code>-docletpath</code> <em>path</em></dt>
-<dd>Specifies where to find doclet class files (specified with the <code>-doclet</code> option) and any JAR files it depends on. If the starting class file is in a JAR file, then this option specifies the path to that JAR file. You can specify an absolute path or a path relative to the current directory. If <code>classpathlist</code> contains multiple paths or JAR files, then they should be separated with a colon (<code>:</code>) on Oracle Solaris and a semi-colon (<code>;</code>) on Windows. This option isn't necessary when the <code>doclet</code> starting class is already in the search path.
+<dd>Specifies where to find doclet class files (specified with the <code>-doclet</code> option) and any JAR files it depends on. If the starting class file is in a JAR file, then this option specifies the path to that JAR file. You can specify an absolute path or a path relative to the current directory. If <code>classpathlist</code> contains multiple paths or JAR files, then they should be separated with a colon (<code>:</code>) on Linux and a semi-colon (<code>;</code>) on Windows. This option isn't necessary when the <code>doclet</code> starting class is already in the search path.
 </dd>
 <dt><code>-exclude</code> <em>pkglist</em></dt>
 <dd><p>Unconditionally, excludes the specified packages and their subpackages from the list formed by <code>-subpackages</code>. It excludes those packages even when they would otherwise be included by some earlier or later <code>-subpackages</code> option.</p>
 <p>The following example would include <code>java.io</code>, <code>java.util</code>, and <code>java.math</code> (among others), but would exclude packages rooted at <code>java.net</code> and <code>java.lang</code>. Notice that these examples exclude <code>java.lang.ref</code>, which is a subpackage of <code>java.lang</code>.</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and OS X:</strong></p>
+<li><p><strong>Linux and OS X:</strong></p>
 <blockquote>
 <p><code>javadoc -sourcepath /home/user/src -subpackages java -exclude java.net:java.lang</code></p>
 </blockquote></li>
@@ -114,11 +114,11 @@
 <li><p><code>all</code>: includes all dependencies.</p></li>
 </ul>
 </dd>
-<dt><code>-help</code> or <code>--help</code></dt>
-<dd>Displays the online help, which lists all of the <code>javadoc</code> and <code>doclet</code> command-line options.
+<dt><code>--help</code>, <code>-help</code>, <code>-h</code>, or <code>-?</code></dt>
+<dd>Prints a synopsis of the standard options.
 </dd>
 <dt><code>--help-extra</code> or <code>-X</code></dt>
-<dd>Prints a synopsis of non-standard options and exits.
+<dd>Prints a synopsis of the set of extra options.
 </dd>
 <dt><code>-J</code><em>flag</em></dt>
 <dd><p>Passes <em>flag</em> directly to the Java Runtime Environment (JRE) that runs the <code>javadoc</code> tool. For example, if you must ensure that the system sets aside 32 MB of memory in which to process the generated documentation, then you would call the <code>-Xmx</code> option as follows: <code>javadoc -J-Xmx32m -J-Xms32m com.mypackage</code>. Be aware that <code>-Xms</code> is optional because it only sets the size of initial memory, which is useful when you know the minimum amount of memory required.</p>
@@ -178,7 +178,7 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dd><p>Generates documentation from source files in the specified packages and recursively in their subpackages. This option is useful when adding new subpackages to the source code because they are automatically included. Each package argument is any top-level subpackage (such as <code>java</code>) or fully qualified package (such as <code>javax.swing</code>) that doesn't need to contain source files. Arguments are separated by colons on all operating systems. Wild cards aren't allowed. Use <code>-sourcepath</code> to specify where to find the packages. This option doesn't process source files that are in the source tree but don't belong to the packages.</p>
 <p>For example, the following commands generates documentation for packages named <code>java</code> and <code>javax.swing</code> and all of their subpackages.</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and OS X:</strong></p>
+<li><p><strong>Linux and OS X:</strong></p>
 <blockquote>
 <p><code>javadoc -d docs -sourcepath /home/user/src -subpackages java:javax.swing</code></p>
 </blockquote></li>
@@ -194,6 +194,9 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dt><code>--version</code></dt>
 <dd>Prints version information.
 </dd>
+<dt><code>-Werror</code></dt>
+<dd>Reports an error if any warnings occur.
+</dd>
 </dl>
 <h2 id="extended-options">Extended Options</h2>
 <p><strong>Note:</strong></p>
@@ -206,15 +209,6 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <li><p><code>-Xmaxerrs</code></p></li>
 <li><p><code>-Xmaxwarns</code></p></li>
 </ul>
-<p>The following extended <code>javadoc</code> options are not equivalent to a corresponding <code>javac</code> option:</p>
-<dl>
-<dt><code>-Xmodule:</code><em>module-name</em></dt>
-<dd>Specifies a module to which the classes being compiled belong.
-</dd>
-<dt><code>-Xold</code></dt>
-<dd>Invokes the legacy javadoc tool.
-</dd>
-</dl>
 <h2 id="standard-doclet-options">Standard doclet Options</h2>
 <p>The following options are provided by the standard doclet.</p>
 <dl>
@@ -249,7 +243,7 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dt><code>-d</code> <em>directory</em></dt>
 <dd><p>Specifies the destination directory where the <code>javadoc</code> tool saves the generated HTML files. If you omit the <code>-d</code> option, then the files are saved to the current directory. The <code>directory</code> value can be absolute or relative to the current working directory. The destination directory is automatically created when the <code>javadoc</code> tool runs.</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and OS X:</strong> For example, the following command generates the documentation for the package <code>com.mypackage</code> and saves the results in the <code>/user/doc/</code> directory:</p>
+<li><p><strong>Linux and OS X:</strong> For example, the following command generates the documentation for the package <code>com.mypackage</code> and saves the results in the <code>/user/doc/</code> directory:</p>
 <blockquote>
 <p><code>javadoc -d /user/doc/ com.mypackage</code></p>
 </blockquote></li>
@@ -271,16 +265,13 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dd>Recursively copies doc-file subdirectories.
 </dd>
 <dt><code>-doctitle</code> <em>html-code</em></dt>
-<dd>Specifies the title to place near the top of the overview summary file. The text specified in the <code>title</code> tag is placed as a centered, level-one heading directly beneath the top navigation bar. The <code>title</code> tag can contain HTML tags and white space, but when it does, you must enclose the title in quotation marks. Additional quotation marks within the <code>title</code> tag must be escaped. For example, <code>javadoc -header &quot;&lt;b&gt;My Library&lt;/b&gt;&lt;br&gt;v1.0&quot; com.mypackage.</code>
+<dd>Specifies the title to place near the top of the overview summary file. The text specified in the <code>title</code> tag is placed as a centered, level-one heading directly beneath the top navigation bar. The <code>title</code> tag can contain HTML tags and white space, but when it does, you must enclose the title in quotation marks. Additional quotation marks within the <code>title</code> tag must be escaped. For example, <code>javadoc -doctitle &quot;&lt;b&gt;My Library&lt;/b&gt;&lt;br&gt;v1.0&quot; com.mypackage.</code>
 </dd>
 <dt><code>-excludedocfilessubdir</code> <em>name</em></dt>
 <dd>Excludes any doc files sub directories with the given name. Enables deep copying of doc-files directories. Subdirectories and all contents are recursively copied to the destination. For example, the directory <code>doc-files/example/images</code> and all of its contents are copied. There is also an option to exclude subdirectories.
 </dd>
 <dt><code>-footer</code> <em>html-code</em></dt>
 <dd>Specifies the footer text to be placed at the bottom of each output file. The<code>html-code</code> value is placed to the right of the lower navigation bar. The <code>html-code</code> value can contain HTML tags and white space, but when it does, the <code>html-code</code> value must be enclosed in quotation marks. Use escape characters for any internal quotation marks within a footer.
-</dd>
-<dt><code>--frames</code></dt>
-<dd>Enables the use of frames in the generated output (default).
 </dd>
 <dt><code>-group</code> <em>namep1</em><code>:</code><em>p2</em></dt>
 <dd>Group the specified packages together in the Overview page.
@@ -291,7 +282,7 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dt><code>-helpfile</code> <em>filename</em></dt>
 <dd><p>Includes the file that links to the <strong>HELP</strong> link in the top and bottom navigation bars . Without this option, the <code>javadoc</code> tool creates a help file <code>help-doc.html</code> that is hard-coded in the <code>javadoc</code> tool. This option lets you override the default. The <em>filename</em> can be any name and isn't restricted to <code>help-doc.html</code>. The <code>javadoc</code> tool adjusts the links in the navigation bar accordingly. For example:</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and OS X:</strong></p>
+<li><p><strong>Linux and OS X:</strong></p>
 <blockquote>
 <p><code>javadoc -helpfile /home/user/myhelp.html java.awt.</code></p>
 </blockquote></li>
@@ -301,11 +292,8 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 </blockquote></li>
 </ul>
 </dd>
-<dt><code>-html4</code></dt>
-<dd>Generates HTML 4.0.1 output. If the option is not used, <code>-html4</code> is the default
-</dd>
 <dt><code>-html5</code></dt>
-<dd>Generates HTML 5 output. If the option is not used, <code>-html4</code> is the default.
+<dd>This option is a no-op and is just retained for backwards compatibility.
 </dd>
 <dt><code>--javafx</code> or <code>-javafx</code></dt>
 <dd>Enables JavaFX functionality.
@@ -374,7 +362,7 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dd>Prevents the generation of the file that contains the list of deprecated APIs (<code>deprecated-list.html</code>) and the link in the navigation bar to that page. The <code>javadoc</code> tool continues to generate the deprecated API throughout the rest of the document. This is useful when your source code contains no deprecated APIs, and you want to make the navigation bar cleaner.
 </dd>
 <dt><code>--no-frames</code></dt>
-<dd>Disables the use of frames in the generated output.
+<dd>This option is a no-op and is just retained for backwards compatibility.
 </dd>
 <dt><code>-nohelp</code></dt>
 <dd>Omits the HELP link in the navigation bars at the top and bottom of each page of output.
@@ -408,7 +396,7 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dd><p>Specifies that the <code>javadoc</code> tool should retrieve the text for the overview documentation from the source file specified by <code>filename</code> and place it on the Overview page (<code>overview-summary.html</code>). A relative path specified with the file name is relative to the current working directory.</p>
 <p>While you can use any name you want for the <code>filename</code> value and place it anywhere you want for the path, it is typical to name it <code>overview.html</code> and place it in the source tree at the directory that contains the topmost package directories. In this location, no path is needed when documenting packages, because the <code>-sourcepath</code> option points to this file.</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and OS X:</strong> For example, if the source tree for the <code>java.lang</code> package is <code>/src/classes/java/lang/</code>, then you could place the overview file at /src/classes/overview.html.</p></li>
+<li><p><strong>Linux and OS X:</strong> For example, if the source tree for the <code>java.lang</code> package is <code>/src/classes/java/lang/</code>, then you could place the overview file at /src/classes/overview.html.</p></li>
 <li><p><strong>Windows:</strong> For example, if the source tree for the <code>java.lang</code> package is <code>\src\classes\java\lang\</code>, then you could place the overview file at <code>\src\classes\overview.html</code></p></li>
 </ul>
 <p>The overview page is created only when you pass two or more package names to the <code>javadoc</code> tool. The title on the overview page is set by <code>-doctitle</code>.</p>
@@ -453,16 +441,16 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dd>Specifies the title to be placed in the HTML <code>&lt;title&gt;</code> tag. The text specified in the <code>title</code> tag appears in the window title and in any browser bookmarks (favorite places) that someone creates for this page. This title shouldn't contain any HTML tags because the browser doesn't interpret them correctly. Use escape characters on any internal quotation marks within the <code>title</code> tag. If the <code>-windowtitle</code> option is omitted, then the <code>javadoc</code> tool uses the value of the <code>-doctitle</code> option for the <code>-windowtitle</code> option. For example, <code>javadoc -windowtitle &quot;My Library&quot; com.mypackage</code>.
 </dd>
 </dl>
-<h2 id="additional-options-provided-by-the-standard-doclet">Additional Options Provided by the Standard doclet</h2>
-<p>The following are additional options provided by the standard doclet and are subject to change without notice. Additional options might are less commonly used or are otherwise regarded as advanced.</p>
+<h2 id="additional-options-provided-by-the-standard-doclet">Additional Options Provided by the Standard Doclet</h2>
+<p>The following are additional options provided by the standard doclet and are subject to change without notice. Additional options are less commonly used or are otherwise regarded as advanced.</p>
 <dl>
 <dt><code>-Xdoclint</code></dt>
-<dd>Enables recommended checks for problems in Javadoc comments.
+<dd>Enables recommended checks for problems in documentation comments.
 </dd>
 <dt><code>-Xdoclint:</code>(<code>all</code>|<code>none</code>|[<code>-</code>]<em>group</em>)</dt>
-<dd><p>Enable or disable specific checks for bad references, lack of accessibility, missing Javadoc comments, and reports errors for invalid Javadoc syntax and missing HTML tags.</p>
+<dd><p>Enable or disable specific checks for bad references, accessibility issues, missing documentation comments, errors in documentation comment syntax and missing HTML tags.</p>
 <p>This option enables the <code>javadoc</code> tool to check for all documentation comments included in the generated output. You can select which items to include in the generated output with the standard options <code>-public</code>, <code>-protected</code>, <code>-package</code> and <code>-private</code>.</p>
-<p>When the <code>-Xdoclint</code> is enabled, it reports issues with messages similar to the <code>javac</code> command. The <code>javadoc</code> tool prints a message, a copy of the source line, and a caret pointing at the exact position where the error was detected. Messages may be either warnings or errors, depending on their severity and the likelihood to cause an error if the generated documentation were run through a validator. For example, bad references or missing Javadoc comments don't cause the <code>javadoc</code> tool to generate invalid HTML, so these issues are reported as warnings. Syntax errors or missing HTML end tags cause the <code>javadoc</code> tool to generate invalid output, so these issues are reported as errors.</p>
+<p>When the <code>-Xdoclint</code> option is enabled, it reports issues with messages similar to the <code>javac</code> command. The <code>javadoc</code> tool prints a message, a copy of the source line, and a caret pointing at the exact position where the error was detected. Messages may be either warnings or errors, depending on their severity and the likelihood to cause an error if the generated documentation were to be run through a validator. For example: missing documentation comments, duplicate information, and extraneous comments do not cause the <code>javadoc</code> tool to generate invalid HTML, so these issues are reported as warnings; syntax errors, missing required HTML end tags, and references to missing or misspelled elements cause the <code>javadoc</code> tool to generate invalid output, so these issues are reported as errors.</p>
 <p><code>-Xdoclint</code> option validates input comments based upon the requested markup.</p>
 <p>By default, the <code>-Xdoclint</code> option is enabled. Disable it with the option <code>-Xdoclint:none</code>.</p>
 <p>The following options change what the <code>-Xdoclint</code> option reports:</p>
@@ -476,9 +464,9 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <ul>
 <li><p><code>accessibility</code>: Checks for the issues to be detected by an accessibility checker (for example, no caption or summary attributes specified in a <code>&lt;table&gt;</code> tag).</p></li>
 <li><p><code>html</code>: Detects high-level HTML issues, such as putting block elements inside inline elements, or not closing elements that require an end tag. The rules are derived from the <a href="https://www.w3.org/TR/html4/">HTML 4 Specification</a> or the <a href="http://www.w3.org/TR/2014/REC-html5-20141028/">HTML 5 Specification</a> based on the standard doclet <code>html</code> output generation selected. This type of check enables the <code>javadoc</code> tool to detect HTML issues that some browsers might not interpret as intended.</p></li>
-<li><p><code>missing</code>: Checks for missing Javadoc comments or tags (for example, a missing comment or class, or a missing <code>@return</code> tag or similar tag on a method).</p></li>
-<li><p><code>reference</code>: Checks for issues relating to the references to Java API elements from Javadoc tags (for example, item not found in <code>@see</code>, or a bad name after <code>@param)</code>.</p></li>
-<li><p><code>syntax</code>: Checks for low level issues like unescaped angle brackets (<code>&lt;</code> and <code>&gt;</code>) and ampersands (<code>&amp;</code>) and invalid Javadoc tags.</p></li>
+<li><p><code>missing</code>: Checks for missing documentation comments or tags (for example, a missing comment or class, or a missing <code>@return</code> tag or similar tag on a method).</p></li>
+<li><p><code>reference</code>: Checks for issues relating to the references to Java API elements from documentation comment tags (for example, item not found in <code>@see</code>, or a bad name after <code>@param)</code>.</p></li>
+<li><p><code>syntax</code>: Checks for low level issues like unescaped angle brackets (<code>&lt;</code> and <code>&gt;</code>) and ampersands (<code>&amp;</code>) and invalid documentation comment tags.</p></li>
 </ul>
 <p>You can specify the <code>-Xdoclint</code> option multiple times to enable the option to check errors and warnings in multiple categories. Alternatively, you can specify multiple error and warning categories by using the preceding options. For example, use either of the following commands to check for the HTML, syntax, and accessibility issues in the file <em>filename</em>.</p>
 <blockquote>
@@ -498,6 +486,6 @@ Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10-ea+36, mixed mode)</code></pre>
 <dd>Replaces all <code>@docRoot</code> items followed by<code>/..</code> in Javadoc comments with the <em>url</em>.
 </dd>
 </dl>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

@@ -56,6 +56,9 @@
 <dt><code>-p</code> <em>port</em></dt>
 <dd>This option sets the port number where the RMI registry is expected to be found, or when not found, created if the <code>-nr</code> option isn't specified.
 </dd>
+<dt><code>-r</code> <em>rmiport</em></dt>
+<dd>This option sets the port number to which the RMI connector is bound. If not specified a random available port is used.
+</dd>
 <dt><code>-n</code> <em>rminame</em></dt>
 <dd>This option sets the name to which the remote RMI object is bound in the RMI registry. The default name is <code>JStatRemoteHost</code>. If multiple <code>jstatd</code> servers are started on the same host, then the name of the exported RMI object for each server can be made unique by specifying this option. However, doing so requires that the unique server name be included in the monitoring client's <code>hostid</code> and <code>vmid</code> strings.
 </dd>
@@ -64,7 +67,7 @@
 </dd>
 </dl>
 <h2 id="security">Security</h2>
-<p>The <code>jstatd</code> server can monitor only JVMs for which it has the appropriate native access permissions. Therefore, the <code>jstatd</code> process must be running with the same user credentials as the target JVMs. Some user credentials, such as the root user in Oracle Solaris, Linux, and OS X operating systems, have permission to access the instrumentation exported by any JVM on the system. A <code>jstatd</code> process running with such credentials can monitor any JVM on the system, but introduces additional security concerns.</p>
+<p>The <code>jstatd</code> server can monitor only JVMs for which it has the appropriate native access permissions. Therefore, the <code>jstatd</code> process must be running with the same user credentials as the target JVMs. Some user credentials, such as the root user in Linux and OS X operating systems, have permission to access the instrumentation exported by any JVM on the system. A <code>jstatd</code> process running with such credentials can monitor any JVM on the system, but introduces additional security concerns.</p>
 <p>The <code>jstatd</code> server doesn't provide any authentication of remote clients. Therefore, running a <code>jstatd</code> server process exposes the instrumentation export by all JVMs for which the <code>jstatd</code> process has access permissions to any user on the network. This exposure might be undesirable in your environment, and therefore, local security policies should be considered before you start the <code>jstatd</code> process, particularly in production environments or on networks that aren't secure.</p>
 <p>The <code>jstatd</code> server installs an instance of <code>RMISecurityPolicy</code> when no other security manager is installed, and therefore, requires a security policy file to be specified. The policy file must conform to Default Policy Implementation and Policy File Syntax.</p>
 <p>If your security concerns can't be addressed with a customized policy file, then the safest action is to not run the <code>jstatd</code> server and use the <code>jstat</code> and <code>jps</code> tools locally. However, when using <code>jps</code> to get a list of instrumented JVMs, the list will not include any JVMs running in docker containers.</p>
@@ -84,6 +87,9 @@ jstatd -J-Djava.security.policy=all.policy</code></pre>
 <p>This example starts a <code>jstatd</code> session with an external RMI registry server on port <code>2020</code>.</p>
 <pre><code>jrmiregistry 2020&amp;
 jstatd -J-Djava.security.policy=all.policy -p 2020</code></pre>
+<p>This example starts a <code>jstatd</code> session with an external RMI registry server on port <code>2020</code> and JMX connector bound to port <code>2021</code>.</p>
+<pre><code>jrmiregistry 2020&amp;
+jstatd -J-Djava.security.policy=all.policy -p 2020 -r 2021</code></pre>
 <p>This example starts a <code>jstatd</code> session with an external RMI registry on port 2020 that's bound to <code>AlternateJstatdServerName</code>.</p>
 <pre><code>rmiregistry 2020&amp;
 jstatd -J-Djava.security.policy=all.policy -p 2020 -n AlternateJstatdServerName</code></pre>
@@ -97,6 +103,6 @@ jstatd -J-Djava.security.policy=all.policy -p 2020 -n AlternateJstatdServerName<
 <blockquote>
 <p><code>jstatd -J-Djava.security.policy=all.policy -J-Djava.rmi.server.logCalls=true</code></p>
 </blockquote>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

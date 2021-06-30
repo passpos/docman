@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc,fixuphtml" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Documentation Comment Specification for the Standard Doclet</title>
+  <title>Documentation Comment Specification for the Standard Doclet (JDK 16)</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -19,13 +19,13 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Documentation Comment Specification for the Standard Doclet</h1>
+<h1 class="title">Documentation Comment Specification for the Standard Doclet (JDK 16)</h1>
 </header>
-<main><p>This document specifies the form of documentation comments recognized by the standard doclet for the <code>javadoc</code> tool, used to generate HTML API documentation.</p>
+<main><p>This document specifies the form of documentation comments recognized by the standard doclet for the <code>javadoc</code> tool in JDK 16, used to generate HTML documentation for an API.</p>
 <p>In the context of the <code>javadoc</code> tool, the interpretation of the content of a documentation comment is up to doclet that is used to process the comment. Other doclets may accept the same syntax as the standard doclet, or they may support an alternate syntax. However, due to support in many tools, the syntax supported by the standard doclet has become a <em>de facto</em> standard.</p>
 <h2 id="general-syntax">General Syntax</h2>
 <p>Documentation comments are recognized only when placed immediately before module, package, class, interface, constructor, method, or field declarations. Documentation comments placed in the body of a method are ignored. Only one documentation comment per declaration statement is recognized.</p>
-<p>For historical reasons, the documentation comment for a package may instead be provided in a file called <em>package.html</em> in a source directory for the package. In this case, the documentation comment is the content of the <code>&lt;body&gt;</code> tag, and all references to Java types (for example, in <code>@see</code> tags) must be fully qualified. The standard doclet alse allows additional documentation to be provided in files such as <em>overview.html</em>. The rules for such content are the same as for <em>package.html</em>.</p>
+<p>For historical reasons, the documentation comment for a package may instead be provided in a file called <em>package.html</em> in a source directory for the package. In this case, the documentation comment is the content of the <code>&lt;body&gt;</code> tag, and all references to Java types (for example, in <code>@see</code> tags) must be fully qualified. The standard doclet also allows additional documentation to be provided in files such as <em>overview.html</em>. The rules for such content are the same as for <em>package.html</em>.</p>
 <p>The overall form of a documentation comment is an initial (main) description, followed by a series of <a href="#block-tags">block tags</a> that provide additional information about the declaration to which the comment applies. The first sentence of the initial description should be a summary sentence that contains a concise but complete description of the declared entity. Descriptive text may include HTML tags and entities, and <a href="#inline-tags">inline tags</a> as described below.</p>
 <p>It is possible to have a comment with only a tag section and no initial description. The description cannot continue after the tag section begins. The argument to a tag can span multiple lines. There can be any number of tags; some types of tags can be repeated while others cannot.</p>
 <h3 id="leading-asterisks">Leading Asterisks</h3>
@@ -35,7 +35,7 @@
 <p>In order to be able to generate documentation that conforms to the appropriate standards, the following considerations should be taken into account when using HTML constructs in a documentation comment:</p>
 <ul>
 <li><p>HTML constructs should be written in <a href="https://www.w3.org/TR/html52/">HTML 5</a>.</p></li>
-<li><p>To support properly structured headings within the pages of generated documentation, headings in the documentation comments for module, package, and type declarations (including nested types) should start at <code>&lt;h2&gt;</code> and increase accordingly as needed; likewise, headings in the documentation comments for constructors, methods, fields and other members should start at <code>&lt;h4&gt;</code>. In standalone HTML files, such as in a <code>doc&amp;#8209;files</code> subdirectory, headings should start at <code>&lt;h1&gt;</code>.</p></li>
+<li><p>To support properly structured headings within the pages of generated documentation, headings in the documentation comments for module, package, and type declarations (including nested types) should start at <code>&lt;h2&gt;</code> and increase accordingly as needed; likewise, headings in the documentation comments for constructors, methods, fields and other members should start at <code>&lt;h4&gt;</code>. In standalone HTML files, such as in a <code style="white-space:nowrap">doc-files</code> subdirectory, headings should start at <code>&lt;h1&gt;</code>.</p></li>
 <li><p>To avoid the possibility of a conflict with the unique identifiers used to identify positions within the generated documentation for the declaration of program elements, the values of user-defined <code>id</code> attributes should contain a character (such as <code>-</code>) that is not a valid character in a Java identifier.</p></li>
 </ul>
 <h2 id="comment-inheritance">Comment Inheritance</h2>
@@ -47,7 +47,7 @@
 <li>When a method in a class implements a method in an interface</li>
 </ul>
 <p>In the first two cases, the standard doclet generates the subheading &quot;Overrides&quot; in the documentation for the overriding method. A link to the method being overridden is included, whether or not the comment is inherited.</p>
-<p>In the third case, when a method in a specified class implements a method in an interface, the standard doclet generates the subheading &quot;Specified&quot; by in the documentation for the overriding method. A link to the method being implemented is included, whether or not the comment is inherited.</p>
+<p>In the third case, when a method in a specified class implements a method in an interface, the standard doclet generates the subheading &quot;Specified by&quot; in the documentation for the overriding method. A link to the method being implemented is included, whether or not the comment is inherited.</p>
 <h3 id="method-comment-inheritance">Method Comment Inheritance</h3>
 <p>The standard doclet allows method comment inheritance in classes and interfaces to fill in missing text or to explicitly inherit method comments. Constructors, fields, and nested classes do not inherit documentation comments.</p>
 <p>Note: The source file for an inherited method must be on the path specified by the <code>-sourcepath</code> option for the documentation comment to be available to copy. Neither the class nor its package needs to be passed in on the command line.</p>
@@ -59,7 +59,7 @@
 <h3 id="method-comments-algorithm">Method Comments Algorithm</h3>
 <p>If a method does not have a documentation comment, or has an <code>{@inheritDoc}</code> tag, then the standard doclet uses the following algorithm to search for an applicable comment. The algorithm is designed to find the most specific applicable documentation comment, and to give preference to interfaces over superclasses:</p>
 <ol type="1">
-<li>Look in each directly implemented (or extended) interface in the order they appear following the word <code>implements</code> (or <code>extends</code>) in the method declaration. Use the first documentation comment found for this method.</li>
+<li>Look in each directly implemented (or extended) interface in the order they appear following the word <code>implements</code> (or <code>extends</code>) in the type declaration. Use the first documentation comment found for this method.</li>
 <li>If Step 1 failed to find a documentation comment, then recursively apply this entire algorithm to each directly implemented (or extended) interface in the same order they were examined in Step 1.</li>
 <li>When Step 2 fails to find a documentation comment and this is a class other than the Object class, but not an interface:
 <ol type="a">
@@ -67,37 +67,110 @@
 <li>If Step 3a failed to find a documentation comment, then recursively apply this entire algorithm to the superclass.</li>
 </ol></li>
 </ol>
+<h2 id="block-tags">Block Tags</h2>
+<p>A block tag must appear at the beginning of a line, ignoring leading asterisks, white space, and the initial comment delimiter (<code>/**</code>). This means you can use the <code>@</code> character elsewhere in the text and it will not be interpreted as the start of a tag. If you want to start a line with the <code>@</code> character and not have it be interpreted, then use the HTML entity <code>&amp;#064;</code>. Each block tag has associated text, which includes any text following the tag up to, but not including, either the next block tag, or the end of the documentation comment. This associated text can span multiple lines.</p>
+<h2 id="inline-tags">Inline Tags</h2>
+<p>Inline tags are enclosed within braces (<code>{ }</code>) and may generally appear wherever descriptive text and HTML is permitted.</p>
+<p>Some inline tags may contain free-form text. When such text explicitly contains braces, the braces must be &quot;balanced&quot;, implying an equal number of appropriately nested left brace and right brace characters, so that the closing brace of the inline tag can be determined. No other lexical analysis of the text is performed; in particular, there is no special consideration of characters like <code>'</code>, <code>&quot;</code>, and <code>\</code>.</p>
+<p>When the text content is HTML, it may be possible to use entities <code>&amp;lbrace;</code> and <code>&amp;rbrace;</code> to represent unbalanced braces.</p>
 <h2 id="standard-tags">Standard Tags</h2>
 <p>The following sections describe the standard block and inline tags supported by the standard doclet.</p>
 <p>Note: The standard doclet also supports user-defined tags conforming to the same general syntactic rules.</p>
-<h3 id="block-tags">Block Tags</h3>
-<p>A block tag must appear at the beginning of a line, ignoring leading asterisks, white space, and the initial comment delimiter (<code>/**</code>). This means you can use the <code>@</code> character elsewhere in the text and it will not be interpreted as the start of a tag. If you want to start a line with the <code>@</code> character and not have it be interpreted, then use the HTML entity <code>&amp;#064;</code>. Each block tag has associated text, which includes any text following the tag up to, but not including, either the next block tag, or the end of the documentation comment. This associated text can span multiple lines.</p>
-<h4 id="author"><code>@author</code></h4>
+<h3 id="author"><code>@author</code></h3>
 <ul>
 <li><code>@author</code> <em>name-text</em></li>
 </ul>
 <p>Adds an &quot;Author&quot; entry with the specified name text to the generated documents when the <code>-author</code> option is used. A documentation comment can contain multiple <code>@author</code> tags. You can specify one name per <span class="citation" data-cites="author">@author</span> tag or multiple names per tag. In the former case, the standard doclet inserts a comma (<code>,</code>) and a space between names. In the latter case, the entire text is copied to the generated document without being parsed. Therefore, you can use multiple names per line if you want a localized name separator other than a comma.</p>
 <p>Introduced in JDK 1.0.</p>
-<h4 id="deprecated"><code>@deprecated</code></h4>
+<h3 id="code"><code>{@code}</code></h3>
+<ul>
+<li><code>{@code</code> <em>text</em> <code>}</code></li>
+</ul>
+<p>Equivalent to <code>&lt;code&gt;{@literal</code> <em>text</em> <code>}&lt;/code&gt;</code>.</p>
+<p>Displays <em>text</em> in code font without interpreting the text as HTML markup or nested Javadoc tags. This enables you to use regular angle brackets (<code>&lt;</code> and <code>&gt;</code>) instead of the HTML entities (<code>&amp;lt;</code> and <code>&amp;gt;</code>) in documentation comments, such as in parameter types (<code>&lt;Object&gt;</code>), inequalities (<code>3 &lt; 4</code>), or arrows (<code>-&gt;</code>). For example, the documentation comment text <code>{@code A&lt;B&gt;C}</code> displayed in the generated HTML page unchanged as <code>A&lt;B&gt;C</code>. This means that the <code>&lt;B&gt;</code> is not interpreted as bold and is in code font. If you want the same functionality without the code font, then use the <a href="#literal"><code>{@literal}</code></a> tag.</p>
+<p>Introduced in JDK 1.5.</p>
+<h3 id="deprecated"><code>@deprecated</code></h3>
 <ul>
 <li><code>@deprecated</code> <em>deprecated-text</em></li>
 </ul>
 <p>This tag is used in conjunction with the <code>@Deprecated</code> annotation to indicate that this API should no longer be used (even though it may continue to work). The standard doclet moves deprecated text ahead of the main description, placing it in italics and preceding it with a bold warning.</p>
 <p>The first sentence of deprecated text should tell the user when the API was deprecated and what to use as a replacement. The standard doclet copies the first sentence to the summary section and index. Subsequent sentences can also explain why it was deprecated. You should include an <code>{@link}</code> tag that points to the replacement API.</p>
 <p>Introduced in JDK 1.0.</p>
-<h4 id="exception"><code>@exception</code></h4>
+<h3 id="docroot"><code>{@docRoot}</code></h3>
+<ul>
+<li><code>{@docRoot}</code></li>
+</ul>
+<p>Represents the relative path to the generated document's (destination) root directory from any generated page. This tag is useful when you want to include a file, such as a copyright page or company logo, that you want to reference from all generated pages. Linking to the copyright page from the bottom of each page is common.</p>
+<p>This <code>{@docRoot}</code> tag can be used both on the command line and in a documentation comment. This tag is valid in all documentation comments: overview, module, package, class, interface, constructor, method and field, including the text portion of any tag (such as the <code>@return</code>, <code>@param</code> and <code>@deprecated</code> tags).</p>
+<p>For example, on the command line, where the header, footer, or bottom are defined:</p>
+<pre><code>javadoc -bottom &#39;&lt;a href=&quot;{@docRoot}/copyright.html&quot;&gt;Copyright&lt;/a&gt;&#39;.</code></pre>
+<p>When you use the <code>{@docRoot}</code> tag this way in a make file, some makefile programs require a special way to escape for the brace <code>{}</code> characters. For example, the Inprise MAKE version 5.2 running on Windows requires double braces: <code>{{@docRoot}}</code>. It also requires double (rather than single) quotation marks to enclose arguments to options such as the <code>-bottom</code> option (with the quotation marks around the <code>href</code> argument omitted).</p>
+<p>For example, in a documentation comment:</p>
+<pre><code>/**
+ * See the &lt;a href=&quot;{@docRoot}/copyright.html&quot;&gt;Copyright&lt;/a&gt;.
+ */</code></pre>
+<p>This tag is needed because the generated documents are in hierarchical directories, as deep as the number of subpackages. The expression <code>&lt;a href=&quot;{@docRoot}/copyright.html&quot;&gt;</code> resolves to <code>&lt;a href=&quot;../../copyright.html&quot;&gt;</code> for <em>java/lang/Object.java</em> and <code>&lt;a href=&quot;../../../copyright.html&quot;&gt;</code> for <em>java/lang/ref/Reference.java</em>.</p>
+<p>Introduced in JDK 1.3.</p>
+<h3 id="exception"><code>@exception</code></h3>
 <ul>
 <li><code>@exception</code> <em>class-name</em> <em>description</em></li>
 </ul>
 <p>This tag is equivalent to the <a href="#throws"><code>@throws</code></a> tag, which is now the recommended form.</p>
 <p>Introduced in JDK 1.0.</p>
-<h4 id="hidden"><code>@hidden</code></h4>
+<h3 id="hidden"><code>@hidden</code></h3>
 <ul>
 <li><code>@hidden</code></li>
 </ul>
 <p>Hides a program element from the generated API documentation. This tag may be used when it is not otherwise possible to design the API in a way that such items do not appear at all.</p>
 <p>Introduced in JDK 9.</p>
-<h4 id="param"><code>@param</code></h4>
+<h3 id="index"><code>{@index}</code></h3>
+<ul>
+<li><code>{@index</code> <em>word</em> <em>description</em> <code>}</code></li>
+<li><code>{@index &quot;</code><em>phrase</em><code>&quot;</code> <em>description</em> <code>}</code></li>
+</ul>
+<p>Declares that a word or phrase, together with an optional short description, should appear in the index files generated by the standard doclet. The index entry will be linked to the word or phrase that will appear at this point in the generated documentation. The description may be used when the word or phrase to be indexed is not clear by itself, such as for an acronym.</p>
+<p>Introduced in JDK 9.</p>
+<h3 id="inheritdoc"><code>{@inheritDoc}</code></h3>
+<ul>
+<li><code>{@inheritDoc}</code></li>
+</ul>
+<p>Inherits (copies) documentation from the nearest inheritable class or implementable interface into the current documentation comment at this tag's location. This enables you to write more general comments higher up the inheritance tree and to write around the copied text.</p>
+<p>This tag is valid only in these places in a documentation comment:</p>
+<ul>
+<li>In the main description block of a method. In this case, the main description is copied from a class or interface up the hierarchy.</li>
+<li>In the text arguments of the <code>@return</code>, <code>@param</code>, and <code>@throws</code> tags of a method. In this case, the tag text is copied from the corresponding tag up the hierarchy.</li>
+</ul>
+<p>See <a href="#method-comment-inheritance">Method Comment Inheritance</a> for a description of how comments are found in the inheritance hierarchy. Note that if this tag is missing, then the comment is or is not automatically inherited according to rules described in that section.</p>
+<p>Introduced in JDK 1.4.</p>
+<h3 id="link"><code>{@link}</code></h3>
+<ul>
+<li><code>{@link</code> <em>module</em><code>/</code><em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> <em>label</em> <code>}</code></li>
+</ul>
+<p>Inserts an inline link with a visible text label that points to the documentation for the specified module, package, class, or member name of a referenced class. This tag is valid in all documentation comments: overview, module, package, class, interface, constructor, method and field, including the text portion of any tag, such as the <code>@return</code>, <code>@param</code> and <code>@deprecated</code> tags.</p>
+<p>This tag is similar to the <a href="#see"><code>@see</code></a> tag. Both tags require the same references and accept the same syntax for <em>module</em><code>/</code><em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> and <em>label</em>. The main difference is that the <code>{@link}</code> tag generates an inline link rather than placing the link in the &quot;See Also&quot; section. The <code>{@link}</code> tag begins and ends with braces to separate it from the rest of the inline text. If you need to use the right brace (<code>}</code>) inside the label, then use the HTML entity notation <code>&amp;#125;</code>.</p>
+<p>There is no limit to the number of <code>{@link}</code> tags allowed in a sentence.</p>
+<p>For example, here is a comment that refers to the <code>getComponentAt(int, int)</code> method:</p>
+<pre><code>Use the {@link #getComponentAt(int, int) getComponentAt} method.</code></pre>
+<p>From this code, the standard doclet generates the following HTML (assuming it refers to another class in the same package):</p>
+<pre><code>Use the &lt;a href=&quot;Component.html#getComponentAt(int,int)&quot;&gt;getComponentAt&lt;/a&gt; method.</code></pre>
+<p>The previous line appears on the web page as:</p>
+<blockquote>
+<p>Use the <u>getComponentAt</u> method.</p>
+</blockquote>
+<p>Introduced in JDK 1.2.</p>
+<h3 id="linkplain"><code>{@linkplain}</code></h3>
+<ul>
+<li><code>{@linkplain</code> <em>module</em><code>/</code><em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> <em>label</em> <code>}</code></li>
+</ul>
+<p>Behaves the same as the <code>{@link}</code> tag, except the link label is displayed in plain text rather than code font. Useful when the label is plain text. For example, <code>Refer to {@linkplain add() the overridden method}.</code> displays as: <code>Refer to the overridden method.</code></p>
+<p>Introduced in JDK 1.4.</p>
+<h3 id="literal"><code>{@literal}</code></h3>
+<ul>
+<li><code>{@literal</code> <em>text</em> <code>}</code></li>
+</ul>
+<p>Displays text without interpreting the text as HTML markup or nested Javadoc tags. This enables you to use angle brackets (<code>&lt;</code> and <code>&gt;</code>) instead of the HTML entities (<code>&amp;lt;</code> and <code>&amp;gt;</code>) in documentation comments, such as in parameter types (<code>&lt;Object&gt;</code>), inequalities (<code>3 &lt; 4</code>), or arrows (<code>-&gt;</code>). For example, the documentation comment text <code>{@literal A&lt;B&gt;C}</code> displays unchanged in the generated HTML page in your browser, as <code>A&lt;B&gt;C</code>. The <code>&lt;B&gt;</code> is not interpreted as bold (and it is not in code font). If you want the same functionality with the text in code font, then use the <a href="#link"><code>{@code}</code></a> tag.</p>
+<p>Introduced in JDK 1.5.</p>
+<h3 id="param"><code>@param</code></h3>
 <ul>
 <li><code>@param</code> <em>parameter-name</em> <em>description</em></li>
 <li><code>@param</code> <code>&lt;</code><em>type-parameter-name</em><code>&gt;</code> <em>description</em></li>
@@ -117,19 +190,22 @@ public interface List&lt;E&gt; extends Collection&lt;E&gt; { ... }</code></pre>
  */
 &lt;T, V extends T&gt; V convert(String string, Class&lt;T&gt; type) { ... }</code></pre>
 <p>Introduced in JDK 1.0.</p>
-<h4 id="provides"><code>@provides</code></h4>
+<h3 id="provides"><code>@provides</code></h3>
 <ul>
 <li><code>@provides</code> <em>service-type</em> <em>description</em></li>
 </ul>
 <p>This tag may only appear in the documentation comment for a module declaration, and serves to document an implementation of a service provided by the module. The description may be used to specify how to obtain an instance of this service provider, and any important characteristics of the provider.</p>
 <p>Introduced in JDK 9.</p>
-<h4 id="return"><code>@return</code></h4>
+<h3 id="return"><code>@return</code></h3>
 <ul>
 <li><code>@return</code> <em>description</em></li>
+<li><code>{@return</code> <em>description</em> <code>}</code></li>
 </ul>
-<p>Adds a &quot;Returns&quot; section with the description text. This text should describe the return type and permissible range of values. This tag is valid only in a documentation comment for a method.</p>
-<p>Introduced in JDK 1.0.</p>
-<h4 id="see"><code>@see</code></h4>
+<p>As a block tag, adds a &quot;Returns&quot; section with the description text. This text should describe the return type and permissible range of values.</p>
+<p>As an inline tag, provides content for the first sentence of a method's description, and a &quot;Returns&quot; section, as if <code>@return</code> <em>description</em> were also present. In the default English locale, the first sentence is <code>Returns</code> <em>description</em> <code>.</code></p>
+<p>This tag is valid only in a documentation comment for a method. As an inline tag, it may only occur at the beginning of a method's description.</p>
+<p>Introduced as a block tag in JDK 1.0, and as an inline tag in JDK 16.</p>
+<h3 id="see"><code>@see</code></h3>
 <p>Adds a &quot;See Also&quot; heading with a link or text entry that points to a reference. A documentation comment can contain any number of <code>@see</code> tags, which are all grouped under the same heading. The <code>@see</code> tag has three variations. The form to reference other program elements is the most common. This tag is valid in all documentation comments. For inserting an inline link within a sentence to a package, class, or member, see <a href="#link"><code>{@link}</code></a>.</p>
 <ul>
 <li><code>@see</code> <code>&quot;</code><em>string</em><code>&quot;</code></li>
@@ -140,15 +216,15 @@ public interface List&lt;E&gt; extends Collection&lt;E&gt; { ... }</code></pre>
 </ul>
 <p>Adds a link as defined by the <em>url</em>. The URL may be a relative or absolute URL. The standard doclet distinguishes this from other cases by searching for a less-than symbol (<code>&lt;</code>) as the first character.</p>
 <ul>
-<li><code>@see</code> <em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> <em>label</em></li>
+<li><code>@see</code> <em>module</em><code>/</code><em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> <em>label</em></li>
 </ul>
 <p>Adds a link with a visible text label that points to the documentation for the specified name that is referenced. The label is optional; if it is omitted, then the program element name appears instead as visible text, suitably shortened. Use the <code>-noqualifier</code> option to globally remove the package name from this visible text. Use the label when you want the visible text to be different from the auto-generated visible text.</p>
-<p><em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> is any valid program element name that is referenced, such as a package, class, interface, constructor, method or field name. Parts of the name can be omitted as appropriate. The class represents any top-level or nested class or interface. The member represents any constructor, method, or field (not a nested class or interface). If this name is in the documented classes, then the standard doclet creates a link to it.</p>
+<p><em>module</em><code>/</code><em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> is any valid program element name that is referenced, such as a module, package, class, interface, constructor, method or field name. Parts of the name can be omitted as appropriate. The class represents any top-level or nested class or interface. The member represents any constructor, method, or field (not a nested class or interface). Parameterized types may be used in the class and member parts of the name. If this name is in the documented classes, then the standard doclet creates a link to it. A trailing <code>/</code> can be added to a name to refer to a module in the presence of a package or class with the same name.</p>
 <p>To create links to external referenced classes, use the <code>-link</code> option. External referenced classes are classes that are not passed into the <code>javadoc</code> tool on the command line. Links in the generated documentation to external referenced classes are called external references or external links. For example, if you run the standard doclet on only the <code>java.awt</code> package, then any class in <code>java.lang</code>, such as <code>Object</code>, is an external referenced class. Use the <code>-link</code> and <code>-linkoffline</code> options to link to external referenced classes. The source comments of external referenced classes are not available to the <code>javadoc</code> command run.</p>
 <p>Use either of the other two <code>@see</code> tag forms to refer to the documentation of a name that does not belong to a referenced class.</p>
 <p><em>label</em> is optional text that is visible as the link label. The label can contain white space. If label is omitted, then <em>package</em><code>.</code><em>class</em><code>.</code><em>member</em> appears, suitably shortened relative to the current class and package.</p>
 <p>Introduced in JDK 1.0.</p>
-<h4 id="serial"><code>@serial</code></h4>
+<h3 id="serial"><code>@serial</code></h3>
 <ul>
 <li><code>@serial</code> <em>field-description</em></li>
 <li><code>@serial</code> include</li>
@@ -166,27 +242,39 @@ public interface List&lt;E&gt; extends Collection&lt;E&gt; { ... }</code></pre>
 <p>For example, the <code>javax.swing</code> package is marked with the <code>@serial exclude</code> tag in <code>package-info.java</code>. The public class <code>java.security.BasicPermission</code> is marked with the <code>@serial</code> exclude tag. The package-private class <code>java.util.PropertyPermissionCollection</code> is marked with the <code>@serial include</code> tag.</p>
 <p>The <code>@serial</code> tag at the class level overrides the <code>@serial</code> tag at the package level.</p>
 <p>Introduced in JDK 1.2.</p>
-<h4 id="serialdata"><code>@serialData</code></h4>
+<h3 id="serialdata"><code>@serialData</code></h3>
 <ul>
 <li><code>@serialData</code> <em>data-description</em></li>
 </ul>
 <p>Uses the data description value to document the types and order of data in the serialized form. This data includes the optional data written by the <code>writeObject</code> method and all data (including base classes) written by the <code>Externalizable.writeExterna</code>l method.</p>
 <p>The <code>@serialData</code> tag can be used in the documentation comment for the <code>readObject</code>, <code>writeObject</code>, <code>readExternal</code>, <code>writeExternal</code>, <code>readResolve</code>, and <code>writeReplace</code> methods.</p>
 <p>Introduced in JDK 1.2.</p>
-<h4 id="serialfield"><code>@serialField</code></h4>
+<h3 id="serialfield"><code>@serialField</code></h3>
 <ul>
 <li><code>@serialField</code> <em>field-name</em> <em>field-type</em> <em>field-description</em></li>
 </ul>
 <p>Documents an <code>ObjectStreamField</code> component of the <code>serialPersistentFields</code> member of a <code>Serializable class</code>. Use one <code>@serialField</code> tag for each <code>ObjectStreamField</code> component.</p>
 <p>Introduced in JDK 1.2.</p>
-<h4 id="since"><code>@since</code></h4>
+<h3 id="since"><code>@since</code></h3>
 <ul>
 <li><code>@since</code> <em>since-text</em></li>
 </ul>
 <p>Adds a &quot;Since&quot; heading with the specified <em>since-text</em> value to the generated documentation. The text has no special internal structure. This tag is valid in any documentation comment: overview, module, package, class, interface, constructor, method, or field. This tag means that this change or feature has existed since the software release specified by the <em>since-text</em> value, for example: <code>@since 1.5</code>.</p>
 <p>For Java platform source code, the <code>@since</code> tag indicates the version of the Java platform API specification, which is not necessarily when the source code was added to the reference implementation. Multiple <code>@since</code> tags are allowed and are treated like multiple <a href="#author"><code>@author</code></a> tags. You could use multiple tags when the program element is used by more than one API.</p>
 <p>Introduced in JDK 1.1.</p>
-<h4 id="throws"><code>@throws</code></h4>
+<h3 id="summary"><code>{@summary}</code></h3>
+<ul>
+<li><code>{@summary</code> <em>text</em> <code>}</code></li>
+</ul>
+<p>Identify the summary of an API description, as an alternative to the default policy to identify and use the first sentence of the API description. The tag only has significance when used at the beginning of a description. In all cases, the tag is rendered by simply rendering its content.</p>
+<p>Introduced in JDK 10.</p>
+<h3 id="systemproperty"><code>{@systemProperty}</code></h3>
+<ul>
+<li><code>{@systemProperty</code> <em>property-name</em> <code>}</code></li>
+</ul>
+<p>Identify <em>property-name</em> as the name of a system property. The name should be a &quot;dotted identifier&quot;. In particular, it must not contain white space characters, or characters such as }. No other content is permitted in the tag; the possibility of additional content is reserved for future use. The tag can be used in the documentation comments for modules, packages, types, fields and executable members.</p>
+<p>Introduced in JDK 12.</p>
+<h3 id="throws"><code>@throws</code></h3>
 <ul>
 <li><code>@throws</code> <em>class-name</em> <em>description</em></li>
 </ul>
@@ -195,103 +283,13 @@ public interface List&lt;E&gt; extends Collection&lt;E&gt; { ... }</code></pre>
 <p>To ensure that all checked exceptions are documented, when an <code>@throws</code> tag does not exist for an exception in the throws clause, the standard doclet adds that exception to the generated output (with no description) as though it were documented with the <code>@throws</code> tag.</p>
 <p>The <code>@throws</code> documentation is copied from an overridden method to a subclass only when the exception is explicitly declared in the overridden method. The same is true for copying from an interface method to an implementing method. You can use the <code>{@inheritDoc}</code> tag to force the <code>@throws</code> tag to inherit documentation.</p>
 <p>Introduced in JDK 1.2.</p>
-<h4 id="uses"><code>@uses</code></h4>
+<h3 id="uses"><code>@uses</code></h3>
 <ul>
 <li><code>@uses</code> <em>service-type</em> <em>description</em></li>
 </ul>
 <p>This tag may only appear in the documentation comment for a module declaration, and serves to document that a service may be used by the module. The description may be used to specify the characteristics of the service that may be required, and what the module will do if no provider for the service is available.</p>
 <p>Introduced in JDK 9.</p>
-<h4 id="version"><code>@version</code></h4>
-<ul>
-<li><code>@version</code> <em>version-text</em></li>
-</ul>
-<p>Adds a &quot;Version&quot; subheading with the specified <em>version-text</em> value to the generated documents when the -version option is used. This tag is intended to hold the current release number of the software that this code is part of, as opposed to the <code>@since</code> tag, which holds the release number where this code was introduced. The <em>version-text</em> value has no special internal structure.</p>
-<p>A documentation comment can contain multiple <code>@version</code> tags. When it makes sense, you can specify one release number per <code>@version</code> tag or multiple release numbers per tag. In the former case, the standard doclet inserts a comma (<code>,</code>) and a space between the names. In the latter case, the entire text is copied to the generated document without being parsed. Therefore, you can use multiple names per line when you want a localized separator other than a comma.</p>
-<p>Introduced in JDK 1.0.</p>
-<h3 id="inline-tags">Inline Tags</h3>
-<p>Inline tags are enclosed within braces (<code>{ }</code>) and may generally appear wherever descriptive text and HTML is permitted.</p>
-<h4 id="code"><code>{@code}</code></h4>
-<ul>
-<li><code>{@code</code> <em>text</em> <code>}</code></li>
-</ul>
-<p>Equivalent to <code>&lt;code&gt;{@literal</code> <em>text</em> <code>}&lt;/code&gt;</code>.</p>
-<p>Displays <em>text</em> in code font without interpreting the text as HTML markup or nested Javadoc tags. This enables you to use regular angle brackets (<code>&lt;</code> and <code>&gt;</code>) instead of the HTML entities (<code>&amp;lt;</code> and <code>&amp;gt;</code>) in documentation comments, such as in parameter types (<code>&lt;Object&gt;</code>), inequalities (<code>3 &lt; 4</code>), or arrows (<code>-&gt;</code>). For example, the documentation comment text <code>{@code A&lt;B&gt;C}</code> displayed in the generated HTML page unchanged as <code>A&lt;B&gt;C</code>. This means that the <code>&lt;B&gt;</code> is not interpreted as bold and is in code font. If you want the same functionality without the code font, then use the <a href="#literal"><code>{@literal}</code></a> tag.</p>
-<p>Introduced in JDK 1.5.</p>
-<h4 id="docroot"><code>{@docRoot}</code></h4>
-<ul>
-<li><code>{@docRoot}</code></li>
-</ul>
-<p>Represents the relative path to the generated document's (destination) root directory from any generated page. This tag is useful when you want to include a file, such as a copyright page or company logo, that you want to reference from all generated pages. Linking to the copyright page from the bottom of each page is common.</p>
-<p>This <code>{@docRoot}</code> tag can be used both on the command line and in a documentation comment. This tag is valid in all documentation comments: overview, module, package, class, interface, constructor, method and field, including the text portion of any tag (such as the <code>@return</code>, <code>@param</code> and <code>@deprecated</code> tags).</p>
-<p>For example, on the command line, where the header, footer, or bottom are defined:</p>
-<pre><code>javadoc -bottom &#39;&lt;a href=&quot;{@docRoot}/copyright.html&quot;&gt;Copyright&lt;/a&gt;&#39;.</code></pre>
-<p>When you use the <code>{@docRoot}</code> tag this way in a make file, some makefile programs require a special way to escape for the brace <code>{}</code> characters. For example, the Inprise MAKE version 5.2 running on Windows requires double braces: <code>{{@docRoot}}</code>. It also requires double (rather than single) quotation marks to enclose arguments to options such as the <code>-bottom</code> option (with the quotation marks around the <code>href</code> argument omitted).</p>
-<p>For example, in a documentation comment:</p>
-<pre><code>/**
- * See the &lt;a href=&quot;{@docRoot}/copyright.html&quot;&gt;Copyright&lt;/a&gt;.
- */</code></pre>
-<p>This tag is needed because the generated documents are in hierarchical directories, as deep as the number of subpackages. The expression <code>&lt;a href=&quot;{@docRoot}/copyright.html&quot;&gt;</code> resolves to <code>&lt;a href=&quot;../../copyright.html&quot;&gt;</code> for <em>java/lang/Object.java</em> and <code>&lt;a href=&quot;../../../copyright.html&quot;&gt;</code> for <em>java/lang/ref/Reference.java</em>.</p>
-<p>Introduced in JDK 1.3.</p>
-<h4 id="index"><code>{@index}</code></h4>
-<ul>
-<li><code>{@index</code> <em>word</em> <em>description</em> <code>}</code></li>
-<li><code>{@index &quot;</code><em>phrase</em><code>&quot;</code> <em>description</em> <code>}</code></li>
-</ul>
-<p>Declares that a word or phrase, together with an optional short description, should appear in the index files generated by the standard doclet. The index entry will be linked to the word or phrase that will appear at this point in the generated documentation. The description may be used when the word or phrase to be indexed is not clear by itself, such as for an acronym.</p>
-<p>Introduced in JDK 9.</p>
-<h4 id="inheritdoc"><code>{@inheritDoc}</code></h4>
-<ul>
-<li><code>{@inheritDoc}</code></li>
-</ul>
-<p>Inherits (copies) documentation from the nearest inheritable class or implementable interface into the current documentation comment at this tag's location. This enables you to write more general comments higher up the inheritance tree and to write around the copied text.</p>
-<p>This tag is valid only in these places in a documentation comment:</p>
-<ul>
-<li>In the main description block of a method. In this case, the main description is copied from a class or interface up the hierarchy.</li>
-<li>In the text arguments of the <code>@return</code>, <code>@param</code>, and <code>@throws</code> tags of a method. In this case, the tag text is copied from the corresponding tag up the hierarchy.</li>
-</ul>
-<p>See <a href="#method-comment-inheritance">Method Comment Inheritance</a> for a description of how comments are found in the inheritance hierarchy. Note that if this tag is missing, then the comment is or is not automatically inherited according to rules described in that section.</p>
-<p>Introduced in JDK 1.4.</p>
-<h4 id="link"><code>{@link}</code></h4>
-<ul>
-<li><code>{@link</code> <em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> <em>label</em> <code>}</code></li>
-</ul>
-<p>Inserts an inline link with a visible text label that points to the documentation for the specified package, class, or member name of a referenced class. This tag is valid in all documentation comments: overview, module, package, class, interface, constructor, method and field, including the text portion of any tag, such as the <code>@return</code>, <code>@param</code> and <code>@deprecated</code> tags.</p>
-<p>This tag is similar to the <a href="#see"><code>@see</code></a> tag. Both tags require the same references and accept the same syntax for <em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> and <em>label</em>. The main difference is that the <code>{@link}</code> tag generates an inline link rather than placing the link in the &quot;See Also&quot; section. The <code>{@link}</code> tag begins and ends with braces to separate it from the rest of the inline text. If you need to use the right brace (<code>}</code>) inside the label, then use the HTML entity notation <code>&amp;#125;</code>.</p>
-<p>There is no limit to the number of <code>{@link}</code> tags allowed in a sentence.</p>
-<p>For example, here is a comment that refers to the <code>getComponentAt(int, int)</code> method:</p>
-<pre><code>Use the {@link #getComponentAt(int, int) getComponentAt} method.</code></pre>
-<p>From this code, the standard doclet generates the following HTML (assuming it refers to another class in the same package):</p>
-<pre><code>Use the &lt;a href=&quot;Component.html#getComponentAt(int, int)&quot;&gt;getComponentAt&lt;/a&gt; method.</code></pre>
-<p>The previous line appears on the web page as:</p>
-<blockquote>
-<p>Use the <u>getComponentAt</u> method.</p>
-</blockquote>
-<p>Introduced in JDK 1.2.</p>
-<h4 id="linkplain"><code>{@linkplain}</code></h4>
-<ul>
-<li><code>{@linkplain</code> <em>package</em><code>.</code><em>class</em><code>#</code><em>member</em> <em>label</em> <code>}</code></li>
-</ul>
-<p>Behaves the same as the <code>{@link}</code> tag, except the link label is displayed in plain text rather than code font. Useful when the label is plain text. For example, <code>Refer to {@linkplain add() the overridden method}.</code> displays as: <code>Refer to the overridden method.</code></p>
-<p>Introduced in JDK 1.4.</p>
-<h4 id="literal"><code>{@literal}</code></h4>
-<ul>
-<li><code>{@literal</code> <em>text</em> <code>}</code></li>
-</ul>
-<p>Displays text without interpreting the text as HTML markup or nested Javadoc tags. This enables you to use angle brackets (<code>&lt;</code> and <code>&gt;</code>) instead of the HTML entities (<code>&amp;lt;</code> and <code>&amp;gt;</code>) in documentation comments, such as in parameter types (<code>&lt;Object&gt;</code>), inequalities (<code>3 &lt; 4</code>), or arrows (<code>-&gt;</code>). For example, the documentation comment text <code>{@literal A&lt;B&gt;C}</code> displays unchanged in the generated HTML page in your browser, as <code>A&lt;B&gt;C</code>. The <code>&lt;B&gt;</code> is not interpreted as bold (and it is not in code font). If you want the same functionality with the text in code font, then use the <a href="#link"><code>{@code}</code></a> tag.</p>
-<p>Introduced in JDK 1.5.</p>
-<h3 id="summary"><code>{@summary}</code></h3>
-<ul>
-<li><code>{@summary</code> <em>text</em> <code>}</code></li>
-</ul>
-<p>Identify the summary of an API description, as an alternative to the default policy to identify and use the first sentence of the API description. The tag only has significance when used at the beginning of a description. In all cases, the tag is rendered by simply rendering its content.</p>
-<p>Introduced in JDK 10.</p>
-<h4 id="systemproperty"><code>{@systemProperty}</code></h4>
-<ul>
-<li><code>{@systemProperty</code> <em>property-name</em> <code>}</code></li>
-</ul>
-<p>Identify <em>property-name</em> as the name of a system property. The name should be a &quot;dotted identifier&quot;. In particular, it must not contain white space characters, or characters such as }. No other content is permitted in the tag; the possibility of additional content is reserved for future use. The tag can be used in the documentation comments for modules, packages, types, fields and executable members.</p>
-<p>Introduced in JDK 12.</p>
-<h4 id="value"><code>{@value}</code></h4>
+<h3 id="value"><code>{@value}</code></h3>
 <ul>
 <li><code>{@value</code> <em>package</em><code>.</code><em>class</em><code>#</code><em>field</em> <code>}</code></li>
 </ul>
@@ -307,6 +305,13 @@ public static final String SCRIPT_START = &quot;&lt;script&gt;&quot;</code></pre
 public String evalScript(String script) {}</code></pre>
 <p>The argument <em>package</em><code>.</code><em>class</em><code>#</code><em>field</em> takes a form similar to that of the <code>@see</code> tag argument, except that the member must be a static field.</p>
 <p>Introduced in JDK 1.4.</p>
+<h3 id="version"><code>@version</code></h3>
+<ul>
+<li><code>@version</code> <em>version-text</em></li>
+</ul>
+<p>Adds a &quot;Version&quot; subheading with the specified <em>version-text</em> value to the generated documents when the -version option is used. This tag is intended to hold the current release number of the software that this code is part of, as opposed to the <code>@since</code> tag, which holds the release number where this code was introduced. The <em>version-text</em> value has no special internal structure.</p>
+<p>A documentation comment can contain multiple <code>@version</code> tags. When it makes sense, you can specify one release number per <code>@version</code> tag or multiple release numbers per tag. In the former case, the standard doclet inserts a comma (<code>,</code>) and a space between the names. In the latter case, the entire text is copied to the generated document without being parsed. Therefore, you can use multiple names per line when you want a localized separator other than a comma.</p>
+<p>Introduced in JDK 1.0.</p>
 <h3 id="where-tags-can-be-used">Where Tags Can Be Used</h3>
 <p>The following table summarizes which tags can be used in which contexts.</p>
 <table>
@@ -582,6 +587,6 @@ public String evalScript(String script) {}</code></pre>
 <li><code>@serialData</code> can only be used in the documentation comment for the <code>readObject</code>, <code>writeObject</code>, <code>readExternal</code>, <code>writeExternal</code>, <code>readResolve</code> and <code>writeReplace</code> methods.</li>
 <li><code>@serialField</code> can only be used in the documentation comment for the <code>serialPersistentFields</code> field.</li>
 </ul>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

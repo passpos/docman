@@ -60,8 +60,6 @@
 </dl>
 <h2 id="description">Description</h2>
 <p>The <code>jps</code> command lists the instrumented Java HotSpot VMs on the target system. The command is limited to reporting information on JVMs for which it has the access permissions.</p>
-<p><strong>Note:</strong></p>
-<p>JDK 10 added support for using the Attach API when attaching to Java processes running in a separate docker process. However, the <code>jps</code> tool cannot see JVM processes running in a separate docker instance. If you are trying to connect a Linux host with a Virtual Machine within a docker container, you must use tools such as <code>ps</code> to look up the PID of the JVM and then specify the PID on the command line of the tools that accept the PID.</p>
 <p>If the <code>jps</code> command is run without specifying a <code>hostid</code>, then it searches for instrumented JVMs on the local host. If started with a <code>hostid</code>, then it searches for JVMs on the indicated host, using the specified protocol and port. A <code>jstatd</code> process is assumed to be running on the target host.</p>
 <p>The <code>jps</code> command reports the local JVM identifier, or <code>lvmid</code>, for each instrumented JVM found on the target system. The <code>lvmid</code> is typically, but not necessarily, the operating system's process identifier for the JVM process. With no options, the <code>jps</code> command lists each Java application's <code>lvmid</code> followed by the short form of the application's class name or jar file name. The short form of the class name or JAR file name omits the class's package information or the JAR files path information.</p>
 <p>The <code>jps</code> command uses the Java launcher to find the class name and arguments passed to the main method. If the target JVM is started with a custom launcher, then the class or JAR file name, and the arguments to the <code>main</code> method aren't available. In this case, the <code>jps</code> command outputs the string <code>Unknown</code> for the class name, or JAR file name, and for the arguments to the <code>main</code> method.</p>
@@ -108,6 +106,6 @@
 <pre><code>jps -m remote.domain:2002
 3002 /opt/jdk1.7.0/demo/jfc/Java2D/Java2Demo.JAR
 3102 sun.tools.jstatd.jstatd -p 2002</code></pre>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

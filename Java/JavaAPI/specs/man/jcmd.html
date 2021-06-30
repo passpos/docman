@@ -131,35 +131,6 @@
 <li><code>-all</code>: (Optional) Inspects all objects, including unreachable objects (BOOLEAN, false)</li>
 </ul>
 </dd>
-<dt><code>GC.class_stats</code> [<em>options</em>] [<em>arguments</em>]</dt>
-<dd><p>(Deprecated) Provide statistics about Java class meta data.</p>
-<p>Impact: High --- depends on Java heap size and content.</p>
-<p><strong>Note:</strong></p>
-<p>The <em>options</em> must be specified using either <em>key</em> or <em>key</em><code>=</code><em>value</em> syntax.</p>
-<p><em>options</em>:</p>
-<ul>
-<li><p><code>-all</code>: (Optional) Shows all columns (BOOLEAN, false)</p></li>
-<li><p><code>-csv</code>: (Optional) Prints in CSV (comma-separated values) format for spreadsheets (BOOLEAN, false)</p></li>
-<li><p><code>-help</code>: (Optional) Shows the meaning of all the columns (BOOLEAN, false)</p></li>
-</ul>
-<p><em>arguments</em>:</p>
-<ul>
-<li><p><em>columns</em>: (Optional) Comma-separated list of all the columns to be shown. If not specified, the following columns are shown:</p>
-<ul>
-<li><p>InstBytes</p></li>
-<li><p>KlassBytes</p></li>
-<li><p>CpAll</p></li>
-<li><p>annotations</p></li>
-<li><p>MethodCount</p></li>
-<li><p>Bytecodes</p></li>
-<li><p>MethodAll</p></li>
-<li><p>ROAll</p></li>
-<li><p>RWAll</p></li>
-<li><p>Total</p></li>
-</ul>
-<p>(STRING, no default value)</p></li>
-</ul>
-</dd>
 <dt><code>GC.finalizer_info</code></dt>
 <dd><p>Provides information about the Java finalization queue.</p>
 <p>Impact: Medium</p>
@@ -377,7 +348,7 @@
 <p>Permission: <code>java.lang.management.ManagementPermission(monitor)</code></p>
 </dd>
 <dt><code>VM.log</code> [<em>options</em>]</dt>
-<dd><p>Lists current log configuration, enables/disables/configures a log output, or ro tates all logs.</p>
+<dd><p>Lists current log configuration, enables/disables/configures a log output, or rotates all logs.</p>
 <p>Impact: Low</p>
 <p>Permission: <code>java.lang.management.ManagementPermission(control)</code></p>
 <p><em>options</em>:</p>
@@ -490,6 +461,6 @@
 <p>Permission: <code>java.util.PropertyPermission(java.vm.version, read)</code></p>
 </dd>
 </dl>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

@@ -842,7 +842,7 @@
 <h3 id="allocobject">AllocObject</h3>
 <p><code>jobject AllocObject(JNIEnv *env, jclass clazz);</code></p>
 <p>Allocates a new Java object <strong>without invoking any of the constructors for the object</strong>. Returns a reference to the object.</p>
-<p><strong>Note:</strong> The Java Language Specification, &quot;Implementing Finalization&quot; (<a href="http://docs.oracle.com/javase/specs/jls/se14/html/jls-12.html#jls-12.6.1">JLS §12.6.1</a>) states: &quot;An object o is not finalizable until its constructor has invoked the constructor for Object on o and that invocation has completed successfully&quot;. Since AllocObject() does not invoke a constructor, objects created with this function are not eligible for finalization.</p>
+<p><strong>Note:</strong> The Java Language Specification, &quot;Implementing Finalization&quot; (<a href="http://docs.oracle.com/javase/specs/jls/se16/html/jls-12.html#jls-12.6.1">JLS §12.6.1</a>) states: &quot;An object o is not finalizable until its constructor has invoked the constructor for Object on o and that invocation has completed successfully&quot;. Since AllocObject() does not invoke a constructor, objects created with this function are not eligible for finalization.</p>
 <p>The clazz argument must not refer to an array class.</p>
 <h4 id="linkage-22">LINKAGE:</h4>
 <p>Index 27 in the JNIEnv interface function table.</p>
@@ -2915,6 +2915,7 @@ JNIWeakGlobalRefType = 3</code></pre>
 } JNINativeMethod;</code></pre>
 <p>The function pointers nominally must have the following signature:</p>
 <pre><code>ReturnType (*fnPtr)(JNIEnv *env, jobject objectOrClass, ...);</code></pre>
+<p>Be aware that <code>RegisterNatives</code> can change the documented behavior of the JVM (including cryptographic algorithms, correctness, security, type safety), by changing the native code to be executed for a given native Java method. Therefore use applications that have native libraries utilizing the <code>RegisterNatives</code> function with caution.</p>
 <h4 id="linkage-62">LINKAGE:</h4>
 <p>Index 215 in the JNIEnv interface function table.</p>
 <h4 id="parameters-60">PARAMETERS:</h4>
@@ -3098,6 +3099,6 @@ JNIWeakGlobalRefType = 3</code></pre>
 <p><code>vm</code>: a pointer to where the result should be placed, must not be <code>NULL</code>.</p>
 <h4 id="returns-53">RETURNS:</h4>
 <p>Returns &quot;0&quot; on success; returns a negative value on failure.</p>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

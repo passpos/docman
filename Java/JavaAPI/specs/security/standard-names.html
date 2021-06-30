@@ -641,22 +641,34 @@ This makes the padding scheme similar (but not quite) to PKCS5Padding, where the
 <td style="text-align: left;">Keys for the Elliptic Curve algorithm.</td>
 </tr>
 <tr class="even">
+<th style="font-weight: normal; text-align: left;" scope="row">EdDSA</th>
+<td style="text-align: left;">Keys for Edwards-Curve signature algorithm with elliptic curves as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="odd">
+<th style="font-weight: normal; text-align: left;" scope="row">Ed25519</th>
+<td style="text-align: left;">Keys for Edwards-Curve signature algorithm with Ed25519 as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="even">
+<th style="font-weight: normal; text-align: left;" scope="row">Ed448</th>
+<td style="text-align: left;">Keys for Edwards-Curve signature algorithm with Ed448 as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">RSA</th>
 <td style="text-align: left;">Keys for the RSA algorithm (Signature/Cipher).</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">RSASSA-PSS</th>
 <td style="text-align: left;">Keys for the RSASSA-PSS algorithm (Signature).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">XDH</th>
 <td style="text-align: left;">Keys for Diffie-Hellman key agreement with elliptic curves as defined in <a href="https://tools.ietf.org/html/rfc7748">RFC 7748</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">X25519</th>
 <td style="text-align: left;">Keys for Diffie-Hellman key agreement with Curve25519 as defined in <a href="https://tools.ietf.org/html/rfc7748">RFC 7748</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">X448</th>
 <td style="text-align: left;">Keys for Diffie-Hellman key agreement with Curve448 as defined in <a href="https://tools.ietf.org/html/rfc7748">RFC 7748</a></td>
 </tr>
@@ -710,7 +722,11 @@ This makes the padding scheme similar (but not quite) to PKCS5Padding, where the
 HmacSHA224<br />
 HmacSHA256<br />
 HmacSHA384<br />
-HmacSHA512</th>
+HmacSHA512<br />
+HmacSHA3-224<br />
+HmacSHA3-256<br />
+HmacSHA3-384<br />
+HmacSHA3-512</th>
 <td style="text-align: left;">Keys generator for use with the various flavors of the HmacSHA algorithms.</td>
 </tr>
 <tr class="odd">
@@ -777,14 +793,26 @@ HmacSHA512</th>
 <td style="text-align: left;">Generates keypairs for the Elliptic Curve algorithm.</td>
 </tr>
 <tr class="even">
+<th style="font-weight: normal; text-align: left;" scope="row">EdDSA</th>
+<td style="text-align: left;">Generates keypairs for Edwards-Curve signature algorithm with elliptic curves as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="odd">
+<th style="font-weight: normal; text-align: left;" scope="row">Ed25519</th>
+<td style="text-align: left;">Generates keypairs for Edwards-Curve signature algorithm with Ed25519 as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="even">
+<th style="font-weight: normal; text-align: left;" scope="row">Ed448</th>
+<td style="text-align: left;">Generates keypairs for Edwards-Curve signature algorithm with Ed448 as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">XDH</th>
 <td style="text-align: left;">Generates keypairs for Diffie-Hellman key agreement with elliptic curves as defined in <a href="https://tools.ietf.org/html/rfc7748">RFC 7748</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">X25519</th>
 <td style="text-align: left;">Generates keypairs for Diffie-Hellman key agreement with Curve25519 as defined in <a href="https://tools.ietf.org/html/rfc7748">RFC 7748</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">X448</th>
 <td style="text-align: left;">Generates keypairs for Diffie-Hellman key agreement with Curve448 as defined in <a href="https://tools.ietf.org/html/rfc7748">RFC 7748</a></td>
 </tr>
@@ -1164,7 +1192,7 @@ PBEWith&lt;prf&gt;And&lt;encryption&gt;</th>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">DRBG</th>
-<td style="text-align: left;">An algorithm supplied by the SUN provider using DRBG mechanisms as defined in <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-90Ar1.pdf">NIST SP 800-90Ar1</a>.</td>
+<td style="text-align: left;">An algorithm using DRBG mechanisms as defined in <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-90Ar1.pdf">NIST SP 800-90Ar1</a>.</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">SHA1PRNG</th>
@@ -1234,15 +1262,27 @@ PBEWith&lt;prf&gt;And&lt;encryption&gt;</th>
 </thead>
 <tbody>
 <tr class="odd">
+<th style="font-weight: normal; text-align: left;" scope="row">EdDSA</th>
+<td style="text-align: left;">Edwards-Curve signature algorithm as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="even">
+<th style="font-weight: normal; text-align: left;" scope="row">Ed25519</th>
+<td style="text-align: left;">Edwards-Curve signature algorithm with Ed25519 as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="odd">
+<th style="font-weight: normal; text-align: left;" scope="row">Ed448</th>
+<td style="text-align: left;">Edwards-Curve signature algorithm with Ed448 as defined in <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a></td>
+</tr>
+<tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">NONEwithRSA</th>
 <td style="text-align: left;">The RSA signature algorithm which does not use any digesting algorithm and uses only the RSASP1/RSAVP1 primitives as defined in <a href="https://tools.ietf.org/html/rfc8017">PKCS #1 v2.2</a>.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">MD2withRSA<br />
 MD5withRSA</th>
 <td style="text-align: left;">The RSA signature algorithm that uses the MD2/MD5 digest with the RSASSA-PKCS1-v1_5 signature scheme as defined in <a href="https://tools.ietf.org/html/rfc8017">PKCS #1 v2.2</a>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">SHA1withRSA<br />
 SHA224withRSA<br />
 SHA256withRSA<br />
@@ -1256,15 +1296,15 @@ SHA3-384withRSA<br />
 SHA3-512withRSA</th>
 <td style="text-align: left;">The RSA signature algorithm that uses the SHA-* digest with the RSASSA-PKCS1-v1_5 signature scheme as defined in <a href="https://tools.ietf.org/html/rfc8017">PKCS #1 v2.2</a>.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">RSASSA-PSS</th>
 <td style="text-align: left;">The signature algorithm that uses the RSASSA-PSS signature scheme as defined in [PKCS #1 v2.2] (https://tools.ietf.org/html/rfc8017). Note that this signature algorithm needs parameters such as a digesting algorithm, salt length and MGF1 algorithm, to be supplied before performing the RSA operation.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">NONEwithDSA</th>
 <td style="text-align: left;">The Digital Signature Algorithm as defined in <a href="https://csrc.nist.gov/publications/fips/archive/fips186-2/fips186-2.pdf">FIPS PUB 186-2</a>. The data must be exactly 20 bytes in length. This algorithm is also known as rawDSA.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">SHA1withDSA<br />
 SHA224withDSA<br />
 SHA256withDSA<br />
@@ -1274,9 +1314,9 @@ SHA3-224withDSA<br />
 SHA3-256withDSA<br />
 SHA3-384withDSA<br />
 SHA3-512withDSA</th>
-<td style="text-align: left;">The DSA signature algorithms that use the SHA-1, SHA-2, and SHA-3 family of digest algorithms to create and verify digital signatures as defined in <a href="https://csrc.nist.gov/publications/fips/fips186-3/fips_186-3.pdf">FIPS PUB 186-3</a>.</td>
+<td style="text-align: left;">The DSA signature algorithms that use the SHA-1, SHA-2, and SHA-3 family of digest algorithms to create and verify digital signatures as defined in <a href="https://csrc.nist.gov/publications/fips/fips186-3/fips_186-3.pdf">FIPS PUB 186-3</a> and <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf">FIPS PUB 186-4</a>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">NONEwithECDSA<br />
 SHA1withECDSA<br />
 SHA224withECDSA<br />
@@ -1292,23 +1332,33 @@ SHA3-512withECDSA</th>
 <br />
 <strong>Note:</strong> &quot;ECDSA&quot; is an ambiguous name for the &quot;SHA1withECDSA&quot; algorithm and should not be used. The formal name &quot;SHA1withECDSA&quot; should be used instead.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">NONEwithDSAinP1363Format<br />
 SHA1withDSAinP1363Format<br />
 SHA224withDSAinP1363Format<br />
-SHA256withDSAinP1363Format</th>
-<td style="text-align: left;">The DSA signature algorithms as defined in FIPS PUB 186-2 and 186-3 with an output as defined in IEEE P1363 format. The format of the Signature bytes for these algorithms is the concatenation of the integers r and s in raw bytes.</td>
+SHA256withDSAinP1363Format<br />
+SHA384withDSAinP1363Format<br />
+SHA512withDSAinP1363Format<br />
+SHA3-224withDSAinP1363Format<br />
+SHA3-256withDSAinP1363Format<br />
+SHA3-384withDSAinP1363Format<br />
+SHA3-512withDSAinP1363Format</th>
+<td style="text-align: left;">The DSA signature algorithms as defined in FIPS PUB 186-2, 186-3, and 186-4 with an output as defined in IEEE P1363 format. The format of the Signature bytes for these algorithms is the concatenation of the integers r and s in raw bytes.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row">NONEwithECDSAinP1363Format<br />
 SHA1withECDSAinP1363Format<br />
 SHA224withECDSAinP1363Format<br />
 SHA256withECDSAinP1363Format<br />
 SHA384withECDSAinP1363Format<br />
-SHA512withECDSAinP1363Format</th>
-<td style="text-align: left;">The ECDSA signature algorithms as defined in ANSI X9.62 with an output as defined in IEEE P1363 format. The format of the Signature bytes for these algorithms is the concatenation of the integers r and s in raw bytes.</td>
+SHA512withECDSAinP1363Format<br />
+SHA3-224withECDSAinP1363Format<br />
+SHA3-256withECDSAinP1363Format<br />
+SHA3-384withECDSAinP1363Format<br />
+SHA3-512withECDSAinP1363Format</th>
+<td style="text-align: left;">The ECDSA signature algorithms as defined in ANSI X9.62 and FIPS PUB 186-4 with an output as defined in IEEE P1363 format. The format of the Signature bytes for these algorithms is the concatenation of the integers r and s in raw bytes.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row">&lt;digest&gt;with&lt;encryption&gt;</th>
 <td style="text-align: left;">Use this to form a name for a signature algorithm with a particular message digest (such as MD2 or MD5) and algorithm (such as RSA or DSA), just as was done for the explicitly defined standard names in this section (MD2withRSA, and so on).<br />
 <br />
@@ -4202,6 +4252,10 @@ For the signature formats defined in IEEE P1363, &lt;digest&gt;with&lt;encryptio
 <th style="font-weight: normal; text-align: left;" scope="row">RSASSA-PSS</th>
 <td style="text-align: left;">RSASSA-PSS</td>
 </tr>
+<tr class="odd">
+<th style="font-weight: normal; text-align: left;" scope="row">EdDSA</th>
+<td style="text-align: left;">EdDSA (Ed25519 and Ed448)</td>
+</tr>
 </tbody>
 </table>
 <h3 id="protocols">Protocols</h3>
@@ -5352,6 +5406,6 @@ http://www.w3.org/2000/09/xmldsig#enveloped-signature (<code>Transform.ENVELOPED
 </tr>
 </tbody>
 </table>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

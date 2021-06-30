@@ -25,7 +25,7 @@
 <li><a href="#name">Name</a></li>
 <li><a href="#synopsis">Synopsis</a></li>
 <li><a href="#description">Description</a></li>
-<li><a href="#start-rmid-on-demand-oracle-solaris-and-linux-only">Start RMID on Demand (Oracle Solaris and Linux Only)</a></li>
+<li><a href="#start-rmid-on-demand-linux-only">Start RMID on Demand (Linux Only)</a></li>
 <li><a href="#options-for-rmid">Options for rmid</a></li>
 </ul>
 </nav>
@@ -39,6 +39,7 @@
 </dd>
 </dl>
 <h2 id="description">Description</h2>
+<p><strong>Deprecation Notice:</strong> The rmid tool and the RMI Activation mechanism have been deprecated and may be removed from a future version of the platform. See <a href="https://openjdk.java.net/jeps/385">JEP 385</a> for further information.</p>
 <p>The <code>rmid</code> command starts the activation system daemon. The activation system daemon must be started before objects that can be activated are either registered with the activation system or activated in a JVM.</p>
 <p>Start the daemon by executing the <code>rmid</code> command and specifying a security policy file, as follows:</p>
 <blockquote>
@@ -50,8 +51,8 @@
 <blockquote>
 <p><code>rmid -J-Djava.security.policy=rmid.policy -port 1099</code></p>
 </blockquote>
-<h2 id="start-rmid-on-demand-oracle-solaris-and-linux-only">Start RMID on Demand (Oracle Solaris and Linux Only)</h2>
-<p>An alternative to starting <code>rmid</code> from the command line is to configure <code>inetd</code> (Oracle Solaris) or <code>xinetd</code> (Linux) to start <code>rmid</code> on demand.</p>
+<h2 id="start-rmid-on-demand-linux-only">Start RMID on Demand (Linux Only)</h2>
+<p>An alternative to starting <code>rmid</code> from the command line is to configure <code>xinetd</code> (Linux) to start <code>rmid</code> on demand.</p>
 <p>When RMID starts, it attempts to obtain an inherited channel (inherited from <code>inetd</code>/<code>xinetd</code>) by calling the <code>System.inheritedChannel</code> method. If the inherited channel is null or not an instance of <code>java.nio.channels.ServerSocketChannel</code>, then RMID assumes that it wasn't started by <code>inetd</code>/<code>xinetd</code>, and it starts as previously described.</p>
 <p>If the inherited channel is a <code>ServerSocketChannel</code> instance, then RMID uses the <code>java.net.ServerSocket</code> obtained from the <code>ServerSocketChannel</code> as the server socket that accepts requests for the remote objects it exports: The registry in which the <code>java.rmi.activation.ActivationSystem</code> is bound and the <code>java.rmi.activation.Activator</code> remote object. In this mode, RMID behaves the same as when it is started from the command line, except in the following cases:</p>
 <ul>
@@ -98,10 +99,10 @@
 <p>When you grant the <code>rmid</code> command permission to execute various commands and options, the permissions <code>ExecPermission</code> and <code>ExecOptionPermission</code> must be granted to all code sources (universally). It is safe to grant these permissions universally because only the <code>rmid</code> command checks these permissions.</p>
 <p>An example policy file that grants various execute permissions to the <code>rmid</code> command is:</p>
 <ul>
-<li><p><strong>Oracle Solaris:</strong></p>
+<li><p><strong>Linux:</strong></p>
 <pre><code>grant {
     permission com.sun.rmi.rmid.ExecPermission
-        &quot;/files/apps/java/jdk1.7.0/solaris/bin/java&quot;;
+        &quot;/files/apps/java/jdk1.7.0/linux/bin/java&quot;;
 
     permission com.sun.rmi.rmid.ExecPermission
         &quot;/files/apps/rmidcmds/*&quot;;
@@ -133,8 +134,8 @@
         &quot;-Dsun.rmi.*&quot;;
 };</code></pre></li>
 </ul>
-<p>The first permission granted allows the <code>rmid</code> command to execute the 1.7.0 release of the <code>java</code> command, specified by its explicit path name. By default, the version of the <code>java</code> command found in <code>java.home</code> is used (the same one that the <code>rmid</code> command uses), and doesn't need to be specified in the policy file. The second permission allows the <code>rmid</code> command to execute any command in either the directory <code>/files/apps/rmidcmds</code> (Oracle Solaris, Linux, and macOS) or the directory <code>c:\files\apps\rmidcmds\</code> (Windows).</p>
-<p>The third permission granted, <code>ExecOptionPermission</code>, allows the <code>rmid</code> command to start an activation group that defines the security policy file to be either <code>/files/policies/group.policy</code> (Oracle Solaris) or <code>c:\files\policies\group.policy</code> (Windows). The next permission allows the <code>java.security.debug property</code> to be used by an activation group. The last permission allows any property in the <code>sun.rmi property</code> name hierarchy to be used by activation groups.</p>
+<p>The first permission granted allows the <code>rmid</code> command to execute the 1.7.0 release of the <code>java</code> command, specified by its explicit path name. By default, the version of the <code>java</code> command found in <code>java.home</code> is used (the same one that the <code>rmid</code> command uses), and doesn't need to be specified in the policy file. The second permission allows the <code>rmid</code> command to execute any command in either the directory <code>/files/apps/rmidcmds</code> (Linux and macOS) or the directory <code>c:\files\apps\rmidcmds\</code> (Windows).</p>
+<p>The third permission granted, <code>ExecOptionPermission</code>, allows the <code>rmid</code> command to start an activation group that defines the security policy file to be either <code>/files/policies/group.policy</code> (Linux) or <code>c:\files\policies\group.policy</code> (Windows). The next permission allows the <code>java.security.debug property</code> to be used by an activation group. The last permission allows any property in the <code>sun.rmi property</code> name hierarchy to be used by activation groups.</p>
 <p>To start the <code>rmid</code> command with a policy file, the <code>java.security.policy</code> property needs to be specified on the <code>rmid</code> command line, for example:</p>
 <p><code>rmid -J-Djava.security.policy=rmid.policy</code>.</p></li>
 <li><p><em>policyClassName</em></p>
@@ -162,6 +163,6 @@ Naming.lookup(&quot;//:port/java.rmi.activation.ActivationSystem&quot;);</code><
 <dd>Stops the current invocation of the <code>rmid</code> command for a port specified by the <code>-port</code> option. If no port is specified, then this option stops the <code>rmid</code> invocation running on port 1098.
 </dd>
 </dl>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

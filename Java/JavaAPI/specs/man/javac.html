@@ -474,7 +474,7 @@
 <dt>Two Argument Files</dt>
 <dd><p>You can create two argument files: one for the <code>javac</code> options and the other for the source file names. Note that the following lists have no line-continuation characters.</p>
 <p>Create a file named <code>options</code> that contains the following:</p>
-<p><strong>Oracle Solaris, Linux, and macOS:</strong></p>
+<p><strong>Linux and macOS:</strong></p>
 <pre><code>-d classes
 -g
 -sourcepath /java/pubs/ws/1.3/src/share/classes</code></pre>
@@ -571,7 +571,7 @@ MyClass3.java</code></pre>
 <p><strong>Note</strong>: if you are compiling code for multiple modules, you must always specify a module source path, and all source files specified on the command line must be in one of the directories on the module source path, or in a subdirectory thereof.</p>
 <h3 id="example-of-compiling-multiple-source-files">Example of Compiling Multiple Source Files</h3>
 <p>This example compiles the <code>Aloha.java</code>, <code>GutenTag.java</code>, <code>Hello.java</code>, and <code>Hi.java</code> source files in the <code>greetings</code> package.</p>
-<p><strong>Oracle Solaris, Linux, and macOS:</strong></p>
+<p><strong>Linux and macOS:</strong></p>
 <pre><code>% javac greetings/*.java
 % ls greetings
 Aloha.class         GutenTag.class      Hello.class         Hi.class
@@ -583,7 +583,7 @@ Aloha.class         GutenTag.class      Hello.class         Hi.class
 Aloha.java          GutenTag.java       Hello.java          Hi.java</code></pre>
 <h3 id="example-of-specifying-a-user-class-path">Example of Specifying a User Class Path</h3>
 <p>After changing one of the source files in the previous example, recompile it:</p>
-<p><strong>Oracle Solaris, Linux, and macOS:</strong></p>
+<p><strong>Linux and macOS:</strong></p>
 <pre><code>pwd
 /examples
 javac greetings/Hi.java</code></pre>
@@ -592,7 +592,7 @@ javac greetings/Hi.java</code></pre>
 \examples
 C:\&gt;javac greetings\Hi.java</code></pre>
 <p>Because <code>greetings.Hi</code> refers to other classes in the <code>greetings</code> package, the compiler needs to find these other classes. The previous example works because the default user class path is the directory that contains the package directory. If you want to recompile this file without concern for which directory you are in, then add the examples directory to the user class path by setting <code>CLASSPATH</code>. This example uses the <code>-classpath</code> option.</p>
-<p><strong>Oracle Solaris, Linux, and macOS:</strong></p>
+<p><strong>Linux and macOS:</strong></p>
 <blockquote>
 <p><code>javac -classpath /examples /examples/greetings/Hi.java</code></p>
 </blockquote>
@@ -601,14 +601,14 @@ C:\&gt;javac greetings\Hi.java</code></pre>
 <p><code>C:\&gt;javac -classpath \examples \examples\greetings\Hi.java</code></p>
 </blockquote>
 <p>If you change <code>greetings.Hi</code> to use a banner utility, then that utility also needs to be accessible through the user class path.</p>
-<p><strong>Oracle Solaris, Linux, and macOS:</strong></p>
+<p><strong>Linux and macOS:</strong></p>
 <pre><code>javac -classpath /examples:/lib/Banners.jar \
             /examples/greetings/Hi.java</code></pre>
 <p><strong>Windows:</strong></p>
 <pre><code>C:\&gt;javac -classpath \examples;\lib\Banners.jar ^
             \examples\greetings\Hi.java</code></pre>
 <p>To execute a class in the <code>greetings</code> package, the program needs access to the <code>greetings</code> package, and to the classes that the <code>greetings</code> classes use.</p>
-<p><strong>Oracle Solaris, Linux, and macOS:</strong></p>
+<p><strong>Linux and macOS:</strong></p>
 <blockquote>
 <p><code>java -classpath /examples:/lib/Banners.jar greetings.Hi</code></p>
 </blockquote>
@@ -667,7 +667,7 @@ C:\&gt;javac greetings\Hi.java</code></pre>
 </ul>
 <h2 id="directory-hierarchies">Directory Hierarchies</h2>
 <p><code>javac</code> generally assumes that source files and compiled class files will be organized in a file system directory hierarchy or in a type of file that supports in an internal directory hierarchy, such as a JAR file. Three different kinds of hierarchy are supported: a <em>package hierarchy</em>, a <em>module hierarchy</em>, and a <em>module source hierarchy</em>.</p>
-<p>While <code>javac</code> is fairly relaxed about the organization of source code, beyond the expectation that source will be organized in one or package hierarchies, and can generally accomodate organizations prescribed by development environments and build tools, Java tools in general, and <code>javac</code> and the Java launcher in particular, are more stringent regarding the organization of compiled class files, and will be organized in package hierarchies or module hierarchies, as appropriate.</p>
+<p>While <code>javac</code> is fairly relaxed about the organization of source code, beyond the expectation that source will be organized in one or package hierarchies, and can generally accommodate organizations prescribed by development environments and build tools, Java tools in general, and <code>javac</code> and the Java launcher in particular, are more stringent regarding the organization of compiled class files, and will be organized in package hierarchies or module hierarchies, as appropriate.</p>
 <p>The location of these hierarchies are specified to <code>javac</code> with command-line options, whose names typically end in &quot;path&quot;, like <a href="#option-source-path"><code>--source-path</code></a> or <a href="#option-class-path"><code>--class-path</code></a>. Also as a general rule, path options whose name includes the word <code>module</code>, like <a href="#option-module-path"><code>--module-path</code></a>, are used to specify module hierarchies, although some module-related path options allow a package hierarchy to be specified on a per-module basis. All other path options are used to specify package hierarchies.</p>
 <h3 id="package-hierarchy">Package Hierarchy</h3>
 <p>In a package hierarchy, directories and subdirectories are used to represent the component parts of the package name, with the source file or compiled class file for a type being stored as a file with an extension of <code>.java</code> or <code>.class</code> in the most nested directory.</p>
@@ -856,7 +856,7 @@ method is missing &#39;...&#39;</code></pre>
 <dt><code>path</code></dt>
 <dd><p>Warns about invalid path elements and nonexistent path directories on the command line (with regard to the class path, the source path, and other paths). Such warnings cannot be suppressed with the <code>@SuppressWarnings</code> annotation. For example:</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> <code>javac -Xlint:path -classpath /nonexistentpath Example.java</code></p></li>
+<li><p><strong>Linux and macOS:</strong> <code>javac -Xlint:path -classpath /nonexistentpath Example.java</code></p></li>
 <li><p><strong>Windows:</strong> <code>javac -Xlint:path -classpath C:\nonexistentpath Example.java</code></p></li>
 </ul>
 </dd>
@@ -962,6 +962,6 @@ List&lt;String&gt; ls = l;       // unchecked warning</code></pre>
 <p>When the compiler encounters a varargs method, it translates the <code>varargs</code> formal parameter into an array. However, the Java programming language does not permit the creation of arrays of parameterized types. In the method <code>ArrayBuilder.addToList</code>, the compiler translates the <code>varargs</code> formal parameter <code>T...</code> elements to the formal parameter <code>T[]</code> elements, an array. However, because of type erasure, the compiler converts the <code>varargs</code> formal parameter to <code>Object[]</code> elements. Consequently, there's a possibility of heap pollution.</p>
 </dd>
 </dl>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

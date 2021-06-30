@@ -55,36 +55,36 @@
 <dd><p>Read options and/or mode from a file.</p>
 <p>This option can be used multiple times.</p>
 </dd>
-<dt><code>--type</code> or <code>-t</code> <em>type string</em></dt>
+<dt><code>--type</code> or <code>-t</code> &lt;type string&gt;</dt>
 <dd><p>The type of package to create</p>
 <p>Valid values are: {&quot;app-image&quot;, &quot;exe&quot;, &quot;msi&quot;, &quot;rpm&quot;, &quot;deb&quot;, &quot;pkg&quot;, &quot;dmg&quot;}</p>
 <p>If this option is not specified a platform dependent default type will be created.</p>
 </dd>
-<dt><code>--app-version</code> <em>version</em></dt>
+<dt><code>--app-version</code> &lt;version&gt;</dt>
 <dd><p>Version of the application and/or package`</p>
 </dd>
-<dt><code>--copyright</code> <em>copyright string</em></dt>
+<dt><code>--copyright</code> &lt;copyright string&gt;</dt>
 <dd><p>Copyright for the application.</p>
 </dd>
-<dt><code>--description</code> <em>description string</em></dt>
+<dt><code>--description</code> &lt;description string&gt;</dt>
 <dd><p>Description of the application.</p>
 </dd>
 <dt><code>--help</code> or <code>-h</code></dt>
 <dd><p>Print the usage text with a list and description of each valid option for the current platform to the output stream, and exit.</p>
 </dd>
-<dt><code>--name</code> or <code>-n</code> <em>name</em></dt>
+<dt><code>--name</code> or <code>-n</code> &lt;name&gt;</dt>
 <dd><p>Name of the application and/or package.</p>
 </dd>
-<dt><code>--dest</code> or <code>-d</code> <em>output path</em></dt>
+<dt><code>--dest</code> or <code>-d</code> &lt;output path&gt;</dt>
 <dd><p>Path where generated output file is placed</p>
 <p>Defaults to the current working directory. (absolute path or relative to the current directory).</p>
 </dd>
-<dt><code>--temp</code> <em>file path</em></dt>
+<dt><code>--temp</code> &lt;file path&gt;</dt>
 <dd><p>Path of a new or empty directory used to create temporary files (absolute path or relative to the current directory).</p>
 <p>If specified, the temp dir will not be removed upon the task completion and must be removed manually.</p>
 <p>If not specified, a temporary directory will be created and removed upon the task completion.</p>
 </dd>
-<dt><code>--vendor</code> <em>vendor string</em></dt>
+<dt><code>--vendor</code> &lt;vendor string&gt;</dt>
 <dd><p>Vendor of the application.</p>
 </dd>
 <dt><code>--verbose</code></dt>
@@ -96,58 +96,60 @@
 </dl>
 <h3 id="options-for-creating-the-runtime-image">Options for creating the runtime image:</h3>
 <dl>
-<dt><code>--add-modules</code> <em>module name</em> [<code>,</code><em>module name</em>...]</dt>
+<dt><code>--add-modules</code> &lt;module name&gt; [<code>,</code>&lt;module name&gt;...]</dt>
 <dd><p>A comma (&quot;,&quot;) separated list of modules to add.</p>
 <p>This module list, along with the main module (if specified) will be passed to jlink as the --add-module argument. If not specified, either just the main module (if --module is specified), or the default set of modules (if --main-jar is specified) are used.</p>
 <p>This option can be used multiple times.</p>
 </dd>
-<dt><code>--module-path</code> or <code>-p</code> <em>module path</em>...</dt>
+<dt><code>--module-path</code> or <code>-p</code> &lt;module path&gt;...</dt>
 <dd><p>A File.pathSeparator separated list of paths.</p>
 <p>Each path is either a directory of modules or the path to a modular jar, and is absolute or relative to the current directory.</p>
 <p>This option can be used multiple times.</p>
 </dd>
-<dt><code>--bind-services</code></dt>
-<dd><p>Pass on --bind-services option to jlink (which will link in service provider modules and their dependences).</p>
+<dt><code>--jlink-options</code> &lt;jlink options&gt;</dt>
+<dd><p>A space separated list of options to pass to jlink</p>
+<p>If not specified, defaults to &quot;--strip-native-commands --strip-debug --no-man-pages --no-header-files&quot;</p>
+<p>This option can be used multiple times.</p>
 </dd>
-<dt><code>--runtime-image</code> <em>file path</em></dt>
+<dt><code>--runtime-image</code> &lt;file paths&gt;</dt>
 <dd><p>Path of the predefined runtime image that will be copied into the application image (absolute path or relative to the current directory).</p>
 <p>If --runtime-image is not specified, jpackage will run jlink to create the runtime image using options: --strip-debug, --no-header-files, --no-man-pages, and --strip-native-commands.</p>
 </dd>
 </dl>
 <h3 id="options-for-creating-the-application-image">Options for creating the application image:</h3>
 <dl>
-<dt><code>--icon</code> <em>icon file path</em></dt>
+<dt><code>--icon</code> &lt;icon file path&gt;</dt>
 <dd><p>Path of the icon of the application bundle (absolute path or relative to the current directory).</p>
 </dd>
-<dt><code>--input</code> or <code>-i</code> <em>input path</em></dt>
+<dt><code>--input</code> or <code>-i</code> &lt;input path&gt;</dt>
 <dd><p>Path of the input directory that contains the files to be packaged (absolute path or relative to the current directory).</p>
 <p>All files in the input directory will be packaged into the application image.</p>
 </dd>
 </dl>
 <h3 id="options-for-creating-the-application-launchers">Options for creating the application launcher(s):</h3>
 <dl>
-<dt><code>--add-launcher</code> <em>launcher name</em>=<em>file path</em></dt>
+<dt><code>--add-launcher</code> &lt;launcher name&gt;=&lt;file path&gt;</dt>
 <dd><p>Name of launcher, and a path to a Properties file that contains a list of key, value pairs (absolute path or relative to the current directory).</p>
 <p>The keys &quot;module&quot;, &quot;add-modules&quot;, &quot;main-jar&quot;, &quot;main-class&quot;, &quot;arguments&quot;, &quot;java-options&quot;, &quot;app-version&quot;, &quot;icon&quot;, and &quot;win-console&quot; can be used.</p>
 <p>These options are added to, or used to overwrite, the original command line options to build an additional alternative launcher. The main application launcher will be built from the command line options. Additional alternative launchers can be built using this option, and this option can be used multiple times to build multiple additional launchers.</p>
 </dd>
-<dt><code>--arguments</code> <em>main class arguments</em></dt>
+<dt><code>--arguments</code> &lt;main class arguments&gt;</dt>
 <dd><p>Command line arguments to pass to the main class if no command line arguments are given to the launcher.</p>
 <p>This option can be used multiple times.</p>
 </dd>
-<dt><code>--java-options</code> <em>java options</em></dt>
+<dt><code>--java-options</code> &lt;java options&gt;</dt>
 <dd><p>Options to pass to the Java runtime.</p>
 <p>This option can be used multiple times.</p>
 </dd>
-<dt><code>--main-class</code> <em>class name</em></dt>
+<dt><code>--main-class</code> &lt;class name&gt;</dt>
 <dd><p>Qualified name of the application main class to execute.</p>
 <p>This option can only be used if --main-jar is specified.</p>
 </dd>
-<dt><code>--main-jar</code> <em>main jar file</em></dt>
+<dt><code>--main-jar</code> &lt;main jar file&gt;</dt>
 <dd><p>The main JAR of the application; containing the main class (specified as a path relative to the input path).</p>
 <p>Either --module or --main-jar option can be specified but not both.</p>
 </dd>
-<dt><code>--module</code> or <code>-m</code> <em>module name</em>/<em>main class</em>]</dt>
+<dt><code>--module</code> or <code>-m</code> &lt;module name&gt;/&lt;main class&gt;]</dt>
 <dd><p>The main module (and optionally main class) of the application This module must be located on the module path.</p>
 <p>When this option is specified, the main module will be linked in the Java runtime image. Either --module or --main-jar option can be specified but not both.</p>
 </dd>
@@ -161,53 +163,53 @@
 </dl>
 <h4 id="macos-platform-options-available-only-when-running-on-macos">macOS platform options (available only when running on macOS):</h4>
 <dl>
-<dt><code>--mac-package-identifier</code> <em>ID string</em></dt>
+<dt><code>--mac-package-identifier</code> &lt;ID string&gt;</dt>
 <dd><p>An identifier that uniquely identifies the application for macOSX.</p>
 <p>Defaults to the the main class name.</p>
 <p>May only use alphanumeric (A-Z,a-z,0-9), hyphen (-), and period (.) characters.</p>
 </dd>
-<dt><code>--mac-package-name</code> <em>name string</em></dt>
+<dt><code>--mac-package-name</code> &lt;name string&gt;</dt>
 <dd><p>Name of the application as it appears in the Menu Bar.</p>
 <p>This can be different from the application name.</p>
 <p>This name must be less than 16 characters long and be suitable for displaying in the menu bar and the application Info window. Defaults to the application name.</p>
 </dd>
-<dt><code>--mac-bundle-signing-prefix</code> <em>prefix string</em></dt>
+<dt><code>--mac-bundle-signing-prefix</code> &lt;prefix string&gt;</dt>
 <dd><p>When signing the application bundle, this value is prefixed to all components that need to be signed that don't have an existing bundle identifier.</p>
 </dd>
 <dt><code>--mac-sign</code></dt>
 <dd><p>Request that the bundle be signed.</p>
 </dd>
-<dt><code>--mac-signing-keychain</code> <em>file path</em></dt>
+<dt><code>--mac-signing-keychain</code> &lt;file path&gt;</dt>
 <dd><p>Path of the keychain to search for the signing identity (absolute path or relative to the current directory).</p>
 <p>If not specified, the standard keychains are used.</p>
 </dd>
-<dt><code>--mac-signing-key-user-name</code> <em>team name</em></dt>
+<dt><code>--mac-signing-key-user-name</code> &lt;team name&gt;</dt>
 <dd><p>Team name portion in Apple signing identities' names.</p>
-<p>For example &quot;Developer ID Application: <team name>&quot;</p>
+<p>For example &quot;Developer ID Application: &lt;team name&gt;&quot;</p>
 </dd>
 </dl>
 <h3 id="options-for-creating-the-application-package">Options for creating the application package:</h3>
 <dl>
-<dt><code>--app-image</code> <em>file path</em></dt>
+<dt><code>--app-image</code> &lt;file path&gt;</dt>
 <dd><p>Location of the predefined application image that is used to build an installable package (absolute path or relative to the current directory).</p>
 <p>See create-app-image mode options to create the application image.</p>
 </dd>
-<dt><code>--file-associations</code> <em>file path</em></dt>
+<dt><code>--file-associations</code> &lt;file path&gt;</dt>
 <dd><p>Path to a Properties file that contains list of key, value pairs (absolute path or relative to the current directory).</p>
 <p>The keys &quot;extension&quot;, &quot;mime-type&quot;, &quot;icon&quot;, and &quot;description&quot; can be used to describe the association.</p>
 <p>This option can be used multiple times.</p>
 </dd>
-<dt><code>--install-dir</code> <em>file path</em></dt>
+<dt><code>--install-dir</code> &lt;file path&gt;</dt>
 <dd><p>Absolute path of the installation directory of the application on OS X or Linux. Relative sub-path of the installation location of the application such as &quot;Program Files&quot; or &quot;AppData&quot; on Windows.</p>
 </dd>
-<dt><code>--license-file</code> <em>file path</em></dt>
+<dt><code>--license-file</code> &lt;file path&gt;</dt>
 <dd><p>Path to the license file (absolute path or relative to the current directory).</p>
 </dd>
-<dt><code>--resource-dir</code> <em>path</em></dt>
+<dt><code>--resource-dir</code> &lt;path&gt;</dt>
 <dd><p>Path to override jpackage resources (absolute path or relative to the current directory).</p>
 <p>Icons, template files, and other resources of jpackage can be over-ridden by adding replacement resources to this directory.</p>
 </dd>
-<dt><code>--runtime-image</code> <em>file-path</em></dt>
+<dt><code>--runtime-image</code> &lt;file-path&gt;</dt>
 <dd><p>Path of the predefined runtime image to install (absolute path or relative to the current directory).</p>
 <p>Option is required when creating a runtime installer.</p>
 </dd>
@@ -221,7 +223,7 @@
 <dt><code>--win-menu</code></dt>
 <dd><p>Adds the application to the system menu.</p>
 </dd>
-<dt><code>--win-menu-group</code> <em>menu group name</em></dt>
+<dt><code>--win-menu-group</code> &lt;menu group name&gt;</dt>
 <dd><p>Start Menu group this application is placed in.</p>
 </dd>
 <dt><code>--win-per-user-install</code></dt>
@@ -230,32 +232,32 @@
 <dt><code>--win-shortcut</code></dt>
 <dd><p>Creates a desktop shortcut for the application.</p>
 </dd>
-<dt><code>--win-upgrade-uuid</code> <em>id string</em></dt>
+<dt><code>--win-upgrade-uuid</code> &lt;id string&gt;</dt>
 <dd><p>UUID associated with upgrades for this package.</p>
 </dd>
 </dl>
 <h4 id="linux-platform-options-available-only-when-running-on-linux">Linux platform options (available only when running on Linux):</h4>
 <dl>
-<dt><code>--linux-package-name</code> <em>package name</em></dt>
+<dt><code>--linux-package-name</code> &lt;package name&gt;</dt>
 <dd><p>Name for Linux package, defaults to the application name.</p>
 </dd>
-<dt><code>--linux-deb-maintainer</code> <em>email address</em></dt>
+<dt><code>--linux-deb-maintainer</code> &lt;email address&gt;</dt>
 <dd><p>Maintainer for .deb bundle.</p>
 </dd>
-<dt><code>--linux-menu-group</code> <em>menu-group-name</em></dt>
+<dt><code>--linux-menu-group</code> &lt;menu-group-name&gt;</dt>
 <dd><p>Menu group this application is placed in.</p>
 </dd>
 <dt><code>--linux-package-deps</code></dt>
 <dd><p>Required packages or capabilities for the application</p>
 </dd>
-<dt><code>--linux-rpm-license-type</code> <em>type string</em></dt>
-<dd><p>Type of the license (&quot;License: <value>&quot; of the RPM .spec).</p>
+<dt><code>--linux-rpm-license-type</code> &lt;type string&gt;</dt>
+<dd><p>Type of the license (&quot;License: &lt;value&gt;&quot; of the RPM .spec).</p>
 </dd>
-<dt><code>--linux-app-release</code> <em>release string</em></dt>
-<dd><p>Release value of the RPM <name>.spec file or Debian revision value of the DEB control file.</p>
+<dt><code>--linux-app-release</code> &lt;release string&gt;</dt>
+<dd><p>Release value of the RPM &lt;name&gt;.spec file or Debian revision value of the DEB control file.</p>
 </dd>
-<dt><code>--linux-app-category</code> <em>category string</em></dt>
-<dd><p>Group value of the RPM <name>.spec file or Section value of DEB control file.</p>
+<dt><code>--linux-app-category</code> &lt;category string&gt;</dt>
+<dd><p>Group value of the RPM &lt;name&gt;.spec file or Section value of DEB control file.</p>
 </dd>
 <dt><code>--linux-shortcut</code></dt>
 <dd><p>Creates a shortcut for the application</p>
@@ -284,6 +286,6 @@ To provide your own options to jlink, run jlink separately:
         -m moduleName/className --runtime-image appRuntimeImage</code></pre>
 <pre><code>Generate a Java runtime package:</code></pre>
 <pre><code>jpackage -n name --runtime-image &lt;runtime-image&gt;</code></pre>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

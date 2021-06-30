@@ -114,7 +114,7 @@
 <p><code>Loaded</code>: Number of classes loaded.</p>
 <p><code>Bytes</code>: Number of KB loaded.</p>
 <p><code>Unloaded</code>: Number of classes unloaded.</p>
-<p><code>Bytes</code>: Number of KB loaded.</p>
+<p><code>Bytes</code>: Number of KB unloaded.</p>
 <p><code>Time</code>: Time spent performing class loading and unloading operations.</p>
 </dd>
 <dt><code>-compiler</code> <em>option</em></dt>
@@ -269,8 +269,7 @@
 <dd>The communications protocol. If the <em>protocol</em> value is omitted and a host name isn't specified, then the default protocol is a platform-specific optimized local protocol. If the <em>protocol</em> value is omitted and a host name is specified, then the default protocol is <code>rmi</code>.
 </dd>
 <dt><em>lvmid</em></dt>
-<dd><p>The local virtual machine identifier for the target JVM. The <em>lvmid</em> is a platform-specific value that uniquely identifies a JVM on a system. The <em>lvmid</em> is the only required component of a virtual machine identifier. The <em>lvmid</em> is typically, but not necessarily, the operating system's process identifier for the target JVM process. You can use the <code>jps</code> command to determine the <em>lvmid</em> provided the JVM processes is not running in a separate docker instance. You can also determine the <em>lvmid</em> on Oracle Solaris, Linux, and OS X platforms with the <code>ps</code> command, and on Windows with the Windows Task Manager.</p>
-<p><strong>Note:</strong> JDK 10 has added support for using the Attach API when attaching to Java processes running in a separate docker process. However, the <code>jps</code> command will not list the JVM processes that are running in a separate docker instance. If you are trying to connect a Linux host with a Virtual Machine that is in a docker container, you must use tools such as <code>ps</code> to look up the PID of the JVM.</p>
+<dd>The local virtual machine identifier for the target JVM. The <em>lvmid</em> is a platform-specific value that uniquely identifies a JVM on a system. The <em>lvmid</em> is the only required component of a virtual machine identifier. The <em>lvmid</em> is typically, but not necessarily, the operating system's process identifier for the target JVM process. You can use the <code>jps</code> command to determine the <em>lvmid</em> provided the JVM processes is not running in a separate docker instance. You can also determine the <em>lvmid</em> on Linux and OS X platforms with the <code>ps</code> command, and on Windows with the Windows Task Manager.
 </dd>
 <dt><em>hostname</em></dt>
 <dd>A host name or IP address that indicates the target host. If the <em>hostname</em> value is omitted, then the target host is the local host.
@@ -323,6 +322,6 @@
 <p>The lvmid is combined with the name of the remote host to construct a vmid of <code>40496@remote.domain</code>. This vmid results in the use of the <code>rmi</code> protocol to communicate to the default <code>jstatd</code> server on the remote host. The <code>jstatd</code> server is located using the <code>rmiregistry</code> command on <code>remote.domain</code> that's bound to the default port of the <code>rmiregistry</code> command (port 1099).</p>
 <pre><code>jstat -gcutil 40496@remote.domain 1000
 ... output omitted</code></pre>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

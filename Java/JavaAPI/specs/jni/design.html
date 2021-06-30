@@ -64,77 +64,98 @@
 <h2 id="compiling-loading-and-linking-native-methods">Compiling, Loading and Linking Native Methods</h2>
 <p>Since the Java VM is multithreaded, native libraries should also be compiled and linked with multithread aware native compilers. For example, the <code>-mt</code> flag should be used for C++ code compiled with the Sun Studio compiler. For code complied with the GNU gcc compiler, the flags <code>-D_REENTRANT</code> or <code>-D_POSIX_C_SOURCE</code> should be used. For more information please refer to the native compiler documentation.</p>
 <p>Native methods are loaded with the <code>System.loadLibrary</code> method. In the following example, the class initialization method loads a platform-specific native library in which the native method <code>f</code> is defined:</p>
-<pre><code>package pkg;
+<pre><code>package p.q.r;
 
-class Cls {
+class A {
     native double f(int i, String s);
     static {
-        System.loadLibrary(&quot;pkg_Cls&quot;);
+        System.loadLibrary(&quot;p_q_r_A&quot;);
     }
 }</code></pre>
-<p>The argument to <code>System.loadLibrary</code> is a library name chosen arbitrarily by the programmer. The system follows a standard, but platform-specific, approach to convert the library name to a native library name. For example, a Solaris system converts the name <code>pkg_Cls</code> to <code>libpkg_Cls.so</code>, while a Win32 system converts the same <code>pkg_Cls</code> name to <code>pkg_Cls.dll</code>.</p>
+<p>The argument to <code>System.loadLibrary</code> is a library name chosen arbitrarily by the programmer. The system follows a standard, but platform-specific, approach to convert the library name to a native library name. For example, a Linux system converts the name <code>p_q_r_A</code> to <code>libp_q_r_A.so</code>, while a Windows system converts the same <code>p_q_r_A</code> name to <code>p_q_r_A.dll</code>.</p>
 <p>The programmer may use a single library to store all the native methods needed by any number of classes, as long as these classes are to be loaded with the same class loader. The VM internally maintains a list of loaded native libraries for each class loader. Vendors should choose native library names that minimize the chance of name clashes.</p>
 <p>Support for both dynamically and statically linked libraries, and their respective lifecycle management <em>&quot;load&quot;</em> and <em>&quot;unload&quot;</em> function hooks are detailed in the <a href="invocation.html#library-and-version-management">Invocation API section on <em>Library and Version Management</em></a>.</p>
 <h3 id="resolving-native-method-names">Resolving Native Method Names</h3>
-<p>Dynamic linkers resolve entries based on their names. A native method name is concatenated from the following components:</p>
-<ul>
+<p>The JNI defines a 1:1 mapping from the name of a <code>native</code> method declared in Java to the name of a native method residing in a native library. The VM uses this mapping to dynamically link a Java invocation of a <code>native</code> method to the corresponding implementation in the native library.</p>
+<p>The mapping produces a native method name by concatenating the following components derived from a <code>native</code> method declaration:</p>
+<ol type="1">
 <li>the prefix <code>Java_</code></li>
-<li>a mangled fully-qualified class name</li>
-<li>an underscore (&quot;_&quot;) separator</li>
-<li>a mangled method name</li>
-<li>for overloaded native methods, two underscores (&quot;__&quot;) followed by the mangled argument signature</li>
-</ul>
-<p>The VM checks for a method name match for methods that reside in the native library. The VM looks first for the short name; that is, the name without the argument signature. It then looks for the long name, which is the name with the argument signature. Programmers need to use the long name only when a native method is overloaded with another native method. However, this is not a problem if the native method has the same name as a nonnative method. A nonnative method (a Java method) does not reside in the native library.</p>
-<p>In the following example, the native method <code>g</code> does not have to be linked using the long name because the other method <code>g</code> is not a native method, and thus is not in the native library.</p>
-<pre><code>class Cls1 {
-    int g(int i);
-    native int g(double d);
-}</code></pre>
-<p>We adopted a simple name-mangling scheme to ensure that all Unicode characters translate into valid C function names. We use the underscore (&quot;_&quot;) character as the substitute for the slash (&quot;/&quot;) in fully qualified class names. Since a name or type descriptor never begins with a number, we can use <code>_0</code>, ..., <code>_9</code> for escape sequences, as the following table illustrates:</p>
-<table style="width:99%;">
-<caption>Unicode Character Translation</caption>
+<li>given the binary name, in internal form, of the class which declares the <code>native</code> method: the result of escaping the name.</li>
+<li>an underscore (&quot;_&quot;)</li>
+<li>the escaped method name</li>
+<li>if the <code>native</code> method declaration is overloaded: two underscores (&quot;__&quot;) followed by the escaped parameter descriptor (JVMS 4.3.3) of the method declaration.</li>
+</ol>
+<p>Escaping leaves every alphanumeric ASCII character (<code>A-Za-z0-9</code>) unchanged, and replaces each UTF-16 code unit in the table below with the corresponding escape sequence. If the name to be escaped contains a surrogate pair, then the high-surrogate code unit and the low-surrogate code unit are escaped separately. The result of escaping is a string consisting only of the ASCII characters <code>A-Za-z0-9</code> and underscore.</p>
+<table>
 <colgroup>
-<col style="width: 22%" />
-<col style="width: 76%" />
+<col style="width: 59%" />
+<col style="width: 40%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Escape Sequence</th>
-<th style="text-align: left;">Denotes</th>
+<th style="text-align: left;">UTF-16 code unit</th>
+<th style="text-align: left;">Escape sequence</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th style="font-weight: normal; text-align: left;" scope="row"><code>_0xxxx</code></th>
-<td style="text-align: left;">a Unicode character <code>xxxx</code>, representing characters other than ASCII alphanumeric ([A-Za-z0-9]). Note that lower case is used, for example, <code>_0abcd</code> as opposed to <code>_0ABCD</code>.</td>
+<th style="font-weight: normal; text-align: left;" scope="row">Forward slash (<code>/</code>, U+002F)</th>
+<td style="text-align: left;">_</td>
 </tr>
 <tr class="even">
-<th style="font-weight: normal; text-align: left;" scope="row"><code>_1</code></th>
-<td style="text-align: left;">the character &quot;_&quot;</td>
+<th style="font-weight: normal; text-align: left;" scope="row">Underscore (<code>_</code>, U+005F)</th>
+<td style="text-align: left;">_1</td>
 </tr>
 <tr class="odd">
-<th style="font-weight: normal; text-align: left;" scope="row"><code>_2</code></th>
-<td style="text-align: left;">the character &quot;;&quot; in signatures</td>
+<th style="font-weight: normal; text-align: left;" scope="row">Semicolon (<code>;</code>, U+003B)</th>
+<td style="text-align: left;">_2</td>
 </tr>
 <tr class="even">
-<th style="font-weight: normal; text-align: left;" scope="row"><code>_3</code></th>
-<td style="text-align: left;">the character &quot;[&quot; in signatures</td>
+<th style="font-weight: normal; text-align: left;" scope="row">Left square bracket (<code>[</code>, U+005B)</th>
+<td style="text-align: left;">_3</td>
+</tr>
+<tr class="odd">
+<th style="font-weight: normal; text-align: left;" scope="row">Any UTF-16 code unit <code>\u</code><em>WXYZ</em> that does not represent alphanumeric ASCII (<code>A-Za-z0-9</code>), forward slash, underscore, semicolon, or left square bracket</th>
+<td style="text-align: left;"><code>_0wxyz</code> where <code>w</code>, <code>x</code>, <code>y</code>, and <code>z</code> are the lower-case forms of the hexadecimal digits <code>W</code>, <code>X</code>, <code>Y</code>, and <code>Z</code>. (For example, <code>U+ABCD</code> becomes <code>_0abcd</code>.)</td>
 </tr>
 </tbody>
 </table>
+<p>Escaping is necessary for two reasons. First, to ensure that class and method names in Java source code, which may include Unicode characters, translate into valid function names in C source code. Second, to ensure that the parameter descriptor of a <code>native</code> method, which uses &quot;;&quot; and &quot;[&quot; characters to encode parameter types, can be encoded in a C function name.</p>
+<p>When a Java program invokes a <code>native</code> method, the VM searches the native library by looking first for the short version of the native method name, that is, the name without the escaped argument signature. If a native method with the short name is not found, then the VM looks for the long version of the native method name, that is, the name including the escaped argument signature.</p>
+<p>Looking for the short name first makes it easier to declare implementations in the native library. For example, given this <code>native</code> method in Java:</p>
+<pre><code>package p.q.r;
+class A {
+    native double f(int i, String s);
+}</code></pre>
+<p>The corresponding C function can be named <code>Java_p_q_r_A_f</code>, rather than <code>Java_p_q_r_A_f__ILjava_lang_String_2</code>.</p>
+<p>Declaring implementations with long names in the native library is only necessary when two or more <code>native</code> methods in a class have the same name. For example, given these <code>native</code> methods in Java:</p>
+<pre><code>package p.q.r;
+class A {
+    native double f(int i, String s);
+    native double f(int i, Object s);
+}</code></pre>
+<p>The corresponding C functions must be named <code>Java_p_q_r_A_f__ILjava_lang_String_2</code> and <code>Java_p_q_r_A_f__ILjava_lang_Object_2</code>, because the <code>native</code> methods are overloaded.</p>
+<p>Long names in the native library are not necessary if a <code>native</code> method in Java is overloaded by non-<code>native</code> methods only. In the following example, the <code>native</code> method <code>g</code> does not have to be linked using the long name because the other method <code>g</code> is not <code>native</code> and thus does not reside in the native library.</p>
+<pre><code>package p.q.r;
+class B {
+    int g(int i);
+    native int g(double d);
+}</code></pre>
+<p>Note that escape sequences can safely begin <code>_0</code>, <code>_1</code>, etc, because class and method names in Java source code never begin with a number. However, that is not the case in class files that were not generated from Java source code. To preserve the 1:1 mapping to a native method name, the VM checks the resulting name as follows. If the process of escaping any precursor string from the <code>native</code> method declaration (class or method name, or argument type) causes a &quot;<code>0</code>&quot;, &quot;<code>1</code>&quot;, &quot;<code>2</code>&quot;, or &quot;<code>3</code>&quot; character from the precursor string to appear unchanged in the result <em>either</em> immediately after an underscore <em>or</em> at the beginning of the escaped string (where it will follow an underscore in the fully assembled name), then the escaping process is said to have &quot;failed&quot;. In such cases, no native library search is performed, and the attempt to link the <code>native</code> method invocation will throw <code>UnsatisfiedLinkError</code>. It would be possible to extend the present simple mapping scheme to cover such cases, but the complexity costs would outweigh any benefit.</p>
 <p>Both the native methods and the interface APIs follow the standard library-calling convention on a given platform. For example, UNIX systems use the C calling convention, while Win32 systems use __stdcall.</p>
+<p>Native methods can also be explicitly linked using the <a href="functions.html#registering-native-methods"><code>RegisterNatives</code> function</a>. Be aware that <code>RegisterNatives</code> can change the documented behavior of the JVM (including cryptographic algorithms, correctness, security, type safety), by changing the native code to be executed for a given native Java method. Therefore use applications that have native libraries utilizing the <code>RegisterNatives</code> function with caution.</p>
 <h3 id="native-method-arguments">Native Method Arguments</h3>
 <p>The JNI interface pointer is the first argument to native methods. The JNI interface pointer is of type <em>JNIEnv</em>. The second argument differs depending on whether the native method is static or nonstatic. The second argument to a nonstatic native method is a reference to the object. The second argument to a static native method is a reference to its Java class.</p>
 <p>The remaining arguments correspond to regular Java method arguments. The native method call passes its result back to the calling routine via the return value. <a href="types.html">Chapter 3: JNI Types and Data Structures</a> describes the mapping between Java and C types.</p>
 <p>The following code example illustrates using a C function to implement the native method <code>f</code>. The native method <code>f</code> is declared as follows:</p>
-<pre><code>package pkg;
+<pre><code>package p.q.r;
 
-class Cls {
+class A {
     native double f(int i, String s);
     // ...
 }</code></pre>
-<p>The C function with the long mangled name <code>Java_pkg_Cls_f_ILjava_lang_String_2</code> implements native method <code>f</code>:</p>
-<pre><code>jdouble Java_pkg_Cls_f__ILjava_lang_String_2 (
+<p>The C function with the long name <code>Java_p_q_r_A_f_ILjava_lang_String_2</code> implements native method <code>f</code>:</p>
+<pre><code>jdouble Java_p_q_r_A_f__ILjava_lang_String_2 (
      JNIEnv *env,        /* interface pointer */
      jobject obj,        /* &quot;this&quot; pointer */
      jint i,             /* argument #1 */
@@ -154,7 +175,7 @@ class Cls {
 <p>Note that we always manipulate Java objects using the interface pointer <em>env</em>. Using C++, you can write a slightly cleaner version of the code, as shown in the following code example:</p>
 <pre><code>extern &quot;C&quot; /* specify the C calling convention */
 
-jdouble Java_pkg_Cls_f__ILjava_lang_String_2 (
+jdouble Java_p_q_r_A_f__ILjava_lang_String_2 (
 
      JNIEnv *env,        /* interface pointer */
      jobject obj,        /* &quot;this&quot; pointer */
@@ -277,6 +298,6 @@ MonitorExit()
 PushLocalFrame()
 PopLocalFrame()
 DetachCurrentThread()</code></pre>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

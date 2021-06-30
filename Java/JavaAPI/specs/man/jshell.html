@@ -73,6 +73,9 @@
 <p>Existing snippets can be loaded from a file to initialize a JShell session, or at any time within a session. Snippets can be modified within the session to try out different variations and make corrections. To keep snippets for later use, save them to a file.</p>
 <h2 id="options-for-jshell">Options for jshell</h2>
 <dl>
+<dt><code>--add-exports</code> <em>module</em>/<em>package</em></dt>
+<dd>Specifies a package to be considered as exported from its defining module.
+</dd>
 <dt><code>--add-modules</code> <em>module</em>[<code>,</code><em>module</em>...]</dt>
 <dd>Specifies the root modules to resolve in addition to the initial module.
 </dd>
@@ -80,7 +83,13 @@
 <dd>Provides a flag to pass to the compiler. To pass more than one flag, provide an instance of this option for each flag or flag argument needed.
 </dd>
 <dt><code>--class-path</code> <em>path</em></dt>
-<dd>Specifies the directories and archives that are searched to locate class files. This option overrides the path in the <code>CLASSPATH</code> environment variable. If the environment variable isn't set and this option isn't used, then the current directory is searched. For Oracle Solaris, Linux, and macOS, use a colon (:) to separate items in the path. For Windows, use a semicolon (;) to separate items.
+<dd>Specifies the directories and archives that are searched to locate class files. This option overrides the path in the <code>CLASSPATH</code> environment variable. If the environment variable isn't set and this option isn't used, then the current directory is searched. For Linux and macOS, use a colon (:) to separate items in the path. For Windows, use a semicolon (;) to separate items.
+</dd>
+<dt><code>--enable-preview</code></dt>
+<dd>Allows code to depend on the preview features of this release.
+</dd>
+<dt><code>--execution</code> <em>specification</em></dt>
+<dd>Specifies an alternate execution engine, where <em>specification</em> is an ExecutionControl spec. See the documentation of the package jdk.jshell.spi for the syntax of the spec.
 </dd>
 <dt><code>--feedback</code> <em>mode</em></dt>
 <dd><p>Sets the initial level of feedback provided in response to what's entered. The initial level can be overridden within a session by using the <code>/set feedback</code> <em>mode</em> command. The default is <code>normal</code>.</p>
@@ -113,7 +122,7 @@
 <dd>Provides a flag to pass to the runtime system. To pass more than one flag, provide an instance of this option for each flag or flag argument needed.
 </dd>
 <dt><code>--module-path</code> <em>modulepath</em></dt>
-<dd>Specifies where to find application modules. For Oracle Solaris, Linux, and macOS, use a colon (:) to separate items in the path. For Windows, use a semicolon (;) to separate items.
+<dd>Specifies where to find application modules. For Linux and macOS, use a colon (:) to separate items in the path. For Windows, use a semicolon (;) to separate items.
 </dd>
 <dt><code>--no-startup</code></dt>
 <dd>Prevents startup scripts from running when JShell starts. Use this option to run only the scripts entered on the command line when JShell is started, or to start JShell without any preloaded information if no scripts are entered. This option can't be used if the <code>--startup</code> option is used.
@@ -195,10 +204,10 @@
 <dd>Adds an export of <em>package</em> from <em>source-module</em> to <em>target-module</em>.
 </dd>
 <dt><code>--class-path</code> <em>path</em></dt>
-<dd>Specifies the directories and archives that are searched to locate class files. This option overrides the path in the <code>CLASSPATH</code> environment variable. If the environment variable isn't set and this option isn't used, then the current directory is searched. For Oracle Solaris, Linux, and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
+<dd>Specifies the directories and archives that are searched to locate class files. This option overrides the path in the <code>CLASSPATH</code> environment variable. If the environment variable isn't set and this option isn't used, then the current directory is searched. For Linux and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
 </dd>
 <dt><code>--module-path</code> <em>modulepath</em></dt>
-<dd>Specifies where to find application modules. For Oracle Solaris, Linux, and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
+<dd>Specifies where to find application modules. For Linux and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
 </dd>
 </dl>
 </dd>
@@ -288,10 +297,10 @@
 <dd>Adds an export of <em>package</em> from <em>source-module</em> to <em>target-module</em>.
 </dd>
 <dt><code>--class-path</code> <em>path</em></dt>
-<dd>Specifies the directories and archives that are searched to locate class files. This option overrides the path in the <code>CLASSPATH</code> environment variable. If the environment variable isn't set and this option isn't used, then the current directory is searched. For Oracle Solaris, Linux, and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
+<dd>Specifies the directories and archives that are searched to locate class files. This option overrides the path in the <code>CLASSPATH</code> environment variable. If the environment variable isn't set and this option isn't used, then the current directory is searched. For Linux and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
 </dd>
 <dt><code>--module-path</code> <em>modulepath</em></dt>
-<dd>Specifies where to find application modules. For Oracle Solaris, Linux, and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
+<dd>Specifies where to find application modules. For Linux and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
 </dd>
 <dt><code>-quiet</code></dt>
 <dd>Replays the valid history without displaying it. Errors are displayed.
@@ -319,10 +328,10 @@
 <dd>Adds an export of <em>package</em> from <em>source-module</em> to <em>target-module</em>.
 </dd>
 <dt><code>--class-path</code> <em>path</em></dt>
-<dd>Specifies the directories and archives that are searched to locate class files. This option overrides the path in the <code>CLASSPATH</code> environment variable. If the environment variable isn't set and this option isn't used, then the current directory is searched. For Oracle Solaris, Linux, and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
+<dd>Specifies the directories and archives that are searched to locate class files. This option overrides the path in the <code>CLASSPATH</code> environment variable. If the environment variable isn't set and this option isn't used, then the current directory is searched. For Linux and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
 </dd>
 <dt><code>--module-path</code> <em>modulepath</em></dt>
-<dd>Specifies where to find application modules. For Oracle Solaris, Linux, and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
+<dd>Specifies where to find application modules. For Linux and macOS, use a colon (<code>:</code>) to separate items in the path. For Windows, use a semicolon (<code>;</code>) to separate items.
 </dd>
 </dl>
 </dd>
@@ -703,6 +712,6 @@ prompt$ int square (int num1){
 |  defined method square(int)
 
 prompt$</code></pre>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

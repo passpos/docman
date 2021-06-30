@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JVM(TM) Tool Interface 14.0.0</title>
+        <title>JVM(TM) Tool Interface 16.0.0</title>
         <style>
           .centered { text-align: center; }
           .leftAligned { text-align: left; }
@@ -53,7 +53,7 @@
                     JVM<sup style="font-size: xx-small">TM</sup>  Tool Interface
   
             </h1>
-            <h2>Version 14.0</h2>
+            <h2>Version 16.0</h2>
         </header>
         <nav>
             <ul>
@@ -327,8 +327,8 @@
                 An agent is deployed in a platform specific manner but is typically the
     platform equivalent of a dynamic library. On the Windows<sup style="font-size: xx-small">TM</sup>  operating
     system, for example, an agent library is a "Dynamic Linked Library" (DLL).
-    On the Solaris<sup style="font-size: xx-small">TM</sup>  Operating Environment, an agent library is a shared
-    object (<code>.so</code> file).
+    On Linux<sup style="font-size: xx-small">TM</sup>  Operating Environment, an agent library is a shared object
+    (<code>.so</code> file).
     
             <div class="sep"></div>
                 An agent may be started at VM startup by specifying the agent library
@@ -404,8 +404,7 @@
         <code>-agentlib:foo=opt1,opt2</code> is specified, the VM will attempt to
         load the shared library <code>foo.dll</code> from the system <code>PATH</code>
         under Windows<sup style="font-size: xx-small">TM</sup>  or <code>libfoo.so</code> from the
-        <code>LD_LIBRARY_PATH</code> under the Solaris<sup style="font-size: xx-small">TM</sup>  operating
-        environment.
+        <code>LD_LIBRARY_PATH</code> under Linux<sup style="font-size: xx-small">TM</sup> .
         If the agent library is statically linked into the executable
         then no actual loading takes place.
     
@@ -15233,7 +15232,6 @@ IsModifiableModule(jvmtiEnv* env,
                     <a href="#jvmtiClassStatus">Class Status Flags</a>
                 </li>
             </ul>
-                
             <div class="sep"></div>
             <hr class="thin" id="GetLoadedClasses">
             <h3>Get Loaded Classes</h3>
@@ -15249,9 +15247,37 @@ GetLoadedClasses(jvmtiEnv* env,
         <code>classes_ptr</code>.
         
             <div class="sep"></div>
-                    Array classes of all types (including arrays of primitive types) are
-        included in the returned list. Primitive classes (for example,
-        <code>java.lang.Integer.TYPE</code>) are <i>not</i> included in this list.
+                    A class or interface creation can be triggered by one of the following:
+        
+            <ul style="list-style-type:disc">
+                        
+                <li>
+                    By loading and deriving a class from a <code>class</code> file representation
+            using a class loader (see <cite>The Java&trade; Virtual Machine Specification, Chapter 5.3</cite>).
+                </li>
+                        
+                <li>
+                    By invoking <a href="../api/java.base/java/lang/invoke/MethodHandles.Lookup.html#defineHiddenClass(byte[],boolean,java.lang.invoke.MethodHandles.Lookup.ClassOption...)">Lookup::defineHiddenClass</a>
+            that creates a hidden class or interface from a <code>class</code> file representation.
+                </li>
+                        
+                <li>By invoking methods in certain Java SE Platform APIs such as reflection.</li>
+                         
+            </ul>
+                    
+            <div class="sep"></div>
+                    An array class is created directly by the Java virtual machine.  The creation
+        can be triggered by using class loaders or by invoking methods in certain
+        Java SE Platform APIs such as reflection.
+        
+            <div class="sep"></div>
+                    The returned list includes all classes and interfaces, including
+        <a href="../api/java.base/java/lang/Class.html#isHidden()">
+        hidden classes or interfaces</a>,
+        and also array classes of all types
+        (including arrays of primitive types).
+        Primitive classes (for example, <code>java.lang.Integer.TYPE</code>) are
+        <i>not</i> included in the returned list.
       
             <div class="sep"></div>
             <div class="wideDivTableCtnr">
@@ -15352,16 +15378,30 @@ GetClassLoaderClasses(jvmtiEnv* env,
             jint* class_count_ptr,
             jclass** classes_ptr)</pre>
             </blockquote>
-                    Returns an array of those classes for which this class loader has
-        been recorded as an initiating loader. Each
-        class in the returned array was created by this class loader,
+                    Returns an array of all classes which this class loader
+        can find by name via
+        <a href="../api/java.base/java/lang/ClassLoader.html#loadClass(java.lang.String,boolean)">ClassLoader::loadClass</a>,
+        <a href="../api/java.base/java/lang/Class.html#forName(java.lang.String,boolean,java.lang.ClassLoader)">Class::forName</a> and bytecode linkage.
+        That is, all classes for which <code>initiating_loader</code>
+        has been recorded as an initiating loader.
+        Each class in the returned array was created by this class loader,
         either by defining it directly or by delegation to another class loader.
         See <cite>The Java&trade; Virtual Machine Specification, Chapter 5.3</cite>.
+        
+            <div class="sep"></div>
+                    The returned list does not include
+        <a href="../api/java.base/java/lang/Class.html#isHidden()">hidden
+        classes or interfaces</a> or array classes whose
+        element type is a hidden class or interface as they cannot be discovered
+        by any class loader.
         
             <div class="sep"></div>
                     The number of classes in the array is returned via
         <code>class_count_ptr</code>, and the array itself via
         <code>classes_ptr</code>.
+        
+            <div class="sep"></div>
+                    See <a href="../api/java.base/java/lang/invoke/MethodHandles.Lookup.html#defineHiddenClass(byte[],boolean,java.lang.invoke.MethodHandles.Lookup.ClassOption...)">Lookup::defineHiddenClass</a>.
       
             <div class="sep"></div>
             <div class="wideDivTableCtnr">
@@ -15476,15 +15516,48 @@ GetClassSignature(jvmtiEnv* env,
             char** signature_ptr,
             char** generic_ptr)</pre>
             </blockquote>
-                    For the class indicated by <code>klass</code>, return the
-        <a href="jni/types.html#type-signatures">JNI
-            type signature</a>
-        and the generic signature of the class.
-        For example, <code>java.util.List</code> is <code>"Ljava/util/List;"</code>
-        and <code>int[]</code> is <code>"[I"</code>
-        The returned name for primitive classes
-        is the type signature character of the corresponding primitive type.
-        For example, <code>java.lang.Integer.TYPE</code> is <code>"I"</code>.
+                    Return the name and the generic signature of the class indicated by <code>klass</code>.
+        
+            <div class="sep"></div>
+                    If the class is a class or interface, then:
+        
+            <ul style="list-style-type:disc">
+                        
+                <li>
+                    If the class or interface is not <a href="../api/java.base/java/lang/Class.html#isHidden()">hidden</a>,
+          then the returned name is the <a href="jni/types.html#type-signatures">
+          JNI type signature</a>.
+          For example, java.util.List is "Ljava/util/List;"
+        
+                </li>
+                        
+                <li>
+                    If the class or interface is <a href="../api/java.base/java/lang/Class.html#isHidden()">hidden</a>,
+          then the returned name is a string of the form:
+          <code>"L" + N + "." +  S + ";"</code>
+          where <code>N</code> is the binary name encoded in internal form (JVMS 4.2.1)
+          indicated by the <code>class</code> file passed to
+          <a href="../api/java.base/java/lang/invoke/MethodHandles.Lookup.html#defineHiddenClass(byte[],boolean,java.lang.invoke.MethodHandles.Lookup.ClassOption...)">Lookup::defineHiddenClass</a>,
+          and <code>S</code> is an unqualified name.
+          The returned name is not a type descriptor and does not conform to JVMS 4.3.2.
+          For example, com.foo.Foo/AnySuffix is "Lcom/foo/Foo.AnySuffix;"
+        
+                </li>
+                        
+            </ul>
+                    
+            <div class="sep"></div>
+                    If the class indicated by <code>klass</code> represents an array class, then
+        the returned name is a string consisting of one or more "<code>[</code>" characters
+        representing the depth of the array nesting, followed by the class signature
+        of the element type.  For example the class signature of java.lang.String[] is
+        "[Ljava/lang/String;" and that of int[] is "[I".
+        
+            <div class="sep"></div>
+                    If the class indicated by <code>klass</code> represents primitive type or <code>void</code>,
+        then the returned name is the <a href="jni/types.html#type-signatures">
+        type signature character of the corresponding primitive type</a>.
+        For example, java.lang.Integer.TYPE is "I".
       
             <div class="sep"></div>
             <div class="wideDivTableCtnr">
@@ -17382,7 +17455,8 @@ RetransformClasses(jvmtiEnv* env,
         The retransformation must not add, remove or rename fields or methods, change the
         signatures of methods, change modifiers, or change inheritance.
         The retransformation must not change the <code>NestHost</code>,
-        <code>NestMembers</code>, or <code>Record</code> attributes.
+        <code>NestMembers</code>, <code>Record</code>, or <code>PermittedSubclasses</code>
+        attributes.
         These restrictions may be lifted in future versions.
         See the error return description below for information on error codes
         returned if an unsupported retransformation is attempted.
@@ -17676,7 +17750,8 @@ RedefineClasses(jvmtiEnv* env,
         The redefinition must not add, remove or rename fields or methods, change the
         signatures of methods, change modifiers, or change inheritance.
         The redefinition must not change the <code>NestHost</code>,
-        <code>NestMembers</code>, or <code>Record</code> attributes.
+        <code>NestMembers</code>, <code>Record</code>, or <code>PermittedSubclasses</code>
+        attributes.
         These restrictions may be lifted in future versions.
         See the error return description below for information on error codes
         returned if an unsupported redefinition is attempted.
@@ -23124,10 +23199,12 @@ GetExtensionEvents(jvmtiEnv* env,
 
                 <blockquote>
                     <pre>
-    void JNICALL myHandler(jvmtiEnv* jvmti_env, jint myInt, ...)
+    void JNICALL myHandler(jvmtiEnv* jvmti_env, ...)
 </pre>
                 </blockquote>
                           Note the terminal "<code>...</code>" which indicates varargs.
+          The <code>jint</code> argument inside <code>myHandler</code> needs to be extracted using
+          the <code>va_*</code> syntax of the C programming language.
         
                 <div class="sep"></div>
                 <div class="sep"></div>
@@ -30282,7 +30359,7 @@ FramePop(jvmtiEnv *jvmti_env,
       
             <div class="sep"></div>
                   The location reported by <a href="#GetFrameLocation"><code>GetFrameLocation</code></a>
-      identifies the executable location in the returning method,
+      for the depth 0 identifies the executable location in the returning method,
       immediately prior to the return.
     
             <div class="sep"></div>
@@ -30397,8 +30474,7 @@ MethodEntry(jvmtiEnv *jvmti_env,
       
             <div class="sep"></div>
                   The location reported by <a href="#GetFrameLocation"><code>GetFrameLocation</code></a>
-      identifies the initial executable location in
-      the method.
+      for the depth 0 identifies the initial executable location in the method.
       
             <div class="sep"></div>
                   Enabling method
@@ -30517,13 +30593,8 @@ MethodExit(jvmtiEnv *jvmti_env,
       (see <a href="#MethodExit.was_popped_by_exception"><code>was_popped_by_exception</code></a>).
       
             <div class="sep"></div>
-                  The <code>method</code> field uniquely identifies the
-      method being entered or exited. The <code>frame</code> field provides
-      access to the stack frame for the method.
-      
-            <div class="sep"></div>
                   The location reported by <a href="#GetFrameLocation"><code>GetFrameLocation</code></a>
-      identifies the executable location in the returning method
+      for the depth 0 identifies the executable location in the returning method
       immediately prior to the return.
       
             <div class="sep"></div>
@@ -31249,12 +31320,17 @@ ClassLoad(jvmtiEnv *jvmti_env,
             jthread thread,
             jclass klass)</pre>
             </blockquote>
-                  A class load event is generated when a class is first loaded. The order
-      of class load events generated by a particular thread are guaranteed
-      to match the order of class loading within that thread.
-      Array class creation does not generate a class load event.
+                  A class load event is generated
+      <a href="#GetLoadedClasses">when a class or interface is created.</a>.
+      
+            <div class="sep"></div>
+                  Array class creation does not generate a class load event.
       The creation of a primitive class (for example, java.lang.Integer.TYPE)
       does not generate a class load event.
+      
+            <div class="sep"></div>
+                  The order of class load events generated by a particular thread is guaranteed
+      to match the order of class loading within that thread.
       
             <div class="sep"></div>
                   This event is sent at an early stage in loading the class. As
@@ -32305,7 +32381,7 @@ DataDumpRequest(jvmtiEnv *jvmti_env)</pre>
                   Sent by the VM to request the agent to dump its data.  This
       is just a hint and the agent need not react to this event.
       This is useful for processing command-line signals from users.  For
-      example, in the Java 2 SDK a CTRL-Break on Win32 and a CTRL-\ on Solaris
+      example, in the Java 2 SDK a CTRL-Break on Win32 and a CTRL-\ on Linux
       causes the VM to send this event to the agent.
     
             <div class="sep"></div>
@@ -33824,7 +33900,7 @@ GarbageCollectionFinish(jvmtiEnv *jvmti_env)</pre>
             <h2>Change History</h2>
                 Last update: 09/05/07
             <br>
-                Version: 14.0.0
+                Version: 15.0.0
             <div class="sep"></div>
                 The JVM<small style="font-size: xx-small">&nbsp;</small>TI specification is an evolving document with major, minor,
     and micro version numbers.
@@ -35400,7 +35476,16 @@ GarbageCollectionFinish(jvmtiEnv *jvmti_env)</pre>
           to change the class file Record attribute.
   </td>
                 </tr>
+                <tr>
+                    <th scope="row"><b>15.0.0</b>
+                        <br>
+                        13 May 2020</th><td>
+      Minor update for new class file PermittedSubclasses attribute:
+        - Specify that RedefineClasses and RetransformClasses are not allowed
+          to change the class file PermittedSubclasses attribute.
+  </td>
+                </tr>
             </table>
         </main>
-    <footer class="legal-footer"><hr/><a href="../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer></body>
+    <footer class="legal-footer"><hr/><a href="../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer></body>
 </html>

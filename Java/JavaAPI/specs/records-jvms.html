@@ -20,7 +20,7 @@
 <body>
 <header id="title-block-header">
 <h1 class="title">Records</h1>
-<p class="subtitle">Changes to the Java® Virtual Machine Specification • Version 14.0.1+7</p>
+<p class="subtitle">Changes to the Java® Virtual Machine Specification • Version 16+36-2231</p>
 </header>
 <nav id="TOC" title="Table Of Contents">
 <ul>
@@ -41,22 +41,22 @@
 </ul></li>
 </ul>
 </nav>
-<main><p>This document describes changes to the <a href="https://docs.oracle.com/javase/specs/jvms/se13/html">Java Virtual Machine Specification</a> to support <em>records</em> in the Java language, a preview feature of Java SE 14. See <a href="https://openjdk.java.net/jeps/359">JEP 359</a> for an overview of the feature.</p>
-<p>A <a href="records-jls.html">companion document</a> describes the changes needed to the <a href="https://docs.oracle.com/javase/specs/jls/se13/html">Java Language Specification</a> to support records.</p>
+<main><p>This document describes changes to the <a href="https://docs.oracle.com/javase/specs/jvms/se15/html">Java Virtual Machine Specification</a> to support <em>records</em> in the Java Programming Language, a preview feature of Java SE 16. See <a href="https://openjdk.java.net/jeps/395">JEP 395</a> for an overview of the feature.</p>
+<p>A <a href="records-jls.html">companion document</a> describes the changes needed to the <a href="https://docs.oracle.com/javase/specs/jls/se15/html">Java Language Specification</a> to support records.</p>
 <p>Changes are described with respect to existing sections of the JVM Specification. New text is indicated <strong>like this</strong> and deleted text is indicated <del>like this</del>. Explanation and discussion, as needed, is set aside in grey boxes.</p>
 <h2 id="jvms-4">Chapter 4: The <code>class</code> File Format</h2>
 <h3 id="jvms-4.7">4.7 Attributes</h3>
-<p><em>Attributes</em> are used in the <code>ClassFile</code>, <code>field_info</code>, <code>method_info</code>, <del>and</del> <code>Code_attribute</code><strong>, and <code>record_component_info</code></strong> structures of the <code>class</code> file format (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.6">4.6</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.3">4.7.3</a><strong>, <a href="#jvms-4.7.30">4.7.30</a></strong>).</p>
+<p><em>Attributes</em> are used in the <code>ClassFile</code>, <code>field_info</code>, <code>method_info</code>, <del>and</del> <code>Code_attribute</code><strong>, and <code>record_component_info</code></strong> structures of the <code>class</code> file format (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.6">4.6</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.3">4.7.3</a><strong>, <a href="#jvms-4.7.30">4.7.30</a></strong>).</p>
 <p>All attributes have the following general format:</p>
 <pre><code>attribute_info {
     u2 attribute_name_index;
     u4 attribute_length;
     u1 info[attribute_length];
 }</code></pre>
-<p>For all attributes, the <code>attribute_name_index</code> item must be a valid unsigned 16-bit index into the constant pool of the class. The <code>constant_pool</code> entry at <code>attribute_name_index</code> must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the name of the attribute. The value of the <code>attribute_length</code> item indicates the length of the subsequent information in bytes. The length does not include the initial six bytes that contain the <code>attribute_name_index</code> and <code>attribute_length</code> items.</p>
+<p>For all attributes, the <code>attribute_name_index</code> item must be a valid unsigned 16-bit index into the constant pool of the class. The <code>constant_pool</code> entry at <code>attribute_name_index</code> must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the name of the attribute. The value of the <code>attribute_length</code> item indicates the length of the subsequent information in bytes. The length does not include the initial six bytes that contain the <code>attribute_name_index</code> and <code>attribute_length</code> items.</p>
 <p><del>28</del> <strong>29</strong> attributes are predefined by this specification. They are listed three times, for ease of navigation:</p>
 <ul>
-<li><p><a href="#jvms-4.7-300">Table 4.7-A</a> is ordered by the attributes' section numbers in this chapter. Each attribute is shown with the first version of the <code>class</code> file format in which it was defined. Also shown is the version of the Java SE Platform which introduced that version of the <code>class</code> file format (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.1">4.1</a>).</p></li>
+<li><p><a href="#jvms-4.7-300">Table 4.7-A</a> is ordered by the attributes' section numbers in this chapter. Each attribute is shown with the first version of the <code>class</code> file format in which it was defined. Also shown is the version of the Java SE Platform which introduced that version of the <code>class</code> file format (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.1">4.1</a>).</p></li>
 <li><p><a href="#jvms-4.7-310">Table 4.7-B</a> is ordered by the first version of the <code>class</code> file format in which each attribute was defined.</p></li>
 <li><p><a href="#jvms-4.7-320">Table 4.7-C</a> is ordered by the location in a <code>class</code> file where each attribute is defined to appear.</p></li>
 </ul>
@@ -126,37 +126,37 @@
 <tbody>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>ConstantValue</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.2">4.7.2</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.2">4.7.2</a></td>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Code</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.3">4.7.3</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.3">4.7.3</a></td>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>StackMapTable</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.4">4.7.4</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.4">4.7.4</a></td>
 <td style="text-align: left;">50.0</td>
 <td style="text-align: left;">6</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Exceptions</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.5">4.7.5</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.5">4.7.5</a></td>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>InnerClasses</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.6">4.7.6</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.6">4.7.6</a></td>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.1</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>EnclosingMethod</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.7">4.7.7</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.7">4.7.7</a></td>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
 </tr>
@@ -174,37 +174,37 @@
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>SourceFile</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.10">4.7.10</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.10">4.7.10</a></td>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>SourceDebugExtension</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.11">4.7.11</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.11">4.7.11</a></td>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>LineNumberTable</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.12">4.7.12</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.12">4.7.12</a></td>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>LocalVariableTable</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.13">4.7.13</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.13">4.7.13</a></td>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>LocalVariableTypeTable</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.14">4.7.14</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.14">4.7.14</a></td>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Deprecated</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.15">4.7.15</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.15">4.7.15</a></td>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.1</td>
 </tr>
@@ -222,13 +222,13 @@
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>RuntimeVisibleParameterAnnotations</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.18">4.7.18</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.18">4.7.18</a></td>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>RuntimeInvisibleParameterAnnotations</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.19">4.7.19</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.19">4.7.19</a></td>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
 </tr>
@@ -246,57 +246,57 @@
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>AnnotationDefault</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.22">4.7.22</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.22">4.7.22</a></td>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>BootstrapMethods</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.23">4.7.23</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.23">4.7.23</a></td>
 <td style="text-align: left;">51.0</td>
 <td style="text-align: left;">7</td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>MethodParameters</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.24">4.7.24</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.24">4.7.24</a></td>
 <td style="text-align: left;">52.0</td>
 <td style="text-align: left;">8</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Module</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.25">4.7.25</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.25">4.7.25</a></td>
 <td style="text-align: left;">53.0</td>
 <td style="text-align: left;">9</td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>ModulePackages</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.26">4.7.26</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.26">4.7.26</a></td>
 <td style="text-align: left;">53.0</td>
 <td style="text-align: left;">9</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>ModuleMainClass</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.27">4.7.27</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.27">4.7.27</a></td>
 <td style="text-align: left;">53.0</td>
 <td style="text-align: left;">9</td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>NestHost</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.28">4.7.28</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.28">4.7.28</a></td>
 <td style="text-align: left;">55.0</td>
 <td style="text-align: left;">11</td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>NestMembers</code></th>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.29">4.7.29</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.29">4.7.29</a></td>
 <td style="text-align: left;">55.0</td>
 <td style="text-align: left;">11</td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><strong><code>Record</code></strong></th>
 <td style="text-align: left;"><strong><a href="#jvms-4.7.30">4.7.30</a></strong></td>
-<td style="text-align: left;"><strong>58.65535</strong></td>
-<td style="text-align: left;"><strong>14</strong></td>
+<td style="text-align: left;"><strong>60.0</strong></td>
+<td style="text-align: left;"><strong>16</strong></td>
 </tr>
 </tbody>
 </table>
@@ -323,43 +323,43 @@
 <th style="font-weight: normal; text-align: left;" scope="row"><code>ConstantValue</code></th>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.2">4.7.2</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.2">4.7.2</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Code</code></th>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.3">4.7.3</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.3">4.7.3</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Exceptions</code></th>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.5">4.7.5</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.5">4.7.5</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>SourceFile</code></th>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.10">4.7.10</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.10">4.7.10</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>LineNumberTable</code></th>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.12">4.7.12</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.12">4.7.12</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>LocalVariableTable</code></th>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.0.2</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.13">4.7.13</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.13">4.7.13</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>InnerClasses</code></th>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.1</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.6">4.7.6</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.6">4.7.6</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Synthetic</code></th>
@@ -371,13 +371,13 @@
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Deprecated</code></th>
 <td style="text-align: left;">45.3</td>
 <td style="text-align: left;">1.1</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.15">4.7.15</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.15">4.7.15</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>EnclosingMethod</code></th>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.7">4.7.7</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.7">4.7.7</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Signature</code></th>
@@ -389,13 +389,13 @@
 <th style="font-weight: normal; text-align: left;" scope="row"><code>SourceDebugExtension</code></th>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.11">4.7.11</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.11">4.7.11</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>LocalVariableTypeTable</code></th>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.14">4.7.14</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.14">4.7.14</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>RuntimeVisibleAnnotations</code></th>
@@ -413,31 +413,31 @@
 <th style="font-weight: normal; text-align: left;" scope="row"><code>RuntimeVisibleParameterAnnotations</code></th>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.18">4.7.18</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.18">4.7.18</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>RuntimeInvisibleParameterAnnotations</code></th>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.19">4.7.19</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.19">4.7.19</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>AnnotationDefault</code></th>
 <td style="text-align: left;">49.0</td>
 <td style="text-align: left;">5.0</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.22">4.7.22</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.22">4.7.22</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>StackMapTable</code></th>
 <td style="text-align: left;">50.0</td>
 <td style="text-align: left;">6</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.4">4.7.4</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.4">4.7.4</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>BootstrapMethods</code></th>
 <td style="text-align: left;">51.0</td>
 <td style="text-align: left;">7</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.23">4.7.23</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.23">4.7.23</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>RuntimeVisibleTypeAnnotations</code></th>
@@ -455,42 +455,42 @@
 <th style="font-weight: normal; text-align: left;" scope="row"><code>MethodParameters</code></th>
 <td style="text-align: left;">52.0</td>
 <td style="text-align: left;">8</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.24">4.7.24</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.24">4.7.24</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>Module</code></th>
 <td style="text-align: left;">53.0</td>
 <td style="text-align: left;">9</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.25">4.7.25</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.25">4.7.25</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>ModulePackages</code></th>
 <td style="text-align: left;">53.0</td>
 <td style="text-align: left;">9</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.26">4.7.26</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.26">4.7.26</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>ModuleMainClass</code></th>
 <td style="text-align: left;">53.0</td>
 <td style="text-align: left;">9</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.27">4.7.27</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.27">4.7.27</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>NestHost</code></th>
 <td style="text-align: left;">55.0</td>
 <td style="text-align: left;">11</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.28">4.7.28</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.28">4.7.28</a></td>
 </tr>
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>NestMembers</code></th>
 <td style="text-align: left;">55.0</td>
 <td style="text-align: left;">11</td>
-<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.29">4.7.29</a></td>
+<td style="text-align: left;"><a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.29">4.7.29</a></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><strong><code>Record</code></strong></th>
-<td style="text-align: left;"><strong>58.65535</strong></td>
-<td style="text-align: left;"><strong>14</strong></td>
+<td style="text-align: left;"><strong>60.0</strong></td>
+<td style="text-align: left;"><strong>16</strong></td>
 <td style="text-align: left;"><strong><a href="#jvms-4.7.30">4.7.30</a></strong></td>
 </tr>
 </tbody>
@@ -550,7 +550,7 @@
 <tr class="even">
 <th style="font-weight: normal; text-align: left;" scope="row"><strong><code>Record</code></strong></th>
 <td style="text-align: left;"><strong><code>ClassFile</code></strong></td>
-<td style="text-align: left;"><strong>58.65535</strong></td>
+<td style="text-align: left;"><strong>60.0</strong></td>
 </tr>
 <tr class="odd">
 <th style="font-weight: normal; text-align: left;" scope="row"><code>ConstantValue</code></th>
@@ -631,15 +631,15 @@
 </table>
 </div>
 <div class="editorial">
-<p>The <code>Synthetic</code> and <code>Deprecated</code> attributes could, in principle, be allowed in <code>record_component_info</code> structures. But we haven't yet identified compelling use cases.</p>
+<p>The <code>Synthetic</code> and <code>Deprecated</code> attributes could, in principle, be allowed in <code>record_component_info</code> structures. But we haven't identified any compelling use cases.</p>
 </div>
 <h4 id="jvms-4.7.8">4.7.8 The <code>Synthetic</code> Attribute</h4>
-<p>The <code>Synthetic</code> attribute is a fixed-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, or <code>method_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.6">4.6</a>). A class member that does not appear in the source code must be marked using a <code>Synthetic</code> attribute, or else it must have its <code>ACC_SYNTHETIC</code> flag set. The only exceptions to this requirement are compiler-generated <del>methods</del> <strong>members</strong> which are not considered implementation artifacts, namely the instance initialization method representing a default constructor of the Java programming language (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-2.html#jvms-2.9.1">2.9.1</a>), the class or interface initialization method (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-2.html#jvms-2.9.2">2.9.2</a>), and <del>the <code>Enum.values()</code> and <code>Enum.valueOf()</code> methods</del> <strong>the implicitly-declared members of enums and records (JLS 8.9.3, 8.10.3)</strong>.</p>
+<p>The <code>Synthetic</code> attribute is a fixed-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, or <code>method_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.6">4.6</a>). A class member that does not appear in the source code must be marked using a <code>Synthetic</code> attribute, or else it must have its <code>ACC_SYNTHETIC</code> flag set. The only exceptions to this requirement are compiler-generated <del>methods</del> <strong>members</strong> which are not considered implementation artifacts, namely the instance initialization method representing a default constructor of the Java programming language (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-2.html#jvms-2.9.1">2.9.1</a>), the class or interface initialization method (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-2.html#jvms-2.9.2">2.9.2</a>), and <del>the <code>Enum.values()</code> and <code>Enum.valueOf()</code> methods</del> <strong>the implicitly-declared members of enum and record classes (JLS 8.9.3, 8.10.3)</strong>.</p>
 <blockquote>
 <p>The <code>Synthetic</code> attribute was introduced in JDK 1.1 to support nested classes and interfaces.</p>
 </blockquote>
 <blockquote>
-<p><strong>It is a limitation of the <code>class</code> file that, while a method parameter or a module may be marked <code>ACC_MANDATED</code> (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.24">4.7.24</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.25">4.7.25</a>), there is no equivalent way to flag compiler-generated methods and fields which are not considered implementation artifacts (JLS 13.1). This limitation means that reflective APIs may not accurately indicate the mandated status of such members.</strong></p>
+<p><strong>It is a limitation of the <code>class</code> file that, while a method parameter or a module may be marked <code>ACC_MANDATED</code> (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.24">4.7.24</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.25">4.7.25</a>), there is no equivalent way to flag compiler-generated methods and fields which are not considered implementation artifacts (JLS 13.1). This limitation means that reflective APIs may not accurately indicate the mandated status of such members.</strong></p>
 </blockquote>
 <p>The <code>Synthetic</code> attribute has the following format:</p>
 <pre><code>Synthetic_attribute {
@@ -649,14 +649,14 @@
 <p>The items of the <code>Synthetic_attribute</code> structure are as follows:</p>
 <dl>
 <dt>attribute_name_index</dt>
-<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>Synthetic</code>&quot;.</p>
+<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>Synthetic</code>&quot;.</p>
 </dd>
 <dt>attribute_length</dt>
 <dd><p>The value of the <code>attribute_length</code> item must be zero.</p>
 </dd>
 </dl>
 <h4 id="jvms-4.7.9">4.7.9 The <code>Signature</code> Attribute</h4>
-<p>The <code>Signature</code> attribute is a fixed-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.6">4.6</a><strong>, <a href="#jvms-4.7.30">4.7.30</a></strong>). A <code>Signature</code> attribute records a signature (<a href="#jvms-4.7.9.1">4.7.9.1</a>) for a class, interface, constructor, method, <del>or</del> field<strong>, or record component</strong> whose declaration in the Java programming language uses type variables or parameterized types. See <em>The Java Language Specification, Java SE 13 Edition</em> for details about these constructs.</p>
+<p>The <code>Signature</code> attribute is a fixed-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.6">4.6</a><strong>, <a href="#jvms-4.7.30">4.7.30</a></strong>). A <code>Signature</code> attribute records a signature (<a href="#jvms-4.7.9.1">4.7.9.1</a>) for a class, interface, constructor, method, <del>or</del> field<strong>, or record component</strong> whose declaration in the Java programming language uses type variables or parameterized types. See <em>The Java Language Specification, Java SE <del>15</del> <strong>16</strong> Edition</em> for details about these constructs.</p>
 <p>There may be at most one <code>Signature</code> attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure.</p>
 <p>The <code>Signature</code> attribute has the following format:</p>
 <pre><code>Signature_attribute {
@@ -667,13 +667,13 @@
 <p>The items of the <code>Signature_attribute</code> structure are as follows:</p>
 <dl>
 <dt>attribute_name_index</dt>
-<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>Signature</code>&quot;.</p>
+<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>Signature</code>&quot;.</p>
 </dd>
 <dt>attribute_length</dt>
 <dd><p>The value of the <code>attribute_length</code> item must be two.</p>
 </dd>
 <dt>signature_index</dt>
-<dd><p>The value of the <code>signature_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing a class signature if this <code>Signature</code> attribute is an attribute of a <code>ClassFile</code> structure; a method signature if this <code>Signature</code> attribute is an attribute of a <code>method_info</code> structure; or a field signature otherwise.</p>
+<dd><p>The value of the <code>signature_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing a class signature if this <code>Signature</code> attribute is an attribute of a <code>ClassFile</code> structure; a method signature if this <code>Signature</code> attribute is an attribute of a <code>method_info</code> structure; or a field signature otherwise.</p>
 </dd>
 </dl>
 <blockquote>
@@ -688,12 +688,12 @@
 <p>If the <code>throws</code> clause of a method or constructor declaration does not involve type variables, then a compiler may treat the declaration as having no <code>throws</code> clause for the purpose of emitting a method signature.</p></li>
 <li><p>A field signature for any field, formal parameter, <del>or</del> local variable<strong>, or record component</strong> declaration whose type uses a type variable or a parameterized type.</p></li>
 </ul>
-<p>Signatures are specified using a grammar which follows the notation of <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.3.1">4.3.1</a>. In addition to that notation:</p>
+<p>Signatures are specified using a grammar which follows the notation of <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.3.1">4.3.1</a>. In addition to that notation:</p>
 <ul>
 <li><p>The syntax <em>[x]</em> on the right-hand side of a production denotes zero or one occurrences of <em>x</em>. That is, <em>x</em> is an <em>optional symbol</em>. The alternative which contains the optional symbol actually defines two alternatives: one that omits the optional symbol and one that includes it.</p></li>
 <li><p>A very long right-hand side may be continued on a second line by clearly indenting the second line.</p></li>
 </ul>
-<p>The grammar includes the terminal symbol <em>Identifier</em> to denote the name of a type, field, method, formal parameter, local variable, or type variable, as generated by a Java compiler. Such a name must not contain any of the ASCII characters <code>.</code> <code>;</code> <code>[</code> <code>/</code> <code>&lt;</code> <code>&gt;</code> <code>:</code> (that is, the characters forbidden in method names (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.2.2">4.2.2</a>) and also colon) but may contain characters that must not appear in an identifier in the Java programming language (JLS §3.8).</p>
+<p>The grammar includes the terminal symbol <em>Identifier</em> to denote the name of a type, field, method, formal parameter, local variable, or type variable, as generated by a Java compiler. Such a name must not contain any of the ASCII characters <code>.</code> <code>;</code> <code>[</code> <code>/</code> <code>&lt;</code> <code>&gt;</code> <code>:</code> (that is, the characters forbidden in method names (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.2.2">4.2.2</a>) and also colon) but may contain characters that must not appear in an identifier in the Java programming language (JLS §3.8).</p>
 <p>Signatures rely on a hierarchy of nonterminals known as <em>type signatures</em>:</p>
 <ul>
 <li><p>A <em>Java type signature</em> represents either a reference type or a primitive type of the Java programming language.</p>
@@ -705,7 +705,7 @@
 </dd>
 </dl>
 <blockquote>
-<p>The following production from <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.3.2">4.3.2</a> is repeated here for convenience:</p>
+<p>The following production from <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.3.2">4.3.2</a> is repeated here for convenience:</p>
 </blockquote>
 <blockquote>
 <dl>
@@ -803,7 +803,7 @@
 </dd>
 </dl>
 <blockquote>
-<p>The following production from <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.3.3">4.3.3</a> is repeated here for convenience:</p>
+<p>The following production from <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.3.3">4.3.3</a> is repeated here for convenience:</p>
 </blockquote>
 <blockquote>
 <dl>
@@ -813,7 +813,7 @@
 </dl>
 </blockquote>
 <blockquote>
-<p>A method signature encoded by the <code>Signature</code> attribute may not correspond exactly to the method descriptor in the <code>method_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.3.3">4.3.3</a>). In particular, there is no assurance that the number of formal parameter types in the method signature is the same as the number of parameter descriptors in the method descriptor. The numbers are the same for most methods, but certain constructors in the Java programming language have an implicitly declared parameter which a compiler represents with a parameter descriptor but may omit from the method signature. See the note in <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.18">4.7.18</a> for a similar situation involving parameter annotations.</p>
+<p>A method signature encoded by the <code>Signature</code> attribute may not correspond exactly to the method descriptor in the <code>method_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.3.3">4.3.3</a>). In particular, there is no assurance that the number of formal parameter types in the method signature is the same as the number of parameter descriptors in the method descriptor. The numbers are the same for most methods, but certain constructors in the Java programming language have an implicitly declared parameter which a compiler represents with a parameter descriptor but may omit from the method signature. See the note in <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.18">4.7.18</a> for a similar situation involving parameter annotations.</p>
 </blockquote>
 <p>A <em>field signature</em> encodes the (possibly parameterized) type of a field, formal parameter, <del>or</del> local variable<strong>, or record component</strong> declaration.</p>
 <dl>
@@ -822,7 +822,7 @@
 </dd>
 </dl>
 <h4 id="jvms-4.7.16">4.7.16 The <code>RuntimeVisibleAnnotations</code> Attribute</h4>
-<p>The <code>RuntimeVisibleAnnotations</code> attribute is a variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.6">4.6</a><strong>, <a href="#jvms-4.7.30">4.7.30</a></strong>). The <code>RuntimeVisibleAnnotations</code> attribute records run-time visible annotations on the declaration of the corresponding class, field, <del>or</del> method<strong>, or record component</strong>.</p>
+<p>The <code>RuntimeVisibleAnnotations</code> attribute is a variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.6">4.6</a><strong>, <a href="#jvms-4.7.30">4.7.30</a></strong>). The <code>RuntimeVisibleAnnotations</code> attribute records run-time visible annotations on the declaration of the corresponding class, field, <del>or</del> method<strong>, or record component</strong>.</p>
 <p>There may be at most one <code>RuntimeVisibleAnnotations</code> attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure.</p>
 <p>The <code>RuntimeVisibleAnnotations</code> attribute has the following format:</p>
 <pre><code>RuntimeVisibleAnnotations_attribute {
@@ -834,7 +834,7 @@
 <p>The items of the <code>RuntimeVisibleAnnotations_attribute</code> structure are as follows:</p>
 <dl>
 <dt>attribute_name_index</dt>
-<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>RuntimeVisibleAnnotations</code>&quot;.</p>
+<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>RuntimeVisibleAnnotations</code>&quot;.</p>
 </dd>
 <dt>attribute_length</dt>
 <dd><p>The value of the <code>attribute_length</code> item indicates the length of the attribute, excluding the initial six bytes.</p>
@@ -854,7 +854,7 @@
 <p>The items of the <code>annotation</code> structure are as follows:</p>
 <dl>
 <dt>type_index</dt>
-<dd><p>The value of the <code>type_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing a field descriptor (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.3.2">4.3.2</a>). The field descriptor denotes the type of the annotation represented by this <code>annotation</code> structure.</p>
+<dd><p>The value of the <code>type_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing a field descriptor (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.3.2">4.3.2</a>). The field descriptor denotes the type of the annotation represented by this <code>annotation</code> structure.</p>
 </dd>
 <dt>num_element_value_pairs</dt>
 <dd><p>The value of the <code>num_element_value_pairs</code> item gives the number of element-value pairs of the annotation represented by this <code>annotation</code> structure.</p>
@@ -863,7 +863,7 @@
 <dd><p>Each value of the <code>element_value_pairs</code> table represents a single element-value pair in the annotation represented by this <code>annotation</code> structure. Each <code>element_value_pairs</code> entry contains the following two items:</p>
 <dl>
 <dt>element_name_index</dt>
-<dd><p>The value of the <code>element_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>). The <code>constant_pool</code> entry denotes the name of the element of the element-value pair represented by this <code>element_value_pairs</code> entry.</p>
+<dd><p>The value of the <code>element_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>). The <code>constant_pool</code> entry denotes the name of the element of the element-value pair represented by this <code>element_value_pairs</code> entry.</p>
 <blockquote>
 <p>In other words, the entry denotes an element of the annotation type specified by <code>type_index</code>.</p>
 </blockquote>
@@ -877,7 +877,7 @@
 </dd>
 </dl>
 <h4 id="jvms-4.7.17">4.7.17 The <code>RuntimeInvisibleAnnotations</code> Attribute</h4>
-<p>The <code>RuntimeInvisibleAnnotations</code> attribute is a variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.6">4.6</a><strong>, <a href="#jvms-4.7.30">4.7.30</a></strong>). The <code>RuntimeInvisibleAnnotations</code> attribute records run-time invisible annotations on the declaration of the corresponding class, method, <del>or</del> field<strong>, or record component</strong>.</p>
+<p>The <code>RuntimeInvisibleAnnotations</code> attribute is a variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.6">4.6</a><strong>, <a href="#jvms-4.7.30">4.7.30</a></strong>). The <code>RuntimeInvisibleAnnotations</code> attribute records run-time invisible annotations on the declaration of the corresponding class, method, <del>or</del> field<strong>, or record component</strong>.</p>
 <p>There may be at most one <code>RuntimeInvisibleAnnotations</code> attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure.</p>
 <blockquote>
 <p>The <code>RuntimeInvisibleAnnotations</code> attribute is similar to the <code>RuntimeVisibleAnnotations</code> attribute (<a href="#jvms-4.7.16">4.7.16</a>), except that the annotations represented by a <code>RuntimeInvisibleAnnotations</code> attribute must not be made available for return by reflective APIs, unless the Java Virtual Machine has been instructed to retain these annotations via some implementation-specific mechanism such as a command line flag. In the absence of such instructions, the Java Virtual Machine ignores this attribute.</p>
@@ -892,7 +892,7 @@
 <p>The items of the <code>RuntimeInvisibleAnnotations_attribute</code> structure are as follows:</p>
 <dl>
 <dt>attribute_name_index</dt>
-<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>RuntimeInvisibleAnnotations</code>&quot;.</p>
+<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>RuntimeInvisibleAnnotations</code>&quot;.</p>
 </dd>
 <dt>attribute_length</dt>
 <dd><p>The value of the <code>attribute_length</code> item indicates the length of the attribute, excluding the initial six bytes.</p>
@@ -905,7 +905,7 @@
 </dd>
 </dl>
 <h4 id="jvms-4.7.20">4.7.20 The <code>RuntimeVisibleTypeAnnotations</code> Attribute</h4>
-<p>The <code>RuntimeVisibleTypeAnnotations</code> attribute is an variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure, or <code>Code</code> attribute (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.6">4.6</a>, <strong><a href="#jvms-4.7.30">4.7.30</a>,</strong> <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.3">4.7.3</a>). The <code>RuntimeVisibleTypeAnnotations</code> attribute records run-time visible annotations on types used in the declaration of the corresponding class, field, <del>or</del> method, <strong>or record component,</strong> or in an expression in the corresponding method body. The <code>RuntimeVisibleTypeAnnotations</code> attribute also records run-time visible annotations on type parameter declarations of generic classes, interfaces, methods, and constructors.</p>
+<p>The <code>RuntimeVisibleTypeAnnotations</code> attribute is an variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure, or <code>Code</code> attribute (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.6">4.6</a>, <strong><a href="#jvms-4.7.30">4.7.30</a>,</strong> <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.3">4.7.3</a>). The <code>RuntimeVisibleTypeAnnotations</code> attribute records run-time visible annotations on types used in the declaration of the corresponding class, field, <del>or</del> method, <strong>or record component,</strong> or in an expression in the corresponding method body. The <code>RuntimeVisibleTypeAnnotations</code> attribute also records run-time visible annotations on type parameter declarations of generic classes, interfaces, methods, and constructors.</p>
 <p>There may be at most one <code>RuntimeVisibleTypeAnnotations</code> attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure, or <code>Code</code> attribute.</p>
 <p>An <code>attributes</code> table contains a <code>RuntimeVisibleTypeAnnotations</code> attribute only if types are annotated in kinds of declaration or expression that correspond to the parent structure or attribute of the <code>attributes</code> table.</p>
 <blockquote>
@@ -965,11 +965,11 @@
 </dd>
 <dt>target_info</dt>
 <dd><p>The value of the <code>target_info</code> item denotes precisely which type in a declaration or expression is annotated.</p>
-<p>The items of the <code>target_info</code> union are specified in <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.20.1">4.7.20.1</a>.</p>
+<p>The items of the <code>target_info</code> union are specified in <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.20.1">4.7.20.1</a>.</p>
 </dd>
 <dt>target_path</dt>
 <dd><p>The value of the <code>target_path</code> item denotes precisely which part of the type indicated by <code>target_info</code> is annotated.</p>
-<p>The format of the <code>type_path</code> structure is specified in <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.20.2">4.7.20.2</a>.</p>
+<p>The format of the <code>type_path</code> structure is specified in <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.20.2">4.7.20.2</a>.</p>
 </dd>
 <dt>type_index, num_element_value_pairs, element_value_pairs[]</dt>
 <dd><p>The meaning of these items in the <code>type_annotation</code> structure is the same as their meaning in the <code>annotation</code> structure (<a href="#jvms-4.7.16">4.7.16</a>).</p>
@@ -1214,7 +1214,7 @@
 </ul>
 <p>...</p>
 <h4 id="jvms-4.7.21">4.7.21 The <code>RuntimeInvisibleTypeAnnotations</code> Attribute</h4>
-<p>The <code>RuntimeInvisibleTypeAnnotations</code> attribute is an variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure, or <code>Code</code> attribute (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.6">4.6</a>, <strong><a href="#jvms-4.7.30">4.7.30</a>,</strong> <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.3">4.7.3</a>). The <code>RuntimeInvisibleTypeAnnotations</code> attribute records run-time invisible annotations on types used in the corresponding declaration of a class, field, <del>or</del> method, <strong>or record component,</strong> or in an expression in the corresponding method body. The <code>RuntimeInvisibleTypeAnnotations</code> attribute also records annotations on type parameter declarations of generic classes, interfaces, methods, and constructors.</p>
+<p>The <code>RuntimeInvisibleTypeAnnotations</code> attribute is an variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure, or <code>Code</code> attribute (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.1">4.1</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.5">4.5</a>, <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.6">4.6</a>, <strong><a href="#jvms-4.7.30">4.7.30</a>,</strong> <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.3">4.7.3</a>). The <code>RuntimeInvisibleTypeAnnotations</code> attribute records run-time invisible annotations on types used in the corresponding declaration of a class, field, <del>or</del> method, <strong>or record component,</strong> or in an expression in the corresponding method body. The <code>RuntimeInvisibleTypeAnnotations</code> attribute also records annotations on type parameter declarations of generic classes, interfaces, methods, and constructors.</p>
 <p>There may be at most one <code>RuntimeInvisibleTypeAnnotations</code> attribute in the <code>attributes</code> table of a <code>ClassFile</code>, <code>field_info</code>, <del>or</del> <code>method_info</code><strong>, or <code>record_component_info</code></strong> structure, or <code>Code</code> attribute.</p>
 <p>An <code>attributes</code> table contains a <code>RuntimeInvisibleTypeAnnotations</code> attribute only if types are annotated in kinds of declaration or expression that correspond to the parent structure or attribute of the <code>attributes</code> table.</p>
 <p>The <code>RuntimeInvisibleTypeAnnotations</code> attribute has the following format:</p>
@@ -1241,7 +1241,7 @@
 </dl>
 <h4 id="jvms-4.7.30"><strong>4.7.30 The <code>Record</code> Attribute</strong></h4>
 <div class="inserted">
-<p>The <code>Record</code> attribute is a variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code> structure. The <code>Record</code> attribute denotes information about the components of a record type (JLS 8.10).</p>
+<p>The <code>Record</code> attribute is a variable-length attribute in the <code>attributes</code> table of a <code>ClassFile</code> structure. The <code>Record</code> attribute denotes information about the components of a record class (JLS 8.10).</p>
 <p>There may be at most one <code>Record</code> attribute in the <code>attributes</code> table of a <code>ClassFile</code> structure.</p>
 <p>The <code>Record</code> attribute has the following format:</p>
 <pre><code>Record_attribute {
@@ -1253,7 +1253,7 @@
 <p>The items of the <code>Record_attribute</code> structure are as follows:</p>
 <dl>
 <dt>attribute_name_index</dt>
-<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>Record</code>&quot;.</p>
+<dd><p>The value of the <code>attribute_name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.4.7">4.4.7</a>) representing the string &quot;<code>Record</code>&quot;.</p>
 </dd>
 <dt>attribute_length</dt>
 <dd><p>The value of the <code>attribute_length</code> item indicates the length of the attribute, excluding the initial six bytes.</p>
@@ -1273,10 +1273,10 @@
 <p>The items of the <code>record_component_info</code> structure are as follows:</p>
 <dl>
 <dt>name_index</dt>
-<dd><p>The value of the <code>name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure that represents the unqualified name (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.2.2">4.2.2</a>) of the record component.</p>
+<dd><p>The value of the <code>name_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure that represents the unqualified name (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.2.2">4.2.2</a>) of the record component.</p>
 </dd>
 <dt>descriptor_index</dt>
-<dd><p>The value of the <code>descriptor_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure representing a field descriptor which encodes the JVM type of the record component (<a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.3.2">4.3.2</a>).</p>
+<dd><p>The value of the <code>descriptor_index</code> item must be a valid index into the <code>constant_pool</code> table. The <code>constant_pool</code> entry at that index must be a <code>CONSTANT_Utf8_info</code> structure representing a field descriptor which encodes the JVM type of the record component (<a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.3.2">4.3.2</a>).</p>
 </dd>
 <dt>attributes_count</dt>
 <dd><p>The value of the <code>attributes_count</code> item indicates the number of additional attributes of this record component.</p>
@@ -1285,13 +1285,13 @@
 <dd><p>Each value of the <code>attributes</code> table must be an <code>attribute_info</code> structure (<a href="#jvms-4.7">4.7</a>).</p>
 <p>A record component can have any number of optional attributes associated with it.</p>
 <p>The attributes defined by this specification as appearing in the <code>attributes</code> table of a <code>record_component_info</code> structure are listed in <a href="#jvms-4.7-320">Table 4.7-C</a>.</p>
-<p>The rules concering attributes defined to appear in the <code>attributes</code> table of a <code>record_component_info</code> structure are given in <a href="#jvms-4.7">4.7</a>.</p>
-<p>The rules concerning non-predefined attributes in the <code>attributes</code> table of a <code>record_component_info</code> structure are given in <a href="https://docs.oracle.com/javase/specs/jvms/se13/html/jvms-4.html#jvms-4.7.1">4.7.1</a>.</p>
+<p>The rules concerning attributes defined to appear in the <code>attributes</code> table of a <code>record_component_info</code> structure are given in <a href="#jvms-4.7">4.7</a>.</p>
+<p>The rules concerning non-predefined attributes in the <code>attributes</code> table of a <code>record_component_info</code> structure are given in <a href="https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html#jvms-4.7.1">4.7.1</a>.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 </div>
-</main><footer class="legal-footer"><hr/><a href="../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

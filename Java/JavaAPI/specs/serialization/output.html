@@ -164,13 +164,31 @@ public class ObjectOutputStream
 <li><p><a id="java-lang-string-encoding"></a> If the object is a <code>java.lang.String,</code> the string is written as length information followed by the contents of the string encoded in modified UTF-8. For details, refer to <a href="protocol.html#stream-elements">Section 6.2, &quot;Stream Elements&quot;</a>. A handle is assigned to the string, and <code>writeObject</code> returns.</p></li>
 <li><p>If the object is an array, <code>writeObject</code> is called recursively to write the <code>ObjectStreamClass</code> of the array. The handle for the array is assigned. It is followed by the length of the array. Each element of the array is then written to the stream, after which <code>writeObject</code> returns.</p></li>
 <li><p>If the object is an enum constant, the <code>ObjectStreamClass</code> for the enum type of the constant is written by recursively calling <code>writeObject</code>. It will appear in the stream only the first time it is referenced. A handle is assigned for the enum constant. Next, the value returned by the <code>name</code> method of the enum constant is written as a <code>String</code> object, as described in step 9. Note that if the same name string has appeared previously in the stream, a back reference to it will be written. The <code>writeObject</code> method then returns.</p></li>
-<li><p>For regular objects, the <code>ObjectStreamClass</code> for the class of the object is written by recursively calling <code>writeObject</code>. It will appear in the stream only the first time it is referenced. A handle is assigned for the object.</p></li>
-<li><p>The contents of the object are written to the stream.</p>
-<ol type="a">
-<li><p>If the object is serializable, the highest serializable class is located. For that class, and each derived class, that class's fields are written. If the class does not have a <code>writeObject</code> method, the <code>defaultWriteObject</code> method is called to write the serializable fields to the stream. If the class does have a <code>writeObject</code> method, it is called. It may call <code>defaultWriteObject</code> or <code>putFields</code> and <code>writeFields</code> to save the state of the object, and then it can write other information to the stream.</p></li>
-<li><p>If the object is externalizable, the <code>writeExternal</code> method of the object is called.</p></li>
-<li><p>If the object is neither serializable or externalizable, the <code>NotSerializableException</code> is thrown.</p></li>
-</ol></li>
+<li><p>If the object is a record object, the <code>ObjectStreamClass</code> for the class of the record object is written by recursively calling <code>writeObject</code>. It will appear in the stream only the first time it is referenced. A handle is assigned for the record object.</p>
+<p>The components of the record object are written to the stream.</p>
+<pre><code> a.  If the record object is serializable or externalizable, the record
+     components are written, as if by invoking the `defaultWriteObject`
+     method.
+
+ b.  If the object is neither serializable or externalizable, the
+     `NotSerializableException` is thrown.</code></pre>
+<p>The <code>writeObject</code> method then returns.</p></li>
+<li><p>For regular objects, the <code>ObjectStreamClass</code> for the class of the object is written by recursively calling <code>writeObject</code>. It will appear in the stream only the first time it is referenced. A handle is assigned for the object.</p>
+<p>The contents of the object are written to the stream.</p>
+<pre><code>a.  If the object is serializable, the highest serializable class is
+    located. For that class, and each derived class, that class&#39;s fields
+    are written. If the class does not have a `writeObject` method, the
+    `defaultWriteObject` method is called to write the serializable fields
+    to the stream. If the class does have a `writeObject` method, it is
+    called. It may call `defaultWriteObject` or `putFields` and
+    `writeFields` to save the state of the object, and then it can write
+    other information to the stream.
+
+b.  If the object is externalizable, the `writeExternal` method of the
+    object is called.
+
+c.  If the object is neither serializable or externalizable, the
+    `NotSerializableException` is thrown.</code></pre></li>
 </ol>
 <p>Exceptions may occur during the traversal or may occur in the underlying stream. For any subclass of <code>IOException</code>, the exception is written to the stream using the exception protocol and the stream state is discarded. If a second <code>IOException</code> is thrown while attempting to write the first exception into the stream, the stream is left in an unknown state and <code>StreamCorruptedException</code> is thrown from <code>writeObject</code>. For other exceptions, the stream is aborted and left in an unknown and unusable state.</p>
 <p>The <code>writeUnshared</code> method writes an &quot;unshared&quot; object to the <code>ObjectOutputStream</code>. This method is identical to <code>writeObject</code>, except that it always writes the given object as a new, unique object in the stream (as opposed to a back-reference pointing to a previously serialized instance). Specifically:</p>
@@ -215,6 +233,6 @@ public class ObjectOutputStream
 <h2 id="the-useprotocolversion-method">2.6 The useProtocolVersion Method</h2>
 <p>Due to a stream protocol change that was not backwards compatible, a mechanism has been added to enable the current Virtual Machine to write a serialization stream that is readable by a previous release. Of course, the problems that are corrected by the new stream format will exist when using the backwards compatible protocol.</p>
 <p>Stream protocol versions are discussed in <a href="protocol.html#stream-protocol-versions">Section 6.3, &quot;Stream Protocol Versions&quot;</a>.</p>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

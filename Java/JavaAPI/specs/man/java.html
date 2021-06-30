@@ -68,7 +68,6 @@
 </ul></li>
 <li><a href="#validate-java-virtual-machine-flag-arguments">Validate Java Virtual Machine Flag Arguments</a></li>
 <li><a href="#large-pages">Large Pages</a><ul>
-<li><a href="#large-pages-support-for-oracle-solaris">Large Pages Support for Oracle Solaris</a></li>
 <li><a href="#large-pages-support-for-linux">Large Pages Support for Linux</a></li>
 <li><a href="#large-pages-support-for-windows">Large Pages Support for Windows</a></li>
 </ul></li>
@@ -143,7 +142,7 @@
 </ul>
 <p>If the class identifies an existing file that has a <code>.java</code> extension, or if the <code>--source</code> option is specified, then source-file mode is selected. The source file is then compiled and run. The <code>--source</code> option can be used to specify the source <em>version</em> or <em>N</em> of the source code. This determines the API that can be used. When you set <code>--source</code> <em>N</em>, you can only use the public API that was defined in JDK <em>N</em>.</p>
 <blockquote>
-<p><strong>Note:</strong> The valid values of <em>N</em> change for each release, with new values added and old values removed. You'll get an error message if you use a value of <em>N</em> that is no longer supported. Supported values of <em>N</em> for this release are <code>7</code>, <code>8</code>, <code>9</code>, <code>10</code>, <code>11</code>, <code>12</code>, <code>13</code>, and <code>14</code>.</p>
+<p><strong>Note:</strong> The valid values of <em>N</em> change for each release, with new values added and old values removed. You'll get an error message if you use a value of <em>N</em> that is no longer supported. The supported values of <em>N</em> are the current Java SE release (<code>16</code>) and a limited number of previous releases, detailed in the command-line help for <code>javac</code>, under the <code>--source</code> and <code>--release</code> options.</p>
 </blockquote>
 <p>If the file does not have the <code>.java</code> extension, the <code>--source</code> option must be used to tell the <code>java</code> command to use the source-file mode. The <code>--source</code> option is used for cases when the source file is a &quot;script&quot; to be executed and the name of the source file does not follow the normal naming conventions for Java source files.</p>
 <p>In source-file mode, the effect is as though the source file is compiled into memory, and the first class found in the source file is executed. Any arguments placed after the name of the source file in the original command line are passed to the compiled class when it is executed.</p>
@@ -219,7 +218,7 @@ $ java -Xint @file3</code></pre>
 <dt><code>-agentlib:</code><em>libname</em>[<code>=</code><em>options</em>]</dt>
 <dd><p>Loads the specified native agent library. After the library name, a comma-separated list of options specific to the library can be used.</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> If the option <code>-agentlib:foo</code> is specified, then the JVM attempts to load the library named <code>libfoo.so</code> in the location specified by the <code>LD_LIBRARY_PATH</code> system variable (on macOS this variable is <code>DYLD_LIBRARY_PATH</code>).</p></li>
+<li><p><strong>Linux and macOS:</strong> If the option <code>-agentlib:foo</code> is specified, then the JVM attempts to load the library named <code>libfoo.so</code> in the location specified by the <code>LD_LIBRARY_PATH</code> system variable (on macOS this variable is <code>DYLD_LIBRARY_PATH</code>).</p></li>
 <li><p><strong>Windows:</strong> If the option <code>-agentlib:foo</code> is specified, then the JVM attempts to load the library named <code>foo.dll</code> in the location specified by the <code>PATH</code> system variable.</p>
 <p>The following example shows how to load the Java Debug Wire Protocol (JDWP) library and listen for the socket connection on port 8000, suspending the JVM before the main class loads:</p>
 <blockquote>
@@ -352,7 +351,7 @@ $ java -Xint @file3</code></pre>
 </dd>
 <dt><code>-Xbootclasspath/a:</code><em>directories</em>|<em>zip</em>|<em>JAR-files</em></dt>
 <dd><p>Specifies a list of directories, JAR files, and ZIP archives to append to the end of the default bootstrap class path.</p>
-<p><strong>Oracle Solaris, Linux, and macOS:</strong> Colons (<code>:</code>) separate entities in this list.</p>
+<p><strong>Linux and macOS:</strong> Colons (<code>:</code>) separate entities in this list.</p>
 <p><strong>Windows:</strong> Semicolons (<code>;</code>) separate entities in this list.</p>
 </dd>
 <dt><code>-Xcheck:jni</code></dt>
@@ -404,7 +403,7 @@ $ java -Xint @file3</code></pre>
 <dt><code>-Xrs</code></dt>
 <dd><p>Reduces the use of operating system signals by the JVM. Shutdown hooks enable the orderly shutdown of a Java application by running user cleanup code (such as closing database connections) at shutdown, even if the JVM terminates abruptly.</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong></p>
+<li><p><strong>Linux and macOS:</strong></p>
 <ul>
 <li><p>The JVM catches signals to implement shutdown hooks for unexpected termination. The JVM uses <code>SIGHUP</code>, <code>SIGINT</code>, and <code>SIGTERM</code> to initiate the running of shutdown hooks.</p></li>
 <li><p>Applications embedding the JVM frequently need to trap signals such as <code>SIGINT</code> or <code>SIGTERM</code>, which can lead to interference with the JVM signal handlers. The <code>-Xrs</code> option is available to address this issue. When <code>-Xrs</code> is used, the signal masks for <code>SIGINT</code>, <code>SIGTERM</code>, <code>SIGHUP</code>, and <code>SIGQUIT</code> aren't changed by the JVM, and signal handlers for these signals aren't installed.</p></li>
@@ -418,7 +417,7 @@ $ java -Xint @file3</code></pre>
 </ul>
 <p>There are two consequences of specifying <code>-Xrs</code>:</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> <code>SIGQUIT</code> thread dumps aren't available.</p></li>
+<li><p><strong>Linux and macOS:</strong> <code>SIGQUIT</code> thread dumps aren't available.</p></li>
 <li><p><strong>Windows:</strong> Ctrl + Break thread dumps aren't available.</p></li>
 </ul>
 <p>User code is responsible for causing shutdown hooks to run, for example, by calling the <code>System.exit()</code> when the JVM is to be terminated.</p>
@@ -471,7 +470,6 @@ $ java -Xint @file3</code></pre>
 <ul>
 <li><p>Linux/x64 (64-bit): 1024 KB</p></li>
 <li><p>macOS (64-bit): 1024 KB</p></li>
-<li><p>Oracle Solaris (64-bit): 1024 KB</p></li>
 <li><p>Windows: The default value depends on virtual memory</p></li>
 </ul>
 <p>The following examples set the thread stack size to 1024 KB in different units:</p>
@@ -488,25 +486,6 @@ $ java -Xint @file3</code></pre>
 </dd>
 <dt><code>--add-opens</code> <em>module</em><code>/</code><em>package</em><code>=</code><em>target-module</em>(<code>,</code><em>target-module</em>)*</dt>
 <dd>Updates <em>module</em> to open <em>package</em> to <em>target-module</em>, regardless of module declaration.
-</dd>
-<dt><code>--illegal-access=</code><em>parameter</em></dt>
-<dd><p>When present at run time, <code>--illegal-access=</code> takes a keyword <em>parameter</em> to specify a mode of operation:</p>
-<blockquote>
-<p><strong>Note:</strong> This option will be removed in a future release.</p>
-</blockquote>
-<ul>
-<li><p><code>permit</code>: This mode opens each package in each module in the run-time image to code in all unnamed modules ( such as code on the class path), if that package existed in JDK 8. This enables both static access, (for example, by compiled bytecode, and deep reflective access) through the platform's various reflection APIs. The first reflective-access operation to any such package causes a warning to be issued. However, no warnings are issued after the first occurrence. This single warning describes how to enable further warnings. This mode is the default for the current JDK but will change in a future release.</p></li>
-<li><p><code>warn</code>: This mode is identical to <code>permit</code> except that a warning message is issued for each illegal reflective-access operation.</p></li>
-<li><p><code>debug</code>: This mode is identical to <code>warn</code> except that both a warning message and a stack trace are issued for each illegal reflective-access operation.</p></li>
-<li><p><code>deny</code>: This mode disables all illegal-access operations except for those enabled by other command-line options, such as <code>--add-opens</code>. This mode will become the default in a future release.</p></li>
-</ul>
-<p>The default mode, <code>--illegal-access=permit</code>, is intended to make you aware of code on the class path that reflectively accesses any JDK-internal APIs at least once. To learn about all such accesses, you can use the <code>warn</code> or the <code>debug</code> modes. For each library or framework on the class path that requires illegal access, you have two options:</p>
-<ul>
-<li><p>If the component's maintainers have already released a fixed version that no longer uses JDK-internal APIs then you can consider upgrading to that version.</p></li>
-<li><p>If the component still needs to be fixed, then you can contact its maintainers and ask them to replace their use of JDK-internal APIs with the proper exported APIs.</p></li>
-</ul>
-<p>If you must continue to use a component that requires illegal access, then you can eliminate the warning messages by using one or more <code>--add-opens</code> options to open only those internal packages to which access is required.</p>
-<p>To verify that your application is ready for a future version of the JDK, run it with <code>--illegal-access=deny</code> along with any necessary <code>--add-opens</code> options. Any remaining illegal-access errors will most likely be due to static references from compiled code to JDK-internal APIs. You can identify those by running the <a href="jdeps.html">jdeps</a> tool with the <code>--jdk-internals</code> option. For performance reasons, the current JDK does not issue warnings for illegal static-access operations.</p>
 </dd>
 <dt><code>--limit-modules</code> <em>module</em>[<code>,</code><em>module</em>...]</dt>
 <dd>Specifies the limit of the universe of observable modules.
@@ -570,7 +549,7 @@ $ java -Xint @file3</code></pre>
 <p><code>-XX:ErrorFile=./hs_err_pid%p.log</code></p>
 </blockquote>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> The following example shows how to set the error log to <code>/var/log/java/java_error.log</code>:</p>
+<li><p><strong>Linux and macOS:</strong> The following example shows how to set the error log to <code>/var/log/java/java_error.log</code>:</p>
 <blockquote>
 <p><code>-XX:ErrorFile=/var/log/java/java_error.log</code></p>
 </blockquote></li>
@@ -581,7 +560,7 @@ $ java -Xint @file3</code></pre>
 </ul>
 <p>If the file exists, and is writeable, then it will be overwritten. Otherwise, if the file can't be created in the specified directory (due to insufficient space, permission problem, or another issue), then the file is created in the temporary directory for the operating system:</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> The temporary directory is <code>/tmp</code>.</p></li>
+<li><p><strong>Linux and macOS:</strong> The temporary directory is <code>/tmp</code>.</p></li>
 <li><p><strong>Windows:</strong> The temporary directory is specified by the value of the <code>TMP</code> environment variable; if that environment variable isn't defined, then the value of the <code>TEMP</code> environment variable is used.</p></li>
 </ul>
 </dd>
@@ -669,7 +648,7 @@ $ java -Xint @file3</code></pre>
 <dt><code>-XX:OnError=</code><em>string</em></dt>
 <dd><p>Sets a custom command or a series of semicolon-separated commands to run when an irrecoverable error occurs. If the string contains spaces, then it must be enclosed in quotation marks.</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> The following example shows how the <code>-XX:OnError</code> option can be used to run the <code>gcore</code> command to create a core image, and start the <code>gdb</code> debugger to attach to the process in case of an irrecoverable error (the <code>%p</code> designates the current process identifier):</p>
+<li><p><strong>Linux and macOS:</strong> The following example shows how the <code>-XX:OnError</code> option can be used to run the <code>gcore</code> command to create a core image, and start the <code>gdb</code> debugger to attach to the process in case of an irrecoverable error (the <code>%p</code> designates the current process identifier):</p>
 <blockquote>
 <p><code>-XX:OnError=&quot;gcore %p;gdb -p %p&quot;</code></p>
 </blockquote></li>
@@ -706,7 +685,7 @@ hello/Main</code></pre>
 <p>See <a href="#application-class-data-sharing">Application Class Data Sharing</a>.</p>
 </dd>
 <dt><code>-XX:+ShowCodeDetailsInExceptionMessages</code></dt>
-<dd>Enables printing of improved <code>NullPointerException</code> messages. When an application throws a <code>NullPointerException</code>, the option enables the JVM to analyze the program's bytecode instructions to determine precisely which reference is <code>null</code>, and describes the source with a null-detail message. The null-detail message is calculated and returned by <code>NullPointerException.getMessage()</code>, and will be printed as the exception message along with the method, filename, and line number. By default, this option is disabled.
+<dd>Enables printing of improved <code>NullPointerException</code> messages. When an application throws a <code>NullPointerException</code>, the option enables the JVM to analyze the program's bytecode instructions to determine precisely which reference is <code>null</code>, and describes the source with a null-detail message. The null-detail message is calculated and returned by <code>NullPointerException.getMessage()</code>, and will be printed as the exception message along with the method, filename, and line number. By default, this option is enabled.
 </dd>
 <dt><code>-XX:+ShowMessageBoxOnError</code></dt>
 <dd>Enables the display of a dialog box when the JVM experiences an irrecoverable error. This prevents the JVM from exiting and keeps the process active so that you can attach a debugger to it to investigate the cause of the error. By default, this option is disabled.
@@ -748,7 +727,7 @@ hello/Main</code></pre>
 <p>The path to GC roots is useful for finding memory leaks, but collecting it is time-consuming. Enable this option only when you start a recording for an application that you suspect has a memory leak. If the <code>settings</code> parameter is set to <code>profile</code>, the stack trace from where the potential leaking object was allocated is included in the information collected.</p>
 </dd>
 <dt><code>settings=</code><em>path</em></dt>
-<dd><p>Specifies the path and name of the event settings file (of type JFC). By default, the <code>default.jfc</code> file is used, which is located in <code>JRE_HOME/lib/jfr</code>. This default settings file collects a predefined set of information with low overhead, so it has minimal impact on performance and can be used with recordings that run continuously.</p>
+<dd><p>Specifies the path and name of the event settings file (of type JFC). By default, the <code>default.jfc</code> file is used, which is located in <code>JAVA_HOME/lib/jfr</code>. This default settings file collects a predefined set of information with low overhead, so it has minimal impact on performance and can be used with recordings that run continuously.</p>
 <p>A second settings file is also provided, profile.jfc, which provides more data than the default configuration, but can have more overhead and impact performance. Use this configuration for short periods of time when more information is needed.</p>
 </dd>
 </dl>
@@ -759,17 +738,12 @@ hello/Main</code></pre>
 <ul>
 <li><p>Linux/x64 (64-bit): 1024 KB</p></li>
 <li><p>macOS (64-bit): 1024 KB</p></li>
-<li><p>Oracle Solaris (64-bit): 1024 KB</p></li>
 <li><p>Windows: The default value depends on virtual memory</p></li>
 </ul>
 <p>The following examples show how to set the thread stack size to 1 megabyte in different units:</p>
 <pre><code>-XX:ThreadStackSize=1k
 -XX:ThreadStackSize=1024</code></pre>
 <p>This option is similar to <code>-Xss</code>.</p>
-</dd>
-<dt><code>-XX:-UseBiasedLocking</code></dt>
-<dd><p>Disables the use of biased locking. Some applications with significant amounts of uncontended synchronization may attain significant speedups with this flag enabled, but applications with certain patterns of locking may see slowdowns. .</p>
-<p>By default, this option is enabled.</p>
 </dd>
 <dt><code>-XX:-UseCompressedOops</code></dt>
 <dd><p>Disables the use of compressed pointers. By default, this option is enabled, and compressed pointers are used. This will automatically limit the maximum ergonomically determined Java heap size to the maximum amount of memory that can be covered by compressed pointers. By default this range is 32 GB.</p>
@@ -974,7 +948,7 @@ hello/Main</code></pre>
 <dd>Enables method inlining. This option is enabled by default to increase performance. To disable method inlining, specify <code>-XX:-Inline</code>.
 </dd>
 <dt><code>-XX:InlineSmallCode=</code><em>size</em></dt>
-<dd><p>Sets the maximum code size (in bytes) for already compiled methods that may be inlined. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. The default value depends on the platform and on whether tiered compilation is enabled. In the following example it is set to 1000 bytes:</p>
+<dd><p>Sets the maximum code size (in bytes) for already compiled methods that may be inlined. This flag only applies to the C2 compiler. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. The default value depends on the platform and on whether tiered compilation is enabled. In the following example it is set to 1000 bytes:</p>
 <blockquote>
 <p><code>-XX:InlineSmallCode=1000</code></p>
 </blockquote>
@@ -985,19 +959,31 @@ hello/Main</code></pre>
 <p>You can enable verbose diagnostic output with a message printed to the console every time a method is compiled by using the <code>-XX:+PrintCompilation</code> option.</p>
 </dd>
 <dt><code>-XX:FreqInlineSize=</code><em>size</em></dt>
-<dd><p>Sets the maximum bytecode size (in bytes) of a hot method to be inlined. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. The default value depends on the platform. In the following example it is set to 325 bytes:</p>
+<dd><p>Sets the maximum bytecode size (in bytes) of a hot method to be inlined. This flag only applies to the C2 compiler. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. The default value depends on the platform. In the following example it is set to 325 bytes:</p>
 <blockquote>
 <p><code>-XX:FreqInlineSize=325</code></p>
 </blockquote>
 </dd>
 <dt><code>-XX:MaxInlineSize=</code><em>size</em></dt>
-<dd><p>Sets the maximum bytecode size (in bytes) of a cold method to be inlined. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. By default, the maximum bytecode size is set to 35 bytes:</p>
+<dd><p>Sets the maximum bytecode size (in bytes) of a cold method to be inlined. This flag only applies to the C2 compiler. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. By default, the maximum bytecode size is set to 35 bytes:</p>
+<blockquote>
+<p><code>-XX:MaxInlineSize=35</code></p>
+</blockquote>
+</dd>
+<dt><code>-XX:C1MaxInlineSize=</code><em>size</em></dt>
+<dd><p>Sets the maximum bytecode size (in bytes) of a cold method to be inlined. This flag only applies to the C1 compiler. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. By default, the maximum bytecode size is set to 35 bytes:</p>
 <blockquote>
 <p><code>-XX:MaxInlineSize=35</code></p>
 </blockquote>
 </dd>
 <dt><code>-XX:MaxTrivialSize=</code><em>size</em></dt>
-<dd><p>Sets the maximum bytecode size (in bytes) of a trivial method to be inlined. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. By default, the maximum bytecode size of a trivial method is set to 6 bytes:</p>
+<dd><p>Sets the maximum bytecode size (in bytes) of a trivial method to be inlined. This flag only applies to the C2 compiler. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. By default, the maximum bytecode size of a trivial method is set to 6 bytes:</p>
+<blockquote>
+<p><code>-XX:MaxTrivialSize=6</code></p>
+</blockquote>
+</dd>
+<dt><code>-XX:C1MaxTrivialSize=</code><em>size</em></dt>
+<dd><p>Sets the maximum bytecode size (in bytes) of a trivial method to be inlined. This flag only applies to the C1 compiler. Append the letter <code>k</code> or <code>K</code> to indicate kilobytes, <code>m</code> or <code>M</code> to indicate megabytes, or <code>g</code> or <code>G</code> to indicate gigabytes. By default, the maximum bytecode size of a trivial method is set to 6 bytes:</p>
 <blockquote>
 <p><code>-XX:MaxTrivialSize=6</code></p>
 </blockquote>
@@ -1086,7 +1072,7 @@ hello/Main</code></pre>
 <dd>Controls the use of CRC32C intrinsics for <code>java.util.zip.CRC32C</code>. Enabled by default on platforms that support it. Flags that control intrinsics now require the option <code>-XX:+UnlockDiagnosticVMOptions</code>.
 </dd>
 <dt><code>-XX:+UseSHA</code></dt>
-<dd><p>Enables hardware-based intrinsics for SHA crypto hash functions for SPARC hardware. The <code>UseSHA</code> option is used in conjunction with the <code>UseSHA1Intrinsics</code>, <code>UseSHA256Intrinsics</code>, and <code>UseSHA512Intrinsics</code> options.</p>
+<dd><p>Enables hardware-based intrinsics for SHA crypto hash functions for some hardware. The <code>UseSHA</code> option is used in conjunction with the <code>UseSHA1Intrinsics</code>, <code>UseSHA256Intrinsics</code>, and <code>UseSHA512Intrinsics</code> options.</p>
 <p>The <code>UseSHA</code> and <code>UseSHA*Intrinsics</code> flags are enabled by default on machines that support the corresponding instructions.</p>
 <p>This feature is applicable only when using the <code>sun.security.provider.Sun</code> provider for SHA operations. Flags that control intrinsics now require the option <code>-XX:+UnlockDiagnosticVMOptions</code>.</p>
 <p>To disable all hardware-based SHA intrinsics, specify the <code>-XX:-UseSHA</code>. To disable only a particular SHA intrinsic, use the appropriate corresponding option. For example: <code>-XX:-UseSHA256Intrinsics</code>.</p>
@@ -1137,14 +1123,14 @@ hello/Main</code></pre>
 <dd>Controls loop strip mining optimization. Loops with the number of iterations less than specified will not have safepoints in them. Default value is 1/10th of <code>-XX:LoopStripMiningIter</code>.
 </dd>
 <dt><code>-XX:+UseFMA</code></dt>
-<dd>Enables hardware-based FMA intrinsics for hardware where FMA instructions are available (such as, Intel, SPARC, and ARM64). FMA intrinsics are generated for the <code>java.lang.Math.fma(</code><em>a</em><code>,</code> <em>b</em><code>,</code> <em>c</em><code>)</code> methods that calculate the value of <code>(</code> <em>a</em> <code>*</code> <em>b</em> <code>+</code> <em>c</em> <code>)</code> expressions.
+<dd>Enables hardware-based FMA intrinsics for hardware where FMA instructions are available (such as, Intel and ARM64). FMA intrinsics are generated for the <code>java.lang.Math.fma(</code><em>a</em><code>,</code> <em>b</em><code>,</code> <em>c</em><code>)</code> methods that calculate the value of <code>(</code> <em>a</em> <code>*</code> <em>b</em> <code>+</code> <em>c</em> <code>)</code> expressions.
 </dd>
 <dt><code>-XX:+UseRTMDeopt</code></dt>
 <dd>Autotunes RTM locking depending on the abort ratio. This ratio is specified by the <code>-XX:RTMAbortRatio</code> option. If the number of aborted transactions exceeds the abort ratio, then the method containing the lock is deoptimized and recompiled with all locks as normal locks. This option is disabled by default. The <code>-XX:+UseRTMLocking</code> option must be enabled.
 </dd>
 <dt><code>-XX:+UseRTMLocking</code></dt>
 <dd><p>Generates Restricted Transactional Memory (RTM) locking code for all inflated locks, with the normal locking mechanism as the fallback handler. This option is disabled by default. Options related to RTM are available only on x86 CPUs that support Transactional Synchronization Extensions (TSX).</p>
-<p>RTM is part of Intel's TSX, which is an x86 instruction set extension and facilitates the creation of multithreaded applications. RTM introduces the new instructions <code>XBEGIN</code>, <code>XABORT</code>, <code>XEND</code>, and <code>XTEST</code>. The <code>XBEGIN</code> and <code>XEND</code> instructions enclose a set of instructions to run as a transaction. If no conflict is found when running the transaction, then the memory and register modifications are committed together at the <code>XEND</code> instruction. The <code>XABORT</code> instruction can be used to explicitly abort a transaction and the <code>XEND</code> instruction checks if a set of instructions is being run in a transaction.</p>
+<p>RTM is part of Intel's TSX, which is an x86 instruction set extension and facilitates the creation of multithreaded applications. RTM introduces the new instructions <code>XBEGIN</code>, <code>XABORT</code>, <code>XEND</code>, and <code>XTEST</code>. The <code>XBEGIN</code> and <code>XEND</code> instructions enclose a set of instructions to run as a transaction. If no conflict is found when running the transaction, then the memory and register modifications are committed together at the <code>XEND</code> instruction. The <code>XABORT</code> instruction can be used to explicitly abort a transaction and the <code>XTEST</code> instruction checks if a set of instructions is being run in a transaction.</p>
 <p>A lock on a transaction is inflated when another thread tries to access the same transaction, thereby blocking the thread that didn't originally request access to the transaction. RTM requires that a fallback set of operations be specified in case a transaction aborts or fails. An RTM lock is a lock that has been delegated to the TSX's system.</p>
 <p>RTM improves performance for highly contended locks with low conflict in a critical region (which is code that must not be accessed by more than one thread concurrently). RTM also improves the performance of coarse-grain locking, which typically doesn't perform well in multithreaded applications. (Coarse-grain locking is the strategy of holding locks for long periods to minimize the overhead of taking and releasing locks, while fine-grained locking is the strategy of trying to achieve maximum parallelism by locking only when necessary and unlocking as soon as possible.) Also, for lightly contended locks that are used by different threads, RTM can reduce false cache line sharing, also known as cache line ping-pong. This occurs when multiple threads from different processors are accessing different resources, but the resources share the same cache line. As a result, the processors repeatedly invalidate the cache lines of other processors, which forces them to read from main memory instead of their cache.</p>
 </dd>
@@ -1162,7 +1148,7 @@ hello/Main</code></pre>
 </blockquote>
 </dd>
 <dt><code>-XX:+ExtendedDTraceProbes</code></dt>
-<dd><strong>Oracle Solaris, Linux, and macOS:</strong> Enables additional <code>dtrace</code> tool probes that affect the performance. By default, this option is disabled and <code>dtrace</code> performs only standard probes.
+<dd><strong>Linux and macOS:</strong> Enables additional <code>dtrace</code> tool probes that affect the performance. By default, this option is disabled and <code>dtrace</code> performs only standard probes.
 </dd>
 <dt><code>-XX:+HeapDumpOnOutOfMemoryError</code></dt>
 <dd>Enables the dumping of the Java heap to a file in the current directory by using the heap profiler (HPROF) when a <code>java.lang.OutOfMemoryError</code> exception is thrown. You can explicitly set the heap dump file path and name using the <code>-XX:HeapDumpPath</code> option. By default, this option is disabled and the heap isn't dumped when an <code>OutOfMemoryError</code> exception is thrown.
@@ -1173,7 +1159,7 @@ hello/Main</code></pre>
 <p><code>-XX:HeapDumpPath=./java_pid%p.hprof</code></p>
 </blockquote>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> The following example shows how to set the heap dump file to <code>/var/log/java/java_heapdump.hprof</code>:</p>
+<li><p><strong>Linux and macOS:</strong> The following example shows how to set the heap dump file to <code>/var/log/java/java_heapdump.hprof</code>:</p>
 <blockquote>
 <p><code>-XX:HeapDumpPath=/var/log/java/java_heapdump.hprof</code></p>
 </blockquote></li>
@@ -1186,7 +1172,7 @@ hello/Main</code></pre>
 <dt><code>-XX:LogFile=</code><em>path</em></dt>
 <dd><p>Sets the path and file name to where log data is written. By default, the file is created in the current working directory, and it's named <code>hotspot.log</code>.</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> The following example shows how to set the log file to <code>/var/log/java/hotspot.log</code>:</p>
+<li><p><strong>Linux and macOS:</strong> The following example shows how to set the log file to <code>/var/log/java/hotspot.log</code>:</p>
 <blockquote>
 <p><code>-XX:LogFile=/var/log/java/hotspot.log</code></p>
 </blockquote></li>
@@ -1199,7 +1185,7 @@ hello/Main</code></pre>
 <dt><code>-XX:+PrintClassHistogram</code></dt>
 <dd><p>Enables printing of a class instance histogram after one of the following events:</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> <code>Control+Break</code></p></li>
+<li><p><strong>Linux and macOS:</strong> <code>Control+Break</code></p></li>
 <li><p><strong>Windows:</strong> <code>Control+C</code> (<code>SIGTERM</code>)</p></li>
 </ul>
 <p>By default, this option is disabled.</p>
@@ -1208,7 +1194,7 @@ hello/Main</code></pre>
 <dt><code>-XX:+PrintConcurrentLocks</code></dt>
 <dd><p>Enables printing of <code>java.util.concurrent</code> locks after one of the following events:</p>
 <ul>
-<li><p><strong>Oracle Solaris, Linux, and macOS:</strong> <code>Control+Break</code></p></li>
+<li><p><strong>Linux and macOS:</strong> <code>Control+Break</code></p></li>
 <li><p><strong>Windows:</strong> <code>Control+C</code> (<code>SIGTERM</code>)</p></li>
 </ul>
 <p>By default, this option is disabled.</p>
@@ -1310,7 +1296,7 @@ hello/Main</code></pre>
 </blockquote>
 </dd>
 <dt><code>-XX:InitialSurvivorRatio=</code><em>ratio</em></dt>
-<dd><p>Sets the initial survivor space ratio used by the throughput garbage collector (which is enabled by the <code>-XX:+UseParallelGC</code> and/or <code>-XX:+UseParallelOldGC</code> options). Adaptive sizing is enabled by default with the throughput garbage collector by using the <code>-XX:+UseParallelGC</code> and <code>-XX:+UseParallelOldGC</code> options, and the survivor space is resized according to the application behavior, starting with the initial value. If adaptive sizing is disabled (using the <code>-XX:-UseAdaptiveSizePolicy</code> option), then the <code>-XX:SurvivorRatio</code> option should be used to set the size of the survivor space for the entire execution of the application.</p>
+<dd><p>Sets the initial survivor space ratio used by the throughput garbage collector (which is enabled by the <code>-XX:+UseParallelGC</code> option). Adaptive sizing is enabled by default with the throughput garbage collector by using the <code>-XX:+UseParallelGC</code> option, and the survivor space is resized according to the application behavior, starting with the initial value. If adaptive sizing is disabled (using the <code>-XX:-UseAdaptiveSizePolicy</code> option), then the <code>-XX:SurvivorRatio</code> option should be used to set the size of the survivor space for the entire execution of the application.</p>
 <p>The following formula can be used to calculate the initial size of survivor space (S) based on the size of the young generation (Y), and the initial survivor space ratio (R):</p>
 <blockquote>
 <p><code>S=Y/(R+2)</code></p>
@@ -1494,7 +1480,7 @@ hello/Main</code></pre>
 </dd>
 <dt><code>-XX:+UseParallelGC</code></dt>
 <dd><p>Enables the use of the parallel scavenge garbage collector (also known as the throughput collector) to improve the performance of your application by leveraging multiple processors.</p>
-<p>By default, this option is disabled and the default collector is used. If it's enabled, then the <code>-XX:+UseParallelOldGC</code> option is automatically enabled, unless you explicitly disable it.</p>
+<p>By default, this option is disabled and the default collector is used.</p>
 </dd>
 <dt><code>-XX:+UseSerialGC</code></dt>
 <dd>Enables the use of the serial garbage collector. This is generally the best choice for small and simple applications that don't require any special functionality from garbage collection. By default, this option is disabled and the default collector is used.
@@ -1511,16 +1497,49 @@ hello/Main</code></pre>
 <dd>Enables the use of thread-local allocation blocks (TLABs) in the young generation space. This option is enabled by default. To disable the use of TLABs, specify the option <code>-XX:-UseTLAB</code>.
 </dd>
 <dt><code>-XX:+UseZGC</code></dt>
-<dd><p>Enables the use of the Z garbage collector. This garbage collector is best for providing lowest latency with large Java heaps at some throughput cost. This is an experimental garbage collector, you need to specify <code>-XX:+UnlockExperimentalVMOptions</code> before <code>-XX:+UseZGC</code> on the command line.</p>
-<p>Example:</p>
-<blockquote>
-<p><code>-XX:+UnlockExperimentalVMOptions -XX:+UseZGC</code></p>
-</blockquote>
+<dd>Enables the use of the Z garbage collector (ZGC). This is a low latency garbage collector, providing max pause times of a few milliseconds, at some throughput cost. Pause times are independent of what heap size is used. Supports heap sizes from 8MB to 16TB.
+</dd>
+<dt><code>-XX:ZAllocationSpikeTolerance</code>=<em>factor</em></dt>
+<dd>Sets the allocation spike tolerance for ZGC. By default, this option is set to 2.0. This factor describes the level of allocation spikes to expect. For example, using a factor of 3.0 means the current allocation rate can be expected to triple at any time.
+</dd>
+<dt><code>-XX:ZCollectionInterval</code>=<em>seconds</em></dt>
+<dd>Sets the maximum interval (in seconds) between two GC cycles when using ZGC. By default, this option is set to 0 (disabled).
+</dd>
+<dt><code>-XX:ZFragmentationLimit</code>=<em>percent</em></dt>
+<dd>Sets the maximum acceptable heap fragmentation (in percent) for ZGC. By default, this option is set to 25. Using a lower value will cause the heap to be compacted more aggressively, to reclaim more memory at the cost of using more CPU time.
+</dd>
+<dt><code>-XX:+ZProactive</code></dt>
+<dd>Enables proactive GC cycles when using ZGC. By default, this option is enabled. ZGC will start a proactive GC cycle if doing so is expected to have minimal impact on the running application. This is useful if the application is mostly idle or allocates very few objects, but you still want to keep the heap size down and allow reference processing to happen even when there are a lot of free space on the heap.
+</dd>
+<dt><code>-XX:+ZUncommit</code></dt>
+<dd>Enables uncommitting of unused heap memory when using ZGC. By default, this option is enabled. Uncommitting unused heap memory will lower the memory footprint of the JVM, and make that memory available for other processes to use.
+</dd>
+<dt><code>-XX:ZUncommitDelay</code>=<em>seconds</em></dt>
+<dd>Sets the amount of time (in seconds) that heap memory must have been unused before being uncommitted. By default, this option is set to 300 (5 minutes). Committing and uncommitting memory are relatively expensive operations. Using a lower value will cause heap memory to be uncommitted earlier, at the risk of soon having to commit it again.
 </dd>
 </dl>
 <h2 id="deprecated-java-options">Deprecated Java Options</h2>
 <p>These <code>java</code> options are deprecated and might be removed in a future JDK release. They're still accepted and acted upon, but a warning is issued when they're used.</p>
 <dl>
+<dt><code>--illegal-access=</code><em>parameter</em></dt>
+<dd><p>When present at run time, <code>--illegal-access=</code> takes a keyword <em>parameter</em> to specify a mode of operation:</p>
+<blockquote>
+<p><strong>Note:</strong> This option will be removed in a future release.</p>
+</blockquote>
+<ul>
+<li><p><code>permit</code>: This mode opens each package in each module in the run-time image to code in all unnamed modules ( such as code on the class path), if that package existed in JDK 8. This enables both static access, (for example, by compiled bytecode, and deep reflective access) through the platform's various reflection APIs. The first reflective-access operation to any such package causes a warning to be issued. However, no warnings are issued after the first occurrence. This single warning describes how to enable further warnings.</p></li>
+<li><p><code>warn</code>: This mode is identical to <code>permit</code> except that a warning message is issued for each illegal reflective-access operation.</p></li>
+<li><p><code>debug</code>: This mode is identical to <code>warn</code> except that both a warning message and a stack trace are issued for each illegal reflective-access operation.</p></li>
+<li><p><code>deny</code>: This mode disables all illegal-access operations except for those enabled by other command-line options, such as <code>--add-opens</code>. This mode is the default.</p></li>
+</ul>
+<p>If your application does not work with the default mode of <code>--illegal-access=deny</code> then you can learn more about what is going on with the <code>warn</code> and <code>debug</code> modes. For each library or framework on the class path that requires illegal access, you have two options:</p>
+<ul>
+<li><p>If the component's maintainers have already released a fixed version that no longer uses JDK-internal APIs then you can consider upgrading to that version.</p></li>
+<li><p>If the component still needs to be fixed, then you can contact its maintainers and ask them to replace their use of JDK-internal APIs with the proper exported APIs.</p></li>
+</ul>
+<p>If you must continue to use a component that requires illegal access, then you can eliminate the warning messages by using one or more <code>--add-opens</code> options to open only those internal packages to which access is required.</p>
+<p>To verify that your application is ready for a future version of the JDK, run it with <code>--illegal-access=deny</code> along with any necessary <code>--add-opens</code> options. Any remaining illegal-access errors will most likely be due to static references from compiled code to JDK-internal APIs. You can identify those by running the <a href="jdeps.html">jdeps</a> tool with the <code>--jdk-internals</code> option. For performance reasons, the current JDK does not issue warnings for illegal static-access operations.</p>
+</dd>
 <dt><code>-Xfuture</code></dt>
 <dd>Enables strict class-file format checks that enforce close conformance to the class-file format specification. Developers should use this flag when developing new code. Stricter checks may become the default in future releases.
 </dd>
@@ -1545,6 +1564,23 @@ hello/Main</code></pre>
 <dd><p>Sets the maximum amount of memory that the JVM may use for the Java heap before applying ergonomics heuristics as a fraction of the maximum amount determined as described in the <code>-XX:MaxRAM</code> option for small heaps. A small heap is a heap of approximately 125 MB. The default value is 2.</p>
 <p>Use the option <code>-XX:MinRAMPercentage</code> instead.</p>
 </dd>
+<dt><code>-XX:+UseBiasedLocking</code></dt>
+<dd><p>Enables the use of biased locking. Some applications with significant amounts of uncontended synchronization may attain significant speedups with this flag enabled, but applications with certain patterns of locking may see slowdowns.</p>
+<p>By default, this option is disabled.</p>
+</dd>
+</dl>
+<h2 id="obsolete-java-options">Obsolete Java Options</h2>
+<p>These <code>java</code> options are still accepted but ignored, and a warning is issued when they're used.</p>
+<dl>
+<dt><code>-XX:+UseMembar</code></dt>
+<dd>Enabled issuing membars on thread-state transitions. This option was disabled by default on all platforms except ARM servers, where it was enabled.
+</dd>
+<dt><code>-XX:MaxPermSize=</code><em>size</em></dt>
+<dd>Sets the maximum permanent generation space size (in bytes). This option was deprecated in JDK 8 and superseded by the <code>-XX:MaxMetaspaceSize</code> option.
+</dd>
+<dt><code>-XX:PermSize=</code><em>size</em></dt>
+<dd>Sets the space (in bytes) allocated to the permanent generation that triggers a garbage collection if it's exceeded. This option was deprecated in JDK 8 and superseded by the <code>-XX:MetaspaceSize</code> option.
+</dd>
 <dt><code>-XX:+TraceClassLoading</code></dt>
 <dd><p>Enables tracing of classes as they are loaded. By default, this option is disabled and classes aren't traced.</p>
 <p>The replacement Unified Logging syntax is <code>-Xlog:class+load=</code><em>level</em>. See <a href="#enable-logging-with-the-jvm-unified-logging-framework">Enable Logging with the JVM Unified Logging Framework</a></p>
@@ -1562,33 +1598,21 @@ hello/Main</code></pre>
 <dd><p>Enables tracing of the loader constraints recording. By default, this option is disabled and loader constraints recording isn't traced.</p>
 <p>The replacement Unified Logging syntax is <code>-Xlog:class+loader+constraints=info</code>. See <a href="#enable-logging-with-the-jvm-unified-logging-framework">Enable Logging with the JVM Unified Logging Framework</a>.</p>
 </dd>
+</dl>
+<h2 id="removed-java-options">Removed Java Options</h2>
+<p>These <code>java</code> options have been removed in JDK 16 and using them results in an error of:</p>
+<blockquote>
+<p><code>Unrecognized VM option</code> <em>option-name</em></p>
+</blockquote>
+<dl>
 <dt><code>-XX:+UseParallelOldGC</code></dt>
 <dd>Enables the use of the parallel garbage collector for full GCs. By default, this option is disabled. Enabling it automatically enables the <code>-XX:+UseParallelGC</code> option.
 </dd>
 </dl>
-<h2 id="obsolete-java-options">Obsolete Java Options</h2>
-<p>These <code>java</code> options are still accepted but ignored, and a warning is issued when they're used.</p>
-<dl>
-<dt><code>-XX:+FailOverToOldVerifier</code></dt>
-<dd>Enables automatic failover to the old verifier when the new type checker fails. By default, this option is disabled and it's ignored (that is, treated as disabled) for classes with a recent bytecode version. You can enable it only for classes with older versions of the bytecode.
-</dd>
-<dt><code>-XX:+UseMembar</code></dt>
-<dd>Enabled issuing membars on thread-state transitions. This option was disabled by default on all platforms except ARM servers, where it was enabled.
-</dd>
-<dt><code>-XX:MaxPermSize=</code><em>size</em></dt>
-<dd>Sets the maximum permanent generation space size (in bytes). This option was deprecated in JDK 8 and superseded by the <code>-XX:MaxMetaspaceSize</code> option.
-</dd>
-<dt><code>-XX:PermSize=</code><em>size</em></dt>
-<dd>Sets the space (in bytes) allocated to the permanent generation that triggers a garbage collection if it's exceeded. This option was deprecated in JDK 8 and superseded by the <code>-XX:MetaspaceSize</code> option.
-</dd>
-<dt><code>-XX:+UseConcMarkSweepGC</code></dt>
-<dd>Enables the use of the CMS garbage collector for the old generation. CMS is an alternative to the default garbage collector (G1), which also focuses on meeting application latency requirements. By default, this option is disabled and the collector is selected automatically based on the configuration of the machine and type of the JVM.
-</dd>
-</dl>
-<h2 id="removed-java-options">Removed Java Options</h2>
-<p>No documented <code>java</code> options have been removed in JDK 14.</p>
 <p>For the lists and descriptions of options removed in previous releases see the <em>Removed Java Options</em> section in:</p>
 <ul>
+<li><p><a href="https://docs.oracle.com/en/java/javase/15/docs/specs/man/java.html">Java Platform, Standard Edition Tools Reference, Release 15</a></p></li>
+<li><p><a href="https://docs.oracle.com/en/java/javase/14/docs/specs/man/java.html">Java Platform, Standard Edition Tools Reference, Release 14</a></p></li>
 <li><p><a href="https://docs.oracle.com/en/java/javase/13/docs/specs/man/java.html">Java Platform, Standard Edition Tools Reference, Release 13</a></p></li>
 <li><p><a href="https://docs.oracle.com/en/java/javase/12/tools/java.html#GUID-3B1CE181-CD30-4178-9602-230B800D4FAE">Java Platform, Standard Edition Tools Reference, Release 12</a></p></li>
 <li><p><a href="https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-741FC470-AA3E-494A-8D2B-1B1FE4A990D1">Java Platform, Standard Edition Tools Reference, Release 11</a></p></li>
@@ -2103,9 +2127,7 @@ Error: A fatal exception has occurred. Program will exit.</code></pre>
 <p>You use large pages, also known as huge pages, as memory pages that are significantly larger than the standard memory page size (which varies depending on the processor and operating system). Large pages optimize processor Translation-Lookaside Buffers.</p>
 <p>A Translation-Lookaside Buffer (TLB) is a page translation cache that holds the most-recently used virtual-to-physical address translations. A TLB is a scarce system resource. A TLB miss can be costly because the processor must then read from the hierarchical page table, which may require multiple memory accesses. By using a larger memory page size, a single TLB entry can represent a larger memory range. This results in less pressure on a TLB, and memory-intensive applications may have better performance.</p>
 <p>However, large pages page memory can negatively affect system performance. For example, when a large mount of memory is pinned by an application, it may create a shortage of regular memory and cause excessive paging in other applications and slow down the entire system. Also, a system that has been up for a long time could produce excessive fragmentation, which could make it impossible to reserve enough large page memory. When this happens, either the OS or JVM reverts to using regular pages.</p>
-<p>Oracle Solaris, Linux, and Windows support large pages.</p>
-<h3 id="large-pages-support-for-oracle-solaris">Large Pages Support for Oracle Solaris</h3>
-<p>Oracle Solaris includes Multiple Page Size Support (MPSS). No additional configuration is necessary.</p>
+<p>Linux and Windows support large pages.</p>
 <h3 id="large-pages-support-for-linux">Large Pages Support for Linux</h3>
 <p>The 2.6 kernel supports large pages. Some vendors have backported the code to their 2.4-based releases. To check if your system can support large page memory, try the following:</p>
 <pre><code># cat /proc/meminfo | grep Huge
@@ -2335,7 +2357,7 @@ Cannot use the following option when dumping the shared archive: --limit-modules
 <p><code>java -XX:DumpLoadedClassList=hi.classlist -cp common.jar:hi.jar Hi</code></p>
 </blockquote></li>
 <li><p>Create a single list of classes used by all the applications that will share the shared archive file.</p>
-<p><strong>Oracle Solaris, Linux, and macOS</strong> The following commands combine the files <code>hello.classlist</code> and <code>hi.classlist</code> into one file, <code>common.classlist</code>:</p>
+<p><strong>Linux and macOS</strong> The following commands combine the files <code>hello.classlist</code> and <code>hi.classlist</code> into one file, <code>common.classlist</code>:</p>
 <blockquote>
 <p><code>cat hello.classlist hi.classlist &gt; common.classlist</code></p>
 </blockquote>
@@ -2408,6 +2430,6 @@ Cannot use the following option when dumping the shared archive: --limit-modules
 <li><p><code>0</code>: Successful completion</p></li>
 <li><p><code>&gt;0</code>: An error occurred</p></li>
 </ul>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--
- Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
+ Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
  ORACLE PROPRIETARY/CONFIDENTIAL.  Use is subject to license terms.
 -->
 <head>
@@ -102,9 +102,8 @@ rendering library, must be declared as <code>public native void</code>
 , and the native library itself is loaded at runtime by including a
 call to <code>System.loadLibrary( &quot;myRenderingLib&quot;)</code>in
 the <code>static</code> block of the class. The <code>myRenderingLib</code>
-name is used for the native shared library; for Linux or the Solaris
-operating environment, the actual name for the library file on disk
-is <code>libmyRenderingLib.so</code> .</p>
+name is used for the native shared library; for Linux, the actual name
+for the library file on disk is <code>libmyRenderingLib.so</code> .</p>
 <p>Here is a simple example of such a class:</p>
 <pre>
 import java.awt.*;
@@ -149,7 +148,6 @@ shared object naming rules. i.e.:
 <li>Windows: <code>jawt.dll</code>
 <li>MacOS: <code>libjawt.dylib</code>
 <li>Linux: <code>libjawt.so</code>
-<li>Solaris: <code>libjawt.so</code>
 </ul>
 
 <p>This code will call back to the Java virtual machine to
@@ -158,8 +156,8 @@ get the drawing surface information it needs to access the
 code can draw directly to <code>MyCanvas</code> using standard drawing
 routines supplied by the underlying operating system.</p>
 <p>Here is sample source code for a native <code>paint</code> method
-designed for use in a X11-based drawing environment (Linux
-or Solaris) and a Java VM where the AWT Native Interface is present:</p>
+designed for use in a X11-based drawing environment (Linux)
+and a Java VM where the AWT Native Interface is present:</p>
 <pre>
 #include "MyCanvas.h"
 #include "jawt_md.h"
@@ -428,7 +426,7 @@ typedef struct jawt_DrawingSurfaceInfo {
     /*
      * Pointer to the platform-specific information.  This can be safely
      * cast to a JAWT_Win32DrawingSurfaceInfo on Microsoft Windows or a
-     * JAWT_X11DrawingSurfaceInfo on Linux and Solaris. On MacOS this is a
+     * JAWT_X11DrawingSurfaceInfo on Linux. On MacOS this is a
      * pointer to a NSObject that conforms to the JAWT_SurfaceLayers protocol.
      * See jawt_md.h for details.
      */
@@ -544,7 +542,7 @@ typedef struct jawt {
      * Since 1.4
      * Returns a reference to a java.awt.Component from a native
      * platform handle.  On Windows, this corresponds to an HWND;
-     * on Solaris and Linux, this is a Drawable.  For other platforms,
+     * on Linux, this is a Drawable.  For other platforms,
      * see the appropriate machine-dependent header file for a description.
      * The reference returned by this function is a local
      * reference that is only valid in this environment.
@@ -626,7 +624,7 @@ jboolean JNICALL JAWT_GetAWT(JNIEnv* env, JAWT* awt);
 #endif /* !_JAVASOFT_JAWT_H_ */
 
 </pre>
-<h4>jawt_md.h (Linux/Solaris/X11 operating environment version)</h4>
+<h4>jawt_md.h (Linux/X11 operating environment version)</h4>
 <pre>
 #ifndef _JAVASOFT_JAWT_MD_H_
 #define _JAVASOFT_JAWT_MD_H_
@@ -752,5 +750,5 @@ extern "C" {
 </pre>
 </main>
 <!-- Body text ends here -->
-<footer class="legal-footer"><hr/><a href="../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer></body>
+<footer class="legal-footer"><hr/><a href="../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer></body>
 </html>

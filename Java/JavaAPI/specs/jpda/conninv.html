@@ -37,7 +37,7 @@
 <p>Within JPDA the debugger application uses the Java Debug Interface (JDI) interface and the <a href="#connectors">Connector</a> abstraction to establish a connection to the target VM. The Connector used by the debugger application encapsulates the transport. On the target VM an agent supporting the Java Debug Wire Protocol is used to communicate with the debugger. This agent (which may be built into the target VM or loaded from a runtime library) encapsulates the transport to communicate with the debugger.</p>
 <p>Two transport implementations are shipped with the reference implementation: A socket transport based on TCP/IP, and a shared memory transport. The specifications do not require any specific transport implementation to exist. In addition to transports provided with the implementation the architecture includes <a href="#service-provider-interfaces">service provider interfaces</a> to allow additional transports be developed and deployed.</p>
 <h4 id="socket-transport">Socket Transport</h4>
-<p>The JPDA reference implementation provides a socket transport for the Solaris, Linux, and Microsoft Windows platforms. With the socket transport, the debugger application and the target VM can reside either on the same machine or on different machines. The socket transport uses a single stream TCP/IP connection between the debugger application and the target VM. Both IPv4 and IPv6 are supported on the JDI side and the target VM side of the socket transport.</p>
+<p>The JPDA reference implementation provides a socket transport for the Linux and Microsoft Windows platforms. With the socket transport, the debugger application and the target VM can reside either on the same machine or on different machines. The socket transport uses a single stream TCP/IP connection between the debugger application and the target VM. Both IPv4 and IPv6 are supported on the JDI side and the target VM side of the socket transport.</p>
 <p>Command and reply packets are written to the stream in accordance with the <a href="../jdwp/jdwp-spec.html">JDWP specification</a> using the <a href="../jdwp/jdwp-transport.html">JDWP Transport Interface</a>. Since many small packets can be sent over JDWP, the TCP_NO_DELAY socket option can improve performance in some socket implementations by avoiding delays that could occur if the socket implementation buffers small packets before sending them. Sockets are closed gracefully so that unsent data is sent if possible.</p>
 <p>The socket transport is identified through a unique string, <code>dt_socket</code>. This name can be used to select the socket transport when <a href="#oracle-vm-invocation-options">invoking</a> the target VM. Within the debugger application a corresponding Connector is used which encapsulates the socket transport.</p>
 <p>Socket transport addresses have the format &quot;<code>&lt;host&gt;:&lt;port&gt;</code>&quot; where <code>&lt;host&gt;</code> is the host name or the IP address (may be enclosed in square brackets) and <code>&lt;port&gt;</code> is the socket port number to attach to or listen on. If <code>&lt;host&gt;</code> is empty, the local loopback address is used. If <code>&lt;host&gt;</code> equals &quot;<code>*</code>&quot; in contexts where a server is waiting for a client to attach, the server listens on all network interfaces.</p>
@@ -50,7 +50,7 @@
 <p>A good JDI client application will allow users to choose and configure any connector that may be present, but it can be beneficial to incorporate knowledge of specific connectors into the debugger to make their configuration a more pleasant user experience. The example <a href="#connecting-with-jdb">JDB</a> implementation provided with the JPDA illustrates this approach.</p>
 <p>The JDI reference implementations provides several connectors which map to the available transport types and the modes of connection (launching, listening, and attaching). These connectors are described in the following sections. A List containing these connectors is returned by JDI method VirtualMachineManager.allConnectors(). In addition, each attaching, listening, and launching connector is contained in the lists returned by the corresponding VirtualMachineManager methods attachingConnectors(), listeningConnectors(), and launchingConnectors().</p>
 <h4 id="command-line-launching-connector">Command Line Launching Connector</h4>
-<p>This connector can be used by a debugger application to launch an Oracle VM or any other VM which supports the same invocation <a href="#oracle-vm-invocation-options">options</a> with respect to debugging. The details of launching the VM and specifying the necessary debug options are handled by the connector. The underlying transport used by this connector depends on the platform. On Microsoft Windows, the shared memory transport is used. On Solaris and Linux the socket transport is used.</p>
+<p>This connector can be used by a debugger application to launch an Oracle VM or any other VM which supports the same invocation <a href="#oracle-vm-invocation-options">options</a> with respect to debugging. The details of launching the VM and specifying the necessary debug options are handled by the connector. The underlying transport used by this connector depends on the platform. On Microsoft Windows, the shared memory transport is used. On Linux the socket transport is used.</p>
 <p>This connector is uniquely identified by the name &quot;com.sun.jdi.CommandLineLaunch&quot;.<br />
 </p>
 <p><br/></p>
@@ -160,7 +160,7 @@ The VM launcher executable. This can be changed to javaw or to java_g for debugg
 </tbody>
 </table>
 <h4 id="raw-command-line-launching-connector">Raw Command Line Launching Connector</h4>
-<p>This connector can be used by a debugger application to launch any VM. The entire command line must be specified and it is not edited in any way. The details of launching the VM with the given command line are handled by the connector. The underlying transport used by this connector depends on the platform. On Microsoft Windows, the shared memory transport is used. On the Solaris operating environment, the socket transport is used.</p>
+<p>This connector can be used by a debugger application to launch any VM. The entire command line must be specified and it is not edited in any way. The details of launching the VM with the given command line are handled by the connector. The underlying transport used by this connector depends on the platform. On Microsoft Windows, the shared memory transport is used. On Linux, the socket transport is used.</p>
 <p>This connector is uniquely identified by the name &quot;com.sun.jdi.RawCommandLineLaunch&quot;.<br />
 </p>
 <p><br/></p>
@@ -385,7 +385,7 @@ no
 Ephemeral port number (port assigned by the TCP/IP stack)
 </td>
 <td>
-Port number on which to listen for a connection.
+Port number on which to listen for a connection
 </td>
 </tr>
 <tr>
@@ -396,10 +396,10 @@ Port number on which to listen for a connection.
 no
 </td>
 <td>
-All addresses assigned to the host
+Loopback address
 </td>
 <td>
-An IP address assigned to the host
+Host name or IP address on which to listen for a connection
 </td>
 </tr>
 <tr>
@@ -778,10 +778,10 @@ For IPv4, the prefix length must be in range 1..31; for IPv6, the range is 1..12
 <p>JDI launching <a href="#connectors">connectors</a> cannot be used to debug Plug-in applets.</p>
 <h3 id="connecting-with-jdb">Connecting with JDB</h3>
 <p>The example implementation of JDB provided with the JPDA, provides an illustration of the usage of JDI connectors. There are &quot;shortcut&quot; options to JDB which assume the use of connectors known to it (that is, connectors present in the reference implementation). It also provides a way to establish a general connection using any connector. While JDB is hardly an example of a good debugger interface, it does provide a simple example of connectors in use.</p>
-<p>In JDB, the -attach option provides access to one of the attaching connectors in the reference implementation (shared memory on Microsoft Windows, sockets on the Solaris and Linux platforms). The -listen option provides access to one of the listening connectors in the reference implementation (shared memory on Microsoft Windows, sockets on the Solaris and Linux platforms). A class name and arguments specified directly on the command line provide access to the command line launching connector.</p>
+<p>In JDB, the -attach option provides access to one of the attaching connectors in the reference implementation (shared memory on Microsoft Windows, sockets on the Linux platform). The -listen option provides access to one of the listening connectors in the reference implementation (shared memory on Microsoft Windows, sockets on the Linux platform). A class name and arguments specified directly on the command line provide access to the command line launching connector.</p>
 <p>For example:</p>
 <p><code>jdb -attach myhost:8000</code></p>
-<p>is an easy way to attach to a target VM with the Socket Attaching Connector (on the Solaris operating environment), and</p>
+<p>is an easy way to attach to a target VM with the Socket Attaching Connector (on Linux), and</p>
 <p><code>jdb Hello 1 2 3</code></p>
 <p>is an easy way to launch a target VM with the Command Line Launching Connector.</p>
 <p>However, the -connect option is also provided by JDB to handle any connector by taking an connector name and a set of arbitrary name/value argument pairs. For example the command lines above have the following equivalents.</p>
@@ -793,6 +793,6 @@ For IPv4, the prefix length must be in range 1..31; for IPv6, the range is 1..12
 <p>JPDA includes service provider interfaces to allow the development and deployment of connector and transport implementations. These service provider interfaces allow debugger and other tool vendors develop new connector implementations and provide addition transport mechanisms over and beyond the socket and shared memory transport provided by Oracle. The service provider interfaces in JDI are specified in the <a href="../../api/jdk.jdi/com/sun/jdi/connect/spi/package-summary.html">com.sun.jdi.connect.spi</a> package.</p>
 <p>In addition to the service provider interfaces in JDI the Oracle implementation also includes a transport library interface called the <a href="../jdwp/jdwp-transport.html">Java Debug Wire Protocol Transport Interface</a>. A transport library is loaded by the JDWP agent in the target VM and is used to establish a connection to the debugger and to transport JDWP packets between the debugger and the VM.</p>
 <p>Further information on the service provider interfaces can be in the document <a href="jpda_spis.html">Java Platform Debugger Architecture - Service Provider Interfaces</a>.</p>
-</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2020, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/technetwork/java/javase/terms/license/java14.0.1speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 14.0.1+7 --></footer>
+</main><footer class="legal-footer"><hr/><a href="../../legal/copyright.html">Copyright</a> &copy; 1993, 2021, Oracle and/or its affiliates, 500 Oracle Parkway, Redwood Shores, CA 94065 USA.<br>All rights reserved. Use is subject to <a href="https://www.oracle.com/java/javase/terms/license/java16speclicense.html">license terms</a> and the <a href="https://www.oracle.com/technetwork/java/redist-137594.html">documentation redistribution policy</a>. <!-- Version 16+36-2231 --></footer>
 </body>
 </html>

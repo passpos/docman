@@ -45,7 +45,7 @@
 <text text-anchor="middle" x="639" y="-185.4" font-family="DejaVuSans" font-size="12.00" fill="#e76f00">java.sql</text>
 </g>
 <!-- java.sql&#45;&gt;java.logging -->
-<g id="edge28" class="edge"><title>java.sql&#45;&gt;java.logging</title>
+<g id="edge29" class="edge"><title>java.sql&#45;&gt;java.logging</title>
 <path fill="none" stroke="#999999" stroke-width="2" d="M601.887,-176.27C557.262,-162.767 481.748,-139.918 428.621,-123.843"/>
 <polygon fill="#999999" stroke="#999999" stroke-width="2" points="418.974,-120.924 429.849,-119.513 423.905,-121.893 428.691,-123.342 428.546,-123.82 428.401,-124.299 423.615,-122.851 427.242,-128.127 418.974,-120.924 418.974,-120.924"/>
 </g>
@@ -59,7 +59,7 @@
 <text text-anchor="middle" x="210" y="-101.4" font-family="DejaVuSans" font-size="12.00" fill="#e76f00">java.transaction.xa</text>
 </g>
 <!-- java.sql&#45;&gt;java.transaction.xa -->
-<g id="edge29" class="edge"><title>java.sql&#45;&gt;java.transaction.xa</title>
+<g id="edge28" class="edge"><title>java.sql&#45;&gt;java.transaction.xa</title>
 <path fill="none" stroke="#999999" stroke-width="2" d="M601.942,-181.112C539.378,-170.232 408.875,-147.129 299,-125 296.645,-124.526 294.256,-124.039 291.846,-123.543"/>
 <polygon fill="#999999" stroke="#999999" stroke-width="2" points="281.847,-121.461 292.554,-119.094 286.844,-121.991 291.739,-123.01 291.637,-123.5 291.535,-123.989 286.64,-122.97 290.719,-127.905 281.847,-121.461 281.847,-121.461"/>
 </g>
