@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"io.cucumber.htmlformatter","l":"Main"},{"p":"io.cucumber.htmlformatter","l":"MessagesToHtmlWriter"}]

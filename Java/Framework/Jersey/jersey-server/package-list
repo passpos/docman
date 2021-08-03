@@ -1,0 +1,10 @@
+com.sun.research.ws.wadl
+jersey.repackaged.org.objectweb.asm
+org.glassfish.jersey.server
+org.glassfish.jersey.server.filter
+org.glassfish.jersey.server.model
+org.glassfish.jersey.server.monitoring
+org.glassfish.jersey.server.spi
+org.glassfish.jersey.server.wadl
+org.glassfish.jersey.server.wadl.config
+org.glassfish.jersey.server.wadl.processor

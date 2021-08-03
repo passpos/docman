@@ -1,0 +1,6 @@
+org.glassfish.jersey.client
+org.glassfish.jersey.client.authentication
+org.glassfish.jersey.client.filter
+org.glassfish.jersey.client.http
+org.glassfish.jersey.client.inject
+org.glassfish.jersey.client.spi

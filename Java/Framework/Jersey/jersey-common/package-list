@@ -1,0 +1,7 @@
+org.glassfish.jersey
+org.glassfish.jersey.logging
+org.glassfish.jersey.message
+org.glassfish.jersey.model
+org.glassfish.jersey.process
+org.glassfish.jersey.spi
+org.glassfish.jersey.uri
